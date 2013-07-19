@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Mango : " />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Mango</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/feijoas/mango">View on GitHub</a>
+
+          <h1 id="project_title">Mango</h1>
+          <h2 id="project_tagline"></h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/feijoas/mango/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/feijoas/mango/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
+<a name="the-mango-library" class="anchor" href="#the-mango-library"><span class="octicon octicon-link"></span></a>The Mango library</h1>
+
+<p>This is the documentation for the Mango library.</p>
+
+<p>The purpose of the Mango library is to provide
+<a href="https://code.google.com/p/guava-libraries/">Guava</a> (Google's core libraries) functionalities to Scala. This is primarily achieved through wrappers around Guava classes and converter between Java and Scala.
+Also the package structure is intended to mirror the one from Guava.</p>
+
+<p>However there are differences from the Guava libraries:</p>
+
+<ul>
+<li>Whenever <code>null</code> is in Guava to indicate the absence of a value we use <code>Option</code>
+</li>
+<li>Mango is more restrictive when passing <code>null</code> as arguments to library functions. The recommendation is to never use <code>null</code> at all.</li>
+<li>In rare cases the method names are changed to conform to the Scala standard library</li>
+<li>The Mango library uses Type Classes when appropriate</li>
+</ul><p>This is a beta version of the library. Many modules are not published yet because they are either not implemented, the test coverage is too low or the documentation is not complete. We publish these modules as soon as they are ready.</p>
+
+<h1>
+<a name="downloading" class="anchor" href="#downloading"><span class="octicon octicon-link"></span></a>Downloading</h1>
+
+<p>Mango is programmed against <code>guava-14.0.1</code> using Scala 2.10. If you want to run the tests you will also need the <code>guava-testlib-14.0.1</code>.</p>
+
+<p>To use the Mango library in <a href="http://www.scala-sbt.org/">sbt</a> add the following dependency to your project file:</p>
+
+<pre><code>resolvers ++= Seq(
+    "Sonatype Snapshots" at "http://oss.sonatype.org/content/repositories/snapshots",
+    "Sonatype Releases" at "http://oss.sonatype.org/content/repositories/releases"
+)
+
+libraryDependencies += "org.feijoas.mango" %% "mango" % "0.7"
+</code></pre>
+
+<h1>
+<a name="examples" class="anchor" href="#examples"><span class="octicon octicon-link"></span></a>Examples</h1>
+
+<h3>
+<a name="suppliers" class="anchor" href="#suppliers"><span class="octicon octicon-link"></span></a>Suppliers</h3>
+
+<pre><code>import org.feijoas.mango.common.base.Suppliers._
+
+// a supplier is just a function () =&gt; T
+val supplier = () =&gt; 3                          //&gt; supplier  : () =&gt; Int 
+                                              //= function0
+// convert to a Guava supplier
+val gSupplier = supplier.asJava                 //&gt; gSupplier  : com.google.common.base.Supplier[Int] 
+                                              //= AsGuavaSupplier(function0)
+
+// create s supplier that memoize its return
+// value for 10 seconds
+val memSupplier = memoizeWithExpiration(supplier, 10, TimeUnit.SECONDS)
+                                              //&gt; memSupplier  : () =&gt; Int  
+                                              //= Suppliers.memoizeWithExpiration(function0, 10, SECONDS)
+</code></pre>
+
+<h3>
+<a name="caches" class="anchor" href="#caches"><span class="octicon octicon-link"></span></a>Caches</h3>
+
+<pre><code>import java.util.concurrent.TimeUnit
+import org.feijoas.mango.common.cache._
+
+// the function to cache
+val expensiveFnc = (str: String) =&gt; str.length  //&gt; expensiveFnc  : String =&gt; Int 
+
+// create a cache with a maximum size of 100 and 
+// exiration time of 10 minutes
+val cache = CacheBuilder.newBuilder()
+    .maximumSize(100)
+    .expireAfterWrite(10, TimeUnit.MINUTES)
+    .build(expensiveFnc)                          //&gt; cache  : LoadingCache[String,Int]
+
+cache("MyString")                               //&gt; res0: Int = 8
+</code></pre>
+
+<h3>
+<a name="bloomfilter--funnel" class="anchor" href="#bloomfilter--funnel"><span class="octicon octicon-link"></span></a>BloomFilter &amp; Funnel</h3>
+
+<pre><code>import org.feijoas.mango.common.hash.Funnel._
+import org.feijoas.mango.common.hash.BloomFilter._
+
+// A Funnel describes how to decompose a particular object type into primitive field values.
+// For example, if we had
+case class Person(id: Integer, firstName: String, lastName: String, birthYear: Int)
+
+// our Funnel might look like
+implicit val personFunnel = new Funnel[Person] {
+    override def funnel(person: Person, into: PrimitiveSink) = {
+           into
+            .putInt(person.id)
+            .putString(person.firstName, Charsets.UTF_8)
+            .putString(person.lastName, Charsets.UTF_8)
+            .putInt(person.birthYear)
+    }
+}
+
+val friends: BloomFilter[Person] = BloomFilter.create(500, 0.01)
+friendsList.foreach { case p: Person =&gt; friends.put(p) }
+
+// much later
+if (friends.mightContain(dude)) {
+    // the probability that dude reached this place if he isn't a friend is 1%
+    // we might, for example, start asynchronously loading things for dude while we do a more expensive exact check
+}
+</code></pre>
+
+<p>See the individual packages for more examples and documentation.</p>
+
+<h1>
+<a name="converter" class="anchor" href="#converter"><span class="octicon octicon-link"></span></a>Converter</h1>
+
+<p>Conversions to and from the Guava libraries are done with the <code>.asJava</code> and <code>.asScala</code> methods respectively. These methods are imported together with the utility functions of the class. For example:</p>
+
+<pre><code>// import converter for com.google.common.base.Function
+import org.feijoas.mango.common.base.Functions._
+
+val fnc = (str: String)=&gt; str.length            //&gt; fnc  : String =&gt; Int = function1
+fnc.asJava                                      //&gt; res0: com.google.common.base.Function[String,Int] 
+                                              //= AsGuavaFunction(function1)
+</code></pre>
+
+<h1>
+<a name="build" class="anchor" href="#build"><span class="octicon octicon-link"></span></a>Build</h1>
+
+<p>Just clone the git repository and build Mango in the following way:</p>
+
+<pre><code>sbt update
+sbt compile
+</code></pre>
+
+<p>Don't forget to test</p>
+
+<pre><code>sbt test
+</code></pre>
+
+<h1>
+<a name="help" class="anchor" href="#help"><span class="octicon octicon-link"></span></a>Help</h1>
+
+<p>Besides this Scaladoc there is an excelent user guide <a href="https://code.google.com/p/guava-libraries/wiki/GuavaExplained">Guava Explained</a> which should be sufficient for almost all questions.</p>
+
+<ul>
+<li>Mango-Guava conversions: <a href="#org.feijoas.mango.common.base.Functions">Functions</a>, <a href="#org.feijoas.mango.common.base.Optional">Optional</a>, <a href="#org.feijoas.mango.common.base.Predicates">Predicates</a>, <a href="#org.feijoas.mango.common.base.Suppliers">Suppliers</a>, <a href="#org.feijoas.mango.common.util.concurrent.Futures">Futures</a>
+</li>
+<li>
+<a href="#org.feijoas.mango.common.base.Preconditions">Preconditions</a>: Test preconditions for your methods more easily.</li>
+<li>
+<a href="#org.feijoas.mango.common.cache.CacheBuilder">Caches</a>: Local caching, done right, and supporting a wide variety of expiration behaviors.</li>
+</ul><h1>
+<a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h1>
+
+<p><a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2.0</a></p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Mango maintained by <a href="https://github.com/feijoas">feijoas</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
