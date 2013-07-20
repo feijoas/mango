@@ -1,0 +1,177 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html>
+        <head>
+          <title>root - Mango - _root_</title>
+          <meta name="description" content="root - Mango - root " />
+          <meta name="keywords" content="root Mango root " />
+          <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+          
+      <link href="lib/template.css" media="screen" type="text/css" rel="stylesheet" />
+      <link href="lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
+      <script type="text/javascript" src="lib/jquery.js" id="jquery-js"></script>
+      <script type="text/javascript" src="lib/jquery-ui.js"></script>
+      <script type="text/javascript" src="lib/template.js"></script>
+      <script type="text/javascript" src="lib/tools.tooltip.js"></script>
+      
+      <script type="text/javascript">
+         if(top === self) {
+            var url = 'index.html';
+            var hash = 'package';
+            var anchor = window.location.hash;
+            var anchor_opt = '';
+            if (anchor.length >= 1)
+              anchor_opt = '@' + anchor.substring(1);
+            window.location.href = url + '#' + hash + anchor_opt;
+         }
+   	  </script>
+    
+        </head>
+        <body class="value">
+      <div id="definition">
+        <img src="lib/package_big.png" />
+        
+        <h1>root package</h1>
+      </div>
+
+      <h4 id="signature" class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <span class="name">root</span>
+      </span>
+      </h4>
+      
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><h4> The Mango library </h4><p>This is the documentation for the Mango library.</p><p>The purpose of the Mango library is to provide <a href="https://code.google.com/p/guava-libraries/" target="_blank">Guava</a> (Google's core libraries) functionalities to Scala. This is primarily achieved through wrappers around Guava classes and converter between Java and Scala.
+Also the package structure is intended to mirror the one from Guava.</p><p>However there are differences from the Guava libraries:</p><ul><li>Whenever <code>null</code> is in Guava to indicate the absence of a value we use <code>Option</code></li><li>Mango is more restrictive when passing <code>null</code> as arguments to library functions. The recommendation is to never use <code>null</code> at all.</li><li>In rare cases the method names are changed to conform to the Scala standard library</li><li>The Mango library uses Type Classes when appropriate</li></ul><p>This is a beta version of the library. Many modules are not published yet because they are either not implemented, the test coverage is too low or the documentation is not complete. We publish these modules as soon as they are ready.</p><h4> Downloading </h4><p>Mango is programmed against <code>guava-14.0.1</code> using Scala 2.10. If you want to run the tests you will also need the <code>guava-testlib-14.0.1</code>.</p><p>To use the Mango library in <a href="http://www.scala-sbt.org/" target="_blank">sbt</a> add the following dependency to your project file:</p><pre>resolvers ++= <span class="std">Seq</span>(
+  <span class="lit">"Sonatype Snapshots"</span> at <span class="lit">"http://oss.sonatype.org/content/repositories/snapshots"</span>,
+  <span class="lit">"Sonatype Releases"</span> at <span class="lit">"http://oss.sonatype.org/content/repositories/releases"</span>
+)
+
+libraryDependencies += <span class="lit">"org.feijoas.mango"</span> %% <span class="lit">"mango"</span> % <span class="lit">"0.7"</span></pre><h4> Examples </h4><h6> Suppliers </h6><pre><span class="kw">import</span> org.feijoas.mango.common.base.Suppliers._
+
+<span class="cmt">// a supplier is just a function () => T</span>
+<span class="kw">val</span> supplier = () <span class="kw">=&gt;</span> <span class="num">3</span>                          <span class="cmt">//> supplier  : () => Int</span>
+                                                <span class="cmt">//= function0</span>
+<span class="cmt">// convert to a Guava supplier</span>
+<span class="kw">val</span> gSupplier = supplier.asJava                 <span class="cmt">//> gSupplier  : com.google.common.base.Supplier[Int]</span>
+                                                <span class="cmt">//= AsGuavaSupplier(function0)</span>
+
+<span class="cmt">// create s supplier that memoize its return</span>
+<span class="cmt">// value for 10 seconds</span>
+<span class="kw">val</span> memSupplier = memoizeWithExpiration(supplier, <span class="num">10</span>, TimeUnit.SECONDS)
+                                                <span class="cmt">//> memSupplier  : () => Int</span>
+                                                <span class="cmt">//= Suppliers.memoizeWithExpiration(function0, 10, SECONDS)</span></pre><h6> Caches </h6><pre><span class="kw">import</span> java.util.concurrent.TimeUnit
+<span class="kw">import</span> org.feijoas.mango.common.cache._
+
+<span class="cmt">// the function to cache</span>
+<span class="kw">val</span> expensiveFnc = (str: <span class="std">String</span>) <span class="kw">=&gt;</span> str.length  <span class="cmt">//> expensiveFnc  : String => Int</span>
+
+<span class="cmt">// create a cache with a maximum size of 100 and</span>
+<span class="cmt">// exiration time of 10 minutes</span>
+<span class="kw">val</span> cache = CacheBuilder.newBuilder()
+  .maximumSize(<span class="num">100</span>)
+  .expireAfterWrite(<span class="num">10</span>, TimeUnit.MINUTES)
+  .build(expensiveFnc)                          <span class="cmt">//> cache  : LoadingCache[String,Int]</span>
+
+cache(<span class="lit">"MyString"</span>)                               <span class="cmt">//> res0: Int = 8</span></pre><h6> BloomFilter &amp; Funnel </h6><pre><span class="kw">import</span> org.feijoas.mango.common.hash.Funnel._
+<span class="kw">import</span> org.feijoas.mango.common.hash.BloomFilter._
+
+<span class="cmt">// A Funnel describes how to decompose a particular object type into primitive field values.</span>
+<span class="cmt">// For example, if we had</span>
+<span class="kw">case</span> <span class="kw">class</span> Person(id: Integer, firstName: <span class="std">String</span>, lastName: <span class="std">String</span>, birthYear: <span class="std">Int</span>)
+
+<span class="cmt">// our Funnel might look like</span>
+<span class="kw">implicit</span> <span class="kw">val</span> personFunnel = <span class="kw">new</span> Funnel[Person] {
+   <span class="kw">override</span> <span class="kw">def</span> funnel(person: Person, into: PrimitiveSink) = {
+      into
+      .putInt(person.id)
+      .putString(person.firstName, Charsets.UTF_8)
+      .putString(person.lastName, Charsets.UTF_8)
+      .putInt(person.birthYear)
+   }
+}
+
+<span class="kw">val</span> friends: BloomFilter[Person] = BloomFilter.create(<span class="num">500</span>, <span class="num">0.01</span>)
+friendsList.foreach { <span class="kw">case</span> p: Person <span class="kw">=&gt;</span> friends.put(p) }
+
+<span class="cmt">// much later</span>
+<span class="kw">if</span> (friends.mightContain(dude)) {
+  <span class="cmt">// the probability that dude reached this place if he isn't a friend is 1%</span>
+  <span class="cmt">// we might, for example, start asynchronously loading things for dude while we do a more expensive exact check</span>
+}</pre><p>See the individual packages for more examples and documentation.</p><h4> Converter </h4><p>Conversions to and from the Guava libraries are done with the <code>.asJava</code> and <code>.asScala</code> methods respectively. These methods are imported together with the utility functions of the class. For example:</p><pre><span class="cmt">// import converter for com.google.common.base.Function</span>
+<span class="kw">import</span> org.feijoas.mango.common.base.Functions._
+
+<span class="kw">val</span> fnc = (str: <span class="std">String</span>)<span class="kw">=&gt;</span> str.length            <span class="cmt">//> fnc  : String => Int = function1</span>
+fnc.asJava                                      <span class="cmt">//> res0: com.google.common.base.Function[String,Int]</span>
+                                                <span class="cmt">//= AsGuavaFunction(function1)</span></pre><h4> Build </h4><p>Just clone the git repository and build Mango in the following way:</p><pre>sbt update
+sbt compile</pre><p>Don't forget to test
+{{
+  sbt test
+}}</p><h4> Help </h4><p>Besides this Scaladoc there is an excelent user guide <a href="https://code.google.com/p/guava-libraries/wiki/GuavaExplained" target="_blank">Guava Explained</a> which should be sufficient for almost all questions.</p><ul><li>Mango-Guava conversions: <a href="org/feijoas/mango/common/base/Functions$.html" class="extype" name="org.feijoas.mango.common.base.Functions">Functions</a>, <a href="org/feijoas/mango/common/base/Optional$.html" class="extype" name="org.feijoas.mango.common.base.Optional">Optional</a>, <a href="org/feijoas/mango/common/base/Predicates$.html" class="extype" name="org.feijoas.mango.common.base.Predicates">Predicates</a>, <a href="org/feijoas/mango/common/base/Suppliers$.html" class="extype" name="org.feijoas.mango.common.base.Suppliers">Suppliers</a>, <a href="org/feijoas/mango/common/util/concurrent/Futures$.html" class="extype" name="org.feijoas.mango.common.util.concurrent.Futures">Futures</a></li><li><a href="org/feijoas/mango/common/base/Preconditions$.html" class="extype" name="org.feijoas.mango.common.base.Preconditions">Preconditions</a>: Test preconditions for your methods more easily.</li><li><a href="org/feijoas/mango/common/cache/CacheBuilder.html" class="extype" name="org.feijoas.mango.common.cache.CacheBuilder">Caches</a>: Local caching, done right, and supporting a wide variety of expiration behaviors.</li></ul><h4> License </h4><p><a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License, Version 2.0</a></p></div></div>
+        
+
+      <div id="mbrsel">
+        <div id="textfilter"><span class="pre"></span><span class="input"><input id="mbrsel-input" type="text" accesskey="/" /></span><span class="post"></span></div>
+        
+        
+        <div id="visbl">
+            <span class="filtertype">Visibility</span>
+            <ol><li class="public in"><span>Public</span></li><li class="all out"><span>All</span></li></ol>
+          </div>
+      </div>
+
+      <div id="template">
+        <div id="allMembers">
+        
+
+        
+
+        
+
+        <div id="values" class="values members">
+              <h3>Value Members</h3>
+              <ol><li name="_root_.org" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="org"></a>
+      <a id="org:org"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a href="org/package.html"><span class="name">org</span></a>
+      </span>
+      </h4>
+      
+    </li></ol>
+            </div>
+
+        
+
+        
+        </div>
+
+        <div id="inheritedMembers">
+        
+        
+        </div>
+
+        <div id="groupedMembers">
+        <div class="group" name="Ungrouped">
+              <h3>Ungrouped</h3>
+              
+            </div>
+        </div>
+
+      </div>
+
+      <div id="tooltip"></div>
+
+      <div id="footer">  </div>
+
+
+    </body>
+      </html>
