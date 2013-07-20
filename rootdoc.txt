@@ -1,7 +1,8 @@
-# The Mango library
+== The Mango library ==
 
-The purpose of the Mango library is to provide
-[Guava](https://code.google.com/p/guava-libraries/) (Google's core libraries) functionalities to Scala. This is primarily achieved through wrappers around Guava classes and converter between Java and Scala.
+This is the documentation for the Mango library.
+
+The purpose of the Mango library is to provide [[https://code.google.com/p/guava-libraries/ Guava]] (Google's core libraries) functionalities to Scala. This is primarily achieved through wrappers around Guava classes and converter between Java and Scala.
 Also the package structure is intended to mirror the one from Guava.
 
 However there are differences from the Guava libraries:
@@ -12,28 +13,25 @@ However there are differences from the Guava libraries:
 
 This is a beta version of the library. Many modules are not published yet because they are either not implemented, the test coverage is too low or the documentation is not complete. We publish these modules as soon as they are ready.
 
-We use Travis CI for continuous integration:  
- - See [https://travis-ci.org/feijoas/mango](https://travis-ci.org/feijoas/mango)
-   [![Build Status](https://travis-ci.org/feijoas/mango.png?branch=master)](https://travis-ci.org/feijoas/mango)
-
-# Downloading 
+== Downloading ==
 
 Mango is programmed against `guava-14.0.1` using Scala 2.10. If you want to run the tests you will also need the `guava-testlib-14.0.1`.
 
-To use the Mango library in [sbt](http://www.scala-sbt.org/) add the following dependency to your project file:
-```Scala
+To use the Mango library in [[http://www.scala-sbt.org/ sbt]] add the following dependency to your project file:
+
+{{{
 resolvers ++= Seq(
-    "Sonatype Snapshots" at "http://oss.sonatype.org/content/repositories/snapshots",
-    "Sonatype Releases" at "http://oss.sonatype.org/content/repositories/releases"
+  "Sonatype Snapshots" at "http://oss.sonatype.org/content/repositories/snapshots",
+  "Sonatype Releases" at "http://oss.sonatype.org/content/repositories/releases"
 )
 
 libraryDependencies += "org.feijoas.mango" %% "mango" % "0.7"
-```
+}}}
 
-# Examples 
+== Examples ==
 
-### Suppliers
-```Scala
+==== Suppliers ====
+{{{
   import org.feijoas.mango.common.base.Suppliers._
   
   // a supplier is just a function () => T
@@ -48,9 +46,9 @@ libraryDependencies += "org.feijoas.mango" %% "mango" % "0.7"
   val memSupplier = memoizeWithExpiration(supplier, 10, TimeUnit.SECONDS)
                                                   //> memSupplier  : () => Int  
                                                   //= Suppliers.memoizeWithExpiration(function0, 10, SECONDS)
-```
-### Caches 
-```Scala
+}}}
+==== Caches ====
+{{{
   import java.util.concurrent.TimeUnit
   import org.feijoas.mango.common.cache._
   
@@ -65,10 +63,10 @@ libraryDependencies += "org.feijoas.mango" %% "mango" % "0.7"
     .build(expensiveFnc)                          //> cache  : LoadingCache[String,Int]
 
   cache("MyString")                               //> res0: Int = 8
-```
+}}}
 
-### BloomFilter & Funnel 
-```Scala
+==== BloomFilter & Funnel ====
+{{{
   import org.feijoas.mango.common.hash.Funnel._
   import org.feijoas.mango.common.hash.BloomFilter._
 
@@ -95,42 +93,42 @@ libraryDependencies += "org.feijoas.mango" %% "mango" % "0.7"
     // the probability that dude reached this place if he isn't a friend is 1%
     // we might, for example, start asynchronously loading things for dude while we do a more expensive exact check
   }
-```
+}}}
 
 See the individual packages for more examples and documentation.
 
-# Converter 
+== Converter ==
 Conversions to and from the Guava libraries are done with the `.asJava` and `.asScala` methods respectively. These methods are imported together with the utility functions of the class. For example:
-```Scala
+{{{
   // import converter for com.google.common.base.Function
   import org.feijoas.mango.common.base.Functions._
   
   val fnc = (str: String)=> str.length            //> fnc  : String => Int = function1
   fnc.asJava                                      //> res0: com.google.common.base.Function[String,Int] 
                                                   //= AsGuavaFunction(function1)
-```
+}}}
 
-# Build 
+== Build ==
 
 Just clone the git repository and build Mango in the following way:
-```Scala
-    sbt update
-    sbt compile
-```
+{{{
+  sbt update
+  sbt compile
+}}}
 
 Don't forget to test
-```Scala
-    sbt test
-```
+{{
+  sbt test
+}}
 
-# Help 
+== Help ==
 
-Besides the [Scaladoc](http://feijoas.github.io/mango/scaladoc) there is an excellent user guide [Guava Explained](https://code.google.com/p/guava-libraries/wiki/GuavaExplained) which should be sufficient for almost all questions.
+Besides this Scaladoc there is an excelent user guide [[https://code.google.com/p/guava-libraries/wiki/GuavaExplained Guava Explained]] which should be sufficient for almost all questions.
 
- - Mango-Guava conversions: [Functions](http://feijoas.github.io/mango/scaladoc/index.html#org.feijoas.mango.common.base.Functions$), [Optional](http://feijoas.github.io/mango/scaladoc/index.html#org.feijoas.mango.common.base.Optional$), [Predicates] (http://feijoas.github.io/mango/scaladoc/index.html#org.feijoas.mango.common.base.Predicates$), [Suppliers](http://feijoas.github.io/mango/scaladoc/index.html#org.feijoas.mango.common.base.Suppliers$), [Futures](http://feijoas.github.io/mango/scaladoc/index.html#org.feijoas.mango.common.util.concurrent.Futures$)
- - [Preconditions](http://feijoas.github.io/mango/scaladoc/index.html#org.feijoas.mango.common.base.Preconditions$): Test preconditions for your methods more easily.
- - [Caches](http://feijoas.github.io/mango/scaladoc/index.html#org.feijoas.mango.common.cache.CacheBuilder$): Local caching, done right, and supporting a wide variety of expiration behaviors.
+ - Mango-Guava conversions: [[#org.feijoas.mango.common.base.Functions Functions]], [[#org.feijoas.mango.common.base.Optional Optional]], [[#org.feijoas.mango.common.base.Predicates Predicates]], [[#org.feijoas.mango.common.base.Suppliers Suppliers]], [[#org.feijoas.mango.common.util.concurrent.Futures Futures]]
+ - [[#org.feijoas.mango.common.base.Preconditions Preconditions]]: Test preconditions for your methods more easily.
+ - [[#org.feijoas.mango.common.cache.CacheBuilder Caches]]: Local caching, done right, and supporting a wide variety of expiration behaviors.
 
-# License 
+== License ==
 
-[Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0)
+[[http://www.apache.org/licenses/LICENSE-2.0 Apache License, Version 2.0]]
