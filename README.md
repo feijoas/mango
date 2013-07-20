@@ -12,11 +12,11 @@ However there are differences from the Guava libraries:
 
 This is a beta version of the library. Many modules are not published yet because they are either not implemented, the test coverage is too low or the documentation is not complete. We publish these modules as soon as they are ready.
 
-We use Travis CI for continuous integration:  
+**We use Travis CI for continuous integration:**
  - See [https://travis-ci.org/feijoas/mango](https://travis-ci.org/feijoas/mango)
-   [![Build Status](https://travis-ci.org/feijoas/mango.png?branch=master)](https://travis-ci.org/feijoas/mango)
+ - [![Build Status](https://travis-ci.org/feijoas/mango.png?branch=master)](https://travis-ci.org/feijoas/mango)
 
-# Downloading 
+## Downloading 
 
 Mango is programmed against `guava-14.0.1` using Scala 2.10. If you want to run the tests you will also need the `guava-testlib-14.0.1`.
 
@@ -30,100 +30,100 @@ resolvers ++= Seq(
 libraryDependencies += "org.feijoas.mango" %% "mango" % "0.7"
 ```
 
-# Examples 
+## Examples 
 
 ### Suppliers
 ```Scala
-  import org.feijoas.mango.common.base.Suppliers._
-  
-  // a supplier is just a function () => T
-  val supplier = () => 3                          //> supplier  : () => Int 
-                                                  //= function0
-  // convert to a Guava supplier
-  val gSupplier = supplier.asJava                 //> gSupplier  : com.google.common.base.Supplier[Int] 
-                                                  //= AsGuavaSupplier(function0)
-  
-  // create s supplier that memoize its return
-  // value for 10 seconds
-  val memSupplier = memoizeWithExpiration(supplier, 10, TimeUnit.SECONDS)
-                                                  //> memSupplier  : () => Int  
-                                                  //= Suppliers.memoizeWithExpiration(function0, 10, SECONDS)
+import org.feijoas.mango.common.base.Suppliers._
+
+// a supplier is just a function () => T
+val supplier = () => 3                      //> supplier  : () => Int 
+                                            //= function0
+// convert to a Guava supplier
+val gSupplier = supplier.asJava 			//> gSupplier  : com.google.common.base.Supplier[Int] 
+                                            //= AsGuavaSupplier(function0)
+
+// create s supplier that memoize its return
+// value for 10 seconds
+val memSupplier = memoizeWithExpiration(supplier, 10, TimeUnit.SECONDS)
+                                              //> memSupplier  : () => Int  
+                                              //= Suppliers.memoizeWithExpiration(function0, 10, SECONDS)
 ```
 ### Caches 
 ```Scala
-  import java.util.concurrent.TimeUnit
-  import org.feijoas.mango.common.cache._
-  
-  // the function to cache
-  val expensiveFnc = (str: String) => str.length  //> expensiveFnc  : String => Int 
-  
-  // create a cache with a maximum size of 100 and 
-  // exiration time of 10 minutes
-  val cache = CacheBuilder.newBuilder()
-    .maximumSize(100)
-    .expireAfterWrite(10, TimeUnit.MINUTES)
-    .build(expensiveFnc)                          //> cache  : LoadingCache[String,Int]
+import java.util.concurrent.TimeUnit
+import org.feijoas.mango.common.cache._
 
-  cache("MyString")                               //> res0: Int = 8
+// the function to cache
+val expensiveFnc = (str: String) => str.length  //> expensiveFnc  : String => Int 
+
+// create a cache with a maximum size of 100 and 
+// exiration time of 10 minutes
+val cache = CacheBuilder.newBuilder()
+.maximumSize(100)
+.expireAfterWrite(10, TimeUnit.MINUTES)
+.build(expensiveFnc)              //> cache  : LoadingCache[String,Int]
+
+cache("MyString")                 //> res0: Int = 8
 ```
 
 ### BloomFilter & Funnel 
 ```Scala
-  import org.feijoas.mango.common.hash.Funnel._
-  import org.feijoas.mango.common.hash.BloomFilter._
+import org.feijoas.mango.common.hash.Funnel._
+import org.feijoas.mango.common.hash.BloomFilter._
 
-  // A Funnel describes how to decompose a particular object type into primitive field values.
-  // For example, if we had
-  case class Person(id: Integer, firstName: String, lastName: String, birthYear: Int)
+// A Funnel describes how to decompose a particular object type into primitive field values.
+// For example, if we had
+case class Person(id: Integer, firstName: String, lastName: String, birthYear: Int)
 
-  // our Funnel might look like
-  implicit val personFunnel = new Funnel[Person] {
-     override def funnel(person: Person, into: PrimitiveSink) = {
-        into
-        .putInt(person.id)
-        .putString(person.firstName, Charsets.UTF_8)
-        .putString(person.lastName, Charsets.UTF_8)
-        .putInt(person.birthYear)
-     }
-  }
+// our Funnel might look like
+implicit val personFunnel = new Funnel[Person] {
+ override def funnel(person: Person, into: PrimitiveSink) = {
+    into
+    .putInt(person.id)
+    .putString(person.firstName, Charsets.UTF_8)
+    .putString(person.lastName, Charsets.UTF_8)
+    .putInt(person.birthYear)
+ }
+}
 
-  val friends: BloomFilter[Person] = BloomFilter.create(500, 0.01)
-  friendsList.foreach { case p: Person => friends.put(p) }
+val friends: BloomFilter[Person] = BloomFilter.create(500, 0.01)
+friendsList.foreach { case p: Person => friends.put(p) }
 
-  // much later
-  if (friends.mightContain(dude)) {
-    // the probability that dude reached this place if he isn't a friend is 1%
-    // we might, for example, start asynchronously loading things for dude while we do a more expensive exact check
-  }
+// much later
+if (friends.mightContain(dude)) {
+	// the probability that dude reached this place if he isn't a friend is 1%
+	// we might, for example, start asynchronously loading things for dude while we do a more expensive exact check
+}
 ```
 
 See the individual packages for more examples and documentation.
 
-# Converter 
+## Converter 
 Conversions to and from the Guava libraries are done with the `.asJava` and `.asScala` methods respectively. These methods are imported together with the utility functions of the class. For example:
 ```Scala
-  // import converter for com.google.common.base.Function
-  import org.feijoas.mango.common.base.Functions._
-  
-  val fnc = (str: String)=> str.length            //> fnc  : String => Int = function1
-  fnc.asJava                                      //> res0: com.google.common.base.Function[String,Int] 
-                                                  //= AsGuavaFunction(function1)
+// import converter for com.google.common.base.Function
+import org.feijoas.mango.common.base.Functions._
+
+val fnc = (str: String)=> str.length   //> fnc  : String => Int = function1
+fnc.asJava                             //> res0: com.google.common.base.Function[String,Int] 
+                                       //= AsGuavaFunction(function1)
 ```
 
-# Build 
+## Build 
 
 Just clone the git repository and build Mango in the following way:
 ```Scala
-    sbt update
-    sbt compile
+sbt update
+sbt compile
 ```
 
 Don't forget to test
 ```Scala
-    sbt test
+sbt test
 ```
 
-# Help 
+## Help 
 
 Besides the [Scaladoc](http://feijoas.github.io/mango/scaladoc) there is an excellent user guide [Guava Explained](https://code.google.com/p/guava-libraries/wiki/GuavaExplained) which should be sufficient for almost all questions.
 
@@ -131,6 +131,6 @@ Besides the [Scaladoc](http://feijoas.github.io/mango/scaladoc) there is an exce
  - [Preconditions](http://feijoas.github.io/mango/scaladoc/index.html#org.feijoas.mango.common.base.Preconditions$): Test preconditions for your methods more easily.
  - [Caches](http://feijoas.github.io/mango/scaladoc/index.html#org.feijoas.mango.common.cache.CacheBuilder$): Local caching, done right, and supporting a wide variety of expiration behaviors.
 
-# License 
+## License 
 
 [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0)
