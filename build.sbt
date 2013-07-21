@@ -20,7 +20,7 @@ organization := "org.feijoas"
 
 version := "0.7"
 
-scalaVersion := "2.10.1"
+scalaVersion := "2.10.2"
 
 sbtVersion := "0.12"
 
