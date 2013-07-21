@@ -34,8 +34,6 @@
         <h1>
 <a name="the-mango-library" class="anchor" href="#the-mango-library"><span class="octicon octicon-link"></span></a>The Mango library</h1>
 
-<p>This is the documentation for the Mango library.</p>
-
 <p>The purpose of the Mango library is to provide
 <a href="https://code.google.com/p/guava-libraries/">Guava</a> (Google's core libraries) functionalities to Scala. This is primarily achieved through wrappers around Guava classes and converter between Java and Scala.
 Also the package structure is intended to mirror the one from Guava.</p>
@@ -50,136 +48,142 @@ Also the package structure is intended to mirror the one from Guava.</p>
 <li>The Mango library uses Type Classes when appropriate</li>
 </ul><p>This is a beta version of the library. Many modules are not published yet because they are either not implemented, the test coverage is too low or the documentation is not complete. We publish these modules as soon as they are ready.</p>
 
-<h1>
-<a name="downloading" class="anchor" href="#downloading"><span class="octicon octicon-link"></span></a>Downloading</h1>
+<p><strong>We use Travis CI for continuous integration:</strong></p>
+
+<ul>
+<li>See <a href="https://travis-ci.org/feijoas/mango">https://travis-ci.org/feijoas/mango</a>
+</li>
+<li><a href="https://travis-ci.org/feijoas/mango"><img src="https://travis-ci.org/feijoas/mango.png?branch=master" alt="Build Status"></a></li>
+</ul><h2>
+<a name="downloading" class="anchor" href="#downloading"><span class="octicon octicon-link"></span></a>Downloading</h2>
 
 <p>Mango is programmed against <code>guava-14.0.1</code> using Scala 2.10. If you want to run the tests you will also need the <code>guava-testlib-14.0.1</code>.</p>
 
 <p>To use the Mango library in <a href="http://www.scala-sbt.org/">sbt</a> add the following dependency to your project file:</p>
 
-<pre><code>resolvers ++= Seq(
-    "Sonatype Snapshots" at "http://oss.sonatype.org/content/repositories/snapshots",
-    "Sonatype Releases" at "http://oss.sonatype.org/content/repositories/releases"
-)
+<div class="highlight"><pre><span class="n">resolvers</span> <span class="o">++=</span> <span class="nc">Seq</span><span class="o">(</span>
+    <span class="s">"Sonatype Snapshots"</span> <span class="n">at</span> <span class="s">"http://oss.sonatype.org/content/repositories/snapshots"</span><span class="o">,</span>
+    <span class="s">"Sonatype Releases"</span> <span class="n">at</span> <span class="s">"http://oss.sonatype.org/content/repositories/releases"</span>
+<span class="o">)</span>
 
-libraryDependencies += "org.feijoas.mango" %% "mango" % "0.7"
-</code></pre>
+<span class="n">libraryDependencies</span> <span class="o">+=</span> <span class="s">"org.feijoas.mango"</span> <span class="o">%%</span> <span class="s">"mango"</span> <span class="o">%</span> <span class="s">"0.7"</span>
+</pre></div>
 
-<h1>
-<a name="examples" class="anchor" href="#examples"><span class="octicon octicon-link"></span></a>Examples</h1>
+<h2>
+<a name="examples" class="anchor" href="#examples"><span class="octicon octicon-link"></span></a>Examples</h2>
 
 <h3>
 <a name="suppliers" class="anchor" href="#suppliers"><span class="octicon octicon-link"></span></a>Suppliers</h3>
 
-<pre><code>import org.feijoas.mango.common.base.Suppliers._
+<div class="highlight"><pre><span class="k">import</span> <span class="nn">org.feijoas.mango.common.base.Suppliers._</span>
 
-// a supplier is just a function () =&gt; T
-val supplier = () =&gt; 3                          //&gt; supplier  : () =&gt; Int 
-                                              //= function0
-// convert to a Guava supplier
-val gSupplier = supplier.asJava                 //&gt; gSupplier  : com.google.common.base.Supplier[Int] 
-                                              //= AsGuavaSupplier(function0)
+<span class="c1">// a supplier is just a function () =&gt; T</span>
+<span class="k">val</span> <span class="n">supplier</span> <span class="k">=</span> <span class="o">()</span> <span class="k">=&gt;</span> <span class="mi">3</span>                      <span class="c1">//&gt; supplier  : () =&gt; Int </span>
+                                            <span class="c1">//= function0</span>
+<span class="c1">// convert to a Guava supplier</span>
+<span class="k">val</span> <span class="n">gSupplier</span> <span class="k">=</span> <span class="n">supplier</span><span class="o">.</span><span class="n">asJava</span>             <span class="c1">//&gt; gSupplier  : com.google.common.base.Supplier[Int] </span>
+                                            <span class="c1">//= AsGuavaSupplier(function0)</span>
 
-// create s supplier that memoize its return
-// value for 10 seconds
-val memSupplier = memoizeWithExpiration(supplier, 10, TimeUnit.SECONDS)
-                                              //&gt; memSupplier  : () =&gt; Int  
-                                              //= Suppliers.memoizeWithExpiration(function0, 10, SECONDS)
-</code></pre>
+<span class="c1">// create s supplier that memoize its return</span>
+<span class="c1">// value for 10 seconds</span>
+<span class="k">val</span> <span class="n">memSupplier</span> <span class="k">=</span> <span class="n">memoizeWithExpiration</span><span class="o">(</span><span class="n">supplier</span><span class="o">,</span> <span class="mi">10</span><span class="o">,</span> <span class="nc">TimeUnit</span><span class="o">.</span><span class="nc">SECONDS</span><span class="o">)</span>
+                                              <span class="c1">//&gt; memSupplier  : () =&gt; Int  </span>
+                                              <span class="c1">//= Suppliers.memoizeWithExpiration(function0, 10, SECONDS)</span>
+</pre></div>
 
 <h3>
 <a name="caches" class="anchor" href="#caches"><span class="octicon octicon-link"></span></a>Caches</h3>
 
-<pre><code>import java.util.concurrent.TimeUnit
-import org.feijoas.mango.common.cache._
+<div class="highlight"><pre><span class="k">import</span> <span class="nn">java.util.concurrent.TimeUnit</span>
+<span class="k">import</span> <span class="nn">org.feijoas.mango.common.cache._</span>
 
-// the function to cache
-val expensiveFnc = (str: String) =&gt; str.length  //&gt; expensiveFnc  : String =&gt; Int 
+<span class="c1">// the function to cache</span>
+<span class="k">val</span> <span class="n">expensiveFnc</span> <span class="k">=</span> <span class="o">(</span><span class="n">str</span><span class="k">:</span> <span class="kt">String</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="n">str</span><span class="o">.</span><span class="n">length</span>  <span class="c1">//&gt; expensiveFnc  : String =&gt; Int </span>
 
-// create a cache with a maximum size of 100 and 
-// exiration time of 10 minutes
-val cache = CacheBuilder.newBuilder()
-    .maximumSize(100)
-    .expireAfterWrite(10, TimeUnit.MINUTES)
-    .build(expensiveFnc)                          //&gt; cache  : LoadingCache[String,Int]
+<span class="c1">// create a cache with a maximum size of 100 and </span>
+<span class="c1">// exiration time of 10 minutes</span>
+<span class="k">val</span> <span class="n">cache</span> <span class="k">=</span> <span class="nc">CacheBuilder</span><span class="o">.</span><span class="n">newBuilder</span><span class="o">()</span>
+<span class="o">.</span><span class="n">maximumSize</span><span class="o">(</span><span class="mi">100</span><span class="o">)</span>
+<span class="o">.</span><span class="n">expireAfterWrite</span><span class="o">(</span><span class="mi">10</span><span class="o">,</span> <span class="nc">TimeUnit</span><span class="o">.</span><span class="nc">MINUTES</span><span class="o">)</span>
+<span class="o">.</span><span class="n">build</span><span class="o">(</span><span class="n">expensiveFnc</span><span class="o">)</span>              <span class="c1">//&gt; cache  : LoadingCache[String,Int]</span>
 
-cache("MyString")                               //&gt; res0: Int = 8
-</code></pre>
+<span class="n">cache</span><span class="o">(</span><span class="s">"MyString"</span><span class="o">)</span>                 <span class="c1">//&gt; res0: Int = 8</span>
+</pre></div>
 
 <h3>
 <a name="bloomfilter--funnel" class="anchor" href="#bloomfilter--funnel"><span class="octicon octicon-link"></span></a>BloomFilter &amp; Funnel</h3>
 
-<pre><code>import org.feijoas.mango.common.hash.Funnel._
-import org.feijoas.mango.common.hash.BloomFilter._
+<div class="highlight"><pre><span class="k">import</span> <span class="nn">org.feijoas.mango.common.hash.Funnel._</span>
+<span class="k">import</span> <span class="nn">org.feijoas.mango.common.hash.BloomFilter._</span>
 
-// A Funnel describes how to decompose a particular object type into primitive field values.
-// For example, if we had
-case class Person(id: Integer, firstName: String, lastName: String, birthYear: Int)
+<span class="c1">// A Funnel describes how to decompose a particular object type into primitive field values.</span>
+<span class="c1">// For example, if we had</span>
+<span class="k">case</span> <span class="k">class</span> <span class="nc">Person</span><span class="o">(</span><span class="n">id</span><span class="k">:</span> <span class="kt">Integer</span><span class="o">,</span> <span class="n">firstName</span><span class="k">:</span> <span class="kt">String</span><span class="o">,</span> <span class="n">lastName</span><span class="k">:</span> <span class="kt">String</span><span class="o">,</span> <span class="n">birthYear</span><span class="k">:</span> <span class="kt">Int</span><span class="o">)</span>
 
-// our Funnel might look like
-implicit val personFunnel = new Funnel[Person] {
-    override def funnel(person: Person, into: PrimitiveSink) = {
-           into
-            .putInt(person.id)
-            .putString(person.firstName, Charsets.UTF_8)
-            .putString(person.lastName, Charsets.UTF_8)
-            .putInt(person.birthYear)
-    }
-}
+<span class="c1">// our Funnel might look like</span>
+<span class="k">implicit</span> <span class="k">val</span> <span class="n">personFunnel</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Funnel</span><span class="o">[</span><span class="kt">Person</span><span class="o">]</span> <span class="o">{</span>
+ <span class="k">override</span> <span class="k">def</span> <span class="n">funnel</span><span class="o">(</span><span class="n">person</span><span class="k">:</span> <span class="kt">Person</span><span class="o">,</span> <span class="n">into</span><span class="k">:</span> <span class="kt">PrimitiveSink</span><span class="o">)</span> <span class="k">=</span> <span class="o">{</span>
+    <span class="n">into</span>
+    <span class="o">.</span><span class="n">putInt</span><span class="o">(</span><span class="n">person</span><span class="o">.</span><span class="n">id</span><span class="o">)</span>
+    <span class="o">.</span><span class="n">putString</span><span class="o">(</span><span class="n">person</span><span class="o">.</span><span class="n">firstName</span><span class="o">,</span> <span class="nc">Charsets</span><span class="o">.</span><span class="nc">UTF_8</span><span class="o">)</span>
+    <span class="o">.</span><span class="n">putString</span><span class="o">(</span><span class="n">person</span><span class="o">.</span><span class="n">lastName</span><span class="o">,</span> <span class="nc">Charsets</span><span class="o">.</span><span class="nc">UTF_8</span><span class="o">)</span>
+    <span class="o">.</span><span class="n">putInt</span><span class="o">(</span><span class="n">person</span><span class="o">.</span><span class="n">birthYear</span><span class="o">)</span>
+ <span class="o">}</span>
+<span class="o">}</span>
 
-val friends: BloomFilter[Person] = BloomFilter.create(500, 0.01)
-friendsList.foreach { case p: Person =&gt; friends.put(p) }
+<span class="k">val</span> <span class="n">friends</span><span class="k">:</span> <span class="kt">BloomFilter</span><span class="o">[</span><span class="kt">Person</span><span class="o">]</span> <span class="k">=</span> <span class="nc">BloomFilter</span><span class="o">.</span><span class="n">create</span><span class="o">(</span><span class="mi">500</span><span class="o">,</span> <span class="mf">0.01</span><span class="o">)</span>
+<span class="n">friendsList</span><span class="o">.</span><span class="n">foreach</span> <span class="o">{</span> <span class="k">case</span> <span class="n">p</span><span class="k">:</span> <span class="kt">Person</span> <span class="o">=&gt;</span> <span class="n">friends</span><span class="o">.</span><span class="n">put</span><span class="o">(</span><span class="n">p</span><span class="o">)</span> <span class="o">}</span>
 
-// much later
-if (friends.mightContain(dude)) {
-    // the probability that dude reached this place if he isn't a friend is 1%
-    // we might, for example, start asynchronously loading things for dude while we do a more expensive exact check
-}
-</code></pre>
+<span class="c1">// much later</span>
+<span class="k">if</span> <span class="o">(</span><span class="n">friends</span><span class="o">.</span><span class="n">mightContain</span><span class="o">(</span><span class="n">dude</span><span class="o">))</span> <span class="o">{</span>
+    <span class="c1">// the probability that dude reached this place if he isn't a friend is 1%</span>
+    <span class="c1">// we might, for example, start asynchronously loading things for dude while we do a more expensive exact check</span>
+<span class="o">}</span>
+</pre></div>
 
 <p>See the individual packages for more examples and documentation.</p>
 
-<h1>
-<a name="converter" class="anchor" href="#converter"><span class="octicon octicon-link"></span></a>Converter</h1>
+<h2>
+<a name="converter" class="anchor" href="#converter"><span class="octicon octicon-link"></span></a>Converter</h2>
 
 <p>Conversions to and from the Guava libraries are done with the <code>.asJava</code> and <code>.asScala</code> methods respectively. These methods are imported together with the utility functions of the class. For example:</p>
 
-<pre><code>// import converter for com.google.common.base.Function
-import org.feijoas.mango.common.base.Functions._
+<div class="highlight"><pre><span class="c1">// import converter for com.google.common.base.Function</span>
+<span class="k">import</span> <span class="nn">org.feijoas.mango.common.base.Functions._</span>
 
-val fnc = (str: String)=&gt; str.length            //&gt; fnc  : String =&gt; Int = function1
-fnc.asJava                                      //&gt; res0: com.google.common.base.Function[String,Int] 
-                                              //= AsGuavaFunction(function1)
-</code></pre>
+<span class="k">val</span> <span class="n">fnc</span> <span class="k">=</span> <span class="o">(</span><span class="n">str</span><span class="k">:</span> <span class="kt">String</span><span class="o">)</span><span class="k">=&gt;</span> <span class="n">str</span><span class="o">.</span><span class="n">length</span>   <span class="c1">//&gt; fnc  : String =&gt; Int = function1</span>
+<span class="n">fnc</span><span class="o">.</span><span class="n">asJava</span>                             <span class="c1">//&gt; res0: com.google.common.base.Function[String,Int] </span>
+                                       <span class="c1">//= AsGuavaFunction(function1)</span>
+</pre></div>
 
-<h1>
-<a name="build" class="anchor" href="#build"><span class="octicon octicon-link"></span></a>Build</h1>
+<h2>
+<a name="build" class="anchor" href="#build"><span class="octicon octicon-link"></span></a>Build</h2>
 
 <p>Just clone the git repository and build Mango in the following way:</p>
 
-<pre><code>sbt update
-sbt compile
-</code></pre>
+<div class="highlight"><pre><span class="n">sbt</span> <span class="n">update</span>
+<span class="n">sbt</span> <span class="n">compile</span>
+</pre></div>
 
 <p>Don't forget to test</p>
 
-<pre><code>sbt test
-</code></pre>
+<div class="highlight"><pre><span class="n">sbt</span> <span class="n">test</span>
+</pre></div>
 
-<h1>
-<a name="help" class="anchor" href="#help"><span class="octicon octicon-link"></span></a>Help</h1>
+<h2>
+<a name="help" class="anchor" href="#help"><span class="octicon octicon-link"></span></a>Help</h2>
 
-<p>Besides this Scaladoc there is an excelent user guide <a href="https://code.google.com/p/guava-libraries/wiki/GuavaExplained">Guava Explained</a> which should be sufficient for almost all questions.</p>
+<p>Besides the <a href="http://feijoas.github.io/mango/scaladoc">Scaladoc</a> there is an excellent user guide <a href="https://code.google.com/p/guava-libraries/wiki/GuavaExplained">Guava Explained</a> which should be sufficient for almost all questions.</p>
 
 <ul>
-<li>Mango-Guava conversions: <a href="#org.feijoas.mango.common.base.Functions">Functions</a>, <a href="#org.feijoas.mango.common.base.Optional">Optional</a>, <a href="#org.feijoas.mango.common.base.Predicates">Predicates</a>, <a href="#org.feijoas.mango.common.base.Suppliers">Suppliers</a>, <a href="#org.feijoas.mango.common.util.concurrent.Futures">Futures</a>
+<li>Mango-Guava conversions: <a href="http://feijoas.github.io/mango/scaladoc/index.html#org.feijoas.mango.common.base.Functions%24">Functions</a>, <a href="http://feijoas.github.io/mango/scaladoc/index.html#org.feijoas.mango.common.base.Optional%24">Optional</a>, <a href="http://feijoas.github.io/mango/scaladoc/index.html#org.feijoas.mango.common.base.Predicates%24">Predicates</a>, <a href="http://feijoas.github.io/mango/scaladoc/index.html#org.feijoas.mango.common.base.Suppliers%24">Suppliers</a>, <a href="http://feijoas.github.io/mango/scaladoc/index.html#org.feijoas.mango.common.util.concurrent.Futures%24">Futures</a>
 </li>
 <li>
-<a href="#org.feijoas.mango.common.base.Preconditions">Preconditions</a>: Test preconditions for your methods more easily.</li>
+<a href="http://feijoas.github.io/mango/scaladoc/index.html#org.feijoas.mango.common.base.Preconditions%24">Preconditions</a>: Test preconditions for your methods more easily.</li>
 <li>
-<a href="#org.feijoas.mango.common.cache.CacheBuilder">Caches</a>: Local caching, done right, and supporting a wide variety of expiration behaviors.</li>
-</ul><h1>
-<a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h1>
+<a href="http://feijoas.github.io/mango/scaladoc/index.html#org.feijoas.mango.common.cache.CacheBuilder%24">Caches</a>: Local caching, done right, and supporting a wide variety of expiration behaviors.</li>
+</ul><h2>
+<a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h2>
 
 <p><a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2.0</a></p>
       </section>
