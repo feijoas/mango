@@ -1,0 +1,796 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html>
+        <head>
+          <title>LoadingCache - Mango - org.feijoas.mango.common.cache.LoadingCache</title>
+          <meta name="description" content="LoadingCache - Mango - org.feijoas.mango.common.cache.LoadingCache" />
+          <meta name="keywords" content="LoadingCache Mango org.feijoas.mango.common.cache.LoadingCache" />
+          <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+          
+      <link href="../../../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
+      <link href="../../../../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
+      <script type="text/javascript" src="../../../../../lib/jquery.js" id="jquery-js"></script>
+      <script type="text/javascript" src="../../../../../lib/jquery-ui.js"></script>
+      <script type="text/javascript" src="../../../../../lib/template.js"></script>
+      <script type="text/javascript" src="../../../../../lib/tools.tooltip.js"></script>
+      
+      <script type="text/javascript">
+         if(top === self) {
+            var url = '../../../../../index.html';
+            var hash = 'org.feijoas.mango.common.cache.LoadingCache';
+            var anchor = window.location.hash;
+            var anchor_opt = '';
+            if (anchor.length >= 1)
+              anchor_opt = '@' + anchor.substring(1);
+            window.location.href = url + '#' + hash + anchor_opt;
+         }
+   	  </script>
+    
+        </head>
+        <body class="type">
+      <div id="definition">
+        <a href="LoadingCache$.html" title="Go to companion"><img src="../../../../../lib/trait_to_object_big.png" /></a>
+        <p id="owner"><a href="../../../../package.html" class="extype" name="org">org</a>.<a href="../../../package.html" class="extype" name="org.feijoas">feijoas</a>.<a href="../../package.html" class="extype" name="org.feijoas.mango">mango</a>.<a href="../package.html" class="extype" name="org.feijoas.mango.common">common</a>.<a href="package.html" class="extype" name="org.feijoas.mango.common.cache">cache</a></p>
+        <h1><a href="LoadingCache$.html" title="Go to companion">LoadingCache</a></h1>
+      </div>
+
+      <h4 id="signature" class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <span class="name">LoadingCache</span><span class="tparams">[<span name="K">K</span>, <span name="V">V</span>]</span><span class="result"> extends <a href="Cache.html" class="extype" name="org.feijoas.mango.common.cache.Cache">Cache</a>[<span class="extype" name="org.feijoas.mango.common.cache.LoadingCache.K">K</span>, <span class="extype" name="org.feijoas.mango.common.cache.LoadingCache.V">V</span>] with (<span class="extype" name="org.feijoas.mango.common.cache.LoadingCache.K">K</span>) ⇒ <span class="extype" name="org.feijoas.mango.common.cache.LoadingCache.V">V</span></span>
+      </span>
+      </h4>
+      
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>A semi-persistent mapping from keys to values. Values are automatically loaded by the cache,
+ and are stored in the cache until either evicted or manually invalidated.</p><p>Implementations of this interface are expected to be thread-safe, and can be safely accessed
+ by multiple concurrent threads.</p><p>When evaluated as a <a href="http://www.scala-lang.org/api/current/index.html#scala.Function1" target="_blank">scala.Function</a>,
+ a cache yields the same result as invoking <code>#getUnchecked</code>.</p><p>Note that while this class is still annotated as <code>Beta</code>, the API is frozen from a
+ consumer's standpoint. In other words existing methods are all considered <code>non-Beta</code> and
+ won't be changed without going through an 18 month deprecation cycle; however new methods may be
+ added at any time.
+</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@<a href="../annotations/Beta.html" class="extype" name="org.feijoas.mango.common.annotations.Beta">Beta</a></span><span class="args">()</span>
+              
+        </dd><dt>Since</dt><dd><p>0.7 (copied from Guava-libraries)
+</p></dd></dl><div class="toggleContainer block">
+          <span class="toggle">Linear Supertypes</span>
+          <div class="superTypes hiddenContent">(<span class="extype" name="org.feijoas.mango.common.cache.LoadingCache.K">K</span>) ⇒ <span class="extype" name="org.feijoas.mango.common.cache.LoadingCache.V">V</span>, <a href="Cache.html" class="extype" name="org.feijoas.mango.common.cache.Cache">Cache</a>[<span class="extype" name="org.feijoas.mango.common.cache.LoadingCache.K">K</span>, <span class="extype" name="org.feijoas.mango.common.cache.LoadingCache.V">V</span>], <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+        </div><div class="toggleContainer block">
+          <span class="toggle">Known Subclasses</span>
+          <div class="subClasses hiddenContent"><a href="LoadingCacheWrapper.html" class="extype" name="org.feijoas.mango.common.cache.LoadingCacheWrapper">LoadingCacheWrapper</a></div>
+        </div></div>
+        
+
+      <div id="mbrsel">
+        <div id="textfilter"><span class="pre"></span><span class="input"><input id="mbrsel-input" type="text" accesskey="/" /></span><span class="post"></span></div>
+        <div id="order">
+              <span class="filtertype">Ordering</span>
+              <ol>
+                
+                <li class="alpha in"><span>Alphabetic</span></li>
+                <li class="inherit out"><span>By inheritance</span></li>
+              </ol>
+            </div>
+        <div id="ancestors">
+                <span class="filtertype">Inherited<br />
+                </span>
+                <ol id="linearization">
+                  <li class="in" name="org.feijoas.mango.common.cache.LoadingCache"><span>LoadingCache</span></li><li class="in" name="scala.Function1"><span>Function1</span></li><li class="in" name="org.feijoas.mango.common.cache.Cache"><span>Cache</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                </ol>
+              </div><div id="ancestors">
+            <span class="filtertype"></span>
+            <ol>
+              <li class="hideall out"><span>Hide All</span></li>
+              <li class="showall in"><span>Show all</span></li>
+            </ol>
+            <a href="http://docs.scala-lang.org/overviews/scaladoc/usage.html#members" target="_blank">Learn more about member selection</a>
+          </div>
+        <div id="visbl">
+            <span class="filtertype">Visibility</span>
+            <ol><li class="public in"><span>Public</span></li><li class="all out"><span>All</span></li></ol>
+          </div>
+      </div>
+
+      <div id="template">
+        <div id="allMembers">
+        
+
+        
+
+        <div id="values" class="values members">
+              <h3>Abstract Value Members</h3>
+              <ol><li name="org.feijoas.mango.common.cache.Cache#asMap" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="asMap():scala.collection.concurrent.Map[K,V]"></a>
+      <a id="asMap():Map[K,V]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">asMap</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.collection.concurrent.Map">Map</span>[<span class="extype" name="org.feijoas.mango.common.cache.LoadingCache.K">K</span>, <span class="extype" name="org.feijoas.mango.common.cache.LoadingCache.V">V</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Returns a view of the entries stored in this cache as a thread-safe map.</p><div class="fullcomment"><div class="comment cmt"><p>Returns a view of the entries stored in this cache as a thread-safe map. Modifications made to
+ the map directly affect the cache.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Cache.html" class="extype" name="org.feijoas.mango.common.cache.Cache">Cache</a></dd></dl></div>
+    </li><li name="org.feijoas.mango.common.cache.LoadingCache#get" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="get(key:K):scala.util.Try[V]"></a>
+      <a id="get(K):Try[V]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">get</span><span class="params">(<span name="key">key: <span class="extype" name="org.feijoas.mango.common.cache.LoadingCache.K">K</span></span>)</span><span class="result">: <span class="extype" name="scala.util.Try">Try</span>[<span class="extype" name="org.feijoas.mango.common.cache.LoadingCache.V">V</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Returns the value associated with <code>key</code> in this cache, first loading that value if
+ necessary.</p><div class="fullcomment"><div class="comment cmt"><p>Returns the value associated with <code>key</code> in this cache, first loading that value if
+ necessary. No observable state associated with this cache is modified until loading completes.</p><p>If another call to <code>#get</code> or <code>#getIfPresent</code> is currently loading the value for
+ <code>key</code>, simply waits for that thread to finish and returns its loaded value. Note that
+ multiple threads can concurrently load values for distinct keys.</p><p>Caches loaded by a <a href="CacheLoader.html" class="extype" name="org.feijoas.mango.common.cache.CacheLoader">CacheLoader</a> will call <code>CacheLoader#load</code> to load new values
+ into the cache. If another value was associated
+ with <code>key</code> while the new value was loading then a removal notification will be sent for
+ the new value.</p><p> The <a href="CacheLoader.html" class="extype" name="org.feijoas.mango.common.cache.CacheLoader">CacheLoader</a> should not throw exceptions. If the calculation from a <a href="CacheLoader.html" class="extype" name="org.feijoas.mango.common.cache.CacheLoader">CacheLoader</a>
+ can fail the use of <code>CacheLoader[K,Option[V]]</code> or <code>CacheLoader[K,Try[V]]</code> is preferred.
+ If the cache loader associated with this cache is known not to throw checked
+ exceptions, then prefer <code>#getUnchecked</code> over this method.</p></div><dl class="attributes block"> <dt>Exceptions thrown</dt><dd><span class="cmt">ExecutionError<p>if an error was thrown while loading the value
+</p></span><span class="cmt">ExecutionException<p>if a checked exception was thrown while loading the value</p></span><span class="cmt">UncheckedExecutionException<p>if an unchecked exception was thrown while loading the
+    value</p></span></dd></dl></div>
+    </li><li name="org.feijoas.mango.common.cache.Cache#getIfPresent" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="getIfPresent(key:K):Option[V]"></a>
+      <a id="getIfPresent(K):Option[V]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getIfPresent</span><span class="params">(<span name="key">key: <span class="extype" name="org.feijoas.mango.common.cache.LoadingCache.K">K</span></span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="org.feijoas.mango.common.cache.LoadingCache.V">V</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Returns an <a href="http://www.scala-lang.org/api/current/index.html#scala.Option" target="_blank">Option</a> which is <code>Some(value)</code> with the value associated with
+ <code>key</code> in this cache, or <code>None</code> if there is no cached value for <code>key</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Returns an <a href="http://www.scala-lang.org/api/current/index.html#scala.Option" target="_blank">Option</a> which is <code>Some(value)</code> with the value associated with
+ <code>key</code> in this cache, or <code>None</code> if there is no cached value for <code>key</code>.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Cache.html" class="extype" name="org.feijoas.mango.common.cache.Cache">Cache</a></dd></dl></div>
+    </li><li name="org.feijoas.mango.common.cache.Cache#getOrElseUpdate" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="getOrElseUpdate(key:K,loader:()=&gt;V):V"></a>
+      <a id="getOrElseUpdate(K,()⇒V):V"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getOrElseUpdate</span><span class="params">(<span name="key">key: <span class="extype" name="org.feijoas.mango.common.cache.LoadingCache.K">K</span></span>, <span name="loader">loader: () ⇒ <span class="extype" name="org.feijoas.mango.common.cache.LoadingCache.V">V</span></span>)</span><span class="result">: <span class="extype" name="org.feijoas.mango.common.cache.LoadingCache.V">V</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Returns the value associated with <code>key</code> in this cache, obtaining that value from
+ <code>loader</code> if necessary.</p><div class="fullcomment"><div class="comment cmt"><p>Returns the value associated with <code>key</code> in this cache, obtaining that value from
+ <code>loader</code> if necessary. No observable state associated with this cache is modified
+ until loading completes. This method provides a simple substitute for the conventional
+ <code>if cached, return; otherwise create, cache and return</code> pattern.</p><p> <b>Warning:</b> as with <code><a href="CacheLoader.html" class="extype" name="org.feijoas.mango.common.cache.CacheLoader">CacheLoader</a>#load</code>, <code>loader</code> <b>must not</b> return
+ <code>null</code>; it may either return a non-null value or throw an exception.
+ The recommend way would be to use a <code>Cache[K, Option[V]]</code> with <code>loader</code>
+ return <code>None</code> instead of throwing an exception.</p><p> This method is equivalent to <code>Cache.get(K, Callable&lt;? extends V&gt;)</code> from
+ the Guava-Libraries.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Cache.html" class="extype" name="org.feijoas.mango.common.cache.Cache">Cache</a></dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="defval" name="scala.this.throws.&lt;init&gt;$default$1[java.util.concurrent.ExecutionException]">...</span>
+    </span>)</span>
+              
+        </dd><dt>Exceptions thrown</dt><dd><span class="cmt">ExecutionError<p>if an error was thrown while loading the value
+</p></span><span class="cmt">ExecutionException<p>if a checked exception was thrown while loading the value</p></span><span class="cmt">UncheckedExecutionException<p>if an unchecked exception was thrown while loading the
+    value</p></span></dd></dl></div>
+    </li><li name="org.feijoas.mango.common.cache.Cache#invalidate" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="invalidate(key:K):Unit"></a>
+      <a id="invalidate(K):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">invalidate</span><span class="params">(<span name="key">key: <span class="extype" name="org.feijoas.mango.common.cache.LoadingCache.K">K</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Discards any cached value for key <code>key</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Discards any cached value for key <code>key</code>.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Cache.html" class="extype" name="org.feijoas.mango.common.cache.Cache">Cache</a></dd></dl></div>
+    </li><li name="org.feijoas.mango.common.cache.Cache#invalidateAll" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="invalidateAll():Unit"></a>
+      <a id="invalidateAll():Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">invalidateAll</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Discards all entries in the cache.</p><div class="fullcomment"><div class="comment cmt"><p>Discards all entries in the cache.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Cache.html" class="extype" name="org.feijoas.mango.common.cache.Cache">Cache</a></dd></dl></div>
+    </li><li name="org.feijoas.mango.common.cache.Cache#put" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="put(key:K,value:V):Unit"></a>
+      <a id="put(K,V):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">put</span><span class="params">(<span name="key">key: <span class="extype" name="org.feijoas.mango.common.cache.LoadingCache.K">K</span></span>, <span name="value">value: <span class="extype" name="org.feijoas.mango.common.cache.LoadingCache.V">V</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Adds a new key/value pair to this cache.</p><div class="fullcomment"><div class="comment cmt"><p>Adds a new key/value pair to this cache. If the cache previously contained a
+ value associated with the <code>key</code>, the old value is replaced by the <code>value</code>.</p><p> Prefer <code>getOrElseUpdate(key, loader)</code> when using the conventional
+ <code>if cached, return; otherwise create, cache and return</code> pattern.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Cache.html" class="extype" name="org.feijoas.mango.common.cache.Cache">Cache</a></dd></dl></div>
+    </li><li name="org.feijoas.mango.common.cache.LoadingCache#refresh" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="refresh(key:K):Unit"></a>
+      <a id="refresh(K):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">refresh</span><span class="params">(<span name="key">key: <span class="extype" name="org.feijoas.mango.common.cache.LoadingCache.K">K</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Loads a new value for key <code>key</code>, possibly asynchronously.</p><div class="fullcomment"><div class="comment cmt"><p>Loads a new value for key <code>key</code>, possibly asynchronously. While the new value is loading
+ the previous value (if any) will continue to be returned by <code>get(key)</code> unless it is
+ evicted. If the new value is loaded successfully it will replace the previous value in the
+ cache; if an exception is thrown while refreshing the previous value will remain, <i>and the
+ exception will be logged (using `java.util.logging.Logger`) and swallowed</i>.</p><p>Caches loaded by a <a href="CacheLoader.html" class="extype" name="org.feijoas.mango.common.cache.CacheLoader">CacheLoader</a> will call <code>CacheLoader#reload</code> if the
+ cache currently contains a value for <code>key</code>, and <code>CacheLoader#load</code> otherwise.
+ Loading is asynchronous only if <code>CacheLoader#reload</code> was overridden with an
+ asynchronous implementation.</p><p>Returns without doing anything if another thread is currently loading the value for
+ <code>key</code>. If the cache loader associated with this cache performs refresh asynchronously
+ then this method may return before refresh completes.
+</p></div></div>
+    </li><li name="org.feijoas.mango.common.cache.Cache#size" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="size():Long"></a>
+      <a id="size():Long"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">size</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Long">Long</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Returns the approximate number of entries in this cache.</p><div class="fullcomment"><div class="comment cmt"><p>Returns the approximate number of entries in this cache.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Cache.html" class="extype" name="org.feijoas.mango.common.cache.Cache">Cache</a></dd></dl></div>
+    </li><li name="org.feijoas.mango.common.cache.Cache#stats" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="stats():org.feijoas.mango.common.cache.CacheStats"></a>
+      <a id="stats():CacheStats"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">stats</span><span class="params">()</span><span class="result">: <a href="CacheStats.html" class="extype" name="org.feijoas.mango.common.cache.CacheStats">CacheStats</a></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Returns a current snapshot of this cache's cumulative statistics.</p><div class="fullcomment"><div class="comment cmt"><p>Returns a current snapshot of this cache's cumulative statistics. All stats are initialized
+ to zero, and are monotonically increasing over the lifetime of the cache.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Cache.html" class="extype" name="org.feijoas.mango.common.cache.Cache">Cache</a></dd></dl></div>
+    </li></ol>
+            </div>
+
+        <div id="values" class="values members">
+              <h3>Concrete Value Members</h3>
+              <ol><li name="scala.AnyRef#!=" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="!=(x$1:AnyRef):Boolean"></a>
+      <a id="!=(AnyRef):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span title="gt4s: $bang$eq" class="name">!=</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="scala.Any#!=" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="!=(x$1:Any):Boolean"></a>
+      <a id="!=(Any):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span title="gt4s: $bang$eq" class="name">!=</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="scala.AnyRef###" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="##():Int"></a>
+      <a id="##():Int"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span title="gt4s: $hash$hash" class="name">##</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="scala.AnyRef#==" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="==(x$1:AnyRef):Boolean"></a>
+      <a id="==(AnyRef):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span title="gt4s: $eq$eq" class="name">==</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="scala.Any#==" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="==(x$1:Any):Boolean"></a>
+      <a id="==(Any):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span title="gt4s: $eq$eq" class="name">==</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="scala.Function1#andThen" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="andThen[A](g:R=&gt;A):T1=&gt;A"></a>
+      <a id="andThen[A]((V)⇒A):(K)⇒A"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">andThen</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="g">g: (<span class="extype" name="org.feijoas.mango.common.cache.LoadingCache.V">V</span>) ⇒ <span class="extype" name="scala.Function1.andThen.A">A</span></span>)</span><span class="result">: (<span class="extype" name="org.feijoas.mango.common.cache.LoadingCache.K">K</span>) ⇒ <span class="extype" name="scala.Function1.andThen.A">A</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Function1</dd><dt>Annotations</dt><dd>
+                <span class="name">@unspecialized</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="org.feijoas.mango.common.cache.LoadingCache#apply" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="apply(keys:Traversable[K]):scala.collection.immutable.Map[K,V]"></a>
+      <a id="apply(Traversable[K]):Map[K,V]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">apply</span><span class="params">(<span name="keys">keys: <span class="extype" name="scala.Traversable">Traversable</span>[<span class="extype" name="org.feijoas.mango.common.cache.LoadingCache.K">K</span>]</span>)</span><span class="result">: <span class="extype" name="scala.collection.immutable.Map">Map</span>[<span class="extype" name="org.feijoas.mango.common.cache.LoadingCache.K">K</span>, <span class="extype" name="org.feijoas.mango.common.cache.LoadingCache.V">V</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Returns a map of the values associated with <code>keys</code>, creating or retrieving those values
+ if necessary.</p><div class="fullcomment"><div class="comment cmt"><p>Returns a map of the values associated with <code>keys</code>, creating or retrieving those values
+ if necessary. The returned map contains entries that were already cached, combined with newly
+ loaded entries; it will never contain null keys or values.
+ The method simply forwards to <code>getAll(keys)</code>.
+</p></div></div>
+    </li><li name="org.feijoas.mango.common.cache.LoadingCache#apply" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="apply(key:K):V"></a>
+      <a id="apply(K):V"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">apply</span><span class="params">(<span name="key">key: <span class="extype" name="org.feijoas.mango.common.cache.LoadingCache.K">K</span></span>)</span><span class="result">: <span class="extype" name="org.feijoas.mango.common.cache.LoadingCache.V">V</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Returns the value associated with <code>key</code> in this cache, first loading that value if
+ necessary.</p><div class="fullcomment"><div class="comment cmt"><p>Returns the value associated with <code>key</code> in this cache, first loading that value if
+ necessary. No observable state associated with this cache is modified until loading completes.
+ The method simply forwards to <code>get(key)</code>.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="org.feijoas.mango.common.cache.LoadingCache">LoadingCache</a> → Function1</dd></dl></div>
+    </li><li name="scala.Any#asInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="asInstanceOf[T0]:T0"></a>
+      <a id="asInstanceOf[T0]:T0"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">asInstanceOf</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="result">: <span class="extype" name="scala.Any.asInstanceOf.T0">T0</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="org.feijoas.mango.common.cache.Cache#cleanUp" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="cleanUp():Unit"></a>
+      <a id="cleanUp():Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">cleanUp</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Performs any pending maintenance operations needed by the cache.</p><div class="fullcomment"><div class="comment cmt"><p>Performs any pending maintenance operations needed by the cache. Exactly which activities are
+ performed -- if any -- is implementation-dependent.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Cache.html" class="extype" name="org.feijoas.mango.common.cache.Cache">Cache</a></dd></dl></div>
+    </li><li name="scala.AnyRef#clone" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="clone():Object"></a>
+      <a id="clone():AnyRef"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">clone</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="scala.Function1#compose" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="compose[A](g:A=&gt;T1):A=&gt;R"></a>
+      <a id="compose[A]((A)⇒K):(A)⇒V"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">compose</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="g">g: (<span class="extype" name="scala.Function1.compose.A">A</span>) ⇒ <span class="extype" name="org.feijoas.mango.common.cache.LoadingCache.K">K</span></span>)</span><span class="result">: (<span class="extype" name="scala.Function1.compose.A">A</span>) ⇒ <span class="extype" name="org.feijoas.mango.common.cache.LoadingCache.V">V</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Function1</dd><dt>Annotations</dt><dd>
+                <span class="name">@unspecialized</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="scala.AnyRef#eq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="eq(x$1:AnyRef):Boolean"></a>
+      <a id="eq(AnyRef):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">eq</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="scala.AnyRef#equals" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="equals(x$1:Any):Boolean"></a>
+      <a id="equals(Any):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">equals</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="scala.AnyRef#finalize" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="finalize():Unit"></a>
+      <a id="finalize():Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">finalize</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="org.feijoas.mango.common.cache.LoadingCache#getAll" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getAll(keys:Traversable[K]):scala.util.Try[scala.collection.immutable.Map[K,V]]"></a>
+      <a id="getAll(Traversable[K]):Try[Map[K,V]]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getAll</span><span class="params">(<span name="keys">keys: <span class="extype" name="scala.Traversable">Traversable</span>[<span class="extype" name="org.feijoas.mango.common.cache.LoadingCache.K">K</span>]</span>)</span><span class="result">: <span class="extype" name="scala.util.Try">Try</span>[<span class="extype" name="scala.collection.immutable.Map">Map</span>[<span class="extype" name="org.feijoas.mango.common.cache.LoadingCache.K">K</span>, <span class="extype" name="org.feijoas.mango.common.cache.LoadingCache.V">V</span>]]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Returns a map of the values associated with <code>keys</code>, creating or retrieving those values
+ if necessary.</p><div class="fullcomment"><div class="comment cmt"><p>Returns a map of the values associated with <code>keys</code>, creating or retrieving those values
+ if necessary. The returned map contains entries that were already cached, combined with newly
+ loaded entries; it will never contain null keys or values.</p><p>Caches loaded by a <a href="CacheLoader.html" class="extype" name="org.feijoas.mango.common.cache.CacheLoader">CacheLoader</a> will issue a single request to
+ <code>CacheLoader#loadAll</code> for all keys which are not already present in the cache. All
+ entries returned by <code>CacheLoader#loadAll</code> will be stored in the cache, over-writing
+ any previously cached values. This method will throw an exception if
+ <code>CacheLoader#loadAll</code> returns <code>null</code>, returns a map containing null keys or values,
+ or fails to return an entry for each requested key.</p><p>Note that duplicate elements in <code>keys</code>, as determined by <code>==</code>, will
+ be ignored.
+</p></div><dl class="attributes block"> <dt>Exceptions thrown</dt><dd><span class="cmt">ExecutionError<p>if an error was thrown while loading the values
+</p></span><span class="cmt">ExecutionException<p>if a checked exception was thrown while loading the values</p></span><span class="cmt">UncheckedExecutionException<p>if an unchecked exception was thrown while loading the
+    values</p></span></dd></dl></div>
+    </li><li name="org.feijoas.mango.common.cache.Cache#getAllPresent" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getAllPresent(keys:Traversable[K]):scala.collection.immutable.Map[K,V]"></a>
+      <a id="getAllPresent(Traversable[K]):Map[K,V]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getAllPresent</span><span class="params">(<span name="keys">keys: <span class="extype" name="scala.Traversable">Traversable</span>[<span class="extype" name="org.feijoas.mango.common.cache.LoadingCache.K">K</span>]</span>)</span><span class="result">: <span class="extype" name="scala.collection.immutable.Map">Map</span>[<span class="extype" name="org.feijoas.mango.common.cache.LoadingCache.K">K</span>, <span class="extype" name="org.feijoas.mango.common.cache.LoadingCache.V">V</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Returns a map of the values associated with <code>keys</code> in this cache.</p><div class="fullcomment"><div class="comment cmt"><p>Returns a map of the values associated with <code>keys</code> in this cache.
+ The returned map will only contain entries which are already present in the cache.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Cache.html" class="extype" name="org.feijoas.mango.common.cache.Cache">Cache</a></dd></dl></div>
+    </li><li name="scala.AnyRef#getClass" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getClass():Class[_]"></a>
+      <a id="getClass():Class[_]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getClass</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.Class">Class</span>[_]</span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="org.feijoas.mango.common.cache.LoadingCache#getUnchecked" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getUnchecked(key:K):V"></a>
+      <a id="getUnchecked(K):V"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getUnchecked</span><span class="params">(<span name="key">key: <span class="extype" name="org.feijoas.mango.common.cache.LoadingCache.K">K</span></span>)</span><span class="result">: <span class="extype" name="org.feijoas.mango.common.cache.LoadingCache.V">V</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Returns the value associated with <code>key</code> in this cache, first loading that value if
+ necessary.</p><div class="fullcomment"><div class="comment cmt"><p>Returns the value associated with <code>key</code> in this cache, first loading that value if
+ necessary. No observable state associated with this cache is modified until loading
+ completes. Unlike <code>#get</code>, this method does not handle checked exceptions, and thus should
+ only be used in situations where checked exceptions are not thrown by the cache loader.</p><p>If another call to <code>#get</code> or <code>#getUnchecked</code> is currently loading the value for
+ <code>key</code>, simply waits for that thread to finish and returns its loaded value. Note that
+ multiple threads can concurrently load values for distinct keys.</p><p>Caches loaded by a <a href="CacheLoader.html" class="extype" name="org.feijoas.mango.common.cache.CacheLoader">CacheLoader</a> will call <code>CacheLoader#load</code> to load new values
+ into the cache. Newly loaded values are added to the cache using
+ <code>Cache.asMap().putIfAbsent</code> after loading has completed; if another value was associated
+ with <code>key</code> while the new value was loading then a removal notification will be sent for
+ the new value.</p><p><b>Warning:</b> this method silently converts checked exceptions to unchecked exceptions,
+ and should not be used with cache loaders which throw checked exceptions. In such cases use
+ <code>#get</code> instead.
+</p></div><dl class="attributes block"> <dt>Exceptions thrown</dt><dd><span class="cmt">ExecutionError<p>if an error was thrown while loading the value
+</p></span><span class="cmt">UncheckedExecutionException<p>if an exception was thrown while loading the value,
+    regardless of whether the exception was checked or unchecked</p></span></dd></dl></div>
+    </li><li name="scala.AnyRef#hashCode" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="hashCode():Int"></a>
+      <a id="hashCode():Int"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">hashCode</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="org.feijoas.mango.common.cache.Cache#invalidateAll" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="invalidateAll(keys:Traversable[K]):Unit"></a>
+      <a id="invalidateAll(Traversable[K]):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">invalidateAll</span><span class="params">(<span name="keys">keys: <span class="extype" name="scala.Traversable">Traversable</span>[<span class="extype" name="org.feijoas.mango.common.cache.LoadingCache.K">K</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Discards any cached values for keys <code>keys</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Discards any cached values for keys <code>keys</code>.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Cache.html" class="extype" name="org.feijoas.mango.common.cache.Cache">Cache</a></dd></dl></div>
+    </li><li name="scala.Any#isInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="isInstanceOf[T0]:Boolean"></a>
+      <a id="isInstanceOf[T0]:Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">isInstanceOf</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="scala.AnyRef#ne" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="ne(x$1:AnyRef):Boolean"></a>
+      <a id="ne(AnyRef):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">ne</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="scala.AnyRef#notify" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="notify():Unit"></a>
+      <a id="notify():Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">notify</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="scala.AnyRef#notifyAll" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="notifyAll():Unit"></a>
+      <a id="notifyAll():Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">notifyAll</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="org.feijoas.mango.common.cache.Cache#putAll" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="putAll(kvs:Traversable[(K,V)]):Unit"></a>
+      <a id="putAll(Traversable[(K,V)]):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">putAll</span><span class="params">(<span name="kvs">kvs: <span class="extype" name="scala.Traversable">Traversable</span>[(<span class="extype" name="org.feijoas.mango.common.cache.LoadingCache.K">K</span>, <span class="extype" name="org.feijoas.mango.common.cache.LoadingCache.V">V</span>)]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Puts all key/value pairs from the specified <code>Traversable</code> to the cache.</p><div class="fullcomment"><div class="comment cmt"><p>Puts all key/value pairs from the specified <code>Traversable</code> to the cache.
+ The effect of this call is equivalent to that of calling <code>put(key, value)</code> for
+ each <code>(key, value)</code> in the <code>Traversable</code>. The behavior of this operation is undefined
+ if the specified map is modified while the operation is in progress.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Cache.html" class="extype" name="org.feijoas.mango.common.cache.Cache">Cache</a></dd></dl></div>
+    </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
+      <a id="synchronized[T0](⇒T0):T0"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">synchronized</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="params">(<span name="arg0">arg0: ⇒ <span class="extype" name="java.lang.AnyRef.synchronized.T0">T0</span></span>)</span><span class="result">: <span class="extype" name="java.lang.AnyRef.synchronized.T0">T0</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="scala.Function1#toString" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="toString():String"></a>
+      <a id="toString():String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">toString</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Function1 → AnyRef → Any</dd></dl></div>
+    </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="wait():Unit"></a>
+      <a id="wait():Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">wait</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="wait(x$1:Long,x$2:Int):Unit"></a>
+      <a id="wait(Long,Int):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">wait</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Long">Long</span></span>, <span name="arg1">arg1: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="wait(x$1:Long):Unit"></a>
+      <a id="wait(Long):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">wait</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Long">Long</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li></ol>
+            </div>
+
+        
+
+        
+        </div>
+
+        <div id="inheritedMembers">
+        <div class="parent" name="scala.Function1">
+              <h3>Inherited from (<span class="extype" name="org.feijoas.mango.common.cache.LoadingCache.K">K</span>) ⇒ <span class="extype" name="org.feijoas.mango.common.cache.LoadingCache.V">V</span></h3>
+            </div><div class="parent" name="org.feijoas.mango.common.cache.Cache">
+              <h3>Inherited from <a href="Cache.html" class="extype" name="org.feijoas.mango.common.cache.Cache">Cache</a>[<span class="extype" name="org.feijoas.mango.common.cache.LoadingCache.K">K</span>, <span class="extype" name="org.feijoas.mango.common.cache.LoadingCache.V">V</span>]</h3>
+            </div><div class="parent" name="scala.AnyRef">
+              <h3>Inherited from <span class="extype" name="scala.AnyRef">AnyRef</span></h3>
+            </div><div class="parent" name="scala.Any">
+              <h3>Inherited from <span class="extype" name="scala.Any">Any</span></h3>
+            </div>
+        
+        </div>
+
+        <div id="groupedMembers">
+        <div class="group" name="Ungrouped">
+              <h3>Ungrouped</h3>
+              
+            </div>
+        </div>
+
+      </div>
+
+      <div id="tooltip"></div>
+
+      <div id="footer">  </div>
+
+
+    </body>
+      </html>
