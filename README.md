@@ -27,7 +27,7 @@ resolvers ++= Seq(
     "Sonatype Releases" at "http://oss.sonatype.org/content/repositories/releases"
 )
 
-libraryDependencies += "org.feijoas" %% "mango" % "0.7"
+libraryDependencies += "org.feijoas" %% "mango" % "0.8"
 ```
 
 ## Examples 
@@ -97,6 +97,31 @@ if (friends.mightContain(dude)) {
 }
 ```
 
+### Range & RangeSet 
+```Scala
+  import org.feijoas.mango.common.collect.Bound._
+  import org.feijoas.mango.common.collect._
+  import math.Ordering.Int
+
+  val range = Range.atLeast(6)                                   // Range[Int,math.Ordering.Int.type] = [6..inf)
+
+  // Pattern match using extractor
+  range match {
+    case Range(FiniteBound(lower, lowerType), InfiniteBound) => ...
+  }
+
+  // immutable range set:
+  val rangeSet = RangeSet(Range.open(1, 3), Range.closed(4, 9)) // {(1,3), [4,9]}
+  val subSet = rangeSet.subRangeSet(Range.closed(2, 6))         // union view {[2,3), [4,6]}
+  
+  // mutable range set:                                                
+  val mutableRangeSet = mutable.RangeSet(Range.closed(1, 10))   // {[1, 10]}
+  mutableRangeSet += Range.closedOpen(11, 15)                   // disconnected range: {[1, 10], [11, 15)}
+  mutableRangeSet += Range.closedOpen(15, 20)                   // connected range; {[1, 10], [11, 20)}
+  mutableRangeSet += Range.openClosed(0, 0)                     // empty range; {[1, 10], [11, 20)}
+  mutableRangeSet -= Range.open(5, 10)                          // splits [1, 10]; {[1, 5], [10, 10], [11, 20)}
+```
+
 See the individual packages for more examples and documentation.
 
 ## Converter 
@@ -130,6 +155,7 @@ Besides the [Scaladoc](http://feijoas.github.io/mango/scaladoc) there is an exce
  - Mango-Guava conversions: [Functions](http://feijoas.github.io/mango/scaladoc/index.html#org.feijoas.mango.common.base.Functions$), [Optional](http://feijoas.github.io/mango/scaladoc/index.html#org.feijoas.mango.common.base.Optional$), [Predicates] (http://feijoas.github.io/mango/scaladoc/index.html#org.feijoas.mango.common.base.Predicates$), [Suppliers](http://feijoas.github.io/mango/scaladoc/index.html#org.feijoas.mango.common.base.Suppliers$), [Futures](http://feijoas.github.io/mango/scaladoc/index.html#org.feijoas.mango.common.util.concurrent.Futures$)
  - [Preconditions](http://feijoas.github.io/mango/scaladoc/index.html#org.feijoas.mango.common.base.Preconditions$): Test preconditions for your methods more easily.
  - [Caches](http://feijoas.github.io/mango/scaladoc/index.html#org.feijoas.mango.common.cache.CacheBuilder$): Local caching, done right, and supporting a wide variety of expiration behaviors.
+ - [Ranges](http://feijoas.github.io/mango/scaladoc/index.html#org.feijoas.mango.common.collect.Range$): RangeSets/RangeMaps query, merge and manipulate ranges
 
 ## License 
 
