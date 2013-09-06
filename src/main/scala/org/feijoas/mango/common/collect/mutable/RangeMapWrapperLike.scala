@@ -22,32 +22,31 @@
  */
 package org.feijoas.mango.common.collect.mutable
 
+import scala.collection.convert.decorateAll.mapAsScalaMapConverter
 import org.feijoas.mango.common.annotations.Beta
+import org.feijoas.mango.common.collect.AsOrdered.asOrdered
+import org.feijoas.mango.common.collect.Range.asGuavaRangeConverter
+import com.google.common.{ collect => gcc }
+import org.feijoas.mango.common.collect.AsOrdered
 import org.feijoas.mango.common.collect
 import org.feijoas.mango.common.collect.Range
-import org.feijoas.mango.common.collect.Range.asGuavaRangeConverter
 
-/** Implementation trait for mutable [[RangeSet]] that delegates to Guava
+/** Implementation trait for mutable [[RangeMap]] that delegates to Guava
  *
  *  @author Markus Schneider
- *  @since 0.8
+ *  @since 0.9
  */
 @Beta
-private[mango] trait RangeSetWrapperLike[C, O <: Ordering[C], +Repr <: RangeSetWrapperLike[C, O, Repr] with RangeSet[C, O]]
-  extends collect.RangeSetWrapperLike[C, O, Repr] with RangeSet[C, O] {
+private[mango] trait RangeMapWrapperLike[K, V, O <: Ordering[K], +Repr <: RangeMapWrapperLike[K, V, O, Repr] with RangeMap[K, V, O]]
+  extends collect.RangeMapWrapperLike[K, V, O, Repr] with RangeMap[K, V, O] {
   self =>
 
-  override def add(range: Range[C, O]) = delegate.add(range.asJava)
-  override def remove(range: Range[C, O]) = delegate.remove(range.asJava)
   override def clear() = delegate.clear()
+  override def remove(range: Range[K, O]) = delegate.remove(range.asJava)
+  override def put(range: Range[K, O], value: V) = delegate.put(range.asJava, value)
 
-  override def addAll(other: RangeSet[C, O]) = other match {
-    case that: RangeSetWrapperLike[C, O, _] => delegate.addAll(that.delegate)
-    case _                                  => super.addAll(other)
-  }
-
-  override def removeAll(other: RangeSet[C, O]) = other match {
-    case that: RangeSetWrapperLike[C, O, _] => delegate.removeAll(that.delegate)
-    case _                                  => super.removeAll(other)
+  override def putAll(rangeMap: collect.RangeMap[K, V, O]) = rangeMap match {
+    case that: RangeMapWrapperLike[K, V, O, _] => delegate.putAll(that.delegate)
+    case _                                     => super.putAll(rangeMap)
   }
 }

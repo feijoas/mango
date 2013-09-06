@@ -22,10 +22,10 @@
  */
 package org.feijoas.mango.common.collect
 
+import scala.collection.generic.HasNewBuilder
+
 import org.feijoas.mango.common.annotations.Beta
 import org.feijoas.mango.common.base.Preconditions.checkNotNull
-import scala.collection.generic.HasNewBuilder
-import scala.collection.mutable.Cloneable
 
 /** Implementation trait for [[RangeSet]]
  *

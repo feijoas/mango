@@ -8,12 +8,17 @@ object BuildSettings {
 	val buildVersion      = "0.9" 
 	val buildScalaVersion = "2.10.2"
 	val gitHeadCommitSha  = Process("git rev-parse HEAD").lines.head
+	val release           = sys.props("release")=="true"
+	println(sys.props("release"))
 
 	val buildSettings = Defaults.defaultSettings ++ Seq (
 		organization := buildOrganization,
-		version      := buildVersion + "-" + gitHeadCommitSha,
 		scalaVersion := buildScalaVersion,
 		shellPrompt  := ShellPrompt.buildShellPrompt,
+		version      := {  if(release) buildVersion 
+						   else buildVersion + "-" + gitHeadCommitSha
+		},
+
 		// Scala compiler options
 		scalacOptions  ++= Seq("-encoding", "UTF-8", "-deprecation", "-unchecked", "-feature","-language:implicitConversions,reflectiveCalls,postfixOps,higherKinds,existentials"),
 		// Scaladoc title

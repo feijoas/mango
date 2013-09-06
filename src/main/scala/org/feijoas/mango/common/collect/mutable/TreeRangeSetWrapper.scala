@@ -22,19 +22,16 @@
  */
 package org.feijoas.mango.common.collect.mutable
 
-import scala.annotation.meta.beanGetter
-import scala.annotation.meta.beanSetter
-import scala.annotation.meta.field
-import scala.annotation.meta.getter
-import scala.annotation.meta.setter
 import scala.collection.mutable.Builder
+
 import org.feijoas.mango.common.annotations.Beta
 import org.feijoas.mango.common.collect.AsOrdered
 import org.feijoas.mango.common.collect.Range
 import org.feijoas.mango.common.collect.Range.asGuavaRangeConverter
+import org.feijoas.mango.common.collect.RangeSetFactory
+
 import com.google.common.collect.{ RangeSet => GuavaRangeSet }
 import com.google.common.collect.TreeRangeSet
-import org.feijoas.mango.common.collect.RangeSetFactory
 
 /** An mutable implementation of RangeSet that delegates to Guava TreeRangeSet
  *
@@ -42,24 +39,18 @@ import org.feijoas.mango.common.collect.RangeSetFactory
  *  @since 0.8
  */
 @Beta
-private[mango] class TreeRangeSetWrapper[C, O <: Ordering[C]] private (guava: GuavaRangeSet[AsOrdered[C]])(implicit ord: O)
-  extends RangeSet[C, O] with MutableRangeSetWrapperLike[C, O, TreeRangeSetWrapper[C, O]] {
+private[mango] class TreeRangeSetWrapper[C, O <: Ordering[C]] private (guava: GuavaRangeSet[AsOrdered[C]])(override implicit val ordering: O)
+  extends RangeSet[C, O] with RangeSetWrapperLike[C, O, TreeRangeSetWrapper[C, O]] {
 
-  /** The Guava RangeSet to use internally */
-  override protected def delegate = guava
-
-  /** The Ordering[C] used for Ranges is needed */
-  override implicit def ordering: O = ord
-
-  /** Creates a new Repr from a Guava RangeSet */
-  override def wrap: GuavaRangeSet[AsOrdered[C]] => TreeRangeSetWrapper[C, O] = new TreeRangeSetWrapper(_)(ordering)
-
-  /** Returns a new builder for a range set.
-   */
-  override def newBuilder = TreeRangeSetWrapper.newBuilder[C, O](ord)
+  override def delegate = guava
+  override def factory = TreeRangeSetWrapper(_)(ordering)
+  override def newBuilder = TreeRangeSetWrapper.newBuilder[C, O](ordering)
 }
 
 private[mango] final object TreeRangeSetWrapper extends RangeSetFactory[TreeRangeSetWrapper] {
+
+  /** Factory method */
+  private[mango] def apply[C, O <: Ordering[C]](guava: GuavaRangeSet[AsOrdered[C]])(implicit ord: O) = new TreeRangeSetWrapper(guava)(ord)
 
   /** Returns a new builder for a range set.
    */

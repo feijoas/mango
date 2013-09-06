@@ -24,10 +24,14 @@ package org.feijoas.mango.common.collect.immutable
 
 import scala.math.Ordering.Int
 
+import org.feijoas.mango.common.annotations.Beta
+import org.feijoas.mango.common.collect.AsOrdered
 import org.feijoas.mango.common.collect.Range
 import org.feijoas.mango.common.collect.RangeSetBehaviors
+import org.feijoas.mango.common.collect.RangeSetWrapperBehaviours
 import org.scalatest.FreeSpec
 
+import com.google.common.collect.{RangeSet => GuavaRangeSet}
 import com.google.common.testing.SerializableTester.reserializeAndAssert
 
 /** Tests for [[ImmutableRangeSetWrapperTest]]
@@ -35,7 +39,7 @@ import com.google.common.testing.SerializableTester.reserializeAndAssert
  *  @author Markus Schneider
  *  @since 0.8
  */
-class ImmutableRangeSetWrapperTest extends FreeSpec with RangeSetBehaviors {
+class ImmutableRangeSetWrapperTest extends FreeSpec with RangeSetBehaviors with RangeSetWrapperBehaviours {
 
   "A ImmutableRangeSetWrapper" - {
     behave like rangeSet(ImmutableRangeSetWrapper.newBuilder[Int, Int.type])
@@ -51,6 +55,7 @@ class ImmutableRangeSetWrapperTest extends FreeSpec with RangeSetBehaviors {
       val snd = ImmutableRangeSetWrapper(fst)
       fst should be theSameInstanceAs (snd)
     }
+    behave like immutableWrapper((guava: GuavaRangeSet[AsOrdered[Int]]) => ImmutableRangeSetWrapper[Int, Int.type](guava))
   }
 }
 

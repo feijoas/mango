@@ -22,32 +22,24 @@
  */
 package org.feijoas.mango.common.collect.mutable
 
+import scala.collection.mutable.Builder
+
 import org.feijoas.mango.common.annotations.Beta
 import org.feijoas.mango.common.collect
 import org.feijoas.mango.common.collect.Range
-import org.feijoas.mango.common.collect.Range.asGuavaRangeConverter
+import org.feijoas.mango.common.collect.RangeMapFactory
 
-/** Implementation trait for mutable [[RangeSet]] that delegates to Guava
- *
+/** $rangeMapNote
  *  @author Markus Schneider
- *  @since 0.8
+ *  @since 0.9
  */
 @Beta
-private[mango] trait RangeSetWrapperLike[C, O <: Ordering[C], +Repr <: RangeSetWrapperLike[C, O, Repr] with RangeSet[C, O]]
-  extends collect.RangeSetWrapperLike[C, O, Repr] with RangeSet[C, O] {
-  self =>
+trait RangeMap[K, V, O <: Ordering[K]] extends collect.RangeMap[K, V, O] with RangeMapLike[K, V, O, RangeMap[K, V, O]] {
 
-  override def add(range: Range[C, O]) = delegate.add(range.asJava)
-  override def remove(range: Range[C, O]) = delegate.remove(range.asJava)
-  override def clear() = delegate.clear()
+}
 
-  override def addAll(other: RangeSet[C, O]) = other match {
-    case that: RangeSetWrapperLike[C, O, _] => delegate.addAll(that.delegate)
-    case _                                  => super.addAll(other)
-  }
-
-  override def removeAll(other: RangeSet[C, O]) = other match {
-    case that: RangeSetWrapperLike[C, O, _] => delegate.removeAll(that.delegate)
-    case _                                  => super.removeAll(other)
-  }
+/** Factory for immutable [[RangeMap]]
+ */
+final object RangeMap extends RangeMapFactory[RangeMap] {
+  override def newBuilder[K, V, O <: Ordering[K]](implicit ord: O): Builder[(Range[K, O], V), RangeMap[K, V, O]] = TreeRangeMapWrapper.newBuilder
 }

@@ -34,12 +34,12 @@ import org.scalatest.matchers.ShouldMatchers
 import org.scalatest.prop.PropertyChecks
 import org.feijoas.mango.common.collect.BoundType._
 import scala.collection.mutable.Builder
+import org.scalatest.mock.MockitoSugar
+import org.mockito.Mockito._
 
 /** Behavior which all [[RangeSet]] have in common
- *
- *  In order to use it you have to pass a builder `Iterable[Range[Int, Int.type]] => RangeSetImplementation`
  */
-private[mango] trait RangeSetBehaviors extends FreeSpec with PropertyChecks with ShouldMatchers {
+private[mango] trait RangeSetBehaviors extends FreeSpec with PropertyChecks with ShouldMatchers with MockitoSugar {
   this: FreeSpec =>
 
   def mutableRangeSet(newBuilder: => Builder[Range[Int, Int.type], mutable.RangeSet[Int, Int.type]]) = {
@@ -1006,6 +1006,50 @@ private[mango] trait RangeSetBehaviors extends FreeSpec with PropertyChecks with
         }
         "#subRangeSet (3,6] should return {}" in {
           rangeSet.subRangeSet(Range.openClosed(3, 6)) should be(build(Set()))
+        }
+      }
+    }
+
+    "should be equal to another RangeSet if the sets returned by #asRanges are equal" - {
+      "given the RangeSet is empty" - {
+        val rangeSet = build(Set())
+        "if the other RangeSet is empty it should be equal" in {
+          val mocked = mock[RangeSet[Int, Int.type]]
+          when(mocked.asRanges).thenReturn(Set[Range[Int, Int.type]]())
+          rangeSet should be(mocked)
+        }
+        "if the other RangeSet contains the ranges {[1,8],[1,3]} it should not be equal" in {
+          val mocked = mock[RangeSet[Int, Int.type]]
+          when(mocked.asRanges).thenReturn(Set(Range.closed(1, 8), Range.closed(1, 3)))
+          rangeSet should not be (mocked)
+        }
+      }
+      "given the RangeSet contains the ranges {[5,8],[1,3)}" - {
+        val rangeSet = build(Set(Range.closed(5, 8), Range.closedOpen(1, 3)))
+        "if the other RangeSet contains the ranges {[5,8],[1,3)} it should be equal" in {
+          val mocked = mock[RangeSet[Int, Int.type]]
+          when(mocked.asRanges).thenReturn(Set(Range.closed(5, 8), Range.closedOpen(1, 3)))
+          rangeSet should be(mocked)
+        }
+        "if the other RangeSet contains the ranges {[1,8],[1,3]} it should not be equal" in {
+          val mocked = mock[RangeSet[Int, Int.type]]
+          when(mocked.asRanges).thenReturn(Set(Range.closed(1, 8), Range.closed(1, 3)))
+          rangeSet should not be (mocked)
+        }
+      }
+    }
+
+    "should calculate the hashCode as #asRanges.hashCode" - {
+      "given the RangeSet is empty" - {
+        val rangeSet = build(Set())
+        "it's hashCode should be Set().hashCode" in {
+          rangeSet.hashCode should be(Set().hashCode)
+        }
+      }
+      "given the RangeSet contains the ranges {[5,8],[1,3)}" - {
+        val rangeSet = build(Set(Range.closed(5, 8), Range.closedOpen(1, 3)))
+        "it's hashCode should be {[5,8],[1,3)}.hashCode" in {
+          rangeSet.hashCode should be(Set(Range.closed(5, 8), Range.closedOpen(1, 3)).hashCode)
         }
       }
     }
