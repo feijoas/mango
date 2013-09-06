@@ -1,0 +1,368 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html>
+        <head>
+          <title>cache - Mango - org.feijoas.mango.common.cache</title>
+          <meta name="description" content="cache - Mango - org.feijoas.mango.common.cache" />
+          <meta name="keywords" content="cache Mango org.feijoas.mango.common.cache" />
+          <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+          
+      <link href="../../../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
+      <link href="../../../../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
+      <script type="text/javascript">
+         if(top === self) {
+            var url = '../../../../../index.html';
+            var hash = 'org.feijoas.mango.common.cache.package';
+            var anchor = window.location.hash;
+            var anchor_opt = '';
+            if (anchor.length >= 1)
+              anchor_opt = '@' + anchor.substring(1);
+            window.location.href = url + '#' + hash + anchor_opt;
+         }
+   	  </script>
+    
+        </head>
+        <body class="value">
+      <div id="definition">
+        <img src="../../../../../lib/package_big.png" />
+        <p id="owner"><a href="../../../../package.html" class="extype" name="org">org</a>.<a href="../../../package.html" class="extype" name="org.feijoas">feijoas</a>.<a href="../../package.html" class="extype" name="org.feijoas.mango">mango</a>.<a href="../package.html" class="extype" name="org.feijoas.mango.common">common</a></p>
+        <h1>cache</h1>
+      </div>
+
+      <h4 id="signature" class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <span class="name">cache</span>
+      </span>
+      </h4>
+      
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>This package contains caching utilities.</p><p>The core interface used to represent caches is <a href="Cache.html" class="extype" name="org.feijoas.mango.common.cache.Cache">Cache</a>.
+ In-memory caches can be configured and created using
+ <a href="CacheBuilder.html" class="extype" name="org.feijoas.mango.common.cache.CacheBuilder">CacheBuilder</a>, with cache entries being loaded by
+ <a href="CacheLoader.html" class="extype" name="org.feijoas.mango.common.cache.CacheLoader">CacheLoader</a>. Statistics about cache performance are exposed using
+ <a href="CacheStats.html" class="extype" name="org.feijoas.mango.common.cache.CacheStats">CacheStats</a>.</p><p>See <a href="http://code.google.com/p/guava-libraries/wiki/CachesExplained" target="_blank">the Guava User Guide article on caches</a>.</p></div><dl class="attributes block"> <dt>Since</dt><dd><p>0.7 (copied from Guava-libraries)
+</p></dd></dl><div class="toggleContainer block">
+          <span class="toggle">Linear Supertypes</span>
+          <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+        </div></div>
+        
+
+      <div id="mbrsel">
+        <div id="textfilter"><span class="pre"></span><span class="input"><input id="mbrsel-input" type="text" accesskey="/" /></span><span class="post"></span></div>
+        <div id="order">
+              <span class="filtertype">Ordering</span>
+              <ol>
+                
+                <li class="alpha in"><span>Alphabetic</span></li>
+                <li class="inherit out"><span>By inheritance</span></li>
+              </ol>
+            </div>
+        <div id="ancestors">
+                <span class="filtertype">Inherited<br />
+                </span>
+                <ol id="linearization">
+                  <li class="in" name="org.feijoas.mango.common.cache"><span>cache</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                </ol>
+              </div><div id="ancestors">
+            <span class="filtertype"></span>
+            <ol>
+              <li class="hideall out"><span>Hide All</span></li>
+              <li class="showall in"><span>Show all</span></li>
+            </ol>
+            <a href="http://docs.scala-lang.org/overviews/scaladoc/usage.html#members" target="_blank">Learn more about member selection</a>
+          </div>
+        <div id="visbl">
+            <span class="filtertype">Visibility</span>
+            <ol><li class="public in"><span>Public</span></li><li class="all out"><span>All</span></li></ol>
+          </div>
+      </div>
+
+      <div id="template">
+        <div id="allMembers">
+        
+
+        <div id="types" class="types members">
+              <h3>Type Members</h3>
+              <ol><li name="org.feijoas.mango.common.cache.Cache" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="Cache[K,V]extendsAnyRef"></a>
+      <a id="Cache[K,V]:Cache[K,V]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="Cache.html"><span class="name">Cache</span></a><span class="tparams">[<span name="K">K</span>, <span name="V">V</span>]</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">A semi-persistent mapping from keys to values.</p>
+    </li><li name="org.feijoas.mango.common.cache.CacheBuilder" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="CacheBuilder[-K,-V]extendsProductwithSerializable"></a>
+      <a id="CacheBuilder[-K,-V]:CacheBuilder[K,V]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="CacheBuilder.html"><span class="name">CacheBuilder</span></a><span class="tparams">[<span name="K">-K</span>, <span name="V">-V</span>]</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">A builder of <a href="LoadingCache.html" class="extype" name="org.feijoas.mango.common.cache.LoadingCache">LoadingCache</a> and <a href="Cache.html" class="extype" name="org.feijoas.mango.common.cache.Cache">Cache</a> instances having any combination of the
+ following features:</p>
+    </li><li name="org.feijoas.mango.common.cache.CacheLoader" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="CacheLoader[K,V]extendsK=&gt;V"></a>
+      <a id="CacheLoader[K,V]:CacheLoader[K,V]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="CacheLoader.html"><span class="name">CacheLoader</span></a><span class="tparams">[<span name="K">K</span>, <span name="V">V</span>]</span><span class="result"> extends (<span class="extype" name="org.feijoas.mango.common.cache.CacheLoader.K">K</span>) ⇒ <span class="extype" name="org.feijoas.mango.common.cache.CacheLoader.V">V</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Computes or retrieves values, based on a key, for use in populating a <a href="LoadingCache.html" class="extype" name="org.feijoas.mango.common.cache.LoadingCache">LoadingCache</a>.</p>
+    </li><li name="org.feijoas.mango.common.cache.CacheStats" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="CacheStatsextendsProductwithSerializable"></a>
+      <a id="CacheStats:CacheStats"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="CacheStats.html"><span class="name">CacheStats</span></a><span class="params">(<span name="hitCount">hitCount: <span class="extype" name="scala.Long">Long</span></span>, <span name="missCount">missCount: <span class="extype" name="scala.Long">Long</span></span>, <span name="loadSuccessCount">loadSuccessCount: <span class="extype" name="scala.Long">Long</span></span>, <span name="loadExceptionCount">loadExceptionCount: <span class="extype" name="scala.Long">Long</span></span>, <span name="totalLoadTime">totalLoadTime: <span class="extype" name="scala.Long">Long</span></span>, <span name="evictionCount">evictionCount: <span class="extype" name="scala.Long">Long</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Statistics about the performance of a <a href="Cache.html" class="extype" name="org.feijoas.mango.common.cache.Cache">Cache</a>.</p>
+    </li><li name="org.feijoas.mango.common.cache.CacheWrapper" visbl="prt" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="CacheWrapper[K,V]extendsCache[K,V]"></a>
+      <a id="CacheWrapper[K,V]:CacheWrapper[K,V]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="CacheWrapper.html"><span class="name">CacheWrapper</span></a><span class="tparams">[<span name="K">K</span>, <span name="V">V</span>]</span><span class="result"> extends <a href="Cache.html" class="extype" name="org.feijoas.mango.common.cache.Cache">Cache</a>[<span class="extype" name="org.feijoas.mango.common.cache.CacheWrapper.K">K</span>, <span class="extype" name="org.feijoas.mango.common.cache.CacheWrapper.V">V</span>]</span>
+      </span>
+      </h4>
+      <p class="comment cmt">An adapter that wraps a Guava-Cache in a Mango-Cache and forwards all
+ method calls to the underlying Guava-Cache.</p>
+    </li><li name="org.feijoas.mango.common.cache.LoadingCache" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="LoadingCache[K,V]extendsCache[K,V]withK=&gt;V"></a>
+      <a id="LoadingCache[K,V]:LoadingCache[K,V]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="LoadingCache.html"><span class="name">LoadingCache</span></a><span class="tparams">[<span name="K">K</span>, <span name="V">V</span>]</span><span class="result"> extends <a href="Cache.html" class="extype" name="org.feijoas.mango.common.cache.Cache">Cache</a>[<span class="extype" name="org.feijoas.mango.common.cache.LoadingCache.K">K</span>, <span class="extype" name="org.feijoas.mango.common.cache.LoadingCache.V">V</span>] with (<span class="extype" name="org.feijoas.mango.common.cache.LoadingCache.K">K</span>) ⇒ <span class="extype" name="org.feijoas.mango.common.cache.LoadingCache.V">V</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">A semi-persistent mapping from keys to values.</p>
+    </li><li name="org.feijoas.mango.common.cache.LoadingCacheWrapper" visbl="prt" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="LoadingCacheWrapper[K,V]extendsCacheWrapper[K,V]withLoadingCache[K,V]"></a>
+      <a id="LoadingCacheWrapper[K,V]:LoadingCacheWrapper[K,V]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="LoadingCacheWrapper.html"><span class="name">LoadingCacheWrapper</span></a><span class="tparams">[<span name="K">K</span>, <span name="V">V</span>]</span><span class="result"> extends <a href="CacheWrapper.html" class="extype" name="org.feijoas.mango.common.cache.CacheWrapper">CacheWrapper</a>[<span class="extype" name="org.feijoas.mango.common.cache.LoadingCacheWrapper.K">K</span>, <span class="extype" name="org.feijoas.mango.common.cache.LoadingCacheWrapper.V">V</span>] with <a href="LoadingCache.html" class="extype" name="org.feijoas.mango.common.cache.LoadingCache">LoadingCache</a>[<span class="extype" name="org.feijoas.mango.common.cache.LoadingCacheWrapper.K">K</span>, <span class="extype" name="org.feijoas.mango.common.cache.LoadingCacheWrapper.V">V</span>]</span>
+      </span>
+      </h4>
+      <p class="comment cmt">An adapter that wraps a Guava-<code>LoadingCache</code> in a <a href="LoadingCache.html" class="extype" name="org.feijoas.mango.common.cache.LoadingCache">LoadingCache</a> and forwards all
+ method calls to the underlying Guava-<code>LoadingCache</code>.</p>
+    </li><li name="org.feijoas.mango.common.cache.RemovalCause" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="RemovalCauseextendsSerializable"></a>
+      <a id="RemovalCause:RemovalCause"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">sealed </span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="RemovalCause.html"><span class="name">RemovalCause</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">The reason why a cached entry was removed.</p>
+    </li><li name="org.feijoas.mango.common.cache.RemovalNotification" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="RemovalNotification[+K,+V]extendsProductwithSerializable"></a>
+      <a id="RemovalNotification[+K,+V]:RemovalNotification[K,V]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="RemovalNotification.html"><span class="name">RemovalNotification</span></a><span class="tparams">[<span name="K">+K</span>, <span name="V">+V</span>]</span><span class="params">(<span name="key">key: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="org.feijoas.mango.common.cache.RemovalNotification.K">K</span>]</span>, <span name="value">value: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="org.feijoas.mango.common.cache.RemovalNotification.V">V</span>]</span>, <span name="cause">cause: <a href="RemovalCause.html" class="extype" name="org.feijoas.mango.common.cache.RemovalCause">RemovalCause</a></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">A notification of the removal of a single entry.</p>
+    </li></ol>
+            </div>
+
+        
+
+        <div id="values" class="values members">
+              <h3>Value Members</h3>
+              <ol><li name="org.feijoas.mango.common.cache.Cache" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="Cache"></a>
+      <a id="Cache:Cache"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="Cache$.html"><span class="name">Cache</span></a>
+      </span>
+      </h4>
+      <p class="comment cmt">Utility functions to convert between Guava <code>Cache[K, V]</code> and <code>Cache[K, V]</code>
+ and vice versa.</p>
+    </li><li name="org.feijoas.mango.common.cache.CacheBuilder" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="CacheBuilder"></a>
+      <a id="CacheBuilder:CacheBuilder"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="CacheBuilder$.html"><span class="name">CacheBuilder</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Factory for <a href="CacheBuilder.html" class="extype" name="org.feijoas.mango.common.cache.CacheBuilder">CacheBuilder</a> instances.</p>
+    </li><li name="org.feijoas.mango.common.cache.CacheLoader" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="CacheLoader"></a>
+      <a id="CacheLoader:CacheLoader"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="CacheLoader$.html"><span class="name">CacheLoader</span></a>
+      </span>
+      </h4>
+      <p class="comment cmt">Factory for <a href="CacheLoader.html" class="extype" name="org.feijoas.mango.common.cache.CacheLoader">CacheLoader</a> instances.</p>
+    </li><li name="org.feijoas.mango.common.cache.CacheStats" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="CacheStats"></a>
+      <a id="CacheStats:CacheStats"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="CacheStats$.html"><span class="name">CacheStats</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt"><a href="CacheStats.html" class="extype" name="org.feijoas.mango.common.cache.CacheStats">CacheStats</a> helper functions</p>
+    </li><li name="org.feijoas.mango.common.cache.LoadingCache" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="LoadingCache"></a>
+      <a id="LoadingCache:LoadingCache"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="LoadingCache$.html"><span class="name">LoadingCache</span></a>
+      </span>
+      </h4>
+      <p class="comment cmt">Utility functions to convert between Guava <code>LoadingCache[K, V]</code> and <code>LoadingCache[K, V]</code>
+ and vice versa.</p>
+    </li><li name="org.feijoas.mango.common.cache.RemovalCause" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="RemovalCause"></a>
+      <a id="RemovalCause:RemovalCause"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="RemovalCause$.html"><span class="name">RemovalCause</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Available RemovalCauses
+</p>
+    </li><li name="org.feijoas.mango.common.cache.RemovalListener" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="RemovalListener"></a>
+      <a id="RemovalListener:RemovalListener"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="RemovalListener$.html"><span class="name">RemovalListener</span></a>
+      </span>
+      </h4>
+      <p class="comment cmt">A function <code>RemovalNotification[K, V] =&gt; Unit</code> that can receive a notification when an entry is
+ removed from a cache.</p>
+    </li><li name="org.feijoas.mango.common.cache.RemovalNotification" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="RemovalNotification"></a>
+      <a id="RemovalNotification:RemovalNotification"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="RemovalNotification$.html"><span class="name">RemovalNotification</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      
+    </li><li name="org.feijoas.mango.common.cache.Weigher" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="Weigher"></a>
+      <a id="Weigher:Weigher"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="Weigher$.html"><span class="name">Weigher</span></a>
+      </span>
+      </h4>
+      <p class="comment cmt">Calculates the weights of cache entries.</p>
+    </li></ol>
+            </div>
+
+        
+
+        
+        </div>
+
+        <div id="inheritedMembers">
+        <div class="parent" name="scala.AnyRef">
+              <h3>Inherited from <span class="extype" name="scala.AnyRef">AnyRef</span></h3>
+            </div><div class="parent" name="scala.Any">
+              <h3>Inherited from <span class="extype" name="scala.Any">Any</span></h3>
+            </div>
+        
+        </div>
+
+        <div id="groupedMembers">
+        <div class="group" name="Ungrouped">
+              <h3>Ungrouped</h3>
+              
+            </div>
+        </div>
+
+      </div>
+
+      <div id="tooltip"></div>
+
+      <div id="footer">  </div>
+      <script defer="defer" type="text/javascript" id="jquery-js" src="../../../../../lib/jquery.js"></script><script defer="defer" type="text/javascript" id="jquery-ui-js" src="../../../../../lib/jquery-ui.js"></script><script defer="defer" type="text/javascript" id="tools-tooltip-js" src="../../../../../lib/tools.tooltip.js"></script><script defer="defer" type="text/javascript" id="template-js" src="../../../../../lib/template.js"></script>
+    </body>
+      </html>

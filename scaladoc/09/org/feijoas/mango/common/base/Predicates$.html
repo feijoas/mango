@@ -1,0 +1,743 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html>
+        <head>
+          <title>Predicates - Mango - org.feijoas.mango.common.base.Predicates</title>
+          <meta name="description" content="Predicates - Mango - org.feijoas.mango.common.base.Predicates" />
+          <meta name="keywords" content="Predicates Mango org.feijoas.mango.common.base.Predicates" />
+          <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+          
+      <link href="../../../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
+      <link href="../../../../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
+      <script type="text/javascript">
+         if(top === self) {
+            var url = '../../../../../index.html';
+            var hash = 'org.feijoas.mango.common.base.Predicates$';
+            var anchor = window.location.hash;
+            var anchor_opt = '';
+            if (anchor.length >= 1)
+              anchor_opt = '@' + anchor.substring(1);
+            window.location.href = url + '#' + hash + anchor_opt;
+         }
+   	  </script>
+    
+        </head>
+        <body class="value">
+      <div id="definition">
+        <img src="../../../../../lib/object_big.png" />
+        <p id="owner"><a href="../../../../package.html" class="extype" name="org">org</a>.<a href="../../../package.html" class="extype" name="org.feijoas">feijoas</a>.<a href="../../package.html" class="extype" name="org.feijoas.mango">mango</a>.<a href="../package.html" class="extype" name="org.feijoas.mango.common">common</a>.<a href="package.html" class="extype" name="org.feijoas.mango.common.base">base</a></p>
+        <h1>Predicates</h1>
+      </div>
+
+      <h4 id="signature" class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <span class="name">Predicates</span>
+      </span>
+      </h4>
+      
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Utility functions for the work with Guava <code>Predicate[T]</code></p><p> Usage example for conversion between Guava and Mango:</p><pre><span class="cmt">// convert a Guava Predicate[T] to a Scala function T => Boolean</span>
+<span class="kw">import</span> com.google.common.base.{ Predicate <span class="kw">=&gt;</span> GuavaPredicate }
+<span class="kw">val</span> pred: GuavaPredicate[<span class="std">Any</span>] = { (arg: <span class="std">Any</span>) <span class="kw">=&gt;</span> <span class="kw">true</span> }.asJava
+
+<span class="cmt">// convert a Scala function T => Boolean to a Guava Predicate[T]</span>
+<span class="kw">import</span> com.google.common.base.{ Predicates <span class="kw">=&gt;</span> GuavaPredicates }
+<span class="kw">val</span> pred: <span class="std">Any</span> <span class="kw">=&gt;</span> <span class="std">Boolean</span> = GuavaPredicates.alwaysTrue().asScala</pre></div><dl class="attributes block"> <dt>Since</dt><dd><p>0.7
+</p></dd></dl><div class="toggleContainer block">
+          <span class="toggle">Linear Supertypes</span>
+          <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+        </div></div>
+        
+
+      <div id="mbrsel">
+        <div id="textfilter"><span class="pre"></span><span class="input"><input id="mbrsel-input" type="text" accesskey="/" /></span><span class="post"></span></div>
+        <div id="order">
+              <span class="filtertype">Ordering</span>
+              <ol>
+                
+                <li class="alpha in"><span>Alphabetic</span></li>
+                <li class="inherit out"><span>By inheritance</span></li>
+              </ol>
+            </div>
+        <div id="ancestors">
+                <span class="filtertype">Inherited<br />
+                </span>
+                <ol id="linearization">
+                  <li class="in" name="org.feijoas.mango.common.base.Predicates"><span>Predicates</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                </ol>
+              </div><div id="ancestors">
+            <span class="filtertype"></span>
+            <ol>
+              <li class="hideall out"><span>Hide All</span></li>
+              <li class="showall in"><span>Show all</span></li>
+            </ol>
+            <a href="http://docs.scala-lang.org/overviews/scaladoc/usage.html#members" target="_blank">Learn more about member selection</a>
+          </div>
+        <div id="visbl">
+            <span class="filtertype">Visibility</span>
+            <ol><li class="public in"><span>Public</span></li><li class="all out"><span>All</span></li></ol>
+          </div>
+      </div>
+
+      <div id="template">
+        <div id="allMembers">
+        
+
+        
+
+        
+
+        <div id="values" class="values members">
+              <h3>Value Members</h3>
+              <ol><li name="scala.AnyRef#!=" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="!=(x$1:AnyRef):Boolean"></a>
+      <a id="!=(AnyRef):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span title="gt4s: $bang$eq" class="name">!=</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="scala.Any#!=" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="!=(x$1:Any):Boolean"></a>
+      <a id="!=(Any):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span title="gt4s: $bang$eq" class="name">!=</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="scala.AnyRef###" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="##():Int"></a>
+      <a id="##():Int"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span title="gt4s: $hash$hash" class="name">##</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="scala.AnyRef#==" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="==(x$1:AnyRef):Boolean"></a>
+      <a id="==(AnyRef):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span title="gt4s: $eq$eq" class="name">==</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="scala.Any#==" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="==(x$1:Any):Boolean"></a>
+      <a id="==(Any):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span title="gt4s: $eq$eq" class="name">==</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="org.feijoas.mango.common.base.Predicates.alwaysFalse" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="alwaysFalse"></a>
+      <a id="alwaysFalse:alwaysFalse"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="Predicates$$alwaysFalse$.html"><span class="name">alwaysFalse</span></a><span class="result"> extends (<span class="extype" name="scala.Any">Any</span>) ⇒ <span class="extype" name="scala.Boolean">Boolean</span> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Returns a predicate that always evaluates to <code>false</code>.</p>
+    </li><li name="org.feijoas.mango.common.base.Predicates.alwaysTrue" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="alwaysTrue"></a>
+      <a id="alwaysTrue:alwaysTrue"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="Predicates$$alwaysTrue$.html"><span class="name">alwaysTrue</span></a><span class="result"> extends (<span class="extype" name="scala.Any">Any</span>) ⇒ <span class="extype" name="scala.Boolean">Boolean</span> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Returns a predicate that always evaluates to <code>true</code>.</p>
+    </li><li name="org.feijoas.mango.common.base.Predicates#and" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="and[T](fst:T=&gt;Boolean,rest:T=&gt;Boolean*):T=&gt;Boolean"></a>
+      <a id="and[T]((T)⇒Boolean,(T)⇒Boolean*):(T)⇒Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">and</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="fst">fst: (<span class="extype" name="org.feijoas.mango.common.base.Predicates.and.T">T</span>) ⇒ <span class="extype" name="scala.Boolean">Boolean</span></span>, <span name="rest">rest: (<span class="extype" name="org.feijoas.mango.common.base.Predicates.and.T">T</span>) ⇒ <span class="extype" name="scala.Boolean">Boolean</span>*</span>)</span><span class="result">: (<span class="extype" name="org.feijoas.mango.common.base.Predicates.and.T">T</span>) ⇒ <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Returns a predicate that evaluates to <code> true</code> if each of its
+ components evaluates to <code> true</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Returns a predicate that evaluates to <code> true</code> if each of its
+ components evaluates to <code> true</code>. The components are evaluated in
+ order, and evaluation will be &quot;short-circuited&quot; as soon as a false
+ predicate is found. It defensively copies the array passed in, so future
+ changes to it won't alter the behavior of this predicate. If <code>
+ components</code> is empty, the returned predicate will always evaluate to <code>
+ true</code>.
+</p></div></div>
+    </li><li name="org.feijoas.mango.common.base.Predicates#and" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="and[T](predicates:Seq[T=&gt;Boolean]):T=&gt;Boolean"></a>
+      <a id="and[T](Seq[(T)⇒Boolean]):(T)⇒Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">and</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="predicates">predicates: <span class="extype" name="scala.Seq">Seq</span>[(<span class="extype" name="org.feijoas.mango.common.base.Predicates.and.T">T</span>) ⇒ <span class="extype" name="scala.Boolean">Boolean</span>]</span>)</span><span class="result">: (<span class="extype" name="org.feijoas.mango.common.base.Predicates.and.T">T</span>) ⇒ <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Returns a predicate that evaluates to <code> true</code> if each of its
+ components evaluates to <code> true</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Returns a predicate that evaluates to <code> true</code> if each of its
+ components evaluates to <code> true</code>. The components are evaluated in
+ order, and evaluation will be &quot;short-circuited&quot; as soon as a false
+ predicate is found. It defensively copies the array passed in, so future
+ changes to it won't alter the behavior of this predicate. If <code>
+ components</code> is empty, the returned predicate will always evaluate to <code>
+ true</code>.
+</p></div></div>
+    </li><li name="org.feijoas.mango.common.base.Predicates#asGuavaPredicateConverter" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="asGuavaPredicateConverter[T](pred:T=&gt;Boolean):org.feijoas.mango.common.convert.AsJava[com.google.common.base.Predicate[T]]"></a>
+      <a id="asGuavaPredicateConverter[T]((T)⇒Boolean):AsJava[Predicate[T]]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">asGuavaPredicateConverter</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="pred">pred: (<span class="extype" name="org.feijoas.mango.common.base.Predicates.asGuavaPredicateConverter.T">T</span>) ⇒ <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <span class="extype" name="org.feijoas.mango.common.convert.AsJava">AsJava</span>[<span class="extype" name="com.google.common.base.Predicate">Predicate</span>[<span class="extype" name="org.feijoas.mango.common.base.Predicates.asGuavaPredicateConverter.T">T</span>]]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Adds an <code>asJava</code> method that wraps a Scala function <code>T =&gt; Boolean</code> in
+ a Guava <code>Predicate[T]</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Adds an <code>asJava</code> method that wraps a Scala function <code>T =&gt; Boolean</code> in
+ a Guava <code>Predicate[T]</code>.</p><p> The returned Guava <code>Predicate[T]</code> forwards all calls of the <code>apply</code> method
+ to the given Scala function <code>T =&gt; Boolean</code>.
+</p></div><dl class="paramcmts block"><dt class="param">pred</dt><dd class="cmt"><p>the Scala function <code>T =&gt; Boolean</code> to wrap in a Guava <code>Predicate[T]</code></p></dd><dt>returns</dt><dd class="cmt"><p>An object with an <code>asJava</code> method that returns a Guava <code>Predicate[T]</code>
+  view of the argument
+</p></dd></dl></div>
+    </li><li name="scala.Any#asInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="asInstanceOf[T0]:T0"></a>
+      <a id="asInstanceOf[T0]:T0"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">asInstanceOf</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="result">: <span class="extype" name="scala.Any.asInstanceOf.T0">T0</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="org.feijoas.mango.common.base.Predicates#asMangoPredicateConverter" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="asMangoPredicateConverter[T](pred:com.google.common.base.Predicate[T]):org.feijoas.mango.common.convert.AsScala[T=&gt;Boolean]"></a>
+      <a id="asMangoPredicateConverter[T](Predicate[T]):AsScala[(T)⇒Boolean]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">asMangoPredicateConverter</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="pred">pred: <span class="extype" name="com.google.common.base.Predicate">Predicate</span>[<span class="extype" name="org.feijoas.mango.common.base.Predicates.asMangoPredicateConverter.T">T</span>]</span>)</span><span class="result">: <span class="extype" name="org.feijoas.mango.common.convert.AsScala">AsScala</span>[(<span class="extype" name="org.feijoas.mango.common.base.Predicates.asMangoPredicateConverter.T">T</span>) ⇒ <span class="extype" name="scala.Boolean">Boolean</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Adds an <code>asScala</code> method that wraps a Guava <code>Predicate[T]</code> in
+ a Scala function <code>T =&gt; Boolean</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Adds an <code>asScala</code> method that wraps a Guava <code>Predicate[T]</code> in
+ a Scala function <code>T =&gt; Boolean</code>.</p><p> The returned Scala function <code>T =&gt; Boolean</code> forwards all calls of the <code>apply</code> method
+ to the given Guava <code>Predicate[T]</code>.
+</p></div><dl class="paramcmts block"><dt class="param">pred</dt><dd class="cmt"><p>the Guava <code>Predicate[T]</code> to wrap in a Scala function <code>T =&gt; Boolean</code></p></dd><dt>returns</dt><dd class="cmt"><p>An object with an <code>asScala</code> method that returns a Scala function <code>T =&gt; Boolean</code>
+  view of the argument
+</p></dd></dl></div>
+    </li><li name="org.feijoas.mango.common.base.Predicates#assignableFrom" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="assignableFrom(clazz:Class[_]):Class[_]=&gt;Boolean"></a>
+      <a id="assignableFrom(Class[_]):(Class[_])⇒Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">assignableFrom</span><span class="params">(<span name="clazz">clazz: <span class="extype" name="scala.Predef.Class">Class</span>[_]</span>)</span><span class="result">: (<span class="extype" name="scala.Predef.Class">Class</span>[_]) ⇒ <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Returns a predicate that evaluates to <code> true</code> if the class being
+ tested is assignable from the given class.</p><div class="fullcomment"><div class="comment cmt"><p>Returns a predicate that evaluates to <code> true</code> if the class being
+ tested is assignable from the given class.  The returned predicate
+ does not allow null inputs.
+</p></div></div>
+    </li><li name="scala.AnyRef#clone" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="clone():Object"></a>
+      <a id="clone():AnyRef"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">clone</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="defval" name="classOf[java.lang.CloneNotSupportedException]">...</span>
+    </span>)</span>
+              
+        </dd></dl></div>
+    </li><li name="org.feijoas.mango.common.base.Predicates#containsPattern" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="containsPattern(pattern:java.util.regex.Pattern):String=&gt;Boolean"></a>
+      <a id="containsPattern(Pattern):(String)⇒Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">containsPattern</span><span class="params">(<span name="pattern">pattern: <span class="extype" name="java.util.regex.Pattern">Pattern</span></span>)</span><span class="result">: (<span class="extype" name="scala.Predef.String">String</span>) ⇒ <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Returns a predicate that evaluates to <code> true</code> if the
+ <code> CharSequence</code> being tested contains any match for the given
+ regular expression pattern.</p><div class="fullcomment"><div class="comment cmt"><p>Returns a predicate that evaluates to <code> true</code> if the
+ <code> CharSequence</code> being tested contains any match for the given
+ regular expression pattern. The test used is equivalent to
+ <code> pattern.matcher(arg).find()</code>
+</p></div></div>
+    </li><li name="org.feijoas.mango.common.base.Predicates#containsPattern" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="containsPattern(pattern:String):String=&gt;Boolean"></a>
+      <a id="containsPattern(String):(String)⇒Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">containsPattern</span><span class="params">(<span name="pattern">pattern: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: (<span class="extype" name="scala.Predef.String">String</span>) ⇒ <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Returns a predicate that evaluates to <code> true</code> if the
+ <code> String</code> being tested contains any match for the given
+ regular expression pattern.</p><div class="fullcomment"><div class="comment cmt"><p>Returns a predicate that evaluates to <code> true</code> if the
+ <code> String</code> being tested contains any match for the given
+ regular expression pattern. The test used is equivalent to
+ <code> Pattern.compile(pattern).matcher(arg).find()</code>
+</p></div><dl class="attributes block"> <dt>Exceptions thrown</dt><dd><span class="cmt">java.util.regex.PatternSyntaxException<p>if the pattern is invalid
+</p></span></dd></dl></div>
+    </li><li name="scala.AnyRef#eq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="eq(x$1:AnyRef):Boolean"></a>
+      <a id="eq(AnyRef):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">eq</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="org.feijoas.mango.common.base.Predicates#equalTo" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="equalTo[T](target:T):T=&gt;Boolean"></a>
+      <a id="equalTo[T](T):(T)⇒Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">equalTo</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="target">target: <span class="extype" name="org.feijoas.mango.common.base.Predicates.equalTo.T">T</span></span>)</span><span class="result">: (<span class="extype" name="org.feijoas.mango.common.base.Predicates.equalTo.T">T</span>) ⇒ <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Returns a predicate that evaluates to <code> true</code> if the object being
+ tested <code> equals()</code> the given target or both are null.</p>
+    </li><li name="scala.AnyRef#equals" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="equals(x$1:Any):Boolean"></a>
+      <a id="equals(Any):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">equals</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="scala.AnyRef#finalize" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="finalize():Unit"></a>
+      <a id="finalize():Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">finalize</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="symbol">classOf[java.lang.Throwable]</span>
+    </span>)</span>
+              
+        </dd></dl></div>
+    </li><li name="scala.AnyRef#getClass" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getClass():Class[_]"></a>
+      <a id="getClass():Class[_]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getClass</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.Class">Class</span>[_]</span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="scala.AnyRef#hashCode" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="hashCode():Int"></a>
+      <a id="hashCode():Int"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">hashCode</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="org.feijoas.mango.common.base.Predicates#in" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="in[T](coll:Seq[T]):T=&gt;Boolean"></a>
+      <a id="in[T](Seq[T]):(T)⇒Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">in</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="coll">coll: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="org.feijoas.mango.common.base.Predicates.in.T">T</span>]</span>)</span><span class="result">: (<span class="extype" name="org.feijoas.mango.common.base.Predicates.in.T">T</span>) ⇒ <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Returns a predicate that evaluates to <code> true</code> if the object reference
+ being tested is a member of the given collection.</p><div class="fullcomment"><div class="comment cmt"><p>Returns a predicate that evaluates to <code> true</code> if the object reference
+ being tested is a member of the given collection. It does not defensively
+ copy the collection passed in, so future changes to it will alter the
+ behavior of the predicate.</p><p> The test used is equivalent to <code>coll.contains(arg)</code>
+</p></div></div>
+    </li><li name="scala.Any#isInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="isInstanceOf[T0]:Boolean"></a>
+      <a id="isInstanceOf[T0]:Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">isInstanceOf</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="org.feijoas.mango.common.base.Predicates.isNull" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="isNull"></a>
+      <a id="isNull:isNull"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="Predicates$$isNull$.html"><span class="name">isNull</span></a><span class="result"> extends (<span class="extype" name="scala.Any">Any</span>) ⇒ <span class="extype" name="scala.Boolean">Boolean</span> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Returns a predicate that evaluates to <code>true</code> if the object reference
+ being tested is <code>null</code>.</p>
+    </li><li name="scala.AnyRef#ne" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="ne(x$1:AnyRef):Boolean"></a>
+      <a id="ne(AnyRef):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">ne</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="org.feijoas.mango.common.base.Predicates#not" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="not[T](predicate:T=&gt;Boolean):T=&gt;Boolean"></a>
+      <a id="not[T]((T)⇒Boolean):(T)⇒Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">not</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="predicate">predicate: (<span class="extype" name="org.feijoas.mango.common.base.Predicates.not.T">T</span>) ⇒ <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: (<span class="extype" name="org.feijoas.mango.common.base.Predicates.not.T">T</span>) ⇒ <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Returns a predicate that evaluates to <code> true</code> if the given predicate
+ evaluates to <code> false</code>.</p>
+    </li><li name="org.feijoas.mango.common.base.Predicates.notNull" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="notNull"></a>
+      <a id="notNull:notNull"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="Predicates$$notNull$.html"><span class="name">notNull</span></a><span class="result"> extends (<span class="extype" name="scala.Any">Any</span>) ⇒ <span class="extype" name="scala.Boolean">Boolean</span> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Returns a predicate that evaluates to <code>true</code> if the object reference
+ being tested is not <code>null</code>.</p>
+    </li><li name="scala.AnyRef#notify" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="notify():Unit"></a>
+      <a id="notify():Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">notify</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="scala.AnyRef#notifyAll" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="notifyAll():Unit"></a>
+      <a id="notifyAll():Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">notifyAll</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="org.feijoas.mango.common.base.Predicates#or" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="or[T](fst:T=&gt;Boolean,rest:T=&gt;Boolean*):T=&gt;Boolean"></a>
+      <a id="or[T]((T)⇒Boolean,(T)⇒Boolean*):(T)⇒Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">or</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="fst">fst: (<span class="extype" name="org.feijoas.mango.common.base.Predicates.or.T">T</span>) ⇒ <span class="extype" name="scala.Boolean">Boolean</span></span>, <span name="rest">rest: (<span class="extype" name="org.feijoas.mango.common.base.Predicates.or.T">T</span>) ⇒ <span class="extype" name="scala.Boolean">Boolean</span>*</span>)</span><span class="result">: (<span class="extype" name="org.feijoas.mango.common.base.Predicates.or.T">T</span>) ⇒ <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Returns a predicate that evaluates to <code> true</code> if any one of its
+ components evaluates to <code> true</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Returns a predicate that evaluates to <code> true</code> if any one of its
+ components evaluates to <code> true</code>. The components are evaluated in
+ order, and evaluation will be &quot;short-circuited&quot; as soon as a
+ true predicate is found. It defensively copies the iterable passed in, so
+ future changes to it won't alter the behavior of this predicate. If <code>
+ components</code> is empty, the returned predicate will always evaluate to <code>
+ false</code>.
+</p></div></div>
+    </li><li name="org.feijoas.mango.common.base.Predicates#or" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="or[T](predicates:Seq[T=&gt;Boolean]):T=&gt;Boolean"></a>
+      <a id="or[T](Seq[(T)⇒Boolean]):(T)⇒Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">or</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="predicates">predicates: <span class="extype" name="scala.Seq">Seq</span>[(<span class="extype" name="org.feijoas.mango.common.base.Predicates.or.T">T</span>) ⇒ <span class="extype" name="scala.Boolean">Boolean</span>]</span>)</span><span class="result">: (<span class="extype" name="org.feijoas.mango.common.base.Predicates.or.T">T</span>) ⇒ <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Returns a predicate that evaluates to <code> true</code> if any one of its
+ components evaluates to <code> true</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Returns a predicate that evaluates to <code> true</code> if any one of its
+ components evaluates to <code> true</code>. The components are evaluated in
+ order, and evaluation will be &quot;short-circuited&quot; as soon as a
+ true predicate is found. It defensively copies the iterable passed in, so
+ future changes to it won't alter the behavior of this predicate. If <code>
+ components</code> is empty, the returned predicate will always evaluate to <code>
+ false</code>.
+</p></div></div>
+    </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
+      <a id="synchronized[T0](⇒T0):T0"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">synchronized</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="params">(<span name="arg0">arg0: ⇒ <span class="extype" name="java.lang.AnyRef.synchronized.T0">T0</span></span>)</span><span class="result">: <span class="extype" name="java.lang.AnyRef.synchronized.T0">T0</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="scala.AnyRef#toString" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="toString():String"></a>
+      <a id="toString():String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">toString</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="wait():Unit"></a>
+      <a id="wait():Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">wait</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="defval" name="classOf[java.lang.InterruptedException]">...</span>
+    </span>)</span>
+              
+        </dd></dl></div>
+    </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="wait(x$1:Long,x$2:Int):Unit"></a>
+      <a id="wait(Long,Int):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">wait</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Long">Long</span></span>, <span name="arg1">arg1: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="defval" name="classOf[java.lang.InterruptedException]">...</span>
+    </span>)</span>
+              
+        </dd></dl></div>
+    </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="wait(x$1:Long):Unit"></a>
+      <a id="wait(Long):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">wait</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Long">Long</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="defval" name="classOf[java.lang.InterruptedException]">...</span>
+    </span>)</span>
+              
+        </dd></dl></div>
+    </li><li name="org.feijoas.mango.common.base.Predicates#xor" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="xor[T](fst:T=&gt;Boolean,rest:T=&gt;Boolean*):T=&gt;Boolean"></a>
+      <a id="xor[T]((T)⇒Boolean,(T)⇒Boolean*):(T)⇒Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">xor</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="fst">fst: (<span class="extype" name="org.feijoas.mango.common.base.Predicates.xor.T">T</span>) ⇒ <span class="extype" name="scala.Boolean">Boolean</span></span>, <span name="rest">rest: (<span class="extype" name="org.feijoas.mango.common.base.Predicates.xor.T">T</span>) ⇒ <span class="extype" name="scala.Boolean">Boolean</span>*</span>)</span><span class="result">: (<span class="extype" name="org.feijoas.mango.common.base.Predicates.xor.T">T</span>) ⇒ <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Returns a predicate that evaluates to (((x1 xor x2) xor x3) xor x4).</p><div class="fullcomment"><div class="comment cmt"><p>Returns a predicate that evaluates to (((x1 xor x2) xor x3) xor x4)...
+ for all elements <code>xi</code> in the sequence. It defensively copies the iterable
+ passed in, so future changes to it won't alter the behavior of this predicate.
+ If <code> components</code> is empty, the returned predicate will always evaluate
+ to <code> false</code>.
+</p></div></div>
+    </li><li name="org.feijoas.mango.common.base.Predicates#xor" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="xor[T](predicates:Seq[T=&gt;Boolean]):T=&gt;Boolean"></a>
+      <a id="xor[T](Seq[(T)⇒Boolean]):(T)⇒Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">xor</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="predicates">predicates: <span class="extype" name="scala.Seq">Seq</span>[(<span class="extype" name="org.feijoas.mango.common.base.Predicates.xor.T">T</span>) ⇒ <span class="extype" name="scala.Boolean">Boolean</span>]</span>)</span><span class="result">: (<span class="extype" name="org.feijoas.mango.common.base.Predicates.xor.T">T</span>) ⇒ <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Returns a predicate that evaluates to (((x1 xor x2) xor x3) xor x4).</p><div class="fullcomment"><div class="comment cmt"><p>Returns a predicate that evaluates to (((x1 xor x2) xor x3) xor x4)...
+ for all elements <code>xi</code> in the sequence. It defensively copies the iterable
+ passed in, so future changes to it won't alter the behavior of this predicate.
+ If <code> components</code> is empty, the returned predicate will always evaluate
+ to <code> false</code>.
+</p></div></div>
+    </li></ol>
+            </div>
+
+        
+
+        
+        </div>
+
+        <div id="inheritedMembers">
+        <div class="parent" name="scala.AnyRef">
+              <h3>Inherited from <span class="extype" name="scala.AnyRef">AnyRef</span></h3>
+            </div><div class="parent" name="scala.Any">
+              <h3>Inherited from <span class="extype" name="scala.Any">Any</span></h3>
+            </div>
+        
+        </div>
+
+        <div id="groupedMembers">
+        <div class="group" name="Ungrouped">
+              <h3>Ungrouped</h3>
+              
+            </div>
+        </div>
+
+      </div>
+
+      <div id="tooltip"></div>
+
+      <div id="footer">  </div>
+      <script defer="defer" type="text/javascript" id="jquery-js" src="../../../../../lib/jquery.js"></script><script defer="defer" type="text/javascript" id="jquery-ui-js" src="../../../../../lib/jquery-ui.js"></script><script defer="defer" type="text/javascript" id="tools-tooltip-js" src="../../../../../lib/tools.tooltip.js"></script><script defer="defer" type="text/javascript" id="template-js" src="../../../../../lib/template.js"></script>
+    </body>
+      </html>
