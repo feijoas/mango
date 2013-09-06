@@ -20,30 +20,34 @@
  * 
  * @author Markus Schneider
  */
-package org.feijoas.mango.common.collect.mutable
+package org.feijoas.mango.common.collect.immutable
 
 import scala.math.Ordering.Int
 
 import org.feijoas.mango.common.annotations.Beta
 import org.feijoas.mango.common.collect.AsOrdered
-import org.feijoas.mango.common.collect.RangeSetBehaviors
-import org.feijoas.mango.common.collect.RangeSetWrapperBehaviours
+import org.feijoas.mango.common.collect.Range
+import org.feijoas.mango.common.collect.RangeMapBehaviors
+import org.feijoas.mango.common.collect.RangeMapWrapperBehaviours
 import org.scalatest.FreeSpec
 
-import com.google.common.collect.{RangeSet => GuavaRangeSet}
+import com.google.common.{collect => gcc}
 
-/** Tests for [[ImmutableRangeSetWrapperTest]]
+/** Tests for [[ImmutableRangeMapWrapperTest]]
  *
  *  @author Markus Schneider
- *  @since 0.8
+ *  @since 0.9
  */
-class TreeRangeSetWrapperTest extends FreeSpec with RangeSetBehaviors with RangeSetWrapperBehaviours {
+class ImmutableRangeMapWrapperTest extends FreeSpec with RangeMapBehaviors with RangeMapWrapperBehaviours {
 
-  "A TreeRangeSetWrapper" - {
-    behave like rangeSet(TreeRangeSetWrapper.newBuilder[Int, Int.type])
-    behave like mutableRangeSet(TreeRangeSetWrapper.newBuilder[Int, Int.type])
-    behave like rangeSetWithBuilder(TreeRangeSetWrapper.newBuilder[Int, Int.type])
-    behave like mutableWrapper((guava: GuavaRangeSet[AsOrdered[Int]]) => TreeRangeSetWrapper[Int, Int.type](guava))
+  "A ImmutableRangeMapWrapper" - {
+    behave like aRangeMapLike(ImmutableRangeMapWrapper.newBuilder[Int, String, Int.type])
+    "it should not create a copy if RangeMap(same type of immutable range map) is called" in {
+      val fst = ImmutableRangeMapWrapper(Range.open(3, 4) -> "a")
+      val snd = ImmutableRangeMapWrapper(fst)
+      fst should be theSameInstanceAs (snd)
+    }
+    behave like immutableWrapper((guava: gcc.RangeMap[AsOrdered[Int], String]) => ImmutableRangeMapWrapper[Int, String, Int.type](guava))
   }
 }
 

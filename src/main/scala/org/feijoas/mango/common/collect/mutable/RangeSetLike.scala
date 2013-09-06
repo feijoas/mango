@@ -52,7 +52,7 @@ trait RangeSetLike[C, O <: Ordering[C], +Repr <: RangeSetLike[C, O, Repr] with R
   def add(range: Range[C, O])
 
   /** Alias for `#add(range)` */
-  final def +=(range: Range[C, O]): this.type = {
+  final override def +=(range: Range[C, O]): this.type = {
     add(range)
     this
   }
@@ -65,7 +65,7 @@ trait RangeSetLike[C, O <: Ordering[C], +Repr <: RangeSetLike[C, O, Repr] with R
   def remove(range: Range[C, O])
 
   /** Alias for `#remove(range)` */
-  final def -=(range: Range[C, O]): this.type = {
+  final override def -=(range: Range[C, O]): this.type = {
     remove(range)
     this
   }

@@ -22,24 +22,18 @@
  */
 package org.feijoas.mango.common.collect.immutable
 
-import scala.annotation.meta.beanGetter
-import scala.annotation.meta.beanSetter
-import scala.annotation.meta.field
-import scala.annotation.meta.getter
-import scala.annotation.meta.setter
 import scala.collection.mutable.Builder
 
 import org.feijoas.mango.common.annotations.Beta
+import org.feijoas.mango.common.collect
 import org.feijoas.mango.common.collect.AsOrdered
 import org.feijoas.mango.common.collect.Range
 import org.feijoas.mango.common.collect.Range.asGuavaRangeConverter
 import org.feijoas.mango.common.collect.RangeSetFactory
 import org.feijoas.mango.common.collect.RangeSetWrapperLike
-import org.feijoas.mango.common.collect
 
-import com.google.common.collect.{ RangeSet => GuavaRangeSet }
 import com.google.common.collect.ImmutableRangeSet
-import scala.math.Ordering._
+import com.google.common.collect.{ RangeSet => GuavaRangeSet }
 
 /** An immutable implementation of RangeSet that delegates to Guava ImmutableRangeSet
  *
@@ -48,26 +42,20 @@ import scala.math.Ordering._
  */
 @Beta
 @SerialVersionUID(1L)
-private[mango] class ImmutableRangeSetWrapper[C, O <: Ordering[C]] private (guava: GuavaRangeSet[AsOrdered[C]])(implicit ord: O)
+private[mango] class ImmutableRangeSetWrapper[C, O <: Ordering[C]] private (guava: GuavaRangeSet[AsOrdered[C]])(override implicit val ordering: O)
   extends RangeSet[C, O] with RangeSetWrapperLike[C, O, ImmutableRangeSetWrapper[C, O]] with Serializable {
 
-  /** The Guava RangeSet to use internally */
-  override protected def delegate = guava
-
-  /** The Ordering[C] used for Ranges is needed */
-  override implicit def ordering: O = ord
-
-  /** Creates a new Repr from a Guava RangeSet */
-  override def wrap: GuavaRangeSet[AsOrdered[C]] => ImmutableRangeSetWrapper[C, O] = new ImmutableRangeSetWrapper(_)(ordering)
-
-  /** Returns a new builder for a range set.
-   */
-  override def newBuilder = ImmutableRangeSetWrapper.newBuilder[C, O](ord)
+  override def delegate = guava
+  override def factory: GuavaRangeSet[AsOrdered[C]] => ImmutableRangeSetWrapper[C, O] = new ImmutableRangeSetWrapper(_)(ordering)
+  override def newBuilder = ImmutableRangeSetWrapper.newBuilder[C, O](ordering)
 }
 
 /** Factory for ImmutableRangeSetWrapper
  */
 private[mango] final object ImmutableRangeSetWrapper extends RangeSetFactory[ImmutableRangeSetWrapper] {
+
+  /** Factory method */
+  private[mango] def apply[C, O <: Ordering[C]](guava: GuavaRangeSet[AsOrdered[C]])(implicit ord: O) = new ImmutableRangeSetWrapper(guava)(ord)
 
   /** Returns a [[RangeSet]] initialized with the ranges in the specified range set.
    */
