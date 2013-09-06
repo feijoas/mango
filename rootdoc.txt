@@ -25,7 +25,7 @@ resolvers ++= Seq(
   "Sonatype Releases" at "http://oss.sonatype.org/content/repositories/releases"
 )
 
-libraryDependencies += "org.feijoas" %% "mango" % "0.8"
+libraryDependencies += "org.feijoas" %% "mango" % "0.9"
 }}}
 
 == Examples ==

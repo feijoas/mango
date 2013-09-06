@@ -27,7 +27,7 @@ resolvers ++= Seq(
     "Sonatype Releases" at "http://oss.sonatype.org/content/repositories/releases"
 )
 
-libraryDependencies += "org.feijoas" %% "mango" % "0.8"
+libraryDependencies += "org.feijoas" %% "mango" % "0.9"
 ```
 
 ## Examples 
@@ -97,7 +97,7 @@ if (friends.mightContain(dude)) {
 }
 ```
 
-### Range & RangeSet 
+### Range, RangeSet & RangeMap
 ```Scala
   import org.feijoas.mango.common.collect.Bound._
   import org.feijoas.mango.common.collect._
@@ -120,6 +120,16 @@ if (friends.mightContain(dude)) {
   mutableRangeSet += Range.closedOpen(15, 20)                   // connected range; {[1, 10], [11, 20)}
   mutableRangeSet += Range.openClosed(0, 0)                     // empty range; {[1, 10], [11, 20)}
   mutableRangeSet -= Range.open(5, 10)                          // splits [1, 10]; {[1, 5], [10, 10], [11, 20)}
+
+  // mutable range map
+  val rangeMap = mutable.RangeMap(Range.open(3, 7) -> "1") //Map((3..7) -> 1)
+  rangeMap += Range.closed(9, 10) -> "2"              // Map((3..7) -> 1, [9..10] -> 2)
+  rangeMap += Range.closed(12, 16) -> "3"             // Map((3..7) -> 1, [9..10] -> 2, [12..16] -> 3)
+ 
+  val sub = rangeMap.subRangeMap(Range.closed(5, 11)) // Map([5..7) -> 1, [9..10] -> 2)
+  sub.put(Range.closed(7, 9), "4")                    // sub = Map([5..7) -> 1, [7..9] -> 4, (9..10] -> 2)
+ 
+  // rangeMap = Map((3..7) -> 1, [7..9] -> 4, (9..10] -> 2, [12..16] -> 3)  
 ```
 
 See the individual packages for more examples and documentation.
