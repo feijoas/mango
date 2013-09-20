@@ -26,13 +26,14 @@ import org.scalatest.FlatSpec
 import org.scalatest.matchers.ShouldMatchers
 import org.feijoas.mango.common.cache.Weigher._
 import com.google.common.cache.{ Weigher => GuavaWeigher }
+import org.scalatest.Matchers._
 
 /** Tests for [[Weigher]]
  *
  *  @author Markus Schneider
  *  @since 0.7 (copied from guava-libraries)
  */
-class WeigherTest extends FlatSpec with ShouldMatchers {
+class WeigherTest extends FlatSpec {
 
   behavior of "Weigher"
 

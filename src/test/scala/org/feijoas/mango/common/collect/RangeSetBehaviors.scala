@@ -27,19 +27,24 @@ import scala.annotation.meta.beanSetter
 import scala.annotation.meta.field
 import scala.annotation.meta.getter
 import scala.annotation.meta.setter
-import scala.math.Ordering.Int
-import org.feijoas.mango.common.annotations.Beta
-import org.scalatest.FreeSpec
-import org.scalatest.matchers.ShouldMatchers
-import org.scalatest.prop.PropertyChecks
-import org.feijoas.mango.common.collect.BoundType._
 import scala.collection.mutable.Builder
+import scala.math.Ordering.Int
+
+import org.feijoas.mango.common.annotations.Beta
+import org.feijoas.mango.common.collect.BoundType.Closed
+import org.feijoas.mango.common.collect.BoundType.Open
+import org.mockito.Mockito.when
+import org.scalatest.FreeSpec
+import org.scalatest.Matchers.be
+import org.scalatest.Matchers.convertToAnyShouldWrapper
+import org.scalatest.Matchers.not
 import org.scalatest.mock.MockitoSugar
-import org.mockito.Mockito._
+import org.scalatest.prop.PropertyChecks
+
 
 /** Behavior which all [[RangeSet]] have in common
  */
-private[mango] trait RangeSetBehaviors extends FreeSpec with PropertyChecks with ShouldMatchers with MockitoSugar {
+private[mango] trait RangeSetBehaviors extends FreeSpec with PropertyChecks with MockitoSugar {
   this: FreeSpec =>
 
   def mutableRangeSet(newBuilder: => Builder[Range[Int, Int.type], mutable.RangeSet[Int, Int.type]]) = {

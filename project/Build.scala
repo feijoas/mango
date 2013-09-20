@@ -9,7 +9,6 @@ object BuildSettings {
 	val buildScalaVersion = "2.10.2"
 	val gitHeadCommitSha  = Process("git rev-parse HEAD").lines.head
 	val release           = sys.props("release")=="true"
-	println(sys.props("release"))
 
 	val buildSettings = Defaults.defaultSettings ++ Seq (
 		organization := buildOrganization,

@@ -22,6 +22,11 @@
  */
 package org.feijoas.mango.common.collect
 
+import scala.annotation.meta.beanGetter
+import scala.annotation.meta.beanSetter
+import scala.annotation.meta.field
+import scala.annotation.meta.getter
+import scala.annotation.meta.setter
 import scala.collection.convert.decorateAll.asScalaSetConverter
 import scala.collection.mutable.Builder
 import scala.math.Ordering.Int
@@ -29,6 +34,8 @@ import scala.math.Ordering.Int
 import org.feijoas.mango.common.annotations.Beta
 import org.feijoas.mango.common.collect.Range.asGuavaRangeConverter
 import org.scalatest.FreeSpec
+import org.scalatest.Matchers.be
+import org.scalatest.Matchers.convertToAnyShouldWrapper
 
 import com.google.common.collect.ImmutableRangeSet
 

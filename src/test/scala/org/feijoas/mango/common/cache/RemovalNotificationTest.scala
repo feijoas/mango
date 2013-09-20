@@ -28,13 +28,14 @@ import org.scalatest.matchers.ShouldMatchers
 import org.feijoas.mango.common.cache.RemovalNotification._
 import org.feijoas.mango.common.cache.RemovalCause._
 import com.google.common.cache.{ RemovalNotification => GuavaRemovalNotification }
+import org.scalatest.Matchers._
 
 /** Tests for [[RemovalNotification]]
  *
  *  @author Markus Schneider
  *  @since 0.7 (copied from guava-libraries)
  */
-class RemovalNotificationTest extends FlatSpec with ShouldMatchers {
+class RemovalNotificationTest extends FlatSpec {
   behavior of "RemovalNotification"
 
   it should "convert Guava RemovalNotification to Mango RemovalNotification" in {

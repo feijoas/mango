@@ -22,24 +22,25 @@
  */
 package org.feijoas.mango.common.collect
 
-import org.scalatest.FunSpec
-import org.scalatest.FlatSpec
-import org.scalatest.matchers.ShouldMatchers
-import org.scalatest.mock.MockitoSugar
-import org.scalatest.prop.PropertyChecks
-import com.google.common.testing.SerializableTester.reserializeAndAssert
-import org.feijoas.mango.common.collect.DiscreteDomain.IntDomain
-import org.feijoas.mango.common.collect.Bound._
-import org.feijoas.mango.common.collect.BoundType._
-import org.feijoas.mango.common.collect.Range._
 import scala.math.Ordering.Int
+
+import org.feijoas.mango.common.annotations.Beta
+import org.feijoas.mango.common.collect.Bound.FiniteBound
+import org.feijoas.mango.common.collect.Bound.InfiniteBound
+import org.feijoas.mango.common.collect.DiscreteDomain.IntDomain
+import org.scalatest.FlatSpec
+import org.scalatest.Matchers.be
+import org.scalatest.Matchers.convertToAnyShouldWrapper
+import org.scalatest.prop.PropertyChecks
+
+import com.google.common.testing.SerializableTester.reserializeAndAssert
 
 /** Tests for [[Range]]
  *
  *  @author Markus Schneider
  *  @since 0.8
  */
-class RangeTest extends FlatSpec with ShouldMatchers with RangeBehaviors {
+class RangeTest extends FlatSpec with RangeBehaviors {
 
   {
     val builder = (start: Int, end: Int) => Range.open(start, end)
@@ -380,7 +381,7 @@ class RangeTest extends FlatSpec with ShouldMatchers with RangeBehaviors {
   }
 }
 
-private[mango] trait RangeBehaviors extends PropertyChecks with ShouldMatchers {
+private[mango] trait RangeBehaviors extends PropertyChecks {
   this: FlatSpec =>
 
   def allRanges(build: (Int, Int) => Range[Int, Int.type]) = {

@@ -27,23 +27,21 @@ import scala.annotation.meta.beanSetter
 import scala.annotation.meta.field
 import scala.annotation.meta.getter
 import scala.annotation.meta.setter
-import scala.collection.mutable.Builder
 import scala.math.Ordering.Int
 
 import org.feijoas.mango.common.annotations.Beta
-import org.feijoas.mango.common.collect
-import org.feijoas.mango.common.collect.BoundType._
-import org.mockito.Mockito._
+import org.feijoas.mango.common.collect.AsOrdered.asOrdered
+import org.feijoas.mango.common.collect.Range.asGuavaRangeConverter
+import org.mockito.Mockito.verify
 import org.scalatest.FreeSpec
-import org.scalatest.matchers.ShouldMatchers
 import org.scalatest.mock.MockitoSugar
 import org.scalatest.prop.PropertyChecks
 
-import com.google.common.collect.{ RangeSet => GuavaRangeSet }
+import com.google.common.collect.{RangeSet => GuavaRangeSet}
 
 /** Behavior which all [[RangeSetWrappers]] have in common
  */
-private[mango] trait RangeSetWrapperBehaviours extends FreeSpec with PropertyChecks with ShouldMatchers with MockitoSugar {
+private[mango] trait RangeSetWrapperBehaviours extends FreeSpec with PropertyChecks with MockitoSugar {
   this: FreeSpec =>
 
   def immutableWrapper[Repr <: RangeSetWrapperLike[Int, Int.type, Repr] with RangeSet[Int, Int.type]](constructor: (GuavaRangeSet[AsOrdered[Int]]) => Repr) = {
