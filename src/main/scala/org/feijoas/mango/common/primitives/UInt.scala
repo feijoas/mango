@@ -271,7 +271,7 @@ final object UInt {
  *  @since 0.10 (copied from Guava-libraries)
  */
 @SerialVersionUID(1L)
-final class UInt private (val value: Int) extends AnyVal with Serializable {
+final class UInt private (val value: Int) extends AnyVal with Ordered[UInt] with Serializable {
 
   import UInt._
 
@@ -302,6 +302,12 @@ final class UInt private (val value: Int) extends AnyVal with Serializable {
    *  @throws ArithmeticException if {@code that} is zero
    */
   def mod(that: UInt): UInt = fromIntBits(UnsignedInts.remainder(value, that.value))
+
+  /** Compares this unsigned Int to another unsigned Int.
+   *  Returns {@code 0} if they are equal, a negative number if {@code this < other},
+   *  and a positive number if {@code this > other}.
+   */
+  override def compare(that: UInt): Int = UnsignedInts.compare(this.value, that.value)
 
   /** Returns a string representation of the {@code UInt} value, in base 10.
    */

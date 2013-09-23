@@ -94,9 +94,11 @@ class UIntTest extends FreeSpec with PropertyChecks {
       }
     }
     "should implement #toString(radix)" in {
-      forAll { (a: Int, radix: Int) =>
-        val expected = UnsignedInteger.fromIntBits(a).toString(radix)
-        UInt.fromIntBits(a).toString(radix) should be(expected)
+      forAll { (a: Int) =>
+        for (radix <- Character.MIN_RADIX to Character.MAX_RADIX) {
+          val expected = UnsignedInteger.fromIntBits(a).toString(radix)
+          UInt.fromIntBits(a).toString(radix) should be(expected)
+        }
       }
     }
     "should implement #toLong" in {
@@ -135,6 +137,12 @@ class UIntTest extends FreeSpec with PropertyChecks {
         val guava: UnsignedInteger = UnsignedInteger.fromIntBits(bits)
         val mango: UInt = guava.asScala
         mango.toLong should be(guava.longValue)
+      }
+    }
+    "should implement #compare" in {
+      forAll { (a: Int, b: Int) =>
+        val expected = UnsignedInts.compare(a, b)
+        (UInt.fromIntBits(a) compare UInt.fromIntBits(b)) should be(expected)
       }
     }
     "should implement #asJava" in {
