@@ -42,7 +42,7 @@ import com.google.common.primitives.UnsignedLongs
  *  @since 0.10 (copied from Guava-libraries)
  */
 @SerialVersionUID(1L)
-final class ULong(val value: Long) extends AnyVal with Ordered[ULong] with Serializable {
+final class ULong private (val value: Long) extends AnyVal with Ordered[ULong] with Serializable {
   import ULong._
 
   /** Returns the result of adding this and {@code that}. If the result would have more than 64 bits,
