@@ -150,7 +150,7 @@ final object ULong {
 
   /** Maximum value an ULong can represent
    */
-  val maxValue = fromLongBits(-1L)
+  val MaxValue = fromLongBits(-1L)
 
   /** Returns an {@code ULong} representing the same value as the specified {@code Long}.
    *

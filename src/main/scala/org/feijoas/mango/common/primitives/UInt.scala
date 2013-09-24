@@ -45,6 +45,10 @@ import com.google.common.primitives.UnsignedInts
 final object UInt {
   private val intMask = 0xffffffffL
 
+  /** Maximum value an UInt can represent
+   */
+  val MaxValue = fromIntBits(-1)
+
   /** Returns an {@code UInt} that is equal to {@code value},
    *  if possible. The inverse operation of {@code #toLong}.
    *
