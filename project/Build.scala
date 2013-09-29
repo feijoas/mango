@@ -10,7 +10,9 @@ object BuildSettings {
 	val gitHeadCommitSha  = Process("git rev-parse HEAD").lines.head
 	val release           = sys.props("release")=="true"
 
-	val buildSettings = Defaults.defaultSettings ++ Seq (
+	val buildSettings = Defaults.defaultSettings ++ 
+		org.scalastyle.sbt.ScalastylePlugin.Settings  ++
+		Seq (
 		organization := buildOrganization,
 		scalaVersion := buildScalaVersion,
 		shellPrompt  := ShellPrompt.buildShellPrompt,
@@ -19,7 +21,7 @@ object BuildSettings {
 		},
 
 		// Scala compiler options
-		scalacOptions  ++= Seq("-encoding", "UTF-8", "-deprecation", "-unchecked", "-feature","-language:implicitConversions,reflectiveCalls,postfixOps,higherKinds,existentials"),
+		scalacOptions  ++= Seq("-encoding", "UTF-8", "-deprecation", "-unchecked", "-Xlint", "-feature","-language:implicitConversions,reflectiveCalls,postfixOps,higherKinds,existentials"),
 		// Scaladoc title
 		scalacOptions in (Compile, doc) ++= Opts.doc.title("Mango"),
 		// Scaladoc title page
