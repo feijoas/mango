@@ -1,0 +1,720 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html>
+        <head>
+          <title>ULong - Mango - org.feijoas.mango.common.primitives.ULong</title>
+          <meta name="description" content="ULong - Mango - org.feijoas.mango.common.primitives.ULong" />
+          <meta name="keywords" content="ULong Mango org.feijoas.mango.common.primitives.ULong" />
+          <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+          
+      <link href="../../../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
+      <link href="../../../../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
+      <script type="text/javascript">
+         if(top === self) {
+            var url = '../../../../../index.html';
+            var hash = 'org.feijoas.mango.common.primitives.ULong$';
+            var anchor = window.location.hash;
+            var anchor_opt = '';
+            if (anchor.length >= 1)
+              anchor_opt = '@' + anchor.substring(1);
+            window.location.href = url + '#' + hash + anchor_opt;
+         }
+   	  </script>
+    
+        </head>
+        <body class="value">
+      <div id="definition">
+        <a href="ULong.html" title="Go to companion"><img src="../../../../../lib/object_to_class_big.png" /></a>
+        <p id="owner"><a href="../../../../package.html" class="extype" name="org">org</a>.<a href="../../../package.html" class="extype" name="org.feijoas">feijoas</a>.<a href="../../package.html" class="extype" name="org.feijoas.mango">mango</a>.<a href="../package.html" class="extype" name="org.feijoas.mango.common">common</a>.<a href="package.html" class="extype" name="org.feijoas.mango.common.primitives">primitives</a></p>
+        <h1><a href="ULong.html" title="Go to companion">ULong</a></h1>
+      </div>
+
+      <h4 id="signature" class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <span class="name">ULong</span><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Static utility methods pertaining to <code> Long</code> primitives that interpret values as
+ <i>unsigned</i> (that is, any negative value <code> x</code> is treated as the positive value
+ <code> 2^64 + x<code>).</code></code></p><p>In addition, this class provides several static methods for converting a <code> Long</code> to a
+ <code> String</code> and a <code> String</code> to a <code> Long</code> that treat the <code> Long</code> as an unsigned
+ number.</p><p>See the Guava User Guide article on
+ <a href="http://code.google.com/p/guava-libraries/wiki/PrimitivesExplained#Unsigned_support" target="_blank">unsigned primitive utilities</a>.
+</p></div><dl class="attributes block"> <dt>Since</dt><dd><p>0.10 (copied from Guava-libraries)
+</p></dd></dl><div class="toggleContainer block">
+          <span class="toggle">Linear Supertypes</span>
+          <div class="superTypes hiddenContent"><span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+        </div></div>
+        
+
+      <div id="mbrsel">
+        <div id="textfilter"><span class="pre"></span><span class="input"><input id="mbrsel-input" type="text" accesskey="/" /></span><span class="post"></span></div>
+        <div id="order">
+              <span class="filtertype">Ordering</span>
+              <ol>
+                
+                <li class="alpha in"><span>Alphabetic</span></li>
+                <li class="inherit out"><span>By inheritance</span></li>
+              </ol>
+            </div>
+        <div id="ancestors">
+                <span class="filtertype">Inherited<br />
+                </span>
+                <ol id="linearization">
+                  <li class="in" name="org.feijoas.mango.common.primitives.ULong"><span>ULong</span></li><li class="in" name="scala.Serializable"><span>Serializable</span></li><li class="in" name="java.io.Serializable"><span>Serializable</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                </ol>
+              </div><div id="ancestors">
+            <span class="filtertype"></span>
+            <ol>
+              <li class="hideall out"><span>Hide All</span></li>
+              <li class="showall in"><span>Show all</span></li>
+            </ol>
+            <a href="http://docs.scala-lang.org/overviews/scaladoc/usage.html#members" target="_blank">Learn more about member selection</a>
+          </div>
+        <div id="visbl">
+            <span class="filtertype">Visibility</span>
+            <ol><li class="public in"><span>Public</span></li><li class="all out"><span>All</span></li></ol>
+          </div>
+      </div>
+
+      <div id="template">
+        <div id="allMembers">
+        
+
+        
+
+        
+
+        <div id="values" class="values members">
+              <h3>Value Members</h3>
+              <ol><li name="scala.AnyRef#!=" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="!=(x$1:AnyRef):Boolean"></a>
+      <a id="!=(AnyRef):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span title="gt4s: $bang$eq" class="name">!=</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="scala.Any#!=" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="!=(x$1:Any):Boolean"></a>
+      <a id="!=(Any):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span title="gt4s: $bang$eq" class="name">!=</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="scala.AnyRef###" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="##():Int"></a>
+      <a id="##():Int"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span title="gt4s: $hash$hash" class="name">##</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="scala.AnyRef#==" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="==(x$1:AnyRef):Boolean"></a>
+      <a id="==(AnyRef):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span title="gt4s: $eq$eq" class="name">==</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="scala.Any#==" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="==(x$1:Any):Boolean"></a>
+      <a id="==(Any):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span title="gt4s: $eq$eq" class="name">==</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="org.feijoas.mango.common.primitives.ULong#MaxValue" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="MaxValue:org.feijoas.mango.common.primitives.ULong"></a>
+      <a id="MaxValue:ULong"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">MaxValue</span><span class="result">: <a href="ULong.html" class="extype" name="org.feijoas.mango.common.primitives.ULong">ULong</a></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Maximum value an ULong can represent
+</p>
+    </li><li name="org.feijoas.mango.common.primitives.ULong.ULongOrdering" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ULongOrdering"></a>
+      <a id="ULongOrdering:ULongOrdering"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="ULong$$ULongOrdering$.html"><span class="name">ULongOrdering</span></a><span class="result"> extends <span class="extype" name="scala.math.Ordering">Ordering</span>[<a href="ULong.html" class="extype" name="org.feijoas.mango.common.primitives.ULong">ULong</a>]</span>
+      </span>
+      </h4>
+      <p class="comment cmt">Ordering that compares the two specified <code> ULong</code> values.</p>
+    </li><li name="org.feijoas.mango.common.primitives.ULong#apply" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="apply(value:scala.math.BigInt):org.feijoas.mango.common.primitives.ULong"></a>
+      <a id="apply(BigInt):ULong"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">apply</span><span class="params">(<span name="value">value: <span class="extype" name="scala.math.BigInt">BigInt</span></span>)</span><span class="result">: <a href="ULong.html" class="extype" name="org.feijoas.mango.common.primitives.ULong">ULong</a></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Returns a <code> ULong</code> representing the same value as the specified
+ <code> BigInteger</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Returns a <code> ULong</code> representing the same value as the specified
+ <code> BigInteger</code>. This is the inverse operation of <code>#toBigInt</code>.</p><p> Equivalent to <code>valueOf(value)</code>
+</p></div><dl class="attributes block"> <dt>Exceptions thrown</dt><dd><span class="cmt">IllegalArgumentException<p>if <code> value</code> is negative or <code> value &gt;= 2^64<code>
+</code></code></p></span></dd></dl></div>
+    </li><li name="org.feijoas.mango.common.primitives.ULong#apply" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="apply(value:Long):org.feijoas.mango.common.primitives.ULong"></a>
+      <a id="apply(Long):ULong"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">apply</span><span class="params">(<span name="value">value: <span class="extype" name="scala.Long">Long</span></span>)</span><span class="result">: <a href="ULong.html" class="extype" name="org.feijoas.mango.common.primitives.ULong">ULong</a></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Returns an <code> ULong</code> representing the same value as the specified <code> Long</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Returns an <code> ULong</code> representing the same value as the specified <code> Long</code>.</p><p> Equivalent to <code>valueOf(value)</code>
+</p></div><dl class="attributes block"> <dt>Exceptions thrown</dt><dd><span class="cmt">IllegalArgumentException<p>if <code> value</code> is negative
+</p></span></dd></dl></div>
+    </li><li name="org.feijoas.mango.common.primitives.ULong#asGuavaULong" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="asGuavaULong(ulong:org.feijoas.mango.common.primitives.ULong):org.feijoas.mango.common.convert.AsJava[com.google.common.primitives.UnsignedLong]"></a>
+      <a id="asGuavaULong(ULong):AsJava[UnsignedLong]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">asGuavaULong</span><span class="params">(<span name="ulong">ulong: <a href="ULong.html" class="extype" name="org.feijoas.mango.common.primitives.ULong">ULong</a></span>)</span><span class="result">: <span class="extype" name="org.feijoas.mango.common.convert.AsJava">AsJava</span>[<span class="extype" name="com.google.common.primitives.UnsignedLong">UnsignedLong</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Adds an <code>asJava</code> method that converts a Mango <code>ULong</code> to a
+ Guava <code>UnsignedLong</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Adds an <code>asJava</code> method that converts a Mango <code>ULong</code> to a
+ Guava <code>UnsignedLong</code>.</p><p> The returned Guava <code>UnsignedLong</code> contains a copy of the bits
+ from Mango <code>ULong</code>.
+</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>An object with an <code>asJava</code> method that returns a Guava <code>UnsignedLong</code>
+  view of the argument
+</p></dd></dl></div>
+    </li><li name="scala.Any#asInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="asInstanceOf[T0]:T0"></a>
+      <a id="asInstanceOf[T0]:T0"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">asInstanceOf</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="result">: <span class="extype" name="scala.Any.asInstanceOf.T0">T0</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="org.feijoas.mango.common.primitives.ULong#asMangoULong" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="asMangoULong(ulong:com.google.common.primitives.UnsignedLong):org.feijoas.mango.common.convert.AsScala[org.feijoas.mango.common.primitives.ULong]"></a>
+      <a id="asMangoULong(UnsignedLong):AsScala[ULong]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">asMangoULong</span><span class="params">(<span name="ulong">ulong: <span class="extype" name="com.google.common.primitives.UnsignedLong">UnsignedLong</span></span>)</span><span class="result">: <span class="extype" name="org.feijoas.mango.common.convert.AsScala">AsScala</span>[<a href="ULong.html" class="extype" name="org.feijoas.mango.common.primitives.ULong">ULong</a>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Adds an <code>asScala</code> method that converts a Guava <code>UnsignedLong</code> to a
+ Mango <code>ULong</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Adds an <code>asScala</code> method that converts a Guava <code>UnsignedLong</code> to a
+ Mango <code>ULong</code>.</p><p> The returned Mango <code>ULong</code> contains a copy of the bits
+ from Guava <code>UnsignedLong</code>.
+</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>An object with an <code>asScala</code> method that returns a Mango <code>ULong</code>
+  view of the argument
+</p></dd></dl></div>
+    </li><li name="scala.AnyRef#clone" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="clone():Object"></a>
+      <a id="clone():AnyRef"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">clone</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="defval" name="classOf[java.lang.CloneNotSupportedException]">...</span>
+    </span>)</span>
+              
+        </dd></dl></div>
+    </li><li name="org.feijoas.mango.common.primitives.ULong#compare" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="compare(a:org.feijoas.mango.common.primitives.ULong,b:org.feijoas.mango.common.primitives.ULong):Int"></a>
+      <a id="compare(ULong,ULong):Int"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">compare</span><span class="params">(<span name="a">a: <a href="ULong.html" class="extype" name="org.feijoas.mango.common.primitives.ULong">ULong</a></span>, <span name="b">b: <a href="ULong.html" class="extype" name="org.feijoas.mango.common.primitives.ULong">ULong</a></span>)</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Compares the two specified <code> Long</code> values, treating them as unsigned values between
+ <code> 0</code> and <code> 2^64 - 1<code> inclusive.
+</code></code></p><div class="fullcomment"><div class="comment cmt"><p>Compares the two specified <code> Long</code> values, treating them as unsigned values between
+ <code> 0</code> and <code> 2^64 - 1<code> inclusive.
+</code></code></p></div><dl class="paramcmts block"><dt class="param">a</dt><dd class="cmt"><p>the first <code> ULong</code> to compare</p></dd><dt class="param">b</dt><dd class="cmt"><p>the second <code> ULong</code> to compare</p></dd><dt>returns</dt><dd class="cmt"><p>a negative value if <code> a</code> is less than <code> b</code>; a positive value if <code> a</code> is
+        greater than <code> b</code>; or zero if they are equal
+</p></dd></dl></div>
+    </li><li name="org.feijoas.mango.common.primitives.ULong#decode" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="decode(stringValue:String):org.feijoas.mango.common.primitives.ULong"></a>
+      <a id="decode(String):ULong"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">decode</span><span class="params">(<span name="stringValue">stringValue: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="ULong.html" class="extype" name="org.feijoas.mango.common.primitives.ULong">ULong</a></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Returns the <code> ULong</code> value represented by the given string.</p><div class="fullcomment"><div class="comment cmt"><p>Returns the <code> ULong</code> value represented by the given string.</p><p> Accepts a decimal, hexadecimal, or octal number given by specifying the following prefix:</p><ul><li><code> 0x</code><i>HexDigits</i></li><li><code> 0X</code><i>HexDigits</i></li><li><code> #</code><i>HexDigits</i></li><li><code> 0</code><i>OctalDigits</i></li></ul></div><dl class="attributes block"> <dt>Exceptions thrown</dt><dd><span class="cmt">NumberFormatException<p>if the string does not contain a valid <code> ULong</code>
+        value
+</p></span></dd></dl></div>
+    </li><li name="scala.AnyRef#eq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="eq(x$1:AnyRef):Boolean"></a>
+      <a id="eq(AnyRef):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">eq</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="scala.AnyRef#equals" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="equals(x$1:Any):Boolean"></a>
+      <a id="equals(Any):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">equals</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="scala.AnyRef#finalize" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="finalize():Unit"></a>
+      <a id="finalize():Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">finalize</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="symbol">classOf[java.lang.Throwable]</span>
+    </span>)</span>
+              
+        </dd></dl></div>
+    </li><li name="org.feijoas.mango.common.primitives.ULong#fromLongBits" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="fromLongBits(bits:Long):org.feijoas.mango.common.primitives.ULong"></a>
+      <a id="fromLongBits(Long):ULong"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">fromLongBits</span><span class="params">(<span name="bits">bits: <span class="extype" name="scala.Long">Long</span></span>)</span><span class="result">: <a href="ULong.html" class="extype" name="org.feijoas.mango.common.primitives.ULong">ULong</a></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Returns an <code> ULong</code> corresponding to a given bit representation.</p><div class="fullcomment"><div class="comment cmt"><p>Returns an <code> ULong</code> corresponding to a given bit representation.
+ The argument is interpreted as an unsigned 64-bit value. Specifically, the sign bit
+ of <code> bits</code> is interpreted as a normal bit, and all other bits are treated as usual.</p><p>If the argument is nonnegative, the returned result will be equal to <code> bits</code>,
+ otherwise, the result will be equal to <code> 2^64 + bits<code>.</code></code></p><p>To represent decimal constants less than <code> 2^63<code>, consider </code> #valueOf(long)<code>
+ instead.</code></code></p></div></div>
+    </li><li name="scala.AnyRef#getClass" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getClass():Class[_]"></a>
+      <a id="getClass():Class[_]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getClass</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.Class">Class</span>[_]</span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="scala.AnyRef#hashCode" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="hashCode():Int"></a>
+      <a id="hashCode():Int"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">hashCode</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="scala.Any#isInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="isInstanceOf[T0]:Boolean"></a>
+      <a id="isInstanceOf[T0]:Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">isInstanceOf</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="org.feijoas.mango.common.primitives.ULong#join" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="join(separator:String,array:org.feijoas.mango.common.primitives.ULong*):String"></a>
+      <a id="join(String,ULong*):String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">join</span><span class="params">(<span name="separator">separator: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="array">array: <a href="ULong.html" class="extype" name="org.feijoas.mango.common.primitives.ULong">ULong</a>*</span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Returns a string containing the supplied <code> ULong</code> values separated by
+ <code> separator</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Returns a string containing the supplied <code> ULong</code> values separated by
+ <code> separator</code>. For example, <code> join(&quot;-&quot;, 1, 2, 3)</code> returns the string <code> &quot;1-2-3&quot;</code>.
+</p></div><dl class="paramcmts block"><dt class="param">separator</dt><dd class="cmt"><p>the text that should appear between consecutive values in the resulting
+       string (but not at the start or end)</p></dd><dt class="param">array</dt><dd class="cmt"><p>an array of <code> ULong</code> values, possibly empty
+</p></dd></dl></div>
+    </li><li name="org.feijoas.mango.common.primitives.ULong#lexicographicalComparator" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="lexicographicalComparator():scala.math.Ordering[Array[org.feijoas.mango.common.primitives.ULong]]"></a>
+      <a id="lexicographicalComparator():Ordering[Array[ULong]]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">lexicographicalComparator</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.math.Ordering">Ordering</span>[<span class="extype" name="scala.Array">Array</span>[<a href="ULong.html" class="extype" name="org.feijoas.mango.common.primitives.ULong">ULong</a>]]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Returns a comparator that compares two arrays of <code> ULong</code> values
+ lexicographically.</p><div class="fullcomment"><div class="comment cmt"><p>Returns a comparator that compares two arrays of <code> ULong</code> values
+ lexicographically. That is, it compares, using <code>#compare(long, long)</code>, the first pair of
+ values that follow any common prefix, or when one array is a prefix of the other, treats the
+ shorter array as the lesser. For example, <code> [] &lt; [1L] &lt; [1L, 2L] &lt; [2L] &lt; [1L &lt;&lt; 63]</code>.
+</p></div><dl class="attributes block"> <dt>See also</dt><dd><span class="cmt"><p><a href="http://en.wikipedia.org/wiki/Lexicographical_order">Lexicographical order
+     article at Wikipedia</a>
+</p></span></dd></dl></div>
+    </li><li name="org.feijoas.mango.common.primitives.ULong#max" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="max(array:org.feijoas.mango.common.primitives.ULong*):org.feijoas.mango.common.primitives.ULong"></a>
+      <a id="max(ULong*):ULong"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">max</span><span class="params">(<span name="array">array: <a href="ULong.html" class="extype" name="org.feijoas.mango.common.primitives.ULong">ULong</a>*</span>)</span><span class="result">: <a href="ULong.html" class="extype" name="org.feijoas.mango.common.primitives.ULong">ULong</a></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Returns the greatest value present in <code> array</code>, treating values as unsigned.</p><div class="fullcomment"><div class="comment cmt"><p>Returns the greatest value present in <code> array</code>, treating values as unsigned.
+</p></div><dl class="paramcmts block"><dt class="param">array</dt><dd class="cmt"><p>a <i>nonempty</i> array of <code> ULong</code> values</p></dd><dt>returns</dt><dd class="cmt"><p>the value present in <code> array</code> that is greater than or equal to every other value
+        in the array according to <code>#compare</code></p></dd></dl><dl class="attributes block"> <dt>Exceptions thrown</dt><dd><span class="cmt">IllegalArgumentException<p>if <code> array</code> is empty
+</p></span></dd></dl></div>
+    </li><li name="org.feijoas.mango.common.primitives.ULong#min" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="min(array:org.feijoas.mango.common.primitives.ULong*):org.feijoas.mango.common.primitives.ULong"></a>
+      <a id="min(ULong*):ULong"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">min</span><span class="params">(<span name="array">array: <a href="ULong.html" class="extype" name="org.feijoas.mango.common.primitives.ULong">ULong</a>*</span>)</span><span class="result">: <a href="ULong.html" class="extype" name="org.feijoas.mango.common.primitives.ULong">ULong</a></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Returns the least value present in <code> array</code>, treating values as unsigned.</p><div class="fullcomment"><div class="comment cmt"><p>Returns the least value present in <code> array</code>, treating values as unsigned.
+</p></div><dl class="paramcmts block"><dt class="param">array</dt><dd class="cmt"><p>a <i>nonempty</i> array of <code> ULong</code> values</p></dd><dt>returns</dt><dd class="cmt"><p>the value present in <code> array</code> that is less than or equal to every other value in
+        the array according to <code>#compare</code></p></dd></dl><dl class="attributes block"> <dt>Exceptions thrown</dt><dd><span class="cmt">IllegalArgumentException<p>if <code> array</code> is empty
+</p></span></dd></dl></div>
+    </li><li name="scala.AnyRef#ne" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="ne(x$1:AnyRef):Boolean"></a>
+      <a id="ne(AnyRef):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">ne</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="scala.AnyRef#notify" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="notify():Unit"></a>
+      <a id="notify():Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">notify</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="scala.AnyRef#notifyAll" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="notifyAll():Unit"></a>
+      <a id="notifyAll():Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">notifyAll</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
+      <a id="synchronized[T0](⇒T0):T0"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">synchronized</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="params">(<span name="arg0">arg0: ⇒ <span class="extype" name="java.lang.AnyRef.synchronized.T0">T0</span></span>)</span><span class="result">: <span class="extype" name="java.lang.AnyRef.synchronized.T0">T0</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="scala.AnyRef#toString" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="toString():String"></a>
+      <a id="toString():String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">toString</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="org.feijoas.mango.common.primitives.ULong#valueOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="valueOf(string:String,radix:Int):org.feijoas.mango.common.primitives.ULong"></a>
+      <a id="valueOf(String,Int):ULong"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">valueOf</span><span class="params">(<span name="string">string: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="radix">radix: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <a href="ULong.html" class="extype" name="org.feijoas.mango.common.primitives.ULong">ULong</a></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Returns an <code> ULong</code> holding the value of the specified <code> String</code>, parsed as
+ an <code> ULong</code> value in the specified radix.</p><div class="fullcomment"><div class="comment cmt"><p>Returns an <code> ULong</code> holding the value of the specified <code> String</code>, parsed as
+ an <code> ULong</code> value in the specified radix.
+</p></div><dl class="attributes block"> <dt>Exceptions thrown</dt><dd><span class="cmt">NumberFormatException<p>if the string does not contain a parsable <code> ULong</code>
+        value, or <code> radix</code> is not between <code>Character#MIN_RADIX</code> and
+        <code>Character#MAX_RADIX</code>
+</p></span></dd></dl></div>
+    </li><li name="org.feijoas.mango.common.primitives.ULong#valueOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="valueOf(string:String):org.feijoas.mango.common.primitives.ULong"></a>
+      <a id="valueOf(String):ULong"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">valueOf</span><span class="params">(<span name="string">string: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="ULong.html" class="extype" name="org.feijoas.mango.common.primitives.ULong">ULong</a></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Returns an <code> ULong</code> holding the value of the specified <code> String</code>, parsed as
+ an <code> ULong</code> value.</p><div class="fullcomment"><div class="comment cmt"><p>Returns an <code> ULong</code> holding the value of the specified <code> String</code>, parsed as
+ an <code> ULong</code> value.
+</p></div><dl class="attributes block"> <dt>Exceptions thrown</dt><dd><span class="cmt">NumberFormatException<p>if the string does not contain a parsable <code> ULong</code>
+        value
+</p></span></dd></dl></div>
+    </li><li name="org.feijoas.mango.common.primitives.ULong#valueOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="valueOf(value:scala.math.BigInt):org.feijoas.mango.common.primitives.ULong"></a>
+      <a id="valueOf(BigInt):ULong"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">valueOf</span><span class="params">(<span name="value">value: <span class="extype" name="scala.math.BigInt">BigInt</span></span>)</span><span class="result">: <a href="ULong.html" class="extype" name="org.feijoas.mango.common.primitives.ULong">ULong</a></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Returns a <code> ULong</code> representing the same value as the specified
+ <code> BigInteger</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Returns a <code> ULong</code> representing the same value as the specified
+ <code> BigInteger</code>. This is the inverse operation of <code>#toBigInt</code>.
+</p></div><dl class="attributes block"> <dt>Exceptions thrown</dt><dd><span class="cmt">IllegalArgumentException<p>if <code> value</code> is negative or <code> value &gt;= 2^64<code>
+</code></code></p></span></dd></dl></div>
+    </li><li name="org.feijoas.mango.common.primitives.ULong#valueOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="valueOf(value:Long):org.feijoas.mango.common.primitives.ULong"></a>
+      <a id="valueOf(Long):ULong"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">valueOf</span><span class="params">(<span name="value">value: <span class="extype" name="scala.Long">Long</span></span>)</span><span class="result">: <a href="ULong.html" class="extype" name="org.feijoas.mango.common.primitives.ULong">ULong</a></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Returns an <code> ULong</code> representing the same value as the specified <code> Long</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Returns an <code> ULong</code> representing the same value as the specified <code> Long</code>.
+</p></div><dl class="attributes block"> <dt>Exceptions thrown</dt><dd><span class="cmt">IllegalArgumentException<p>if <code> value</code> is negative
+</p></span></dd></dl></div>
+    </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="wait():Unit"></a>
+      <a id="wait():Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">wait</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="defval" name="classOf[java.lang.InterruptedException]">...</span>
+    </span>)</span>
+              
+        </dd></dl></div>
+    </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="wait(x$1:Long,x$2:Int):Unit"></a>
+      <a id="wait(Long,Int):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">wait</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Long">Long</span></span>, <span name="arg1">arg1: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="defval" name="classOf[java.lang.InterruptedException]">...</span>
+    </span>)</span>
+              
+        </dd></dl></div>
+    </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="wait(x$1:Long):Unit"></a>
+      <a id="wait(Long):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">wait</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Long">Long</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="defval" name="classOf[java.lang.InterruptedException]">...</span>
+    </span>)</span>
+              
+        </dd></dl></div>
+    </li></ol>
+            </div>
+
+        
+
+        
+        </div>
+
+        <div id="inheritedMembers">
+        <div class="parent" name="scala.Serializable">
+              <h3>Inherited from <span class="extype" name="scala.Serializable">Serializable</span></h3>
+            </div><div class="parent" name="java.io.Serializable">
+              <h3>Inherited from <span class="extype" name="java.io.Serializable">Serializable</span></h3>
+            </div><div class="parent" name="scala.AnyRef">
+              <h3>Inherited from <span class="extype" name="scala.AnyRef">AnyRef</span></h3>
+            </div><div class="parent" name="scala.Any">
+              <h3>Inherited from <span class="extype" name="scala.Any">Any</span></h3>
+            </div>
+        
+        </div>
+
+        <div id="groupedMembers">
+        <div class="group" name="Ungrouped">
+              <h3>Ungrouped</h3>
+              
+            </div>
+        </div>
+
+      </div>
+
+      <div id="tooltip"></div>
+
+      <div id="footer">  </div>
+      <script defer="defer" type="text/javascript" id="jquery-js" src="../../../../../lib/jquery.js"></script><script defer="defer" type="text/javascript" id="jquery-ui-js" src="../../../../../lib/jquery-ui.js"></script><script defer="defer" type="text/javascript" id="tools-tooltip-js" src="../../../../../lib/tools.tooltip.js"></script><script defer="defer" type="text/javascript" id="template-js" src="../../../../../lib/template.js"></script>
+    </body>
+      </html>
