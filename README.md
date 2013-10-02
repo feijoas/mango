@@ -27,7 +27,7 @@ resolvers ++= Seq(
     "Sonatype Releases" at "http://oss.sonatype.org/content/repositories/releases"
 )
 
-libraryDependencies += "org.feijoas" %% "mango" % "0.9"
+libraryDependencies += "org.feijoas" %% "mango" % "0.10"
 ```
 
 ## Examples 
@@ -166,6 +166,7 @@ Besides the [Scaladoc](http://feijoas.github.io/mango/scaladoc) there is an exce
  - [Preconditions](http://feijoas.github.io/mango/scaladoc/index.html#org.feijoas.mango.common.base.Preconditions$): Test preconditions for your methods more easily.
  - [Caches](http://feijoas.github.io/mango/scaladoc/index.html#org.feijoas.mango.common.cache.CacheBuilder$): Local caching, done right, and supporting a wide variety of expiration behaviors.
  - [Ranges](http://feijoas.github.io/mango/scaladoc/index.html#org.feijoas.mango.common.collect.Range$): RangeSets/RangeMaps query, merge and manipulate ranges
+ - [Primitives](http://feijoas.github.io/mango/scaladoc/index.html#org.feijoas.mango.common.primitives$): Unsigned Int, Long and Byte
 
 ## License 
 

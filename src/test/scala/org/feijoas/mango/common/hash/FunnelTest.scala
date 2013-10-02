@@ -15,9 +15,9 @@
  */
 
 /*
- * The code of this project is a port of (or wrapper around) the guava-libraries.
+ * The code of this project is a port of (or wrapper around) the Guava-libraries.
  *    See http://code.google.com/p/guava-libraries/
- * 
+ *
  * @author Markus Schneider
  */
 package org.feijoas.mango.common.hash
@@ -29,6 +29,7 @@ import org.scalatest.{ FlatSpec, PrivateMethodTester }
 import org.scalatest.matchers.ShouldMatchers
 import org.scalatest.mock.MockitoSugar
 import org.scalatest.prop.GeneratorDrivenPropertyChecks
+import org.scalatest.Matchers._
 
 import com.google.common.hash.{ Funnel => GuavaFunnel, Funnels => GuavaFunnels, PrimitiveSink }
 
@@ -37,7 +38,7 @@ import com.google.common.hash.{ Funnel => GuavaFunnel, Funnels => GuavaFunnels, 
  *  @author Markus Schneider
  *  @since 0.6 (copied from guava-libraries)
  */
-class FunnelTest extends FlatSpec with ShouldMatchers with PrivateMethodTester with MockitoSugar {
+class FunnelTest extends FlatSpec with PrivateMethodTester with MockitoSugar {
 
   it should "convert from Guava to Mango" in {
     val guava: GuavaFunnel[Integer] = GuavaFunnels.integerFunnel

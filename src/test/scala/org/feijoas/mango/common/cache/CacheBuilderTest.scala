@@ -15,28 +15,40 @@
  */
 
 /*
- * The code of this project is a port of (or wrapper around) the guava-libraries.
+ * The code of this project is a port of (or wrapper around) the Guava-libraries.
  *    See http://code.google.com/p/guava-libraries/
- * 
+ *
  * @author Markus Schneider
  */
 package org.feijoas.mango.common.cache
 
-import java.util.concurrent.TimeUnit.{ NANOSECONDS, SECONDS }
-import scala.reflect.runtime.universe
-import org.feijoas.mango.common.annotations.Beta
-import org.scalatest.{ FlatSpec, PrivateMethodTester }
-import org.scalatest.matchers.ShouldMatchers
-import com.google.common.cache.{ CacheBuilder => GuavaCacheBuilder }
+import java.util.concurrent.TimeUnit.NANOSECONDS
+import java.util.concurrent.TimeUnit.SECONDS
+
 import scala.actors.threadpool.AtomicInteger
+import scala.annotation.meta.beanGetter
+import scala.annotation.meta.beanSetter
+import scala.annotation.meta.field
+import scala.annotation.meta.getter
+import scala.annotation.meta.setter
+import scala.reflect.runtime.universe
+
+import org.feijoas.mango.common.annotations.Beta
 import org.feijoas.mango.common.base.Ticker
+import org.scalatest.FlatSpec
+import org.scalatest.Matchers.be
+import org.scalatest.Matchers.convertToAnyShouldWrapper
+import org.scalatest.Matchers.not
+import org.scalatest.PrivateMethodTester
+
+import com.google.common.cache.{CacheBuilder => GuavaCacheBuilder}
 
 /** Tests for [[CacheBuilder]]
  *
  *  @author Markus Schneider
  *  @since 0.7 (copied from guava-libraries)
  */
-class CacheBuilderTest extends FlatSpec with ShouldMatchers with PrivateMethodTester {
+class CacheBuilderTest extends FlatSpec with PrivateMethodTester {
 
   behavior of "CacheBuilder"
 
@@ -412,7 +424,7 @@ class CacheBuilderTest extends FlatSpec with ShouldMatchers with PrivateMethodTe
  *  access to the most-recently received one.
  */
 private case class CountingRemovalListener[K, V](val count: AtomicInteger = new AtomicInteger)
-    extends (RemovalNotification[K, V] => Unit) {
+  extends (RemovalNotification[K, V] => Unit) {
   @volatile var lastNotification: RemovalNotification[K, V] = null
 
   override def apply(notification: RemovalNotification[K, V]): Unit = onRemoval(notification)

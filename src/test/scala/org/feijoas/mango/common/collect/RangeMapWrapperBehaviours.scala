@@ -15,13 +15,18 @@
  */
 
 /*
- * The code of this project is a port of (or wrapper around) the guava-libraries.
+ * The code of this project is a port of (or wrapper around) the Guava-libraries.
  *    See http://code.google.com/p/guava-libraries/
- * 
+ *
  * @author Markus Schneider
  */
 package org.feijoas.mango.common.collect
 
+import scala.annotation.meta.beanGetter
+import scala.annotation.meta.beanSetter
+import scala.annotation.meta.field
+import scala.annotation.meta.getter
+import scala.annotation.meta.setter
 import scala.math.Ordering.Int
 
 import org.feijoas.mango.common.annotations.Beta
@@ -31,7 +36,6 @@ import org.mockito.Mockito.times
 import org.mockito.Mockito.verify
 import org.mockito.Mockito.when
 import org.scalatest.FreeSpec
-import org.scalatest.matchers.ShouldMatchers
 import org.scalatest.mock.MockitoSugar
 import org.scalatest.prop.PropertyChecks
 
@@ -39,7 +43,7 @@ import com.google.common.{ collect => gcc }
 
 /** Behavior which all [[RangeMapWrappers]] have in common
  */
-private[mango] trait RangeMapWrapperBehaviours extends FreeSpec with PropertyChecks with ShouldMatchers with MockitoSugar {
+private[mango] trait RangeMapWrapperBehaviours extends FreeSpec with PropertyChecks with MockitoSugar {
   this: FreeSpec =>
 
   def immutableWrapper[Repr <: RangeMapWrapperLike[Int, String, Int.type, Repr] with RangeMap[Int, String, Int.type]](constructor: (gcc.RangeMap[AsOrdered[Int], String]) => Repr) = {

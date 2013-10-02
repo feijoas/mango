@@ -15,21 +15,31 @@
  */
 
 /*
- * The code of this project is a port of (or wrapper around) the guava-libraries.
+ * The code of this project is a port of (or wrapper around) the Guava-libraries.
  *    See http://code.google.com/p/guava-libraries/
- * 
+ *
  * @author Markus Schneider
  */
 package org.feijoas.mango.common.hash
 
 import scala.annotation.implicitNotFound
-import scala.annotation.meta.{beanGetter, beanSetter, field, getter, setter}
+import scala.annotation.meta.beanGetter
+import scala.annotation.meta.beanSetter
+import scala.annotation.meta.field
+import scala.annotation.meta.getter
+import scala.annotation.meta.setter
 
 import org.feijoas.mango.common.annotations.Beta
-import org.feijoas.mango.common.hash.Funnel.{byteArrayFunnel, intFunnel, longFunnel, stringFunnel}
-import org.junit.Assert.{assertEquals, assertNotSame}
+import org.feijoas.mango.common.hash.Funnel.byteArrayFunnel
+import org.feijoas.mango.common.hash.Funnel.intFunnel
+import org.feijoas.mango.common.hash.Funnel.longFunnel
+import org.feijoas.mango.common.hash.Funnel.stringFunnel
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertNotSame
 import org.scalatest.FlatSpec
-import org.scalatest.matchers.ShouldMatchers
+import org.scalatest.Matchers.be
+import org.scalatest.Matchers.convertToAnyShouldWrapper
+import org.scalatest.Matchers.not
 import org.scalatest.mock.MockitoSugar
 
 import com.google.common.hash.PrimitiveSink
@@ -41,7 +51,7 @@ import com.google.common.testing.SerializableTester
  *  @author Markus Schneider
  *  @since 0.6 (copied from guava-libraries)
  */
-class BloomFilterTest extends FlatSpec with ShouldMatchers with MockitoSugar {
+class BloomFilterTest extends FlatSpec with MockitoSugar {
 
   it should "throw an exception if the arguments are out of range" in {
     intercept[IllegalArgumentException] {

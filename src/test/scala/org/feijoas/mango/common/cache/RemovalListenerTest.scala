@@ -15,9 +15,9 @@
  */
 
 /*
- * The code of this project is a port of (or wrapper around) the guava-libraries.
+ * The code of this project is a port of (or wrapper around) the Guava-libraries.
  *    See http://code.google.com/p/guava-libraries/
- * 
+ *
  * @author Markus Schneider
  */
 package org.feijoas.mango.common.cache
@@ -29,13 +29,14 @@ import com.google.common.cache.{ RemovalListener => GuavaRemovalListener }
 import com.google.common.cache.{ RemovalNotification => GuavaRemovalNotification }
 import com.google.common.cache.{ RemovalCause => GuavaRemovalCause }
 import org.feijoas.mango.common.cache.RemovalCause._
+import org.scalatest.Matchers._
 
 /** Tests for [[RemovalListener]]
  *
  *  @author Markus Schneider
  *  @since 0.7
  */
-class RemovalListenerTest extends FlatSpec with ShouldMatchers {
+class RemovalListenerTest extends FlatSpec {
 
   behavior of "RemovalListener"
 

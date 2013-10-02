@@ -15,18 +15,22 @@
  */
 
 /*
- * The code of this project is a port of (or wrapper around) the guava-libraries.
+ * The code of this project is a port of (or wrapper around) the Guava-libraries.
  *    See http://code.google.com/p/guava-libraries/
- * 
+ *
  * @author Markus Schneider
  */
 package org.feijoas.mango.common.collect
 
-import org.feijoas.mango.common.collect.BoundType._
+import org.feijoas.mango.common.collect.BoundType.Closed
+import org.feijoas.mango.common.collect.BoundType.Open
+import org.feijoas.mango.common.collect.BoundType.asGuavaBoundType
+import org.feijoas.mango.common.collect.BoundType.asMangoBoundType
 import org.scalatest.FunSuite
-import org.scalatest.matchers.ShouldMatchers
+import org.scalatest.Matchers.be
+import org.scalatest.Matchers.convertToAnyShouldWrapper
 
-import com.google.common.collect.{ BoundType => GuavaBoundType }
+import com.google.common.collect.{BoundType => GuavaBoundType}
 import com.google.common.testing.SerializableTester
 
 /** Tests for [[BoundType]]
@@ -34,7 +38,7 @@ import com.google.common.testing.SerializableTester
  *  @author Markus Schneider
  *  @since 0.8
  */
-class BoundTypeTest extends FunSuite with ShouldMatchers {
+class BoundTypeTest extends FunSuite {
 
   test("convert from Guava to Mango") {
     val gOpen: GuavaBoundType = GuavaBoundType.OPEN
