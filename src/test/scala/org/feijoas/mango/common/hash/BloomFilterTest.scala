@@ -55,19 +55,19 @@ class BloomFilterTest extends FlatSpec with MockitoSugar {
 
   it should "throw an exception if the arguments are out of range" in {
     intercept[IllegalArgumentException] {
-      BloomFilter.create[String](-1)
+      BloomFilter.create[CharSequence](-1)
     }
     intercept[IllegalArgumentException] {
-      BloomFilter.create[String](-1, 0.03)
+      BloomFilter.create[CharSequence](-1, 0.03)
     }
     intercept[IllegalArgumentException] {
-      BloomFilter.create[String](1, 0.0)
+      BloomFilter.create[CharSequence](1, 0.0)
     }
     intercept[IllegalArgumentException] {
-      BloomFilter.create[String](1, 1.0)
+      BloomFilter.create[CharSequence](1, 1.0)
     }
     intercept[NullPointerException] {
-      BloomFilter.create[String](1)(null)
+      BloomFilter.create[CharSequence](1)(null)
     }
   }
 
@@ -75,12 +75,12 @@ class BloomFilterTest extends FlatSpec with MockitoSugar {
     val n = 1000
     val p = 0.00000000000000000000000000000000000000000000000000000000000000000000000000000001
     intercept[IllegalArgumentException] {
-      BloomFilter.create[String](n, p)
+      BloomFilter.create[CharSequence](n, p)
     }
   }
 
   it should "be able to create a copy" in {
-    val original = BloomFilter.create[String](100)
+    val original = BloomFilter.create[CharSequence](100)
     val copy = original.copy
     assertNotSame(original, copy)
     assertEquals(original, copy)
@@ -88,11 +88,11 @@ class BloomFilterTest extends FlatSpec with MockitoSugar {
 
   it should "be equal to another instance with the same elements" in {
 
-    val bf1 = BloomFilter.create[String](100)
+    val bf1 = BloomFilter.create[CharSequence](100)
     bf1.put("1")
     bf1.put("2")
 
-    val bf2 = BloomFilter.create[String](100)
+    val bf2 = BloomFilter.create[CharSequence](100)
     bf2.put("1")
     bf2.put("2")
 
@@ -111,7 +111,7 @@ class BloomFilterTest extends FlatSpec with MockitoSugar {
   }
 
   it should "be serializeable" in {
-    SerializableTester.reserializeAndAssert(BloomFilter.create[String](100))
+    SerializableTester.reserializeAndAssert(BloomFilter.create[CharSequence](100))
     SerializableTester.reserializeAndAssert(BloomFilter.create[Int](100))
     SerializableTester.reserializeAndAssert(BloomFilter.create[Long](100))
     SerializableTester.reserializeAndAssert(BloomFilter.create[Array[Byte]](100))
@@ -194,7 +194,7 @@ class BloomFilterTest extends FlatSpec with MockitoSugar {
 
   it should "true if the bloom filter's bits changed" in {
     for (i <- 0 until 10) {
-      val bf = BloomFilter.create[String](100)
+      val bf = BloomFilter.create[CharSequence](100)
       for (j <- 0 until 10) {
         val value = new Object().toString()
         val mightContain = bf.mightContain(value)

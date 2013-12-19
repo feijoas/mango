@@ -5,8 +5,8 @@ import Dependencies._
 object BuildSettings {
 	
 	val buildOrganization = "org.feijoas"
-	val buildVersion      = "0.10" 
-	val buildScalaVersion = "2.10.2"
+	val buildVersion      = "0.11" 
+	val buildScalaVersion = "2.10.3"
 	val gitHeadCommitSha  = Process("git rev-parse HEAD").lines.head
 	val release           = sys.props("release")=="true"
 

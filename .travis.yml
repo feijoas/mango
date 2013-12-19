@@ -8,5 +8,4 @@ jdk:
   - openjdk7
   - oraclejdk7
 env:
-  - GUAVA_VERSION=14.0
-  - GUAVA_VERSION=14.0.1
+  - GUAVA_VERSION=15.0
