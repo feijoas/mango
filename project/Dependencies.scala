@@ -3,7 +3,7 @@ import Keys._
 
 object Dependencies {
   // this version of guava is used if no cmd-arg is given
-  val guavaDefaulVersion = "14.0.1"
+  val guavaDefaulVersion = "15.0"
 
   // set guava version by cmd-arg or default
   val guavaVersion = {

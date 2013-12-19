@@ -71,11 +71,11 @@ class FunnelTest extends FlatSpec with PrivateMethodTester with MockitoSugar {
     verify(primitiveSink).putBytes(Array[Byte](4, 3, 2, 1))
   }
 
-  it should "implement Funnel[String]" in {
+  it should "implement Funnel[CharSequence]" in {
     val primitiveSink = mock[PrimitiveSink]
-    val funnel = implicitly[Funnel[String]]
+    val funnel = implicitly[Funnel[CharSequence]]
     funnel.funnel("test", primitiveSink)
-    verify(primitiveSink).putString("test")
+    verify(primitiveSink).putUnencodedChars("test")
   }
 
   it should "implement Funnel[Int]" in {
