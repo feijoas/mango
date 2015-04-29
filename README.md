@@ -18,7 +18,7 @@ This is a beta version of the library. Many modules are not published yet becaus
 
 ## Downloading 
 
-Mango is programmed against `guava-14.0.1` using Scala 2.10. If you want to run the tests you will also need the `guava-testlib-14.0.1`.
+Mango is programmed against `guava-14.0.1` using Scala 2.11. If you want to run the tests you will also need the `guava-testlib-14.0.1`.
 
 To use the Mango library in [sbt](http://www.scala-sbt.org/) add the following dependency to your project file:
 ```Scala
