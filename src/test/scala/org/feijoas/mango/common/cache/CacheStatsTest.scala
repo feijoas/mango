@@ -24,7 +24,6 @@ package org.feijoas.mango.common.cache
 
 import org.feijoas.mango.common.cache.CacheStats._
 import org.scalacheck.Gen
-import org.scalacheck.Gen.value
 import org.scalatest.{ FlatSpec, ShouldMatchers }
 import org.scalatest.prop.GeneratorDrivenPropertyChecks
 

@@ -48,7 +48,7 @@ import scala.util.Failure
 import org.scalatest.BeforeAndAfter
 import com.google.common.util.concurrent.UncheckedExecutionException
 import java.util.concurrent.atomic.AtomicInteger
-import scala.ref.WeakReference
+import java.lang.ref.WeakReference
 import java.util.concurrent.TimeUnit
 import java.util.concurrent.CountDownLatch
 import java.io.IOException
@@ -999,22 +999,23 @@ class LoadingCacheWrapperTest extends FlatSpec
     removalListener.getCount should be(0)
   }
 
-  it should "reaload after value reclamation" in {
+  it should "reload after value reclamation" in {
     val countingLoader = new CountingLoader
     val cache = CacheBuilder.newBuilder()
       .weakValues().build(countingLoader)
     val map = cache.asMap()
-
+    val key = new java.lang.Integer(1)
+    
     val iterations = 10
-    var ref = new WeakReference[AnyRef](null)
+    var ref = new WeakReference[Any](null)
     var expectedComputations = 0
     for (i <- 0 until iterations) {
       // The entry should get garbage collected and recomputed.
       var oldValue = ref.get
-      if (oldValue == None) {
+      if (oldValue == null) {
         expectedComputations = expectedComputations + 1
       }
-      ref = new WeakReference[AnyRef](cache.getUnchecked(1))
+      ref = new WeakReference[Any](cache.getUnchecked(key))
       oldValue = None
       Thread.sleep(i)
       System.gc()
@@ -1024,11 +1025,11 @@ class LoadingCacheWrapperTest extends FlatSpec
     for (i <- 0 until iterations) {
       // The entry should get garbage collected and recomputed.
       var oldValue = ref.get
-      if (oldValue == None) {
+      if (oldValue == null) {
         expectedComputations = expectedComputations + 1
       }
-      cache.refresh(1)
-      ref = new WeakReference[AnyRef](map.get(1).get)
+      cache.refresh(key)
+      ref = new WeakReference[Any](map.get(key).get)
       oldValue = None
       Thread.sleep(i)
       System.gc()
