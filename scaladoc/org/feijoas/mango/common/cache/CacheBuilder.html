@@ -1,5 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<!DOCTYPE html >
 <html>
         <head>
           <title>CacheBuilder - Mango - org.feijoas.mango.common.cache.CacheBuilder</title>
@@ -9,6 +8,11 @@
           
       <link href="../../../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
       <link href="../../../../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
+      <script type="text/javascript" src="../../../../../lib/jquery.js" id="jquery-js"></script>
+      <script type="text/javascript" src="../../../../../lib/jquery-ui.js"></script>
+      <script type="text/javascript" src="../../../../../lib/template.js"></script>
+      <script type="text/javascript" src="../../../../../lib/tools.tooltip.js"></script>
+      
       <script type="text/javascript">
          if(top === self) {
             var url = '../../../../../index.html';
@@ -24,9 +28,17 @@
         </head>
         <body class="type">
       <div id="definition">
-        <a href="CacheBuilder$.html" title="Go to companion"><img src="../../../../../lib/class_to_object_big.png" /></a>
+        <a href="CacheBuilder$.html" title="See companion object"><img src="../../../../../lib/class_to_object_big.png" /></a>
         <p id="owner"><a href="../../../../package.html" class="extype" name="org">org</a>.<a href="../../../package.html" class="extype" name="org.feijoas">feijoas</a>.<a href="../../package.html" class="extype" name="org.feijoas.mango">mango</a>.<a href="../package.html" class="extype" name="org.feijoas.mango.common">common</a>.<a href="package.html" class="extype" name="org.feijoas.mango.common.cache">cache</a></p>
-        <h1><a href="CacheBuilder$.html" title="Go to companion">CacheBuilder</a></h1>
+        <h1><a href="CacheBuilder$.html" title="See companion object">CacheBuilder</a></h1><h3><span class="morelinks"><div>
+            Related Docs:
+            <a href="CacheBuilder$.html" title="See companion object">object CacheBuilder</a>
+            | <a href="package.html" class="extype" name="org.feijoas.mango.common.cache">package cache</a>
+          </div></span></h3><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.cache.CacheBuilder" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       </div>
 
       <h4 id="signature" class="signature">
@@ -40,9 +52,9 @@
       </h4>
       
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>A builder of <a href="LoadingCache.html" class="extype" name="org.feijoas.mango.common.cache.LoadingCache">LoadingCache</a> and <a href="Cache.html" class="extype" name="org.feijoas.mango.common.cache.Cache">Cache</a> instances having any combination of the
- following features:</p><ul><li>automatic loading of entries into the cache</li><li>least-recently-used eviction when a maximum size is exceeded</li><li>time-based expiration of entries, measured since last access or last write</li><li>keys automatically wrapped in <code>plain WeakReference weak</code> references</li><li>values automatically wrapped in <code>plain WeakReference weak</code> or
-    <code>plain SoftReference soft</code> references</li><li>notification of evicted (or otherwise removed) entries</li><li>accumulation of cache access statistics</li></ul><p> These features are all optional; caches can be created using all or none of them. By default
- cache instances created by <code> CacheBuilder</code> will not perform any type of eviction.</p><p> Usage example:</p><pre><span class="kw">val</span> createExpensiveGraph: Key <span class="kw">=&gt;</span> Graph = ...
+ following features:</p><ul><li>automatic loading of entries into the cache</li><li>least-recently-used eviction when a maximum size is exceeded</li><li>time-based expiration of entries, measured since last access or last write</li><li>keys automatically wrapped in <span class="extype" name="WeakReference">weak</span> references</li><li>values automatically wrapped in <span class="extype" name="WeakReference">weak</span> or
+    <span class="extype" name="SoftReference">soft</span> references</li><li>notification of evicted (or otherwise removed) entries</li><li>accumulation of cache access statistics</li></ul><p> These features are all optional; caches can be created using all or none of them. By default
+ cache instances created by <code>CacheBuilder</code> will not perform any type of eviction.</p><p> Usage example:</p><pre><span class="kw">val</span> createExpensiveGraph: Key <span class="kw">=&gt;</span> Graph = ...
 
 <span class="kw">val</span> graphs: LoadingCache[Key, Graph] = CacheBuilder.newBuilder()
     .maximumSize(<span class="num">10000</span>)
@@ -121,19 +133,6 @@
         <div id="values" class="values members">
               <h3>Value Members</h3>
               <ol><li name="scala.AnyRef#!=" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="!=(x$1:AnyRef):Boolean"></a>
-      <a id="!=(AnyRef):Boolean"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier">final </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span title="gt4s: $bang$eq" class="name">!=</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="scala.Any#!=" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="!=(x$1:Any):Boolean"></a>
       <a id="!=(Any):Boolean"></a>
       <h4 class="signature">
@@ -144,8 +143,12 @@
       <span class="symbol">
         <span title="gt4s: $bang$eq" class="name">!=</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.cache.CacheBuilder@!=(x$1:Any):Boolean" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="scala.AnyRef###" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="##():Int"></a>
       <a id="##():Int"></a>
@@ -157,22 +160,13 @@
       <span class="symbol">
         <span title="gt4s: $hash$hash" class="name">##</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.cache.CacheBuilder@##():Int" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="scala.AnyRef#==" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="==(x$1:AnyRef):Boolean"></a>
-      <a id="==(AnyRef):Boolean"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier">final </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span title="gt4s: $eq$eq" class="name">==</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="scala.Any#==" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="==(x$1:Any):Boolean"></a>
       <a id="==(Any):Boolean"></a>
       <h4 class="signature">
@@ -183,8 +177,12 @@
       <span class="symbol">
         <span title="gt4s: $eq$eq" class="name">==</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.cache.CacheBuilder@==(x$1:Any):Boolean" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="scala.Any#asInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="asInstanceOf[T0]:T0"></a>
       <a id="asInstanceOf[T0]:T0"></a>
@@ -196,7 +194,11 @@
       <span class="symbol">
         <span class="name">asInstanceOf</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="result">: <span class="extype" name="scala.Any.asInstanceOf.T0">T0</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.cache.CacheBuilder@asInstanceOf[T0]:T0" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
     </li><li name="org.feijoas.mango.common.cache.CacheBuilder#build" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="build[K1&lt;:K,V1&lt;:V](loader:org.feijoas.mango.common.cache.CacheLoader[K1,V1]):org.feijoas.mango.common.cache.LoadingCache[K1,V1]"></a>
@@ -209,7 +211,11 @@
       <span class="symbol">
         <span class="name">build</span><span class="tparams">[<span name="K1">K1 &lt;: <span class="extype" name="org.feijoas.mango.common.cache.CacheBuilder.K">K</span></span>, <span name="V1">V1 &lt;: <span class="extype" name="org.feijoas.mango.common.cache.CacheBuilder.V">V</span></span>]</span><span class="params">(<span name="loader">loader: <a href="CacheLoader.html" class="extype" name="org.feijoas.mango.common.cache.CacheLoader">CacheLoader</a>[<span class="extype" name="org.feijoas.mango.common.cache.CacheBuilder.build.K1">K1</span>, <span class="extype" name="org.feijoas.mango.common.cache.CacheBuilder.build.V1">V1</span>]</span>)</span><span class="result">: <a href="LoadingCache.html" class="extype" name="org.feijoas.mango.common.cache.LoadingCache">LoadingCache</a>[<span class="extype" name="org.feijoas.mango.common.cache.CacheBuilder.build.K1">K1</span>, <span class="extype" name="org.feijoas.mango.common.cache.CacheBuilder.build.V1">V1</span>]</span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.cache.CacheBuilder@build[K1&lt;:K,V1&lt;:V](loader:org.feijoas.mango.common.cache.CacheLoader[K1,V1]):org.feijoas.mango.common.cache.LoadingCache[K1,V1]" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Builds a cache, which either returns an already-loaded value for a given key or atomically
  computes or retrieves it using the supplied <a href="CacheLoader.html" class="extype" name="org.feijoas.mango.common.cache.CacheLoader">CacheLoader</a>.</p><div class="fullcomment"><div class="comment cmt"><p>Builds a cache, which either returns an already-loaded value for a given key or atomically
  computes or retrieves it using the supplied <a href="CacheLoader.html" class="extype" name="org.feijoas.mango.common.cache.CacheLoader">CacheLoader</a>. If another thread is currently
@@ -229,7 +235,11 @@
       <span class="symbol">
         <span class="name">build</span><span class="tparams">[<span name="K1">K1 &lt;: <span class="extype" name="org.feijoas.mango.common.cache.CacheBuilder.K">K</span></span>, <span name="V1">V1 &lt;: <span class="extype" name="org.feijoas.mango.common.cache.CacheBuilder.V">V</span></span>]</span><span class="params">(<span name="loader">loader: (<span class="extype" name="org.feijoas.mango.common.cache.CacheBuilder.build.K1">K1</span>) ⇒ <span class="extype" name="org.feijoas.mango.common.cache.CacheBuilder.build.V1">V1</span></span>)</span><span class="result">: <a href="LoadingCache.html" class="extype" name="org.feijoas.mango.common.cache.LoadingCache">LoadingCache</a>[<span class="extype" name="org.feijoas.mango.common.cache.CacheBuilder.build.K1">K1</span>, <span class="extype" name="org.feijoas.mango.common.cache.CacheBuilder.build.V1">V1</span>]</span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.cache.CacheBuilder@build[K1&lt;:K,V1&lt;:V](loader:K1=&gt;V1):org.feijoas.mango.common.cache.LoadingCache[K1,V1]" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Builds a cache, which either returns an already-loaded value for a given key or atomically
  computes or retrieves it using the supplied <code>loader</code> (the function used to compute corresponding values).</p><div class="fullcomment"><div class="comment cmt"><p>Builds a cache, which either returns an already-loaded value for a given key or atomically
  computes or retrieves it using the supplied <code>loader</code> (the function used to compute corresponding values).
@@ -250,7 +260,11 @@
       <span class="symbol">
         <span class="name">build</span><span class="tparams">[<span name="K1">K1 &lt;: <span class="extype" name="org.feijoas.mango.common.cache.CacheBuilder.K">K</span></span>, <span name="V1">V1 &lt;: <span class="extype" name="org.feijoas.mango.common.cache.CacheBuilder.V">V</span></span>]</span><span class="params">()</span><span class="result">: <a href="Cache.html" class="extype" name="org.feijoas.mango.common.cache.Cache">Cache</a>[<span class="extype" name="org.feijoas.mango.common.cache.CacheBuilder.build.K1">K1</span>, <span class="extype" name="org.feijoas.mango.common.cache.CacheBuilder.build.V1">V1</span>]</span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.cache.CacheBuilder@build[K1&lt;:K,V1&lt;:V]():org.feijoas.mango.common.cache.Cache[K1,V1]" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Builds a cache which does not automatically load values when keys are requested.</p><div class="fullcomment"><div class="comment cmt"><p>Builds a cache which does not automatically load values when keys are requested.</p><p>Consider <code>build(CacheLoader)</code> instead, if it is feasible to implement a
  <a href="CacheLoader.html" class="extype" name="org.feijoas.mango.common.cache.CacheLoader">CacheLoader</a>.</p><p>This method does not alter the state of this <a href="" class="extype" name="org.feijoas.mango.common.cache.CacheBuilder">CacheBuilder</a> instance, so it can be
  invoked again to create multiple independent caches.
@@ -267,7 +281,11 @@
       <span class="symbol">
         <span class="name">clone</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.cache.CacheBuilder@clone():Object" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
                 <span class="name">@throws</span><span class="args">(<span>
       
@@ -286,7 +304,11 @@
       <span class="symbol">
         <span class="name">concurrencyLevel</span><span class="params">(<span name="concurrencyLevel">concurrencyLevel: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <a href="" class="extype" name="org.feijoas.mango.common.cache.CacheBuilder">CacheBuilder</a>[<span class="extype" name="org.feijoas.mango.common.cache.CacheBuilder.K">K</span>, <span class="extype" name="org.feijoas.mango.common.cache.CacheBuilder.V">V</span>]</span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.cache.CacheBuilder@concurrencyLevel(concurrencyLevel:Int):org.feijoas.mango.common.cache.CacheBuilder[K,V]" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Guides the allowed concurrency among update operations.</p><div class="fullcomment"><div class="comment cmt"><p>Guides the allowed concurrency among update operations. Used as a hint for internal sizing. The
  table is internally partitioned to try to permit the indicated number of concurrent updates
  without contention. Because assignment of entries to these partitions is not necessarily
@@ -306,7 +328,7 @@
  uncommon to specify <code>concurrencyLevel(1)</code> in order to achieve more deterministic eviction
  behavior.</p><p>Note that future implementations may abandon segment locking in favor of more advanced
  concurrency controls.
-</p></div><dl class="attributes block"> <dt>Exceptions thrown</dt><dd><span class="cmt">IllegalArgumentException<p>if <code> concurrencyLevel</code> is nonpositive
+</p></div><dl class="attributes block"> <dt>Exceptions thrown</dt><dd><span class="cmt"><p><span class="extype" name="IllegalArgumentException"><code>IllegalArgumentException</code></span> if <code>concurrencyLevel</code> is nonpositive
 </p></span></dd></dl></div>
     </li><li name="scala.AnyRef#eq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a>
@@ -319,7 +341,11 @@
       <span class="symbol">
         <span class="name">eq</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.cache.CacheBuilder@eq(x$1:AnyRef):Boolean" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
     </li><li name="org.feijoas.mango.common.cache.CacheBuilder#expireAfterAccess" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="expireAfterAccess(duration:Long,unit:concurrent.duration.TimeUnit):org.feijoas.mango.common.cache.CacheBuilder[K,V]"></a>
@@ -332,7 +358,11 @@
       <span class="symbol">
         <span class="name">expireAfterAccess</span><span class="params">(<span name="duration">duration: <span class="extype" name="scala.Long">Long</span></span>, <span name="unit">unit: <span class="extype" name="scala.concurrent.duration.TimeUnit">TimeUnit</span></span>)</span><span class="result">: <a href="" class="extype" name="org.feijoas.mango.common.cache.CacheBuilder">CacheBuilder</a>[<span class="extype" name="org.feijoas.mango.common.cache.CacheBuilder.K">K</span>, <span class="extype" name="org.feijoas.mango.common.cache.CacheBuilder.V">V</span>]</span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.cache.CacheBuilder@expireAfterAccess(duration:Long,unit:concurrent.duration.TimeUnit):org.feijoas.mango.common.cache.CacheBuilder[K,V]" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Specifies that each entry should be automatically removed from the cache once a fixed duration
  has elapsed after the entry's creation, the most recent replacement of its value, or its last
  access.</p><div class="fullcomment"><div class="comment cmt"><p>Specifies that each entry should be automatically removed from the cache once a fixed duration
@@ -344,7 +374,7 @@
  write operations. Expired entries are cleaned up as part of the routine maintenance described
  in the class doc.
 </p></div><dl class="paramcmts block"><dt class="param">duration</dt><dd class="cmt"><p>the length of time after an entry is last accessed that it should be
-    automatically removed</p></dd><dt class="param">unit</dt><dd class="cmt"><p>the unit that <code> duration</code> is expressed in</p></dd></dl><dl class="attributes block"> <dt>Exceptions thrown</dt><dd><span class="cmt">IllegalArgumentException<p>if <code> duration</code> is negative
+    automatically removed</p></dd><dt class="param">unit</dt><dd class="cmt"><p>the unit that <code>duration</code> is expressed in</p></dd></dl><dl class="attributes block"> <dt>Exceptions thrown</dt><dd><span class="cmt"><p><span class="extype" name="IllegalArgumentException"><code>IllegalArgumentException</code></span> if <code>duration</code> is negative
 </p></span></dd></dl></div>
     </li><li name="org.feijoas.mango.common.cache.CacheBuilder#expireAfterWrite" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="expireAfterWrite(duration:Long,unit:concurrent.duration.TimeUnit):org.feijoas.mango.common.cache.CacheBuilder[K,V]"></a>
@@ -357,17 +387,21 @@
       <span class="symbol">
         <span class="name">expireAfterWrite</span><span class="params">(<span name="duration">duration: <span class="extype" name="scala.Long">Long</span></span>, <span name="unit">unit: <span class="extype" name="scala.concurrent.duration.TimeUnit">TimeUnit</span></span>)</span><span class="result">: <a href="" class="extype" name="org.feijoas.mango.common.cache.CacheBuilder">CacheBuilder</a>[<span class="extype" name="org.feijoas.mango.common.cache.CacheBuilder.K">K</span>, <span class="extype" name="org.feijoas.mango.common.cache.CacheBuilder.V">V</span>]</span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.cache.CacheBuilder@expireAfterWrite(duration:Long,unit:concurrent.duration.TimeUnit):org.feijoas.mango.common.cache.CacheBuilder[K,V]" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Specifies that each entry should be automatically removed from the cache once a fixed duration
  has elapsed after the entry's creation, or the most recent replacement of its value.</p><div class="fullcomment"><div class="comment cmt"><p>Specifies that each entry should be automatically removed from the cache once a fixed duration
  has elapsed after the entry's creation, or the most recent replacement of its value.</p><p>When <code>duration</code> is zero, this method hands off to
  <code>maximumSize(Long)</code> <code>(0)</code>, ignoring any otherwise-specificed maximum
  size or weight. This can be useful in testing, or to disable caching temporarily without a code
- change.</p><p>Expired entries may be counted in <code> Cache#size</code>, but will never be visible to read or
+ change.</p><p>Expired entries may be counted in <code><a href="Cache.html#size():Long" class="extmbr" name="org.feijoas.mango.common.cache.Cache#size">Cache#size</a></code>, but will never be visible to read or
  write operations. Expired entries are cleaned up as part of the routine maintenance described
  in the class doc.
 </p></div><dl class="paramcmts block"><dt class="param">duration</dt><dd class="cmt"><p>the length of time after an entry is created that it should be automatically
-    removed</p></dd><dt class="param">unit</dt><dd class="cmt"><p>the unit that <code> duration</code> is expressed in</p></dd></dl><dl class="attributes block"> <dt>Exceptions thrown</dt><dd><span class="cmt">IllegalArgumentException<p>if <code> duration</code> is negative
+    removed</p></dd><dt class="param">unit</dt><dd class="cmt"><p>the unit that <code>duration</code> is expressed in</p></dd></dl><dl class="attributes block"> <dt>Exceptions thrown</dt><dd><span class="cmt"><p><span class="extype" name="IllegalArgumentException"><code>IllegalArgumentException</code></span> if <code>duration</code> is negative
 </p></span></dd></dl></div>
     </li><li name="scala.AnyRef#finalize" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="finalize():Unit"></a>
@@ -380,7 +414,11 @@
       <span class="symbol">
         <span class="name">finalize</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.cache.CacheBuilder@finalize():Unit" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
                 <span class="name">@throws</span><span class="args">(<span>
       
@@ -399,7 +437,11 @@
       <span class="symbol">
         <span class="name">getClass</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.Class">Class</span>[_]</span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.cache.CacheBuilder@getClass():Class[_]" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="org.feijoas.mango.common.cache.CacheBuilder#initialCapacity" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="initialCapacity(initialCapacity:Int):org.feijoas.mango.common.cache.CacheBuilder[K,V]"></a>
@@ -412,13 +454,17 @@
       <span class="symbol">
         <span class="name">initialCapacity</span><span class="params">(<span name="initialCapacity">initialCapacity: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <a href="" class="extype" name="org.feijoas.mango.common.cache.CacheBuilder">CacheBuilder</a>[<span class="extype" name="org.feijoas.mango.common.cache.CacheBuilder.K">K</span>, <span class="extype" name="org.feijoas.mango.common.cache.CacheBuilder.V">V</span>]</span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.cache.CacheBuilder@initialCapacity(initialCapacity:Int):org.feijoas.mango.common.cache.CacheBuilder[K,V]" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Sets the minimum total size for the internal hash tables.</p><div class="fullcomment"><div class="comment cmt"><p>Sets the minimum total size for the internal hash tables. For example, if the initial capacity
  is <code>60</code>, and the concurrency level is <code>8</code>, then eight segments are created, each
  having a hash table of size eight. Providing a large enough estimate at construction time
  avoids the need for expensive resizing operations later, but setting this value unnecessarily
  high wastes memory.
-</p></div><dl class="attributes block"> <dt>Exceptions thrown</dt><dd><span class="cmt">IllegalArgumentException<p>if <code> initialCapacity</code> is negative
+</p></div><dl class="attributes block"> <dt>Exceptions thrown</dt><dd><span class="cmt"><p><span class="extype" name="IllegalArgumentException"><code>IllegalArgumentException</code></span> if <code>initialCapacity</code> is negative
 </p></span></dd></dl></div>
     </li><li name="scala.Any#isInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="isInstanceOf[T0]:Boolean"></a>
@@ -431,7 +477,11 @@
       <span class="symbol">
         <span class="name">isInstanceOf</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.cache.CacheBuilder@isInstanceOf[T0]:Boolean" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
     </li><li name="org.feijoas.mango.common.cache.CacheBuilder#maximumSize" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="maximumSize(size:Long):org.feijoas.mango.common.cache.CacheBuilder[K,V]"></a>
@@ -444,13 +494,17 @@
       <span class="symbol">
         <span class="name">maximumSize</span><span class="params">(<span name="size">size: <span class="extype" name="scala.Long">Long</span></span>)</span><span class="result">: <a href="" class="extype" name="org.feijoas.mango.common.cache.CacheBuilder">CacheBuilder</a>[<span class="extype" name="org.feijoas.mango.common.cache.CacheBuilder.K">K</span>, <span class="extype" name="org.feijoas.mango.common.cache.CacheBuilder.V">V</span>]</span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.cache.CacheBuilder@maximumSize(size:Long):org.feijoas.mango.common.cache.CacheBuilder[K,V]" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Specifies the maximum number of entries the cache may contain.</p><div class="fullcomment"><div class="comment cmt"><p>Specifies the maximum number of entries the cache may contain. Note that the cache <b>may evict
  an entry before this limit is exceeded</b>. As the cache size grows close to the maximum, the
  cache evicts entries that are less likely to be used again. For example, the cache may evict an
  entry because it hasn't been used recently or very often.</p><p>When <code>size</code> is zero, elements will be evicted immediately after being loaded into the
  cache. This can be useful in testing, or to disable caching temporarily without a code change.</p><p>This feature cannot be used in conjunction with <code>maximumWeight</code>.
-</p></div><dl class="paramcmts block"><dt class="param">size</dt><dd class="cmt"><p>the maximum size of the cache</p></dd></dl><dl class="attributes block"> <dt>Exceptions thrown</dt><dd><span class="cmt">IllegalArgumentException<p>if <code>size</code> is negative
+</p></div><dl class="paramcmts block"><dt class="param">size</dt><dd class="cmt"><p>the maximum size of the cache</p></dd></dl><dl class="attributes block"> <dt>Exceptions thrown</dt><dd><span class="cmt"><p><span class="extype" name="IllegalArgumentException"><code>IllegalArgumentException</code></span> if <code>size</code> is negative
 </p></span></dd></dl></div>
     </li><li name="org.feijoas.mango.common.cache.CacheBuilder#maximumWeight" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="maximumWeight(weight:Long):org.feijoas.mango.common.cache.CacheBuilder[K,V]"></a>
@@ -463,17 +517,21 @@
       <span class="symbol">
         <span class="name">maximumWeight</span><span class="params">(<span name="weight">weight: <span class="extype" name="scala.Long">Long</span></span>)</span><span class="result">: <a href="" class="extype" name="org.feijoas.mango.common.cache.CacheBuilder">CacheBuilder</a>[<span class="extype" name="org.feijoas.mango.common.cache.CacheBuilder.K">K</span>, <span class="extype" name="org.feijoas.mango.common.cache.CacheBuilder.V">V</span>]</span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.cache.CacheBuilder@maximumWeight(weight:Long):org.feijoas.mango.common.cache.CacheBuilder[K,V]" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Specifies the maximum weight of entries the cache may contain.</p><div class="fullcomment"><div class="comment cmt"><p>Specifies the maximum weight of entries the cache may contain. Weight is determined using the
  <code>weigher</code> specified with <code>weigher((K1, V1) =&gt; Int)</code>, and use of this method requires a
  corresponding call to <code>weigher</code> prior to calling <code>build</code>.</p><p>Note that the cache <b>may evict an entry before this limit is exceeded</b>. As the cache
  size grows close to the maximum, the cache evicts entries that are less likely to be used
  again. For example, the cache may evict an entry because it hasn't been used recently or very
- often.</p><p>When <code> weight</code> is zero, elements will be evicted immediately after being loaded into
+ often.</p><p>When <code>weight</code> is zero, elements will be evicted immediately after being loaded into
  cache. This can be useful in testing, or to disable caching temporarily without a code
  change.</p><p>Note that weight is only used to determine whether the cache is over capacity; it has no
  effect on selecting which entry should be evicted next.</p><p>This feature cannot be used in conjunction with <code>maximumSize</code>.
-</p></div><dl class="paramcmts block"><dt class="param">weight</dt><dd class="cmt"><p>the maximum total weight of entries the cache may contain</p></dd></dl><dl class="attributes block"> <dt>Exceptions thrown</dt><dd><span class="cmt">IllegalArgumentException<p>if <code> weight</code> is negative
+</p></div><dl class="paramcmts block"><dt class="param">weight</dt><dd class="cmt"><p>the maximum total weight of entries the cache may contain</p></dd></dl><dl class="attributes block"> <dt>Exceptions thrown</dt><dd><span class="cmt"><p><span class="extype" name="IllegalArgumentException"><code>IllegalArgumentException</code></span> if <code>weight</code> is negative
 </p></span></dd></dl></div>
     </li><li name="scala.AnyRef#ne" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ne(x$1:AnyRef):Boolean"></a>
@@ -486,7 +544,11 @@
       <span class="symbol">
         <span class="name">ne</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.cache.CacheBuilder@ne(x$1:AnyRef):Boolean" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
     </li><li name="scala.AnyRef#notify" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="notify():Unit"></a>
@@ -499,7 +561,11 @@
       <span class="symbol">
         <span class="name">notify</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.cache.CacheBuilder@notify():Unit" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
     </li><li name="scala.AnyRef#notifyAll" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="notifyAll():Unit"></a>
@@ -512,7 +578,11 @@
       <span class="symbol">
         <span class="name">notifyAll</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.cache.CacheBuilder@notifyAll():Unit" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
     </li><li name="org.feijoas.mango.common.cache.CacheBuilder#recordStats" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="recordStats():org.feijoas.mango.common.cache.CacheBuilder[K,V]"></a>
@@ -525,7 +595,11 @@
       <span class="symbol">
         <span class="name">recordStats</span><span class="params">()</span><span class="result">: <a href="" class="extype" name="org.feijoas.mango.common.cache.CacheBuilder">CacheBuilder</a>[<span class="extype" name="org.feijoas.mango.common.cache.CacheBuilder.K">K</span>, <span class="extype" name="org.feijoas.mango.common.cache.CacheBuilder.V">V</span>]</span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.cache.CacheBuilder@recordStats():org.feijoas.mango.common.cache.CacheBuilder[K,V]" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Enable the accumulation of <a href="CacheStats.html" class="extype" name="org.feijoas.mango.common.cache.CacheStats">CacheStats</a> during the operation of the cache.</p><div class="fullcomment"><div class="comment cmt"><p>Enable the accumulation of <a href="CacheStats.html" class="extype" name="org.feijoas.mango.common.cache.CacheStats">CacheStats</a> during the operation of the cache. Without this
  <code>Cache.stats()</code> will return zero for all statistics. Note that recording stats requires
  bookkeeping to be performed with each operation, and thus imposes a performance penalty on
@@ -542,7 +616,11 @@
       <span class="symbol">
         <span class="name">refreshAfterWrite</span><span class="params">(<span name="duration">duration: <span class="extype" name="scala.Long">Long</span></span>, <span name="unit">unit: <span class="extype" name="scala.concurrent.duration.TimeUnit">TimeUnit</span></span>)</span><span class="result">: <a href="" class="extype" name="org.feijoas.mango.common.cache.CacheBuilder">CacheBuilder</a>[<span class="extype" name="org.feijoas.mango.common.cache.CacheBuilder.K">K</span>, <span class="extype" name="org.feijoas.mango.common.cache.CacheBuilder.V">V</span>]</span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.cache.CacheBuilder@refreshAfterWrite(duration:Long,unit:concurrent.duration.TimeUnit):org.feijoas.mango.common.cache.CacheBuilder[K,V]" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Specifies that active entries are eligible for automatic refresh once a fixed duration has
  elapsed after the entry's creation, or the most recent replacement of its value.</p><div class="fullcomment"><div class="comment cmt"><p>Specifies that active entries are eligible for automatic refresh once a fixed duration has
  elapsed after the entry's creation, or the most recent replacement of its value. The semantics
@@ -555,7 +633,7 @@
  and immediately return the new value if the returned future is complete, and the old value
  otherwise.</p><p><b>Note:</b> <i>all exceptions thrown during refresh will be logged and then swallowed</i>.
 </p></div><dl class="paramcmts block"><dt class="param">duration</dt><dd class="cmt"><p>the length of time after an entry is created that it should be considered
-    stale, and thus eligible for refresh</p></dd><dt class="param">unit</dt><dd class="cmt"><p>the unit that <code>duration</code> is expressed in</p></dd></dl><dl class="attributes block"> <dt>Exceptions thrown</dt><dd><span class="cmt">IllegalArgumentException<p>if <code>duration</code> is negative
+    stale, and thus eligible for refresh</p></dd><dt class="param">unit</dt><dd class="cmt"><p>the unit that <code>duration</code> is expressed in</p></dd></dl><dl class="attributes block"> <dt>Exceptions thrown</dt><dd><span class="cmt"><p><span class="extype" name="IllegalArgumentException"><code>IllegalArgumentException</code></span> if <code>duration</code> is negative
 </p></span></dd></dl></div>
     </li><li name="org.feijoas.mango.common.cache.CacheBuilder#removalListener" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="removalListener[K1&lt;:K,V1&lt;:V](listener:org.feijoas.mango.common.cache.RemovalNotification[K1,V1]=&gt;Unit):org.feijoas.mango.common.cache.CacheBuilder[K1,V1]"></a>
@@ -568,13 +646,17 @@
       <span class="symbol">
         <span class="name">removalListener</span><span class="tparams">[<span name="K1">K1 &lt;: <span class="extype" name="org.feijoas.mango.common.cache.CacheBuilder.K">K</span></span>, <span name="V1">V1 &lt;: <span class="extype" name="org.feijoas.mango.common.cache.CacheBuilder.V">V</span></span>]</span><span class="params">(<span name="listener">listener: (<a href="RemovalNotification.html" class="extype" name="org.feijoas.mango.common.cache.RemovalNotification">RemovalNotification</a>[<span class="extype" name="org.feijoas.mango.common.cache.CacheBuilder.removalListener.K1">K1</span>, <span class="extype" name="org.feijoas.mango.common.cache.CacheBuilder.removalListener.V1">V1</span>]) ⇒ <span class="extype" name="scala.Unit">Unit</span></span>)</span><span class="result">: <a href="" class="extype" name="org.feijoas.mango.common.cache.CacheBuilder">CacheBuilder</a>[<span class="extype" name="org.feijoas.mango.common.cache.CacheBuilder.removalListener.K1">K1</span>, <span class="extype" name="org.feijoas.mango.common.cache.CacheBuilder.removalListener.V1">V1</span>]</span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.cache.CacheBuilder@removalListener[K1&lt;:K,V1&lt;:V](listener:org.feijoas.mango.common.cache.RemovalNotification[K1,V1]=&gt;Unit):org.feijoas.mango.common.cache.CacheBuilder[K1,V1]" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Specifies a listener instance that caches should notify each time an entry is removed for any
  <a href="RemovalCause.html" class="extype" name="org.feijoas.mango.common.cache.RemovalCause">RemovalCause</a> reason.</p><div class="fullcomment"><div class="comment cmt"><p>Specifies a listener instance that caches should notify each time an entry is removed for any
  <a href="RemovalCause.html" class="extype" name="org.feijoas.mango.common.cache.RemovalCause">RemovalCause</a> reason. Each cache created by this builder will invoke this listener
  as part of the routine maintenance described in the class documentation above.</p><p><b>Warning:</b> any exception thrown by <code>listener</code> will <i>not</i> be propagated to
  the <a href="Cache.html" class="extype" name="org.feijoas.mango.common.cache.Cache">Cache</a> user, only logged via a <code>Logger</code>.
-</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>the cache builder reference that should be used instead of <code> this</code> for any
+</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>the cache builder reference that should be used instead of <code>this</code> for any
     remaining configuration and cache building
 </p></dd></dl></div>
     </li><li name="org.feijoas.mango.common.cache.CacheBuilder#softValues" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -588,13 +670,16 @@
       <span class="symbol">
         <span class="name">softValues</span><span class="params">()</span><span class="result">: <a href="" class="extype" name="org.feijoas.mango.common.cache.CacheBuilder">CacheBuilder</a>[<span class="extype" name="org.feijoas.mango.common.cache.CacheBuilder.K">K</span>, <span class="extype" name="org.feijoas.mango.common.cache.CacheBuilder.V">V</span>]</span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.cache.CacheBuilder@softValues():org.feijoas.mango.common.cache.CacheBuilder[K,V]" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Specifies that each value (not key) stored in the cache should be wrapped in a
  <code>SoftReference</code> (by default, strong references are used).</p><div class="fullcomment"><div class="comment cmt"><p>Specifies that each value (not key) stored in the cache should be wrapped in a
  <code>SoftReference</code> (by default, strong references are used). Softly-referenced objects will
  be garbage-collected in a <i>globally</i> least-recently-used manner, in response to memory
- demand.</p><p><b>Warning:</b> in most circumstances it is better to set a per-cache <code>plain
- #maximumSize(long) maximum size</code> instead of using soft references. You should only use this
+ demand.</p><p><b>Warning:</b> in most circumstances it is better to set a per-cache <span class="extype" name="">#maximumSize(long) maximum size</span> instead of using soft references. You should only use this
  method if you are well familiar with the practical consequences of soft references.</p><p><b>Note:</b> when this method is used, the resulting cache will use identity (<code>eq</code>)
  comparison to determine equality of values.</p><p>Entries with values that have been garbage collected may be counted in <code>Cache.size()</code>,
  but will never be visible to read or write operations; such entries are cleaned up as part of
@@ -611,7 +696,11 @@
       <span class="symbol">
         <span class="name">synchronized</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="params">(<span name="arg0">arg0: ⇒ <span class="extype" name="java.lang.AnyRef.synchronized.T0">T0</span></span>)</span><span class="result">: <span class="extype" name="java.lang.AnyRef.synchronized.T0">T0</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.cache.CacheBuilder@synchronized[T0](x$1:=&gt;T0):T0" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
     </li><li name="org.feijoas.mango.common.cache.CacheBuilder#ticker" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ticker(ticker:org.feijoas.mango.common.base.Ticker):org.feijoas.mango.common.cache.CacheBuilder[K,V]"></a>
@@ -624,12 +713,16 @@
       <span class="symbol">
         <span class="name">ticker</span><span class="params">(<span name="ticker">ticker: <a href="../base/Ticker.html" class="extype" name="org.feijoas.mango.common.base.Ticker">Ticker</a></span>)</span><span class="result">: <a href="" class="extype" name="org.feijoas.mango.common.cache.CacheBuilder">CacheBuilder</a>[<span class="extype" name="org.feijoas.mango.common.cache.CacheBuilder.K">K</span>, <span class="extype" name="org.feijoas.mango.common.cache.CacheBuilder.V">V</span>]</span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.cache.CacheBuilder@ticker(ticker:org.feijoas.mango.common.base.Ticker):org.feijoas.mango.common.cache.CacheBuilder[K,V]" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Specifies a nanosecond-precision time source for use in determining when entries should be
  expired.</p><div class="fullcomment"><div class="comment cmt"><p>Specifies a nanosecond-precision time source for use in determining when entries should be
  expired. By default, <code>System#nanoTime</code> is used.</p><p>The primary intent of this method is to facilitate testing of caches which have been
  configured with <code>expireAfterWrite</code> or <code>expireAfterAccess</code>.
-</p></div><dl class="attributes block"> <dt>Exceptions thrown</dt><dd><span class="cmt">IllegalStateException<p>if a ticker was already set
+</p></div><dl class="attributes block"> <dt>Exceptions thrown</dt><dd><span class="cmt"><p><span class="extype" name="IllegalStateException"><code>IllegalStateException</code></span> if a ticker was already set
 </p></span></dd></dl></div>
     </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait():Unit"></a>
@@ -642,7 +735,11 @@
       <span class="symbol">
         <span class="name">wait</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.cache.CacheBuilder@wait():Unit" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
                 <span class="name">@throws</span><span class="args">(<span>
       
@@ -661,7 +758,11 @@
       <span class="symbol">
         <span class="name">wait</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Long">Long</span></span>, <span name="arg1">arg1: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.cache.CacheBuilder@wait(x$1:Long,x$2:Int):Unit" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
                 <span class="name">@throws</span><span class="args">(<span>
       
@@ -680,7 +781,11 @@
       <span class="symbol">
         <span class="name">wait</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Long">Long</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.cache.CacheBuilder@wait(x$1:Long):Unit" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
                 <span class="name">@throws</span><span class="args">(<span>
       
@@ -699,14 +804,18 @@
       <span class="symbol">
         <span class="name">weakKeys</span><span class="params">()</span><span class="result">: <a href="" class="extype" name="org.feijoas.mango.common.cache.CacheBuilder">CacheBuilder</a>[<span class="extype" name="org.feijoas.mango.common.cache.CacheBuilder.K">K</span>, <span class="extype" name="org.feijoas.mango.common.cache.CacheBuilder.V">V</span>]</span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.cache.CacheBuilder@weakKeys():org.feijoas.mango.common.cache.CacheBuilder[K,V]" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Specifies that each key (not value) stored in the cache should be wrapped in a
  <code>WeakReference</code> (by default, strong references are used).</p><div class="fullcomment"><div class="comment cmt"><p>Specifies that each key (not value) stored in the cache should be wrapped in a
  <code>WeakReference</code> (by default, strong references are used).</p><p><b>Warning:</b> when this method is used, the resulting cache will use identity (<code>eq</code>)
  comparison to determine equality of keys.</p><p>Entries with keys that have been garbage collected may be counted in <code>Cache.size()</code>,
  but will never be visible to read or write operations; such entries are cleaned up as part of
  the routine maintenance described in the class doc.
-</p></div><dl class="attributes block"> <dt>Exceptions thrown</dt><dd><span class="cmt">IllegalStateException<p>if the key strength was already set
+</p></div><dl class="attributes block"> <dt>Exceptions thrown</dt><dd><span class="cmt"><p><span class="extype" name="IllegalStateException"><code>IllegalStateException</code></span> if the key strength was already set
 </p></span></dd></dl></div>
     </li><li name="org.feijoas.mango.common.cache.CacheBuilder#weakValues" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="weakValues():org.feijoas.mango.common.cache.CacheBuilder[K,V]"></a>
@@ -719,12 +828,16 @@
       <span class="symbol">
         <span class="name">weakValues</span><span class="params">()</span><span class="result">: <a href="" class="extype" name="org.feijoas.mango.common.cache.CacheBuilder">CacheBuilder</a>[<span class="extype" name="org.feijoas.mango.common.cache.CacheBuilder.K">K</span>, <span class="extype" name="org.feijoas.mango.common.cache.CacheBuilder.V">V</span>]</span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.cache.CacheBuilder@weakValues():org.feijoas.mango.common.cache.CacheBuilder[K,V]" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Specifies that each value (not key) stored in the cache should be wrapped in a
  <code>WeakReference</code> (by default, strong references are used).</p><div class="fullcomment"><div class="comment cmt"><p>Specifies that each value (not key) stored in the cache should be wrapped in a
  <code>WeakReference</code> (by default, strong references are used).</p><p>Weak values will be garbage collected once they are weakly reachable. This makes them a poor
- candidate for caching; consider <code> #softValues</code> instead.</p><p><b>Note:</b> when this method is used, the resulting cache will use identity (<code>eq</code>)
- comparison to determine equality of values.</p><p>Entries with values that have been garbage collected may be counted in <code> Cache#size</code>,
+ candidate for caching; consider <code><a href="#softValues():org.feijoas.mango.common.cache.CacheBuilder[K,V]" class="extmbr" name="org.feijoas.mango.common.cache.CacheBuilder#softValues">#softValues</a></code> instead.</p><p><b>Note:</b> when this method is used, the resulting cache will use identity (<code>eq</code>)
+ comparison to determine equality of values.</p><p>Entries with values that have been garbage collected may be counted in <code><a href="Cache.html#size():Long" class="extmbr" name="org.feijoas.mango.common.cache.Cache#size">Cache#size</a></code>,
  but will never be visible to read or write operations; such entries are cleaned up as part of
  the routine maintenance described in the class doc.
 </p></div></div>
@@ -739,7 +852,11 @@
       <span class="symbol">
         <span class="name">weigher</span><span class="tparams">[<span name="K1">K1 &lt;: <span class="extype" name="org.feijoas.mango.common.cache.CacheBuilder.K">K</span></span>, <span name="V1">V1 &lt;: <span class="extype" name="org.feijoas.mango.common.cache.CacheBuilder.V">V</span></span>]</span><span class="params">(<span name="weigher">weigher: (<span class="extype" name="org.feijoas.mango.common.cache.CacheBuilder.weigher.K1">K1</span>, <span class="extype" name="org.feijoas.mango.common.cache.CacheBuilder.weigher.V1">V1</span>) ⇒ <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <a href="" class="extype" name="org.feijoas.mango.common.cache.CacheBuilder">CacheBuilder</a>[<span class="extype" name="org.feijoas.mango.common.cache.CacheBuilder.weigher.K1">K1</span>, <span class="extype" name="org.feijoas.mango.common.cache.CacheBuilder.weigher.V1">V1</span>]</span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.cache.CacheBuilder@weigher[K1&lt;:K,V1&lt;:V](weigher:(K1,V1)=&gt;Int):org.feijoas.mango.common.cache.CacheBuilder[K1,V1]" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Specifies the weigher to use in determining the weight of entries.</p><div class="fullcomment"><div class="comment cmt"><p>Specifies the weigher to use in determining the weight of entries. Entry weight is taken
  into consideration by <code>maximumWeight(Long)</code> when determining which entries to evict, and
  use of this method requires a corresponding call to <code>maximumWeight(Long)</code> prior to
@@ -785,6 +902,7 @@
       <div id="tooltip"></div>
 
       <div id="footer">  </div>
-      <script defer="defer" type="text/javascript" id="jquery-js" src="../../../../../lib/jquery.js"></script><script defer="defer" type="text/javascript" id="jquery-ui-js" src="../../../../../lib/jquery-ui.js"></script><script defer="defer" type="text/javascript" id="tools-tooltip-js" src="../../../../../lib/tools.tooltip.js"></script><script defer="defer" type="text/javascript" id="template-js" src="../../../../../lib/template.js"></script>
+
+
     </body>
       </html>

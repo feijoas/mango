@@ -1,5 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<!DOCTYPE html >
 <html>
         <head>
           <title>mutable - Mango - org.feijoas.mango.common.collect.mutable</title>
@@ -9,6 +8,11 @@
           
       <link href="../../../../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
       <link href="../../../../../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
+      <script type="text/javascript" src="../../../../../../lib/jquery.js" id="jquery-js"></script>
+      <script type="text/javascript" src="../../../../../../lib/jquery-ui.js"></script>
+      <script type="text/javascript" src="../../../../../../lib/template.js"></script>
+      <script type="text/javascript" src="../../../../../../lib/tools.tooltip.js"></script>
+      
       <script type="text/javascript">
          if(top === self) {
             var url = '../../../../../../index.html';
@@ -26,7 +30,11 @@
       <div id="definition">
         <img src="../../../../../../lib/package_big.png" />
         <p id="owner"><a href="../../../../../package.html" class="extype" name="org">org</a>.<a href="../../../../package.html" class="extype" name="org.feijoas">feijoas</a>.<a href="../../../package.html" class="extype" name="org.feijoas.mango">mango</a>.<a href="../../package.html" class="extype" name="org.feijoas.mango.common">common</a>.<a href="../package.html" class="extype" name="org.feijoas.mango.common.collect">collect</a></p>
-        <h1>mutable</h1>
+        <h1>mutable</h1><span class="permalink">
+      <a href="../../../../../../index.html#org.feijoas.mango.common.collect.mutable.package" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" />
+      </a>
+    </span>
       </div>
 
       <h4 id="signature" class="signature">
@@ -58,7 +66,7 @@
 
         <div id="types" class="types members">
               <h3>Type Members</h3>
-              <ol><li name="org.feijoas.mango.common.collect.mutable.RangeMap" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+              <ol><li name="org.feijoas.mango.common.collect.mutable.RangeMap" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="RangeMap[K,V,O&lt;:Ordering[K]]extendsRangeMap[K,V,O]withRangeMapLike[K,V,O,org.feijoas.mango.common.collect.mutable.RangeMap[K,V,O]]"></a>
       <a id="RangeMap[K,V,O&lt;:Ordering[K]]:RangeMap[K,V,O]"></a>
       <h4 class="signature">
@@ -69,9 +77,31 @@
       <span class="symbol">
         <a href="RangeMap.html"><span class="name">RangeMap</span></a><span class="tparams">[<span name="K">K</span>, <span name="V">V</span>, <span name="O">O &lt;: <span class="extype" name="scala.Ordering">Ordering</span>[<span class="extype" name="org.feijoas.mango.common.collect.mutable.RangeMap.K">K</span>]</span>]</span><span class="result"> extends <a href="../RangeMap.html" class="extype" name="org.feijoas.mango.common.collect.RangeMap">collect.RangeMap</a>[<span class="extype" name="org.feijoas.mango.common.collect.mutable.RangeMap.K">K</span>, <span class="extype" name="org.feijoas.mango.common.collect.mutable.RangeMap.V">V</span>, <span class="extype" name="org.feijoas.mango.common.collect.mutable.RangeMap.O">O</span>] with <a href="RangeMapLike.html" class="extype" name="org.feijoas.mango.common.collect.mutable.RangeMapLike">RangeMapLike</a>[<span class="extype" name="org.feijoas.mango.common.collect.mutable.RangeMap.K">K</span>, <span class="extype" name="org.feijoas.mango.common.collect.mutable.RangeMap.V">V</span>, <span class="extype" name="org.feijoas.mango.common.collect.mutable.RangeMap.O">O</span>, <a href="RangeMap.html" class="extype" name="org.feijoas.mango.common.collect.mutable.RangeMap">RangeMap</a>[<span class="extype" name="org.feijoas.mango.common.collect.mutable.RangeMap.K">K</span>, <span class="extype" name="org.feijoas.mango.common.collect.mutable.RangeMap.V">V</span>, <span class="extype" name="org.feijoas.mango.common.collect.mutable.RangeMap.O">O</span>]]</span>
       </span>
-      </h4>
-      <p class="comment cmt"> A mapping from disjoint nonempty ranges to non-null values.</p>
-    </li><li name="org.feijoas.mango.common.collect.mutable.RangeMapLike" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#org.feijoas.mango.common.collect.mutable.package@RangeMap[K,V,O&lt;:Ordering[K]]extendsRangeMap[K,V,O]withRangeMapLike[K,V,O,org.feijoas.mango.common.collect.mutable.RangeMap[K,V,O]]" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt"> A mapping from disjoint nonempty ranges to non-null values.</p><div class="fullcomment"><div class="comment cmt"><p> A mapping from disjoint nonempty ranges to non-null values. Queries look up the value
+ associated with the range (if any) that contains a specified key.</p><p>In contrast to <a href="RangeSet.html" class="extype" name="org.feijoas.mango.common.collect.mutable.RangeSet">RangeSet</a>, no &quot;coalescing&quot; is done of connected ranges, even
+ if they are mapped to the same value.</p><p> Usage example:</p><pre><span class="kw">import</span> org.feijoas.mango.common.collect.mutable
+<span class="kw">import</span> org.feijoas.mango.common.collect.Range
+<span class="kw">import</span> math.Ordering.<span class="std">Int</span>
+
+<span class="cmt">// mutable range map</span>
+<span class="kw">val</span> rangeMap = mutable.RangeMap(Range.open(<span class="num">3</span>, <span class="num">7</span>) -&gt; <span class="lit">"1"</span>) <span class="cmt">//Map((3..7) -> 1)</span>
+rangeMap += Range.closed(<span class="num">9</span>, <span class="num">10</span>) -&gt; <span class="lit">"2"</span>              <span class="cmt">// Map((3..7) -> 1, [9..10] -> 2)</span>
+rangeMap += Range.closed(<span class="num">12</span>, <span class="num">16</span>) -&gt; <span class="lit">"3"</span>             <span class="cmt">// Map((3..7) -> 1, [9..10] -> 2, [12..16] -> 3)</span>
+
+<span class="kw">val</span> sub = rangeMap.subRangeMap(Range.closed(<span class="num">5</span>, <span class="num">11</span>)) <span class="cmt">// Map([5..7) -> 1, [9..10] -> 2)</span>
+sub.put(Range.closed(<span class="num">7</span>, <span class="num">9</span>), <span class="lit">"4"</span>)                    <span class="cmt">// sub = Map([5..7) -> 1, [7..9] -> 4, (9..10] -> 2)</span>
+
+<span class="cmt">// rangeMap = Map((3..7) -> 1, [7..9] -> 4, (9..10] -> 2, [12..16] -> 3)</span></pre></div><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@<a href="../../annotations/Beta.html" class="extype" name="org.feijoas.mango.common.annotations.Beta">Beta</a></span><span class="args">()</span>
+              
+        </dd><dt>Since</dt><dd><p>0.9
+</p></dd></dl></div>
+    </li><li name="org.feijoas.mango.common.collect.mutable.RangeMapLike" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="RangeMapLike[K,V,O&lt;:Ordering[K],+Repr&lt;:org.feijoas.mango.common.collect.mutable.RangeMapLike[K,V,O,Repr]withorg.feijoas.mango.common.collect.mutable.RangeMap[K,V,O]]extendsRangeMapLike[K,V,O,Repr]withGrowable[(org.feijoas.mango.common.collect.Range[K,O],V)]withShrinkable[org.feijoas.mango.common.collect.Range[K,O]]"></a>
       <a id="RangeMapLike[K,V,O&lt;:Ordering[K],+Repr&lt;:RangeMapLike[K,V,O,Repr]withRangeMap[K,V,O]]:RangeMapLike[K,V,O,Repr]"></a>
       <h4 class="signature">
@@ -82,9 +112,31 @@
       <span class="symbol">
         <a href="RangeMapLike.html"><span class="name">RangeMapLike</span></a><span class="tparams">[<span name="K">K</span>, <span name="V">V</span>, <span name="O">O &lt;: <span class="extype" name="scala.Ordering">Ordering</span>[<span class="extype" name="org.feijoas.mango.common.collect.mutable.RangeMapLike.K">K</span>]</span>, <span name="Repr">+Repr &lt;: <a href="RangeMapLike.html" class="extype" name="org.feijoas.mango.common.collect.mutable.RangeMapLike">RangeMapLike</a>[<span class="extype" name="org.feijoas.mango.common.collect.mutable.RangeMapLike.K">K</span>, <span class="extype" name="org.feijoas.mango.common.collect.mutable.RangeMapLike.V">V</span>, <span class="extype" name="org.feijoas.mango.common.collect.mutable.RangeMapLike.O">O</span>, <span class="extype" name="org.feijoas.mango.common.collect.mutable.RangeMapLike.Repr">Repr</span>] with <a href="RangeMap.html" class="extype" name="org.feijoas.mango.common.collect.mutable.RangeMap">RangeMap</a>[<span class="extype" name="org.feijoas.mango.common.collect.mutable.RangeMapLike.K">K</span>, <span class="extype" name="org.feijoas.mango.common.collect.mutable.RangeMapLike.V">V</span>, <span class="extype" name="org.feijoas.mango.common.collect.mutable.RangeMapLike.O">O</span>]</span>]</span><span class="result"> extends <a href="../RangeMapLike.html" class="extype" name="org.feijoas.mango.common.collect.RangeMapLike">collect.RangeMapLike</a>[<span class="extype" name="org.feijoas.mango.common.collect.mutable.RangeMapLike.K">K</span>, <span class="extype" name="org.feijoas.mango.common.collect.mutable.RangeMapLike.V">V</span>, <span class="extype" name="org.feijoas.mango.common.collect.mutable.RangeMapLike.O">O</span>, <span class="extype" name="org.feijoas.mango.common.collect.mutable.RangeMapLike.Repr">Repr</span>] with <span class="extype" name="scala.collection.generic.Growable">Growable</span>[(<a href="../Range.html" class="extype" name="org.feijoas.mango.common.collect.Range">Range</a>[<span class="extype" name="org.feijoas.mango.common.collect.mutable.RangeMapLike.K">K</span>, <span class="extype" name="org.feijoas.mango.common.collect.mutable.RangeMapLike.O">O</span>], <span class="extype" name="org.feijoas.mango.common.collect.mutable.RangeMapLike.V">V</span>)] with <span class="extype" name="scala.collection.generic.Shrinkable">Shrinkable</span>[<a href="../Range.html" class="extype" name="org.feijoas.mango.common.collect.Range">Range</a>[<span class="extype" name="org.feijoas.mango.common.collect.mutable.RangeMapLike.K">K</span>, <span class="extype" name="org.feijoas.mango.common.collect.mutable.RangeMapLike.O">O</span>]]</span>
       </span>
-      </h4>
-      <p class="comment cmt">Implementation trait for mutable <a href="RangeMap.html" class="extype" name="org.feijoas.mango.common.collect.mutable.RangeMap">RangeMap</a></p>
-    </li><li name="org.feijoas.mango.common.collect.mutable.RangeSet" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#org.feijoas.mango.common.collect.mutable.package@RangeMapLike[K,V,O&lt;:Ordering[K],+Repr&lt;:org.feijoas.mango.common.collect.mutable.RangeMapLike[K,V,O,Repr]withorg.feijoas.mango.common.collect.mutable.RangeMap[K,V,O]]extendsRangeMapLike[K,V,O,Repr]withGrowable[(org.feijoas.mango.common.collect.Range[K,O],V)]withShrinkable[org.feijoas.mango.common.collect.Range[K,O]]" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Implementation trait for mutable <a href="RangeMap.html" class="extype" name="org.feijoas.mango.common.collect.mutable.RangeMap">RangeMap</a></p><div class="fullcomment"><div class="comment cmt"><p>Implementation trait for mutable <a href="RangeMap.html" class="extype" name="org.feijoas.mango.common.collect.mutable.RangeMap">RangeMap</a></p><p> A mapping from disjoint nonempty ranges to non-null values. Queries look up the value
+ associated with the range (if any) that contains a specified key.</p><p>In contrast to <a href="RangeSet.html" class="extype" name="org.feijoas.mango.common.collect.mutable.RangeSet">RangeSet</a>, no &quot;coalescing&quot; is done of connected ranges, even
+ if they are mapped to the same value.</p><p> Usage example:</p><pre><span class="kw">import</span> org.feijoas.mango.common.collect.mutable
+<span class="kw">import</span> org.feijoas.mango.common.collect.Range
+<span class="kw">import</span> math.Ordering.<span class="std">Int</span>
+
+<span class="cmt">// mutable range map</span>
+<span class="kw">val</span> rangeMap = mutable.RangeMap(Range.open(<span class="num">3</span>, <span class="num">7</span>) -&gt; <span class="lit">"1"</span>) <span class="cmt">//Map((3..7) -> 1)</span>
+rangeMap += Range.closed(<span class="num">9</span>, <span class="num">10</span>) -&gt; <span class="lit">"2"</span>              <span class="cmt">// Map((3..7) -> 1, [9..10] -> 2)</span>
+rangeMap += Range.closed(<span class="num">12</span>, <span class="num">16</span>) -&gt; <span class="lit">"3"</span>             <span class="cmt">// Map((3..7) -> 1, [9..10] -> 2, [12..16] -> 3)</span>
+
+<span class="kw">val</span> sub = rangeMap.subRangeMap(Range.closed(<span class="num">5</span>, <span class="num">11</span>)) <span class="cmt">// Map([5..7) -> 1, [9..10] -> 2)</span>
+sub.put(Range.closed(<span class="num">7</span>, <span class="num">9</span>), <span class="lit">"4"</span>)                    <span class="cmt">// sub = Map([5..7) -> 1, [7..9] -> 4, (9..10] -> 2)</span>
+
+<span class="cmt">// rangeMap = Map((3..7) -> 1, [7..9] -> 4, (9..10] -> 2, [12..16] -> 3)</span></pre></div><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@<a href="../../annotations/Beta.html" class="extype" name="org.feijoas.mango.common.annotations.Beta">Beta</a></span><span class="args">()</span>
+              
+        </dd><dt>Since</dt><dd><p>0.9
+</p></dd></dl></div>
+    </li><li name="org.feijoas.mango.common.collect.mutable.RangeSet" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="RangeSet[C,O&lt;:Ordering[C]]extendsRangeSet[C,O]withRangeSetLike[C,O,org.feijoas.mango.common.collect.mutable.RangeSet[C,O]]"></a>
       <a id="RangeSet[C,O&lt;:Ordering[C]]:RangeSet[C,O]"></a>
       <h4 class="signature">
@@ -95,10 +147,33 @@
       <span class="symbol">
         <a href="RangeSet.html"><span class="name">RangeSet</span></a><span class="tparams">[<span name="C">C</span>, <span name="O">O &lt;: <span class="extype" name="scala.Ordering">Ordering</span>[<span class="extype" name="org.feijoas.mango.common.collect.mutable.RangeSet.C">C</span>]</span>]</span><span class="result"> extends <a href="../RangeSet.html" class="extype" name="org.feijoas.mango.common.collect.RangeSet">collect.RangeSet</a>[<span class="extype" name="org.feijoas.mango.common.collect.mutable.RangeSet.C">C</span>, <span class="extype" name="org.feijoas.mango.common.collect.mutable.RangeSet.O">O</span>] with <a href="RangeSetLike.html" class="extype" name="org.feijoas.mango.common.collect.mutable.RangeSetLike">RangeSetLike</a>[<span class="extype" name="org.feijoas.mango.common.collect.mutable.RangeSet.C">C</span>, <span class="extype" name="org.feijoas.mango.common.collect.mutable.RangeSet.O">O</span>, <a href="RangeSet.html" class="extype" name="org.feijoas.mango.common.collect.mutable.RangeSet">RangeSet</a>[<span class="extype" name="org.feijoas.mango.common.collect.mutable.RangeSet.C">C</span>, <span class="extype" name="org.feijoas.mango.common.collect.mutable.RangeSet.O">O</span>]]</span>
       </span>
-      </h4>
-      <p class="comment cmt"> A range set is a set comprising zero or more nonempty, disconnected ranges of type <code>C</code>
- for which an <code>Ordering[C]</code> is defined.</p>
-    </li><li name="org.feijoas.mango.common.collect.mutable.RangeSetLike" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#org.feijoas.mango.common.collect.mutable.package@RangeSet[C,O&lt;:Ordering[C]]extendsRangeSet[C,O]withRangeSetLike[C,O,org.feijoas.mango.common.collect.mutable.RangeSet[C,O]]" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt"> A range set is a set comprising zero or more nonempty, disconnected ranges of type <code>C</code>
+ for which an <code>Ordering[C]</code> is defined.</p><div class="fullcomment"><div class="comment cmt"><p> A range set is a set comprising zero or more nonempty, disconnected ranges of type <code>C</code>
+ for which an <code>Ordering[C]</code> is defined.</p><p>Note that the behavior of <code>Range#isEmpty()</code> and <code>Range#isConnected(Range)</code> may
+ not be as expected on discrete ranges.  See the Scaladoc of those methods for details.</p><p>For a <code>Set</code> whose contents are specified by a <a href="../Range.html" class="extype" name="org.feijoas.mango.common.collect.Range">Range</a>, see <span class="extype" name="ContiguousSet">ContiguousSet</span>.</p><p> Usage example:</p><pre><span class="kw">import</span> org.feijoas.mango.common.collect.Bound._
+<span class="kw">import</span> org.feijoas.mango.common.collect._
+<span class="kw">import</span> math.Ordering.<span class="std">Int</span>
+
+<span class="cmt">// immutable range set:</span>
+<span class="kw">val</span> rangeSet = RangeSet(Range.open(<span class="num">1</span>, <span class="num">3</span>), Range.closed(<span class="num">4</span>, <span class="num">9</span>)) <span class="cmt">// {(1,3), [4,9]}</span>
+<span class="kw">val</span> subSet = rangeSet.subRangeSet(Range.closed(<span class="num">2</span>, <span class="num">6</span>))         <span class="cmt">// union view {[2,3), [4,6]}</span>
+
+<span class="cmt">// mutable range set:</span>
+<span class="kw">val</span> mutableRangeSet = mutable.RangeSet(Range.closed(<span class="num">1</span>, <span class="num">10</span>))   <span class="cmt">// {[1, 10]}</span>
+mutableRangeSet += Range.closedOpen(<span class="num">11</span>, <span class="num">15</span>)                   <span class="cmt">// disconnected range: {[1, 10], [11, 15)}</span>
+mutableRangeSet += Range.closedOpen(<span class="num">15</span>, <span class="num">20</span>)                   <span class="cmt">// connected range; {[1, 10], [11, 20)}</span>
+mutableRangeSet += Range.openClosed(<span class="num">0</span>, <span class="num">0</span>)                     <span class="cmt">// empty range; {[1, 10], [11, 20)}</span>
+mutableRangeSet -= Range.open(<span class="num">5</span>, <span class="num">10</span>)                          <span class="cmt">// splits [1, 10]; {[1, 5], [10, 10], [11, 20)}</span></pre></div><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@<a href="../../annotations/Beta.html" class="extype" name="org.feijoas.mango.common.annotations.Beta">Beta</a></span><span class="args">()</span>
+              
+        </dd><dt>Since</dt><dd><p>0.8
+</p></dd></dl></div>
+    </li><li name="org.feijoas.mango.common.collect.mutable.RangeSetLike" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="RangeSetLike[C,O&lt;:Ordering[C],+Repr&lt;:org.feijoas.mango.common.collect.mutable.RangeSetLike[C,O,Repr]withorg.feijoas.mango.common.collect.mutable.RangeSet[C,O]]extendsRangeSetLike[C,O,Repr]withGrowable[org.feijoas.mango.common.collect.Range[C,O]]withShrinkable[org.feijoas.mango.common.collect.Range[C,O]]"></a>
       <a id="RangeSetLike[C,O&lt;:Ordering[C],+Repr&lt;:RangeSetLike[C,O,Repr]withRangeSet[C,O]]:RangeSetLike[C,O,Repr]"></a>
       <h4 class="signature">
@@ -109,8 +184,31 @@
       <span class="symbol">
         <a href="RangeSetLike.html"><span class="name">RangeSetLike</span></a><span class="tparams">[<span name="C">C</span>, <span name="O">O &lt;: <span class="extype" name="scala.Ordering">Ordering</span>[<span class="extype" name="org.feijoas.mango.common.collect.mutable.RangeSetLike.C">C</span>]</span>, <span name="Repr">+Repr &lt;: <a href="RangeSetLike.html" class="extype" name="org.feijoas.mango.common.collect.mutable.RangeSetLike">RangeSetLike</a>[<span class="extype" name="org.feijoas.mango.common.collect.mutable.RangeSetLike.C">C</span>, <span class="extype" name="org.feijoas.mango.common.collect.mutable.RangeSetLike.O">O</span>, <span class="extype" name="org.feijoas.mango.common.collect.mutable.RangeSetLike.Repr">Repr</span>] with <a href="RangeSet.html" class="extype" name="org.feijoas.mango.common.collect.mutable.RangeSet">RangeSet</a>[<span class="extype" name="org.feijoas.mango.common.collect.mutable.RangeSetLike.C">C</span>, <span class="extype" name="org.feijoas.mango.common.collect.mutable.RangeSetLike.O">O</span>]</span>]</span><span class="result"> extends <a href="../RangeSetLike.html" class="extype" name="org.feijoas.mango.common.collect.RangeSetLike">collect.RangeSetLike</a>[<span class="extype" name="org.feijoas.mango.common.collect.mutable.RangeSetLike.C">C</span>, <span class="extype" name="org.feijoas.mango.common.collect.mutable.RangeSetLike.O">O</span>, <span class="extype" name="org.feijoas.mango.common.collect.mutable.RangeSetLike.Repr">Repr</span>] with <span class="extype" name="scala.collection.generic.Growable">Growable</span>[<a href="../Range.html" class="extype" name="org.feijoas.mango.common.collect.Range">Range</a>[<span class="extype" name="org.feijoas.mango.common.collect.mutable.RangeSetLike.C">C</span>, <span class="extype" name="org.feijoas.mango.common.collect.mutable.RangeSetLike.O">O</span>]] with <span class="extype" name="scala.collection.generic.Shrinkable">Shrinkable</span>[<a href="../Range.html" class="extype" name="org.feijoas.mango.common.collect.Range">Range</a>[<span class="extype" name="org.feijoas.mango.common.collect.mutable.RangeSetLike.C">C</span>, <span class="extype" name="org.feijoas.mango.common.collect.mutable.RangeSetLike.O">O</span>]]</span>
       </span>
-      </h4>
-      <p class="comment cmt">Implementation trait for mutable <a href="RangeSet.html" class="extype" name="org.feijoas.mango.common.collect.mutable.RangeSet">RangeSet</a></p>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#org.feijoas.mango.common.collect.mutable.package@RangeSetLike[C,O&lt;:Ordering[C],+Repr&lt;:org.feijoas.mango.common.collect.mutable.RangeSetLike[C,O,Repr]withorg.feijoas.mango.common.collect.mutable.RangeSet[C,O]]extendsRangeSetLike[C,O,Repr]withGrowable[org.feijoas.mango.common.collect.Range[C,O]]withShrinkable[org.feijoas.mango.common.collect.Range[C,O]]" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Implementation trait for mutable <a href="RangeSet.html" class="extype" name="org.feijoas.mango.common.collect.mutable.RangeSet">RangeSet</a></p><div class="fullcomment"><div class="comment cmt"><p>Implementation trait for mutable <a href="RangeSet.html" class="extype" name="org.feijoas.mango.common.collect.mutable.RangeSet">RangeSet</a></p><p> A range set is a set comprising zero or more nonempty, disconnected ranges of type <code>C</code>
+ for which an <code>Ordering[C]</code> is defined.</p><p>Note that the behavior of <code>Range#isEmpty()</code> and <code>Range#isConnected(Range)</code> may
+ not be as expected on discrete ranges.  See the Scaladoc of those methods for details.</p><p>For a <code>Set</code> whose contents are specified by a <a href="../Range.html" class="extype" name="org.feijoas.mango.common.collect.Range">Range</a>, see <span class="extype" name="ContiguousSet">ContiguousSet</span>.</p><p> Usage example:</p><pre><span class="kw">import</span> org.feijoas.mango.common.collect.Bound._
+<span class="kw">import</span> org.feijoas.mango.common.collect._
+<span class="kw">import</span> math.Ordering.<span class="std">Int</span>
+
+<span class="cmt">// immutable range set:</span>
+<span class="kw">val</span> rangeSet = RangeSet(Range.open(<span class="num">1</span>, <span class="num">3</span>), Range.closed(<span class="num">4</span>, <span class="num">9</span>)) <span class="cmt">// {(1,3), [4,9]}</span>
+<span class="kw">val</span> subSet = rangeSet.subRangeSet(Range.closed(<span class="num">2</span>, <span class="num">6</span>))         <span class="cmt">// union view {[2,3), [4,6]}</span>
+
+<span class="cmt">// mutable range set:</span>
+<span class="kw">val</span> mutableRangeSet = mutable.RangeSet(Range.closed(<span class="num">1</span>, <span class="num">10</span>))   <span class="cmt">// {[1, 10]}</span>
+mutableRangeSet += Range.closedOpen(<span class="num">11</span>, <span class="num">15</span>)                   <span class="cmt">// disconnected range: {[1, 10], [11, 15)}</span>
+mutableRangeSet += Range.closedOpen(<span class="num">15</span>, <span class="num">20</span>)                   <span class="cmt">// connected range; {[1, 10], [11, 20)}</span>
+mutableRangeSet += Range.openClosed(<span class="num">0</span>, <span class="num">0</span>)                     <span class="cmt">// empty range; {[1, 10], [11, 20)}</span>
+mutableRangeSet -= Range.open(<span class="num">5</span>, <span class="num">10</span>)                          <span class="cmt">// splits [1, 10]; {[1, 5], [10, 10], [11, 20)}</span></pre></div><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@<a href="../../annotations/Beta.html" class="extype" name="org.feijoas.mango.common.annotations.Beta">Beta</a></span><span class="args">()</span>
+              
+        </dd><dt>Since</dt><dd><p>0.8
+</p></dd></dl></div>
     </li></ol>
             </div>
 
@@ -129,8 +227,12 @@
       <span class="symbol">
         <a href="RangeMap$.html"><span class="name">RangeMap</span></a><span class="result"> extends <a href="../RangeMapFactory.html" class="extype" name="org.feijoas.mango.common.collect.RangeMapFactory">RangeMapFactory</a>[<a href="RangeMap.html" class="extype" name="org.feijoas.mango.common.collect.mutable.RangeMap">RangeMap</a>]</span>
       </span>
-      </h4>
-      <p class="comment cmt">Factory for immutable <a href="RangeMap.html" class="extype" name="org.feijoas.mango.common.collect.mutable.RangeMap">RangeMap</a>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#org.feijoas.mango.common.collect.mutable.package@RangeMap" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Factory for immutable <a href="RangeMap.html" class="extype" name="org.feijoas.mango.common.collect.mutable.RangeMap">RangeMap</a>
 </p>
     </li><li name="org.feijoas.mango.common.collect.mutable.RangeSet" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="RangeSet"></a>
@@ -143,8 +245,12 @@
       <span class="symbol">
         <a href="RangeSet$.html"><span class="name">RangeSet</span></a><span class="result"> extends <a href="../RangeSetFactory.html" class="extype" name="org.feijoas.mango.common.collect.RangeSetFactory">RangeSetFactory</a>[<a href="RangeSet.html" class="extype" name="org.feijoas.mango.common.collect.mutable.RangeSet">RangeSet</a>]</span>
       </span>
-      </h4>
-      <p class="comment cmt">Factory for mutable <a href="RangeSet.html" class="extype" name="org.feijoas.mango.common.collect.mutable.RangeSet">RangeSet</a>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#org.feijoas.mango.common.collect.mutable.package@RangeSet" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Factory for mutable <a href="RangeSet.html" class="extype" name="org.feijoas.mango.common.collect.mutable.RangeSet">RangeSet</a>
 </p>
     </li></ol>
             </div>
@@ -171,6 +277,7 @@
       <div id="tooltip"></div>
 
       <div id="footer">  </div>
-      <script defer="defer" type="text/javascript" id="jquery-js" src="../../../../../../lib/jquery.js"></script><script defer="defer" type="text/javascript" id="jquery-ui-js" src="../../../../../../lib/jquery-ui.js"></script><script defer="defer" type="text/javascript" id="tools-tooltip-js" src="../../../../../../lib/tools.tooltip.js"></script><script defer="defer" type="text/javascript" id="template-js" src="../../../../../../lib/template.js"></script>
+
+
     </body>
       </html>

@@ -1,5 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<!DOCTYPE html >
 <html>
         <head>
           <title>RangeSet - Mango - org.feijoas.mango.common.collect.mutable.RangeSet</title>
@@ -9,6 +8,11 @@
           
       <link href="../../../../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
       <link href="../../../../../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
+      <script type="text/javascript" src="../../../../../../lib/jquery.js" id="jquery-js"></script>
+      <script type="text/javascript" src="../../../../../../lib/jquery-ui.js"></script>
+      <script type="text/javascript" src="../../../../../../lib/template.js"></script>
+      <script type="text/javascript" src="../../../../../../lib/tools.tooltip.js"></script>
+      
       <script type="text/javascript">
          if(top === self) {
             var url = '../../../../../../index.html';
@@ -24,9 +28,17 @@
         </head>
         <body class="type">
       <div id="definition">
-        <a href="RangeSet$.html" title="Go to companion"><img src="../../../../../../lib/trait_to_object_big.png" /></a>
+        <a href="RangeSet$.html" title="See companion object"><img src="../../../../../../lib/trait_to_object_big.png" /></a>
         <p id="owner"><a href="../../../../../package.html" class="extype" name="org">org</a>.<a href="../../../../package.html" class="extype" name="org.feijoas">feijoas</a>.<a href="../../../package.html" class="extype" name="org.feijoas.mango">mango</a>.<a href="../../package.html" class="extype" name="org.feijoas.mango.common">common</a>.<a href="../package.html" class="extype" name="org.feijoas.mango.common.collect">collect</a>.<a href="package.html" class="extype" name="org.feijoas.mango.common.collect.mutable">mutable</a></p>
-        <h1><a href="RangeSet$.html" title="Go to companion">RangeSet</a></h1>
+        <h1><a href="RangeSet$.html" title="See companion object">RangeSet</a></h1><h3><span class="morelinks"><div>
+            Related Docs:
+            <a href="RangeSet$.html" title="See companion object">object RangeSet</a>
+            | <a href="package.html" class="extype" name="org.feijoas.mango.common.collect.mutable">package mutable</a>
+          </div></span></h3><span class="permalink">
+      <a href="../../../../../../index.html#org.feijoas.mango.common.collect.mutable.RangeSet" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" />
+      </a>
+    </span>
       </div>
 
       <h4 id="signature" class="signature">
@@ -101,7 +113,7 @@ mutableRangeSet -= Range.open(<span class="num">5</span>, <span class="num">10</
         <div id="types" class="types members">
               <h3>Type Members</h3>
               <ol><li name="org.feijoas.mango.common.collect.RangeSetLike.Self" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="Self=Repr"></a>
+      <a id="Self=Repr@scala.annotation.unchecked.uncheckedVariance"></a>
       <a id="Self:Self"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -111,7 +123,11 @@ mutableRangeSet -= Range.open(<span class="num">5</span>, <span class="num">10</
       <span class="symbol">
         <span class="name">Self</span><span class="result"> = <a href="" class="extype" name="org.feijoas.mango.common.collect.mutable.RangeSet">RangeSet</a>[<span class="extype" name="org.feijoas.mango.common.collect.mutable.RangeSet.C">C</span>, <span class="extype" name="org.feijoas.mango.common.collect.mutable.RangeSet.O">O</span>]</span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#org.feijoas.mango.common.collect.mutable.RangeSet@Self=Repr@scala.annotation.unchecked.uncheckedVariance" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <p class="shortcomment cmt">The type implementing this RangeSet</p><div class="fullcomment"><div class="comment cmt"><p>The type implementing this RangeSet</p></div><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="../RangeSetLike.html" class="extype" name="org.feijoas.mango.common.collect.RangeSetLike">RangeSetLike</a></dd></dl></div>
     </li></ol>
             </div>
@@ -129,12 +145,16 @@ mutableRangeSet -= Range.open(<span class="num">5</span>, <span class="num">10</
       <span class="symbol">
         <span class="name">add</span><span class="params">(<span name="range">range: <a href="../Range.html" class="extype" name="org.feijoas.mango.common.collect.Range">Range</a>[<span class="extype" name="org.feijoas.mango.common.collect.mutable.RangeSet.C">C</span>, <span class="extype" name="org.feijoas.mango.common.collect.mutable.RangeSet.O">O</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
-      </h4>
-      <p class="shortcomment cmt">Adds the specified range to this <code> RangeSet</code> (optional operation).</p><div class="fullcomment"><div class="comment cmt"><p>Adds the specified range to this <code> RangeSet</code> (optional operation). That is, for equal
- range sets a and b, the result of <code> a.add(range)</code> is that <code> a</code> will be the minimal
- range set for which both <code> a.enclosesAll(b)</code> and <code> a.encloses(range)</code>.</p><p>Note that <code> range</code> will be <code>plain Range#span(Range) coalesced</code> with any ranges in
- the range set that are <code>plain Range#isConnected(Range) connected</code> with it.  Moreover,
- if <code> range</code> is empty, this is a no-op.
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#org.feijoas.mango.common.collect.mutable.RangeSet@add(range:org.feijoas.mango.common.collect.Range[C,O]):Unit" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Adds the specified range to this <code>RangeSet</code> (optional operation).</code></p><div class="fullcomment"><div class="comment cmt"><p>Adds the specified range to this <code>RangeSet</code> (optional operation). That is, for equal
+ range sets a and b, the result of <code>a.add(range)</code> is that <code>a</code> will be the minimal
+ range set for which both <code>a.enclosesAll(b)</code> and <code>a.encloses(range)</code>.</p><p>Note that <code>range</code> will be <span class="extype" name="Range#span(Range)">coalesced</span> with any ranges in
+ the range set that are <span class="extype" name="Range#isConnected(Range)">connected</span> with it.  Moreover,
+ if <code>range</code> is empty, this is a no-op.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="RangeSetLike.html" class="extype" name="org.feijoas.mango.common.collect.mutable.RangeSetLike">RangeSetLike</a></dd></dl></div>
     </li><li name="org.feijoas.mango.common.collect.RangeSetLike#asRanges" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="asRanges():Set[org.feijoas.mango.common.collect.Range[C,O]]"></a>
@@ -147,7 +167,11 @@ mutableRangeSet -= Range.open(<span class="num">5</span>, <span class="num">10</
       <span class="symbol">
         <span class="name">asRanges</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Predef.Set">Set</span>[<a href="../Range.html" class="extype" name="org.feijoas.mango.common.collect.Range">Range</a>[<span class="extype" name="org.feijoas.mango.common.collect.mutable.RangeSet.C">C</span>, <span class="extype" name="org.feijoas.mango.common.collect.mutable.RangeSet.O">O</span>]]</span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#org.feijoas.mango.common.collect.mutable.RangeSet@asRanges():Set[org.feijoas.mango.common.collect.Range[C,O]]" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Returns a view of the disconnected ranges that make up this
  range set.</p><div class="fullcomment"><div class="comment cmt"><p>Returns a view of the disconnected ranges that make up this
  range set.  The returned set may be empty. The iterators returned by its
@@ -165,9 +189,13 @@ mutableRangeSet -= Range.open(<span class="num">5</span>, <span class="num">10</
       <span class="symbol">
         <span class="name">clear</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
-      </h4>
-      <p class="shortcomment cmt">Removes all ranges from this <code> RangeSet</code> (optional operation).</p><div class="fullcomment"><div class="comment cmt"><p>Removes all ranges from this <code> RangeSet</code> (optional operation).  After this operation,
- <code> this.contains(c)</code> will return false for all <code> c</code>.</p><p>This is equivalent to <code> remove(Range.all())</code>.
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#org.feijoas.mango.common.collect.mutable.RangeSet@clear():Unit" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Removes all ranges from this <code>RangeSet</code> (optional operation).</code></p><div class="fullcomment"><div class="comment cmt"><p>Removes all ranges from this <code>RangeSet</code> (optional operation).  After this operation,
+ <code>this.contains(c)</code> will return false for all <code>c</code>.</p><p>This is equivalent to <code>remove(Range.all())</code>.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="RangeSetLike.html" class="extype" name="org.feijoas.mango.common.collect.mutable.RangeSetLike">RangeSetLike</a> → Growable → Clearable</dd></dl></div>
     </li><li name="org.feijoas.mango.common.collect.RangeSetLike#complement" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="complement():Repr"></a>
@@ -180,7 +208,11 @@ mutableRangeSet -= Range.open(<span class="num">5</span>, <span class="num">10</
       <span class="symbol">
         <span class="name">complement</span><span class="params">()</span><span class="result">: <a href="" class="extype" name="org.feijoas.mango.common.collect.mutable.RangeSet">RangeSet</a>[<span class="extype" name="org.feijoas.mango.common.collect.mutable.RangeSet.C">C</span>, <span class="extype" name="org.feijoas.mango.common.collect.mutable.RangeSet.O">O</span>]</span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#org.feijoas.mango.common.collect.mutable.RangeSet@complement():Repr" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Returns a view of the complement of this <code>RangeSet</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Returns a view of the complement of this <code>RangeSet</code>.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../RangeSetLike.html" class="extype" name="org.feijoas.mango.common.collect.RangeSetLike">RangeSetLike</a></dd></dl></div>
     </li><li name="scala.collection.generic.HasNewBuilder#newBuilder" visbl="prt" data-isabs="true" fullComment="yes" group="Ungrouped">
@@ -194,7 +226,11 @@ mutableRangeSet -= Range.open(<span class="num">5</span>, <span class="num">10</
       <span class="symbol">
         <span class="name">newBuilder</span><span class="result">: <span class="extype" name="scala.collection.mutable.Builder">Builder</span>[<a href="../Range.html" class="extype" name="org.feijoas.mango.common.collect.Range">Range</a>[<span class="extype" name="org.feijoas.mango.common.collect.mutable.RangeSet.C">C</span>, <span class="extype" name="org.feijoas.mango.common.collect.mutable.RangeSet.O">O</span>], <a href="" class="extype" name="org.feijoas.mango.common.collect.mutable.RangeSet">RangeSet</a>[<span class="extype" name="org.feijoas.mango.common.collect.mutable.RangeSet.C">C</span>, <span class="extype" name="org.feijoas.mango.common.collect.mutable.RangeSet.O">O</span>]]</span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#org.feijoas.mango.common.collect.mutable.RangeSet@newBuilder:scala.collection.mutable.Builder[A,Repr]" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[this] </dd><dt>Definition Classes</dt><dd>HasNewBuilder</dd></dl></div>
     </li><li name="org.feijoas.mango.common.collect.mutable.RangeSetLike#remove" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="remove(range:org.feijoas.mango.common.collect.Range[C,O]):Unit"></a>
@@ -207,9 +243,13 @@ mutableRangeSet -= Range.open(<span class="num">5</span>, <span class="num">10</
       <span class="symbol">
         <span class="name">remove</span><span class="params">(<span name="range">range: <a href="../Range.html" class="extype" name="org.feijoas.mango.common.collect.Range">Range</a>[<span class="extype" name="org.feijoas.mango.common.collect.mutable.RangeSet.C">C</span>, <span class="extype" name="org.feijoas.mango.common.collect.mutable.RangeSet.O">O</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
-      </h4>
-      <p class="shortcomment cmt">Removes the specified range from this <code> RangeSet</code> (optional operation).</p><div class="fullcomment"><div class="comment cmt"><p>Removes the specified range from this <code> RangeSet</code> (optional operation). After this
- operation, if <code> range.contains(c)</code>, <code> this.contains(c)</code> will return <code> false</code>.</p><p>If <code> range</code> is empty, this is a no-op.
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#org.feijoas.mango.common.collect.mutable.RangeSet@remove(range:org.feijoas.mango.common.collect.Range[C,O]):Unit" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Removes the specified range from this <code>RangeSet</code> (optional operation).</code></p><div class="fullcomment"><div class="comment cmt"><p>Removes the specified range from this <code>RangeSet</code> (optional operation). After this
+ operation, if <code>range.contains(c)</code>, <code>this.contains(c)</code> will return <code>false</code>.</p><p>If <code>range</code> is empty, this is a no-op.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="RangeSetLike.html" class="extype" name="org.feijoas.mango.common.collect.mutable.RangeSetLike">RangeSetLike</a></dd></dl></div>
     </li><li name="org.feijoas.mango.common.collect.RangeSetLike#span" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="span():Option[org.feijoas.mango.common.collect.Range[C,O]]"></a>
@@ -222,7 +262,11 @@ mutableRangeSet -= Range.open(<span class="num">5</span>, <span class="num">10</
       <span class="symbol">
         <span class="name">span</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<a href="../Range.html" class="extype" name="org.feijoas.mango.common.collect.Range">Range</a>[<span class="extype" name="org.feijoas.mango.common.collect.mutable.RangeSet.C">C</span>, <span class="extype" name="org.feijoas.mango.common.collect.mutable.RangeSet.O">O</span>]]</span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#org.feijoas.mango.common.collect.mutable.RangeSet@span():Option[org.feijoas.mango.common.collect.Range[C,O]]" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Returns a <code>Some</code> with the minimal range which encloses all ranges in this range set
  or <code>None</code> if this range set is empty
 </p><div class="fullcomment"><div class="comment cmt"><p>Returns a <code>Some</code> with the minimal range which encloses all ranges in this range set
@@ -239,7 +283,11 @@ mutableRangeSet -= Range.open(<span class="num">5</span>, <span class="num">10</
       <span class="symbol">
         <span class="name">subRangeSet</span><span class="params">(<span name="view">view: <a href="../Range.html" class="extype" name="org.feijoas.mango.common.collect.Range">Range</a>[<span class="extype" name="org.feijoas.mango.common.collect.mutable.RangeSet.C">C</span>, <span class="extype" name="org.feijoas.mango.common.collect.mutable.RangeSet.O">O</span>]</span>)</span><span class="result">: <a href="" class="extype" name="org.feijoas.mango.common.collect.mutable.RangeSet">RangeSet</a>[<span class="extype" name="org.feijoas.mango.common.collect.mutable.RangeSet.C">C</span>, <span class="extype" name="org.feijoas.mango.common.collect.mutable.RangeSet.O">O</span>]</span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#org.feijoas.mango.common.collect.mutable.RangeSet@subRangeSet(view:org.feijoas.mango.common.collect.Range[C,O]):Repr" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Returns a view of the intersection of this <code>RangeSet</code> with the specified range.</p><div class="fullcomment"><div class="comment cmt"><p>Returns a view of the intersection of this <code>RangeSet</code> with the specified range.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../RangeSetLike.html" class="extype" name="org.feijoas.mango.common.collect.RangeSetLike">RangeSetLike</a></dd></dl></div>
     </li></ol>
@@ -248,19 +296,6 @@ mutableRangeSet -= Range.open(<span class="num">5</span>, <span class="num">10</
         <div id="values" class="values members">
               <h3>Concrete Value Members</h3>
               <ol><li name="scala.AnyRef#!=" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="!=(x$1:AnyRef):Boolean"></a>
-      <a id="!=(AnyRef):Boolean"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier">final </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span title="gt4s: $bang$eq" class="name">!=</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="scala.Any#!=" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="!=(x$1:Any):Boolean"></a>
       <a id="!=(Any):Boolean"></a>
       <h4 class="signature">
@@ -271,8 +306,12 @@ mutableRangeSet -= Range.open(<span class="num">5</span>, <span class="num">10</
       <span class="symbol">
         <span title="gt4s: $bang$eq" class="name">!=</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#org.feijoas.mango.common.collect.mutable.RangeSet@!=(x$1:Any):Boolean" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="scala.AnyRef###" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="##():Int"></a>
       <a id="##():Int"></a>
@@ -284,7 +323,11 @@ mutableRangeSet -= Range.open(<span class="num">5</span>, <span class="num">10</
       <span class="symbol">
         <span title="gt4s: $hash$hash" class="name">##</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#org.feijoas.mango.common.collect.mutable.RangeSet@##():Int" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="scala.collection.generic.Growable#++=" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="++=(xs:scala.collection.TraversableOnce[A]):Growable.this.type"></a>
@@ -297,7 +340,11 @@ mutableRangeSet -= Range.open(<span class="num">5</span>, <span class="num">10</
       <span class="symbol">
         <span title="gt4s: $plus$plus$eq" class="name">++=</span><span class="params">(<span name="xs">xs: <span class="extype" name="scala.collection.TraversableOnce">TraversableOnce</span>[<a href="../Range.html" class="extype" name="org.feijoas.mango.common.collect.Range">Range</a>[<span class="extype" name="org.feijoas.mango.common.collect.mutable.RangeSet.C">C</span>, <span class="extype" name="org.feijoas.mango.common.collect.mutable.RangeSet.O">O</span>]]</span>)</span><span class="result">: <a href="" class="extype" name="org.feijoas.mango.common.collect.mutable.RangeSet">RangeSet</a>.this.type</span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#org.feijoas.mango.common.collect.mutable.RangeSet@++=(xs:scala.collection.TraversableOnce[A]):Growable.this.type" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Growable</dd></dl></div>
     </li><li name="org.feijoas.mango.common.collect.mutable.RangeSetLike#+=" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="+=(range:org.feijoas.mango.common.collect.Range[C,O]):RangeSetLike.this.type"></a>
@@ -310,7 +357,11 @@ mutableRangeSet -= Range.open(<span class="num">5</span>, <span class="num">10</
       <span class="symbol">
         <span title="gt4s: $plus$eq" class="name">+=</span><span class="params">(<span name="range">range: <a href="../Range.html" class="extype" name="org.feijoas.mango.common.collect.Range">Range</a>[<span class="extype" name="org.feijoas.mango.common.collect.mutable.RangeSet.C">C</span>, <span class="extype" name="org.feijoas.mango.common.collect.mutable.RangeSet.O">O</span>]</span>)</span><span class="result">: <a href="" class="extype" name="org.feijoas.mango.common.collect.mutable.RangeSet">RangeSet</a>.this.type</span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#org.feijoas.mango.common.collect.mutable.RangeSet@+=(range:org.feijoas.mango.common.collect.Range[C,O]):RangeSetLike.this.type" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Alias for <code>#add(range)</code></p><div class="fullcomment"><div class="comment cmt"><p>Alias for <code>#add(range)</code></p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="RangeSetLike.html" class="extype" name="org.feijoas.mango.common.collect.mutable.RangeSetLike">RangeSetLike</a> → Growable</dd></dl></div>
     </li><li name="scala.collection.generic.Growable#+=" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="+=(elem1:A,elem2:A,elems:A*):Growable.this.type"></a>
@@ -323,7 +374,11 @@ mutableRangeSet -= Range.open(<span class="num">5</span>, <span class="num">10</
       <span class="symbol">
         <span title="gt4s: $plus$eq" class="name">+=</span><span class="params">(<span name="elem1">elem1: <a href="../Range.html" class="extype" name="org.feijoas.mango.common.collect.Range">Range</a>[<span class="extype" name="org.feijoas.mango.common.collect.mutable.RangeSet.C">C</span>, <span class="extype" name="org.feijoas.mango.common.collect.mutable.RangeSet.O">O</span>]</span>, <span name="elem2">elem2: <a href="../Range.html" class="extype" name="org.feijoas.mango.common.collect.Range">Range</a>[<span class="extype" name="org.feijoas.mango.common.collect.mutable.RangeSet.C">C</span>, <span class="extype" name="org.feijoas.mango.common.collect.mutable.RangeSet.O">O</span>]</span>, <span name="elems">elems: <a href="../Range.html" class="extype" name="org.feijoas.mango.common.collect.Range">Range</a>[<span class="extype" name="org.feijoas.mango.common.collect.mutable.RangeSet.C">C</span>, <span class="extype" name="org.feijoas.mango.common.collect.mutable.RangeSet.O">O</span>]*</span>)</span><span class="result">: <a href="" class="extype" name="org.feijoas.mango.common.collect.mutable.RangeSet">RangeSet</a>.this.type</span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#org.feijoas.mango.common.collect.mutable.RangeSet@+=(elem1:A,elem2:A,elems:A*):Growable.this.type" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Growable</dd></dl></div>
     </li><li name="scala.collection.generic.Shrinkable#--=" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="--=(xs:scala.collection.TraversableOnce[A]):Shrinkable.this.type"></a>
@@ -336,7 +391,11 @@ mutableRangeSet -= Range.open(<span class="num">5</span>, <span class="num">10</
       <span class="symbol">
         <span title="gt4s: $minus$minus$eq" class="name">--=</span><span class="params">(<span name="xs">xs: <span class="extype" name="scala.collection.TraversableOnce">TraversableOnce</span>[<a href="../Range.html" class="extype" name="org.feijoas.mango.common.collect.Range">Range</a>[<span class="extype" name="org.feijoas.mango.common.collect.mutable.RangeSet.C">C</span>, <span class="extype" name="org.feijoas.mango.common.collect.mutable.RangeSet.O">O</span>]]</span>)</span><span class="result">: <a href="" class="extype" name="org.feijoas.mango.common.collect.mutable.RangeSet">RangeSet</a>.this.type</span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#org.feijoas.mango.common.collect.mutable.RangeSet@--=(xs:scala.collection.TraversableOnce[A]):Shrinkable.this.type" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Shrinkable</dd></dl></div>
     </li><li name="org.feijoas.mango.common.collect.mutable.RangeSetLike#-=" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="-=(range:org.feijoas.mango.common.collect.Range[C,O]):RangeSetLike.this.type"></a>
@@ -349,7 +408,11 @@ mutableRangeSet -= Range.open(<span class="num">5</span>, <span class="num">10</
       <span class="symbol">
         <span title="gt4s: $minus$eq" class="name">-=</span><span class="params">(<span name="range">range: <a href="../Range.html" class="extype" name="org.feijoas.mango.common.collect.Range">Range</a>[<span class="extype" name="org.feijoas.mango.common.collect.mutable.RangeSet.C">C</span>, <span class="extype" name="org.feijoas.mango.common.collect.mutable.RangeSet.O">O</span>]</span>)</span><span class="result">: <a href="" class="extype" name="org.feijoas.mango.common.collect.mutable.RangeSet">RangeSet</a>.this.type</span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#org.feijoas.mango.common.collect.mutable.RangeSet@-=(range:org.feijoas.mango.common.collect.Range[C,O]):RangeSetLike.this.type" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Alias for <code>#remove(range)</code></p><div class="fullcomment"><div class="comment cmt"><p>Alias for <code>#remove(range)</code></p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="RangeSetLike.html" class="extype" name="org.feijoas.mango.common.collect.mutable.RangeSetLike">RangeSetLike</a> → Shrinkable</dd></dl></div>
     </li><li name="scala.collection.generic.Shrinkable#-=" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="-=(elem1:A,elem2:A,elems:A*):Shrinkable.this.type"></a>
@@ -362,22 +425,13 @@ mutableRangeSet -= Range.open(<span class="num">5</span>, <span class="num">10</
       <span class="symbol">
         <span title="gt4s: $minus$eq" class="name">-=</span><span class="params">(<span name="elem1">elem1: <a href="../Range.html" class="extype" name="org.feijoas.mango.common.collect.Range">Range</a>[<span class="extype" name="org.feijoas.mango.common.collect.mutable.RangeSet.C">C</span>, <span class="extype" name="org.feijoas.mango.common.collect.mutable.RangeSet.O">O</span>]</span>, <span name="elem2">elem2: <a href="../Range.html" class="extype" name="org.feijoas.mango.common.collect.Range">Range</a>[<span class="extype" name="org.feijoas.mango.common.collect.mutable.RangeSet.C">C</span>, <span class="extype" name="org.feijoas.mango.common.collect.mutable.RangeSet.O">O</span>]</span>, <span name="elems">elems: <a href="../Range.html" class="extype" name="org.feijoas.mango.common.collect.Range">Range</a>[<span class="extype" name="org.feijoas.mango.common.collect.mutable.RangeSet.C">C</span>, <span class="extype" name="org.feijoas.mango.common.collect.mutable.RangeSet.O">O</span>]*</span>)</span><span class="result">: <a href="" class="extype" name="org.feijoas.mango.common.collect.mutable.RangeSet">RangeSet</a>.this.type</span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#org.feijoas.mango.common.collect.mutable.RangeSet@-=(elem1:A,elem2:A,elems:A*):Shrinkable.this.type" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Shrinkable</dd></dl></div>
     </li><li name="scala.AnyRef#==" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="==(x$1:AnyRef):Boolean"></a>
-      <a id="==(AnyRef):Boolean"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier">final </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span title="gt4s: $eq$eq" class="name">==</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="scala.Any#==" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="==(x$1:Any):Boolean"></a>
       <a id="==(Any):Boolean"></a>
       <h4 class="signature">
@@ -388,8 +442,12 @@ mutableRangeSet -= Range.open(<span class="num">5</span>, <span class="num">10</
       <span class="symbol">
         <span title="gt4s: $eq$eq" class="name">==</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#org.feijoas.mango.common.collect.mutable.RangeSet@==(x$1:Any):Boolean" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="org.feijoas.mango.common.collect.mutable.RangeSetLike#addAll" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="addAll(other:org.feijoas.mango.common.collect.mutable.RangeSet[C,O]):Unit"></a>
       <a id="addAll(RangeSet[C,O]):Unit"></a>
@@ -401,11 +459,15 @@ mutableRangeSet -= Range.open(<span class="num">5</span>, <span class="num">10</
       <span class="symbol">
         <span class="name">addAll</span><span class="params">(<span name="other">other: <a href="" class="extype" name="org.feijoas.mango.common.collect.mutable.RangeSet">RangeSet</a>[<span class="extype" name="org.feijoas.mango.common.collect.mutable.RangeSet.C">C</span>, <span class="extype" name="org.feijoas.mango.common.collect.mutable.RangeSet.O">O</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#org.feijoas.mango.common.collect.mutable.RangeSet@addAll(other:org.feijoas.mango.common.collect.mutable.RangeSet[C,O]):Unit" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Adds all of the ranges from the specified range set to this range set (optional operation).</p><div class="fullcomment"><div class="comment cmt"><p>Adds all of the ranges from the specified range set to this range set (optional operation).
  After this operation, this range set is the minimal range set that
- <code>plain #enclosesAll(RangeSet) encloses</code> both the original range set and <code> other</code>.</p><p>This is equivalent to calling <code> #add</code> on each of the ranges in <code> other</code> in turn.
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="RangeSetLike.html" class="extype" name="org.feijoas.mango.common.collect.mutable.RangeSetLike">RangeSetLike</a></dd><dt>Exceptions thrown</dt><dd><span class="cmt">UnsupportedOperationException<p>if this range set does not support the <code> addAll</code>
+ <span class="extype" name="#enclosesAll(RangeSet)">encloses</span> both the original range set and <code>other</code>.</p><p>This is equivalent to calling <code><a href="RangeSetLike.html#add(range:org.feijoas.mango.common.collect.Range[C,O]):Unit" class="extmbr" name="org.feijoas.mango.common.collect.mutable.RangeSetLike#add">#add</a></code> on each of the ranges in <code>other</code> in turn.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="RangeSetLike.html" class="extype" name="org.feijoas.mango.common.collect.mutable.RangeSetLike">RangeSetLike</a></dd><dt>Exceptions thrown</dt><dd><span class="cmt"><p><span class="extype" name="UnsupportedOperationException"><code>UnsupportedOperationException</code></span> if this range set does not support the <code>addAll</code>
         operation
 </p></span></dd></dl></div>
     </li><li name="scala.Any#asInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -419,7 +481,11 @@ mutableRangeSet -= Range.open(<span class="num">5</span>, <span class="num">10</
       <span class="symbol">
         <span class="name">asInstanceOf</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="result">: <span class="extype" name="scala.Any.asInstanceOf.T0">T0</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#org.feijoas.mango.common.collect.mutable.RangeSet@asInstanceOf[T0]:T0" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
     </li><li name="scala.AnyRef#clone" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="clone():Object"></a>
@@ -432,7 +498,11 @@ mutableRangeSet -= Range.open(<span class="num">5</span>, <span class="num">10</
       <span class="symbol">
         <span class="name">clone</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#org.feijoas.mango.common.collect.mutable.RangeSet@clone():Object" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../../../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
                 <span class="name">@throws</span><span class="args">(<span>
       
@@ -451,7 +521,11 @@ mutableRangeSet -= Range.open(<span class="num">5</span>, <span class="num">10</
       <span class="symbol">
         <span class="name">contains</span><span class="params">(<span name="value">value: <span class="extype" name="org.feijoas.mango.common.collect.mutable.RangeSet.C">C</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#org.feijoas.mango.common.collect.mutable.RangeSet@contains(value:C):Boolean" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Determines whether any of this range set's member ranges contains <code>value</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Determines whether any of this range set's member ranges contains <code>value</code>.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../RangeSetLike.html" class="extype" name="org.feijoas.mango.common.collect.RangeSetLike">RangeSetLike</a></dd></dl></div>
     </li><li name="org.feijoas.mango.common.collect.RangeSetLike#encloses" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -465,7 +539,11 @@ mutableRangeSet -= Range.open(<span class="num">5</span>, <span class="num">10</
       <span class="symbol">
         <span class="name">encloses</span><span class="params">(<span name="otherRange">otherRange: <a href="../Range.html" class="extype" name="org.feijoas.mango.common.collect.Range">Range</a>[<span class="extype" name="org.feijoas.mango.common.collect.mutable.RangeSet.C">C</span>, <span class="extype" name="org.feijoas.mango.common.collect.mutable.RangeSet.O">O</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#org.feijoas.mango.common.collect.mutable.RangeSet@encloses(otherRange:org.feijoas.mango.common.collect.Range[C,O]):Boolean" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Returns <code>true</code> if there exists a member range in this range set which
  encloses the specified range.</p><div class="fullcomment"><div class="comment cmt"><p>Returns <code>true</code> if there exists a member range in this range set which
  encloses the specified range.
@@ -481,7 +559,11 @@ mutableRangeSet -= Range.open(<span class="num">5</span>, <span class="num">10</
       <span class="symbol">
         <span class="name">enclosesAll</span><span class="params">(<span name="other">other: <a href="../RangeSet.html" class="extype" name="org.feijoas.mango.common.collect.RangeSet">collect.RangeSet</a>[<span class="extype" name="org.feijoas.mango.common.collect.mutable.RangeSet.C">C</span>, <span class="extype" name="org.feijoas.mango.common.collect.mutable.RangeSet.O">O</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#org.feijoas.mango.common.collect.mutable.RangeSet@enclosesAll(other:org.feijoas.mango.common.collect.RangeSet[C,O]):Boolean" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Returns <code>true</code> if for each member range in <code>other</code> there exists a member range in
  this range set which encloses it.</p><div class="fullcomment"><div class="comment cmt"><p>Returns <code>true</code> if for each member range in <code>other</code> there exists a member range in
  this range set which encloses it. It follows that <code>this.contains(value)</code> whenever <code>other.contains(value)</code>.
@@ -499,7 +581,11 @@ mutableRangeSet -= Range.open(<span class="num">5</span>, <span class="num">10</
       <span class="symbol">
         <span class="name">eq</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#org.feijoas.mango.common.collect.mutable.RangeSet@eq(x$1:AnyRef):Boolean" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
     </li><li name="org.feijoas.mango.common.collect.RangeSetLike#equals" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="equals(obj:Any):Boolean"></a>
@@ -512,7 +598,11 @@ mutableRangeSet -= Range.open(<span class="num">5</span>, <span class="num">10</
       <span class="symbol">
         <span class="name">equals</span><span class="params">(<span name="obj">obj: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#org.feijoas.mango.common.collect.mutable.RangeSet@equals(obj:Any):Boolean" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Returns <code>true</code> if <code>obj</code> is another <code>RangeSet</code> that contains the same ranges
  according to <code>Range#equals(Any)</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Returns <code>true</code> if <code>obj</code> is another <code>RangeSet</code> that contains the same ranges
  according to <code>Range#equals(Any)</code>.
@@ -528,7 +618,11 @@ mutableRangeSet -= Range.open(<span class="num">5</span>, <span class="num">10</
       <span class="symbol">
         <span class="name">finalize</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#org.feijoas.mango.common.collect.mutable.RangeSet@finalize():Unit" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../../../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
                 <span class="name">@throws</span><span class="args">(<span>
       
@@ -547,7 +641,11 @@ mutableRangeSet -= Range.open(<span class="num">5</span>, <span class="num">10</
       <span class="symbol">
         <span class="name">getClass</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.Class">Class</span>[_]</span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#org.feijoas.mango.common.collect.mutable.RangeSet@getClass():Class[_]" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="org.feijoas.mango.common.collect.RangeSetLike#hashCode" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="hashCode():Int"></a>
@@ -560,7 +658,11 @@ mutableRangeSet -= Range.open(<span class="num">5</span>, <span class="num">10</
       <span class="symbol">
         <span class="name">hashCode</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#org.feijoas.mango.common.collect.mutable.RangeSet@hashCode():Int" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Returns <code>asRanges().hashCode()</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Returns <code>asRanges().hashCode()</code>.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../RangeSetLike.html" class="extype" name="org.feijoas.mango.common.collect.RangeSetLike">RangeSetLike</a> → AnyRef → Any</dd></dl></div>
     </li><li name="org.feijoas.mango.common.collect.RangeSetLike#isEmpty" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -574,7 +676,11 @@ mutableRangeSet -= Range.open(<span class="num">5</span>, <span class="num">10</
       <span class="symbol">
         <span class="name">isEmpty</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#org.feijoas.mango.common.collect.mutable.RangeSet@isEmpty:Boolean" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Returns <code>true</code> if this range set contains no ranges.</p><div class="fullcomment"><div class="comment cmt"><p>Returns <code>true</code> if this range set contains no ranges.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../RangeSetLike.html" class="extype" name="org.feijoas.mango.common.collect.RangeSetLike">RangeSetLike</a></dd></dl></div>
     </li><li name="scala.Any#isInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -588,7 +694,11 @@ mutableRangeSet -= Range.open(<span class="num">5</span>, <span class="num">10</
       <span class="symbol">
         <span class="name">isInstanceOf</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#org.feijoas.mango.common.collect.mutable.RangeSet@isInstanceOf[T0]:Boolean" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
     </li><li name="scala.AnyRef#ne" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ne(x$1:AnyRef):Boolean"></a>
@@ -601,7 +711,11 @@ mutableRangeSet -= Range.open(<span class="num">5</span>, <span class="num">10</
       <span class="symbol">
         <span class="name">ne</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#org.feijoas.mango.common.collect.mutable.RangeSet@ne(x$1:AnyRef):Boolean" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
     </li><li name="scala.AnyRef#notify" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="notify():Unit"></a>
@@ -614,7 +728,11 @@ mutableRangeSet -= Range.open(<span class="num">5</span>, <span class="num">10</
       <span class="symbol">
         <span class="name">notify</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#org.feijoas.mango.common.collect.mutable.RangeSet@notify():Unit" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
     </li><li name="scala.AnyRef#notifyAll" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="notifyAll():Unit"></a>
@@ -627,7 +745,11 @@ mutableRangeSet -= Range.open(<span class="num">5</span>, <span class="num">10</
       <span class="symbol">
         <span class="name">notifyAll</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#org.feijoas.mango.common.collect.mutable.RangeSet@notifyAll():Unit" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
     </li><li name="org.feijoas.mango.common.collect.RangeSetLike#rangeContaining" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="rangeContaining(value:C):Option[org.feijoas.mango.common.collect.Range[C,O]]"></a>
@@ -640,7 +762,11 @@ mutableRangeSet -= Range.open(<span class="num">5</span>, <span class="num">10</
       <span class="symbol">
         <span class="name">rangeContaining</span><span class="params">(<span name="value">value: <span class="extype" name="org.feijoas.mango.common.collect.mutable.RangeSet.C">C</span></span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<a href="../Range.html" class="extype" name="org.feijoas.mango.common.collect.Range">Range</a>[<span class="extype" name="org.feijoas.mango.common.collect.mutable.RangeSet.C">C</span>, <span class="extype" name="org.feijoas.mango.common.collect.mutable.RangeSet.O">O</span>]]</span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#org.feijoas.mango.common.collect.mutable.RangeSet@rangeContaining(value:C):Option[org.feijoas.mango.common.collect.Range[C,O]]" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Returns the unique range from this range set that contains
  <code>value</code> as <code>Some(value)</code>, or <code>None</code> if this range set does not contain <code>value</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Returns the unique range from this range set that contains
  <code>value</code> as <code>Some(value)</code>, or <code>None</code> if this range set does not contain <code>value</code>.
@@ -656,11 +782,15 @@ mutableRangeSet -= Range.open(<span class="num">5</span>, <span class="num">10</
       <span class="symbol">
         <span class="name">removeAll</span><span class="params">(<span name="other">other: <a href="" class="extype" name="org.feijoas.mango.common.collect.mutable.RangeSet">RangeSet</a>[<span class="extype" name="org.feijoas.mango.common.collect.mutable.RangeSet.C">C</span>, <span class="extype" name="org.feijoas.mango.common.collect.mutable.RangeSet.O">O</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#org.feijoas.mango.common.collect.mutable.RangeSet@removeAll(other:org.feijoas.mango.common.collect.mutable.RangeSet[C,O]):Unit" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Removes all of the ranges from the specified range set from this range set (optional
  operation).</p><div class="fullcomment"><div class="comment cmt"><p>Removes all of the ranges from the specified range set from this range set (optional
- operation). After this operation, if <code> other.contains(c)</code>, <code> this.contains(c)</code> will
- return <code> false</code>.</p><p>This is equivalent to calling <code> #remove</code> on each of the ranges in <code> other</code> in
+ operation). After this operation, if <code>other.contains(c)</code>, <code>this.contains(c)</code> will
+ return <code>false</code>.</p><p>This is equivalent to calling <code><a href="RangeSetLike.html#remove(range:org.feijoas.mango.common.collect.Range[C,O]):Unit" class="extmbr" name="org.feijoas.mango.common.collect.mutable.RangeSetLike#remove">#remove</a></code> on each of the ranges in <code>other</code> in
  turn.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="RangeSetLike.html" class="extype" name="org.feijoas.mango.common.collect.mutable.RangeSetLike">RangeSetLike</a></dd></dl></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -674,7 +804,11 @@ mutableRangeSet -= Range.open(<span class="num">5</span>, <span class="num">10</
       <span class="symbol">
         <span class="name">synchronized</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="params">(<span name="arg0">arg0: ⇒ <span class="extype" name="java.lang.AnyRef.synchronized.T0">T0</span></span>)</span><span class="result">: <span class="extype" name="java.lang.AnyRef.synchronized.T0">T0</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#org.feijoas.mango.common.collect.mutable.RangeSet@synchronized[T0](x$1:=&gt;T0):T0" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
     </li><li name="org.feijoas.mango.common.collect.RangeSetLike#toString" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="toString():String"></a>
@@ -687,7 +821,11 @@ mutableRangeSet -= Range.open(<span class="num">5</span>, <span class="num">10</
       <span class="symbol">
         <span class="name">toString</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#org.feijoas.mango.common.collect.mutable.RangeSet@toString():String" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Returns a readable string representation of this range set.</p><div class="fullcomment"><div class="comment cmt"><p>Returns a readable string representation of this range set. For example, if this
  <code>RangeSet</code> consisted of <code>Ranges.closed(1, 3)</code> and <code>Ranges.greaterThan(4)</code>,
  this might return <code>&quot;{[1‥3](4‥+∞)}&quot;</code>.
@@ -703,7 +841,11 @@ mutableRangeSet -= Range.open(<span class="num">5</span>, <span class="num">10</
       <span class="symbol">
         <span class="name">wait</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#org.feijoas.mango.common.collect.mutable.RangeSet@wait():Unit" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
                 <span class="name">@throws</span><span class="args">(<span>
       
@@ -722,7 +864,11 @@ mutableRangeSet -= Range.open(<span class="num">5</span>, <span class="num">10</
       <span class="symbol">
         <span class="name">wait</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Long">Long</span></span>, <span name="arg1">arg1: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#org.feijoas.mango.common.collect.mutable.RangeSet@wait(x$1:Long,x$2:Int):Unit" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
                 <span class="name">@throws</span><span class="args">(<span>
       
@@ -741,7 +887,11 @@ mutableRangeSet -= Range.open(<span class="num">5</span>, <span class="num">10</
       <span class="symbol">
         <span class="name">wait</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Long">Long</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#org.feijoas.mango.common.collect.mutable.RangeSet@wait(x$1:Long):Unit" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
                 <span class="name">@throws</span><span class="args">(<span>
       
@@ -792,6 +942,7 @@ mutableRangeSet -= Range.open(<span class="num">5</span>, <span class="num">10</
       <div id="tooltip"></div>
 
       <div id="footer">  </div>
-      <script defer="defer" type="text/javascript" id="jquery-js" src="../../../../../../lib/jquery.js"></script><script defer="defer" type="text/javascript" id="jquery-ui-js" src="../../../../../../lib/jquery-ui.js"></script><script defer="defer" type="text/javascript" id="tools-tooltip-js" src="../../../../../../lib/tools.tooltip.js"></script><script defer="defer" type="text/javascript" id="template-js" src="../../../../../../lib/template.js"></script>
+
+
     </body>
       </html>

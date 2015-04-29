@@ -1,5 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<!DOCTYPE html >
 <html>
         <head>
           <title>LoadingCache - Mango - org.feijoas.mango.common.cache.LoadingCache</title>
@@ -9,6 +8,11 @@
           
       <link href="../../../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
       <link href="../../../../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
+      <script type="text/javascript" src="../../../../../lib/jquery.js" id="jquery-js"></script>
+      <script type="text/javascript" src="../../../../../lib/jquery-ui.js"></script>
+      <script type="text/javascript" src="../../../../../lib/template.js"></script>
+      <script type="text/javascript" src="../../../../../lib/tools.tooltip.js"></script>
+      
       <script type="text/javascript">
          if(top === self) {
             var url = '../../../../../index.html';
@@ -24,9 +28,17 @@
         </head>
         <body class="type">
       <div id="definition">
-        <a href="LoadingCache$.html" title="Go to companion"><img src="../../../../../lib/trait_to_object_big.png" /></a>
+        <a href="LoadingCache$.html" title="See companion object"><img src="../../../../../lib/trait_to_object_big.png" /></a>
         <p id="owner"><a href="../../../../package.html" class="extype" name="org">org</a>.<a href="../../../package.html" class="extype" name="org.feijoas">feijoas</a>.<a href="../../package.html" class="extype" name="org.feijoas.mango">mango</a>.<a href="../package.html" class="extype" name="org.feijoas.mango.common">common</a>.<a href="package.html" class="extype" name="org.feijoas.mango.common.cache">cache</a></p>
-        <h1><a href="LoadingCache$.html" title="Go to companion">LoadingCache</a></h1>
+        <h1><a href="LoadingCache$.html" title="See companion object">LoadingCache</a></h1><h3><span class="morelinks"><div>
+            Related Docs:
+            <a href="LoadingCache$.html" title="See companion object">object LoadingCache</a>
+            | <a href="package.html" class="extype" name="org.feijoas.mango.common.cache">package cache</a>
+          </div></span></h3><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.cache.LoadingCache" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       </div>
 
       <h4 id="signature" class="signature">
@@ -54,9 +66,9 @@
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent">(<span class="extype" name="org.feijoas.mango.common.cache.LoadingCache.K">K</span>) ⇒ <span class="extype" name="org.feijoas.mango.common.cache.LoadingCache.V">V</span>, <a href="Cache.html" class="extype" name="org.feijoas.mango.common.cache.Cache">Cache</a>[<span class="extype" name="org.feijoas.mango.common.cache.LoadingCache.K">K</span>, <span class="extype" name="org.feijoas.mango.common.cache.LoadingCache.V">V</span>], <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div><div class="toggleContainer block">
-          <span class="toggle">Known Subclasses</span>
-          <div class="subClasses hiddenContent"><a href="LoadingCacheWrapper.html" class="extype" name="org.feijoas.mango.common.cache.LoadingCacheWrapper">LoadingCacheWrapper</a></div>
-        </div></div>
+            <span class="toggle">Known Subclasses</span>
+            <div class="subClasses hiddenContent"><a href="LoadingCacheWrapper.html" class="extype" name="org.feijoas.mango.common.cache.LoadingCacheWrapper">LoadingCacheWrapper</a></div>
+          </div></div>
         
 
       <div id="mbrsel">
@@ -108,7 +120,11 @@
       <span class="symbol">
         <span class="name">asMap</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.collection.concurrent.Map">Map</span>[<span class="extype" name="org.feijoas.mango.common.cache.LoadingCache.K">K</span>, <span class="extype" name="org.feijoas.mango.common.cache.LoadingCache.V">V</span>]</span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.cache.LoadingCache@asMap():scala.collection.concurrent.Map[K,V]" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Returns a view of the entries stored in this cache as a thread-safe map.</p><div class="fullcomment"><div class="comment cmt"><p>Returns a view of the entries stored in this cache as a thread-safe map. Modifications made to
  the map directly affect the cache.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Cache.html" class="extype" name="org.feijoas.mango.common.cache.Cache">Cache</a></dd></dl></div>
@@ -123,7 +139,11 @@
       <span class="symbol">
         <span class="name">get</span><span class="params">(<span name="key">key: <span class="extype" name="org.feijoas.mango.common.cache.LoadingCache.K">K</span></span>)</span><span class="result">: <span class="extype" name="scala.util.Try">Try</span>[<span class="extype" name="org.feijoas.mango.common.cache.LoadingCache.V">V</span>]</span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.cache.LoadingCache@get(key:K):scala.util.Try[V]" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Returns the value associated with <code>key</code> in this cache, first loading that value if
  necessary.</p><div class="fullcomment"><div class="comment cmt"><p>Returns the value associated with <code>key</code> in this cache, first loading that value if
  necessary. No observable state associated with this cache is modified until loading completes.</p><p>If another call to <code>#get</code> or <code>#getIfPresent</code> is currently loading the value for
@@ -134,8 +154,8 @@
  the new value.</p><p> The <a href="CacheLoader.html" class="extype" name="org.feijoas.mango.common.cache.CacheLoader">CacheLoader</a> should not throw exceptions. If the calculation from a <a href="CacheLoader.html" class="extype" name="org.feijoas.mango.common.cache.CacheLoader">CacheLoader</a>
  can fail the use of <code>CacheLoader[K,Option[V]]</code> or <code>CacheLoader[K,Try[V]]</code> is preferred.
  If the cache loader associated with this cache is known not to throw checked
- exceptions, then prefer <code>#getUnchecked</code> over this method.</p></div><dl class="attributes block"> <dt>Exceptions thrown</dt><dd><span class="cmt">ExecutionError<p>if an error was thrown while loading the value
-</p></span><span class="cmt">ExecutionException<p>if a checked exception was thrown while loading the value</p></span><span class="cmt">UncheckedExecutionException<p>if an unchecked exception was thrown while loading the
+ exceptions, then prefer <code>#getUnchecked</code> over this method.</p></div><dl class="attributes block"> <dt>Exceptions thrown</dt><dd><span class="cmt"><p><span class="extype" name="ExecutionError"><code>ExecutionError</code></span> if an error was thrown while loading the value
+</p></span><span class="cmt"><p><span class="extype" name="ExecutionException"><code>ExecutionException</code></span> if a checked exception was thrown while loading the value</p></span><span class="cmt"><p><span class="extype" name="UncheckedExecutionException"><code>UncheckedExecutionException</code></span> if an unchecked exception was thrown while loading the
     value</p></span></dd></dl></div>
     </li><li name="org.feijoas.mango.common.cache.Cache#getIfPresent" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="getIfPresent(key:K):Option[V]"></a>
@@ -148,7 +168,11 @@
       <span class="symbol">
         <span class="name">getIfPresent</span><span class="params">(<span name="key">key: <span class="extype" name="org.feijoas.mango.common.cache.LoadingCache.K">K</span></span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="org.feijoas.mango.common.cache.LoadingCache.V">V</span>]</span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.cache.LoadingCache@getIfPresent(key:K):Option[V]" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Returns an <a href="http://www.scala-lang.org/api/current/index.html#scala.Option" target="_blank">Option</a> which is <code>Some(value)</code> with the value associated with
  <code>key</code> in this cache, or <code>None</code> if there is no cached value for <code>key</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Returns an <a href="http://www.scala-lang.org/api/current/index.html#scala.Option" target="_blank">Option</a> which is <code>Some(value)</code> with the value associated with
  <code>key</code> in this cache, or <code>None</code> if there is no cached value for <code>key</code>.
@@ -164,7 +188,11 @@
       <span class="symbol">
         <span class="name">getOrElseUpdate</span><span class="params">(<span name="key">key: <span class="extype" name="org.feijoas.mango.common.cache.LoadingCache.K">K</span></span>, <span name="loader">loader: () ⇒ <span class="extype" name="org.feijoas.mango.common.cache.LoadingCache.V">V</span></span>)</span><span class="result">: <span class="extype" name="org.feijoas.mango.common.cache.LoadingCache.V">V</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.cache.LoadingCache@getOrElseUpdate(key:K,loader:()=&gt;V):V" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Returns the value associated with <code>key</code> in this cache, obtaining that value from
  <code>loader</code> if necessary.</p><div class="fullcomment"><div class="comment cmt"><p>Returns the value associated with <code>key</code> in this cache, obtaining that value from
  <code>loader</code> if necessary. No observable state associated with this cache is modified
@@ -180,8 +208,8 @@
       <span class="defval" name="scala.this.throws.&lt;init&gt;$default$1[java.util.concurrent.ExecutionException]">...</span>
     </span>)</span>
               
-        </dd><dt>Exceptions thrown</dt><dd><span class="cmt">ExecutionError<p>if an error was thrown while loading the value
-</p></span><span class="cmt">ExecutionException<p>if a checked exception was thrown while loading the value</p></span><span class="cmt">UncheckedExecutionException<p>if an unchecked exception was thrown while loading the
+        </dd><dt>Exceptions thrown</dt><dd><span class="cmt"><p><span class="extype" name="ExecutionError"><code>ExecutionError</code></span> if an error was thrown while loading the value
+</p></span><span class="cmt"><p><span class="extype" name="ExecutionException"><code>ExecutionException</code></span> if a checked exception was thrown while loading the value</p></span><span class="cmt"><p><span class="extype" name="UncheckedExecutionException"><code>UncheckedExecutionException</code></span> if an unchecked exception was thrown while loading the
     value</p></span></dd></dl></div>
     </li><li name="org.feijoas.mango.common.cache.Cache#invalidate" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="invalidate(key:K):Unit"></a>
@@ -194,7 +222,11 @@
       <span class="symbol">
         <span class="name">invalidate</span><span class="params">(<span name="key">key: <span class="extype" name="org.feijoas.mango.common.cache.LoadingCache.K">K</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.cache.LoadingCache@invalidate(key:K):Unit" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Discards any cached value for key <code>key</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Discards any cached value for key <code>key</code>.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Cache.html" class="extype" name="org.feijoas.mango.common.cache.Cache">Cache</a></dd></dl></div>
     </li><li name="org.feijoas.mango.common.cache.Cache#invalidateAll" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
@@ -208,7 +240,11 @@
       <span class="symbol">
         <span class="name">invalidateAll</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.cache.LoadingCache@invalidateAll():Unit" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Discards all entries in the cache.</p><div class="fullcomment"><div class="comment cmt"><p>Discards all entries in the cache.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Cache.html" class="extype" name="org.feijoas.mango.common.cache.Cache">Cache</a></dd></dl></div>
     </li><li name="org.feijoas.mango.common.cache.Cache#put" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
@@ -222,7 +258,11 @@
       <span class="symbol">
         <span class="name">put</span><span class="params">(<span name="key">key: <span class="extype" name="org.feijoas.mango.common.cache.LoadingCache.K">K</span></span>, <span name="value">value: <span class="extype" name="org.feijoas.mango.common.cache.LoadingCache.V">V</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.cache.LoadingCache@put(key:K,value:V):Unit" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Adds a new key/value pair to this cache.</p><div class="fullcomment"><div class="comment cmt"><p>Adds a new key/value pair to this cache. If the cache previously contained a
  value associated with the <code>key</code>, the old value is replaced by the <code>value</code>.</p><p> Prefer <code>getOrElseUpdate(key, loader)</code> when using the conventional
  <code>if cached, return; otherwise create, cache and return</code> pattern.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Cache.html" class="extype" name="org.feijoas.mango.common.cache.Cache">Cache</a></dd></dl></div>
@@ -237,7 +277,11 @@
       <span class="symbol">
         <span class="name">refresh</span><span class="params">(<span name="key">key: <span class="extype" name="org.feijoas.mango.common.cache.LoadingCache.K">K</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.cache.LoadingCache@refresh(key:K):Unit" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Loads a new value for key <code>key</code>, possibly asynchronously.</p><div class="fullcomment"><div class="comment cmt"><p>Loads a new value for key <code>key</code>, possibly asynchronously. While the new value is loading
  the previous value (if any) will continue to be returned by <code>get(key)</code> unless it is
  evicted. If the new value is loaded successfully it will replace the previous value in the
@@ -260,7 +304,11 @@
       <span class="symbol">
         <span class="name">size</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Long">Long</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.cache.LoadingCache@size():Long" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Returns the approximate number of entries in this cache.</p><div class="fullcomment"><div class="comment cmt"><p>Returns the approximate number of entries in this cache.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Cache.html" class="extype" name="org.feijoas.mango.common.cache.Cache">Cache</a></dd></dl></div>
     </li><li name="org.feijoas.mango.common.cache.Cache#stats" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
@@ -274,7 +322,11 @@
       <span class="symbol">
         <span class="name">stats</span><span class="params">()</span><span class="result">: <a href="CacheStats.html" class="extype" name="org.feijoas.mango.common.cache.CacheStats">CacheStats</a></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.cache.LoadingCache@stats():org.feijoas.mango.common.cache.CacheStats" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Returns a current snapshot of this cache's cumulative statistics.</p><div class="fullcomment"><div class="comment cmt"><p>Returns a current snapshot of this cache's cumulative statistics. All stats are initialized
  to zero, and are monotonically increasing over the lifetime of the cache.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Cache.html" class="extype" name="org.feijoas.mango.common.cache.Cache">Cache</a></dd></dl></div>
@@ -284,19 +336,6 @@
         <div id="values" class="values members">
               <h3>Concrete Value Members</h3>
               <ol><li name="scala.AnyRef#!=" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="!=(x$1:AnyRef):Boolean"></a>
-      <a id="!=(AnyRef):Boolean"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier">final </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span title="gt4s: $bang$eq" class="name">!=</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="scala.Any#!=" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="!=(x$1:Any):Boolean"></a>
       <a id="!=(Any):Boolean"></a>
       <h4 class="signature">
@@ -307,8 +346,12 @@
       <span class="symbol">
         <span title="gt4s: $bang$eq" class="name">!=</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.cache.LoadingCache@!=(x$1:Any):Boolean" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="scala.AnyRef###" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="##():Int"></a>
       <a id="##():Int"></a>
@@ -320,22 +363,13 @@
       <span class="symbol">
         <span title="gt4s: $hash$hash" class="name">##</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.cache.LoadingCache@##():Int" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="scala.AnyRef#==" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="==(x$1:AnyRef):Boolean"></a>
-      <a id="==(AnyRef):Boolean"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier">final </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span title="gt4s: $eq$eq" class="name">==</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="scala.Any#==" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="==(x$1:Any):Boolean"></a>
       <a id="==(Any):Boolean"></a>
       <h4 class="signature">
@@ -346,8 +380,12 @@
       <span class="symbol">
         <span title="gt4s: $eq$eq" class="name">==</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.cache.LoadingCache@==(x$1:Any):Boolean" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="scala.Function1#andThen" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="andThen[A](g:R=&gt;A):T1=&gt;A"></a>
       <a id="andThen[A]((V)⇒A):(K)⇒A"></a>
@@ -359,7 +397,11 @@
       <span class="symbol">
         <span class="name">andThen</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="g">g: (<span class="extype" name="org.feijoas.mango.common.cache.LoadingCache.V">V</span>) ⇒ <span class="extype" name="scala.Function1.andThen.A">A</span></span>)</span><span class="result">: (<span class="extype" name="org.feijoas.mango.common.cache.LoadingCache.K">K</span>) ⇒ <span class="extype" name="scala.Function1.andThen.A">A</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.cache.LoadingCache@andThen[A](g:R=&gt;A):T1=&gt;A" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Function1</dd><dt>Annotations</dt><dd>
                 <span class="name">@unspecialized</span><span class="args">()</span>
               
@@ -375,7 +417,11 @@
       <span class="symbol">
         <span class="name">apply</span><span class="params">(<span name="keys">keys: <span class="extype" name="scala.Traversable">Traversable</span>[<span class="extype" name="org.feijoas.mango.common.cache.LoadingCache.K">K</span>]</span>)</span><span class="result">: <span class="extype" name="scala.collection.immutable.Map">Map</span>[<span class="extype" name="org.feijoas.mango.common.cache.LoadingCache.K">K</span>, <span class="extype" name="org.feijoas.mango.common.cache.LoadingCache.V">V</span>]</span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.cache.LoadingCache@apply(keys:Traversable[K]):scala.collection.immutable.Map[K,V]" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Returns a map of the values associated with <code>keys</code>, creating or retrieving those values
  if necessary.</p><div class="fullcomment"><div class="comment cmt"><p>Returns a map of the values associated with <code>keys</code>, creating or retrieving those values
  if necessary. The returned map contains entries that were already cached, combined with newly
@@ -393,7 +439,11 @@
       <span class="symbol">
         <span class="name">apply</span><span class="params">(<span name="key">key: <span class="extype" name="org.feijoas.mango.common.cache.LoadingCache.K">K</span></span>)</span><span class="result">: <span class="extype" name="org.feijoas.mango.common.cache.LoadingCache.V">V</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.cache.LoadingCache@apply(key:K):V" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Returns the value associated with <code>key</code> in this cache, first loading that value if
  necessary.</p><div class="fullcomment"><div class="comment cmt"><p>Returns the value associated with <code>key</code> in this cache, first loading that value if
  necessary. No observable state associated with this cache is modified until loading completes.
@@ -410,7 +460,11 @@
       <span class="symbol">
         <span class="name">asInstanceOf</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="result">: <span class="extype" name="scala.Any.asInstanceOf.T0">T0</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.cache.LoadingCache@asInstanceOf[T0]:T0" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
     </li><li name="org.feijoas.mango.common.cache.Cache#cleanUp" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="cleanUp():Unit"></a>
@@ -423,7 +477,11 @@
       <span class="symbol">
         <span class="name">cleanUp</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.cache.LoadingCache@cleanUp():Unit" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Performs any pending maintenance operations needed by the cache.</p><div class="fullcomment"><div class="comment cmt"><p>Performs any pending maintenance operations needed by the cache. Exactly which activities are
  performed -- if any -- is implementation-dependent.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Cache.html" class="extype" name="org.feijoas.mango.common.cache.Cache">Cache</a></dd></dl></div>
@@ -438,7 +496,11 @@
       <span class="symbol">
         <span class="name">clone</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.cache.LoadingCache@clone():Object" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
                 <span class="name">@throws</span><span class="args">(<span>
       
@@ -457,7 +519,11 @@
       <span class="symbol">
         <span class="name">compose</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="g">g: (<span class="extype" name="scala.Function1.compose.A">A</span>) ⇒ <span class="extype" name="org.feijoas.mango.common.cache.LoadingCache.K">K</span></span>)</span><span class="result">: (<span class="extype" name="scala.Function1.compose.A">A</span>) ⇒ <span class="extype" name="org.feijoas.mango.common.cache.LoadingCache.V">V</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.cache.LoadingCache@compose[A](g:A=&gt;T1):A=&gt;R" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Function1</dd><dt>Annotations</dt><dd>
                 <span class="name">@unspecialized</span><span class="args">()</span>
               
@@ -473,7 +539,11 @@
       <span class="symbol">
         <span class="name">eq</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.cache.LoadingCache@eq(x$1:AnyRef):Boolean" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
     </li><li name="scala.AnyRef#equals" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="equals(x$1:Any):Boolean"></a>
@@ -486,7 +556,11 @@
       <span class="symbol">
         <span class="name">equals</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.cache.LoadingCache@equals(x$1:Any):Boolean" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="scala.AnyRef#finalize" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="finalize():Unit"></a>
@@ -499,7 +573,11 @@
       <span class="symbol">
         <span class="name">finalize</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.cache.LoadingCache@finalize():Unit" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
                 <span class="name">@throws</span><span class="args">(<span>
       
@@ -518,7 +596,11 @@
       <span class="symbol">
         <span class="name">getAll</span><span class="params">(<span name="keys">keys: <span class="extype" name="scala.Traversable">Traversable</span>[<span class="extype" name="org.feijoas.mango.common.cache.LoadingCache.K">K</span>]</span>)</span><span class="result">: <span class="extype" name="scala.util.Try">Try</span>[<span class="extype" name="scala.collection.immutable.Map">Map</span>[<span class="extype" name="org.feijoas.mango.common.cache.LoadingCache.K">K</span>, <span class="extype" name="org.feijoas.mango.common.cache.LoadingCache.V">V</span>]]</span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.cache.LoadingCache@getAll(keys:Traversable[K]):scala.util.Try[scala.collection.immutable.Map[K,V]]" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Returns a map of the values associated with <code>keys</code>, creating or retrieving those values
  if necessary.</p><div class="fullcomment"><div class="comment cmt"><p>Returns a map of the values associated with <code>keys</code>, creating or retrieving those values
  if necessary. The returned map contains entries that were already cached, combined with newly
@@ -529,8 +611,8 @@
  <code>CacheLoader#loadAll</code> returns <code>null</code>, returns a map containing null keys or values,
  or fails to return an entry for each requested key.</p><p>Note that duplicate elements in <code>keys</code>, as determined by <code>==</code>, will
  be ignored.
-</p></div><dl class="attributes block"> <dt>Exceptions thrown</dt><dd><span class="cmt">ExecutionError<p>if an error was thrown while loading the values
-</p></span><span class="cmt">ExecutionException<p>if a checked exception was thrown while loading the values</p></span><span class="cmt">UncheckedExecutionException<p>if an unchecked exception was thrown while loading the
+</p></div><dl class="attributes block"> <dt>Exceptions thrown</dt><dd><span class="cmt"><p><span class="extype" name="ExecutionError"><code>ExecutionError</code></span> if an error was thrown while loading the values
+</p></span><span class="cmt"><p><span class="extype" name="ExecutionException"><code>ExecutionException</code></span> if a checked exception was thrown while loading the values</p></span><span class="cmt"><p><span class="extype" name="UncheckedExecutionException"><code>UncheckedExecutionException</code></span> if an unchecked exception was thrown while loading the
     values</p></span></dd></dl></div>
     </li><li name="org.feijoas.mango.common.cache.Cache#getAllPresent" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getAllPresent(keys:Traversable[K]):scala.collection.immutable.Map[K,V]"></a>
@@ -543,7 +625,11 @@
       <span class="symbol">
         <span class="name">getAllPresent</span><span class="params">(<span name="keys">keys: <span class="extype" name="scala.Traversable">Traversable</span>[<span class="extype" name="org.feijoas.mango.common.cache.LoadingCache.K">K</span>]</span>)</span><span class="result">: <span class="extype" name="scala.collection.immutable.Map">Map</span>[<span class="extype" name="org.feijoas.mango.common.cache.LoadingCache.K">K</span>, <span class="extype" name="org.feijoas.mango.common.cache.LoadingCache.V">V</span>]</span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.cache.LoadingCache@getAllPresent(keys:Traversable[K]):scala.collection.immutable.Map[K,V]" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Returns a map of the values associated with <code>keys</code> in this cache.</p><div class="fullcomment"><div class="comment cmt"><p>Returns a map of the values associated with <code>keys</code> in this cache.
  The returned map will only contain entries which are already present in the cache.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Cache.html" class="extype" name="org.feijoas.mango.common.cache.Cache">Cache</a></dd></dl></div>
@@ -558,7 +644,11 @@
       <span class="symbol">
         <span class="name">getClass</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.Class">Class</span>[_]</span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.cache.LoadingCache@getClass():Class[_]" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="org.feijoas.mango.common.cache.LoadingCache#getUnchecked" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getUnchecked(key:K):V"></a>
@@ -571,7 +661,11 @@
       <span class="symbol">
         <span class="name">getUnchecked</span><span class="params">(<span name="key">key: <span class="extype" name="org.feijoas.mango.common.cache.LoadingCache.K">K</span></span>)</span><span class="result">: <span class="extype" name="org.feijoas.mango.common.cache.LoadingCache.V">V</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.cache.LoadingCache@getUnchecked(key:K):V" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Returns the value associated with <code>key</code> in this cache, first loading that value if
  necessary.</p><div class="fullcomment"><div class="comment cmt"><p>Returns the value associated with <code>key</code> in this cache, first loading that value if
  necessary. No observable state associated with this cache is modified until loading
@@ -585,8 +679,8 @@
  the new value.</p><p><b>Warning:</b> this method silently converts checked exceptions to unchecked exceptions,
  and should not be used with cache loaders which throw checked exceptions. In such cases use
  <code>#get</code> instead.
-</p></div><dl class="attributes block"> <dt>Exceptions thrown</dt><dd><span class="cmt">ExecutionError<p>if an error was thrown while loading the value
-</p></span><span class="cmt">UncheckedExecutionException<p>if an exception was thrown while loading the value,
+</p></div><dl class="attributes block"> <dt>Exceptions thrown</dt><dd><span class="cmt"><p><span class="extype" name="ExecutionError"><code>ExecutionError</code></span> if an error was thrown while loading the value
+</p></span><span class="cmt"><p><span class="extype" name="UncheckedExecutionException"><code>UncheckedExecutionException</code></span> if an exception was thrown while loading the value,
     regardless of whether the exception was checked or unchecked</p></span></dd></dl></div>
     </li><li name="scala.AnyRef#hashCode" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="hashCode():Int"></a>
@@ -599,7 +693,11 @@
       <span class="symbol">
         <span class="name">hashCode</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.cache.LoadingCache@hashCode():Int" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="org.feijoas.mango.common.cache.Cache#invalidateAll" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="invalidateAll(keys:Traversable[K]):Unit"></a>
@@ -612,7 +710,11 @@
       <span class="symbol">
         <span class="name">invalidateAll</span><span class="params">(<span name="keys">keys: <span class="extype" name="scala.Traversable">Traversable</span>[<span class="extype" name="org.feijoas.mango.common.cache.LoadingCache.K">K</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.cache.LoadingCache@invalidateAll(keys:Traversable[K]):Unit" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Discards any cached values for keys <code>keys</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Discards any cached values for keys <code>keys</code>.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Cache.html" class="extype" name="org.feijoas.mango.common.cache.Cache">Cache</a></dd></dl></div>
     </li><li name="scala.Any#isInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -626,7 +728,11 @@
       <span class="symbol">
         <span class="name">isInstanceOf</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.cache.LoadingCache@isInstanceOf[T0]:Boolean" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
     </li><li name="scala.AnyRef#ne" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ne(x$1:AnyRef):Boolean"></a>
@@ -639,7 +745,11 @@
       <span class="symbol">
         <span class="name">ne</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.cache.LoadingCache@ne(x$1:AnyRef):Boolean" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
     </li><li name="scala.AnyRef#notify" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="notify():Unit"></a>
@@ -652,7 +762,11 @@
       <span class="symbol">
         <span class="name">notify</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.cache.LoadingCache@notify():Unit" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
     </li><li name="scala.AnyRef#notifyAll" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="notifyAll():Unit"></a>
@@ -665,7 +779,11 @@
       <span class="symbol">
         <span class="name">notifyAll</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.cache.LoadingCache@notifyAll():Unit" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
     </li><li name="org.feijoas.mango.common.cache.Cache#putAll" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="putAll(kvs:Traversable[(K,V)]):Unit"></a>
@@ -678,7 +796,11 @@
       <span class="symbol">
         <span class="name">putAll</span><span class="params">(<span name="kvs">kvs: <span class="extype" name="scala.Traversable">Traversable</span>[(<span class="extype" name="org.feijoas.mango.common.cache.LoadingCache.K">K</span>, <span class="extype" name="org.feijoas.mango.common.cache.LoadingCache.V">V</span>)]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.cache.LoadingCache@putAll(kvs:Traversable[(K,V)]):Unit" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Puts all key/value pairs from the specified <code>Traversable</code> to the cache.</p><div class="fullcomment"><div class="comment cmt"><p>Puts all key/value pairs from the specified <code>Traversable</code> to the cache.
  The effect of this call is equivalent to that of calling <code>put(key, value)</code> for
  each <code>(key, value)</code> in the <code>Traversable</code>. The behavior of this operation is undefined
@@ -695,7 +817,11 @@
       <span class="symbol">
         <span class="name">synchronized</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="params">(<span name="arg0">arg0: ⇒ <span class="extype" name="java.lang.AnyRef.synchronized.T0">T0</span></span>)</span><span class="result">: <span class="extype" name="java.lang.AnyRef.synchronized.T0">T0</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.cache.LoadingCache@synchronized[T0](x$1:=&gt;T0):T0" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
     </li><li name="scala.Function1#toString" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="toString():String"></a>
@@ -708,7 +834,11 @@
       <span class="symbol">
         <span class="name">toString</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.cache.LoadingCache@toString():String" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Function1 → AnyRef → Any</dd></dl></div>
     </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait():Unit"></a>
@@ -721,7 +851,11 @@
       <span class="symbol">
         <span class="name">wait</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.cache.LoadingCache@wait():Unit" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
                 <span class="name">@throws</span><span class="args">(<span>
       
@@ -740,7 +874,11 @@
       <span class="symbol">
         <span class="name">wait</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Long">Long</span></span>, <span name="arg1">arg1: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.cache.LoadingCache@wait(x$1:Long,x$2:Int):Unit" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
                 <span class="name">@throws</span><span class="args">(<span>
       
@@ -759,7 +897,11 @@
       <span class="symbol">
         <span class="name">wait</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Long">Long</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.cache.LoadingCache@wait(x$1:Long):Unit" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
                 <span class="name">@throws</span><span class="args">(<span>
       
@@ -800,6 +942,7 @@
       <div id="tooltip"></div>
 
       <div id="footer">  </div>
-      <script defer="defer" type="text/javascript" id="jquery-js" src="../../../../../lib/jquery.js"></script><script defer="defer" type="text/javascript" id="jquery-ui-js" src="../../../../../lib/jquery-ui.js"></script><script defer="defer" type="text/javascript" id="tools-tooltip-js" src="../../../../../lib/tools.tooltip.js"></script><script defer="defer" type="text/javascript" id="template-js" src="../../../../../lib/template.js"></script>
+
+
     </body>
       </html>

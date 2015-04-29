@@ -1,5 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<!DOCTYPE html >
 <html>
         <head>
           <title>hash - Mango - org.feijoas.mango.common.hash</title>
@@ -9,6 +8,11 @@
           
       <link href="../../../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
       <link href="../../../../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
+      <script type="text/javascript" src="../../../../../lib/jquery.js" id="jquery-js"></script>
+      <script type="text/javascript" src="../../../../../lib/jquery-ui.js"></script>
+      <script type="text/javascript" src="../../../../../lib/template.js"></script>
+      <script type="text/javascript" src="../../../../../lib/tools.tooltip.js"></script>
+      
       <script type="text/javascript">
          if(top === self) {
             var url = '../../../../../index.html';
@@ -26,7 +30,11 @@
       <div id="definition">
         <img src="../../../../../lib/package_big.png" />
         <p id="owner"><a href="../../../../package.html" class="extype" name="org">org</a>.<a href="../../../package.html" class="extype" name="org.feijoas">feijoas</a>.<a href="../../package.html" class="extype" name="org.feijoas.mango">mango</a>.<a href="../package.html" class="extype" name="org.feijoas.mango.common">common</a></p>
-        <h1>hash</h1>
+        <h1>hash</h1><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.hash.package" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       </div>
 
       <h4 id="signature" class="signature">
@@ -58,7 +66,7 @@
 
         <div id="types" class="types members">
               <h3>Type Members</h3>
-              <ol><li name="org.feijoas.mango.common.hash.BloomFilter" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+              <ol><li name="org.feijoas.mango.common.hash.BloomFilter" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="BloomFilter[T]extendsT=&gt;BooleanwithSerializablewithProduct"></a>
       <a id="BloomFilter[T]:BloomFilter[T]"></a>
       <h4 class="signature">
@@ -69,9 +77,35 @@
       <span class="symbol">
         <a href="BloomFilter.html"><span class="name">BloomFilter</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends (<span class="extype" name="org.feijoas.mango.common.hash.BloomFilter.T">T</span>) ⇒ <span class="extype" name="scala.Boolean">Boolean</span> with <span class="extype" name="scala.Serializable">Serializable</span> with <span class="extype" name="scala.Product">Product</span></span>
       </span>
-      </h4>
-      <p class="comment cmt">A Bloom filter for instances of <code>T</code>.</p>
-    </li><li name="org.feijoas.mango.common.hash.Funnel" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.hash.package@BloomFilter[T]extendsT=&gt;BooleanwithSerializablewithProduct" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">A Bloom filter for instances of <code>T</code>.</p><div class="fullcomment"><div class="comment cmt"><p>A Bloom filter for instances of <code>T</code>. A Bloom filter offers an approximate containment test
+ with one-sided error: if it claims that an element is contained in it, this might be in error,
+ but if it claims that an element is <i>not</i> contained in it, then this is definitely true.</p><p>From the Guava <a href="https://code.google.com/p/guava-libraries/wiki/HashingExplained/">BloomFilter tutorial</a>:</p><pre><span class="kw">implicit</span> <span class="kw">object</span> PersonFunnel <span class="kw">extends</span> Funnel[Person] {
+   <span class="kw">override</span> <span class="kw">def</span> funnel(from: Person, into: PrimitiveSink) = ...
+}
+
+<span class="kw">val</span> friends: BloomFilter[Person] = BloomFilter.create(<span class="num">500</span>, <span class="num">0.01</span>)
+friendsList.foreach { <span class="kw">case</span> p: Person <span class="kw">=&gt;</span> friends.put(p) }
+
+<span class="cmt">// much later</span>
+<span class="kw">if</span> (friends.mightContain(dude)) {
+   <span class="cmt">// the probability that dude reached this place if he isn't a friend is 1%</span>
+   <span class="cmt">// we might, for example, start asynchronously loading things for dude while we do a more expensive exact check</span>
+}</pre><p>The false positive probability (<code>FPP</code>) of a bloom filter is defined as the probability
+ that <code>#mightContain(T)</code> will erroneously return <code>true</code> for an object that
+ has not actually been put in the <code>BloomFilter</code>.
+</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@<a href="../annotations/Beta.html" class="extype" name="org.feijoas.mango.common.annotations.Beta">Beta</a></span><span class="args">()</span>
+              
+                <span class="name">@SerialVersionUID</span><span class="args">()</span>
+              
+        </dd><dt>Since</dt><dd><p>0.6 (copied from Guava-libraries)
+</p></dd></dl></div>
+    </li><li name="org.feijoas.mango.common.hash.Funnel" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="Funnel[T]extendsSerializable"></a>
       <a id="Funnel[T]:Funnel[T]"></a>
       <h4 class="signature">
@@ -82,9 +116,32 @@
       <span class="symbol">
         <a href="Funnel.html"><span class="name">Funnel</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
-      </h4>
-      <p class="comment cmt">A <code>Funnel</code> is a type class for an object which can send data from an object
- of type <code>T</code> into a <code>PrimitiveSink</code>.</p>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.hash.package@Funnel[T]extendsSerializable" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">A <code>Funnel</code> is a type class for an object which can send data from an object
+ of type <code>T</code> into a <code>PrimitiveSink</code>.</p><div class="fullcomment"><div class="comment cmt"><p>A <code>Funnel</code> is a type class for an object which can send data from an object
+ of type <code>T</code> into a <code>PrimitiveSink</code>.</p><p>Note that serialization of a <a href="BloomFilter.html" class="extype" name="org.feijoas.mango.common.hash.BloomFilter">BloomFilter</a> requires the proper
+ serialization of funnels.</p><p>From the Guava <a href="https://code.google.com/p/guava-libraries/wiki/HashingExplained/">Funnel tutorial</a>:</p><pre><span class="cmt">// A Funnel describes how to decompose a particular object type into primitive field values.</span>
+<span class="cmt">// For example, if we had</span>
+<span class="kw">case</span> <span class="kw">class</span> Person(id: Integer, firstName: <span class="std">String</span>, lastName: <span class="std">String</span>, birthYear: <span class="std">Int</span>)
+
+<span class="cmt">// our Funnel might look like</span>
+<span class="kw">implicit</span> <span class="kw">val</span> personFunnel = <span class="kw">new</span> Funnel[Person] {
+   <span class="kw">override</span> <span class="kw">def</span> funnel(person: Person, into: PrimitiveSink) = {
+      into
+      .putInt(person.id)
+      .putString(person.firstName, Charsets.UTF_8)
+      .putString(person.lastName, Charsets.UTF_8)
+      .putInt(person.birthYear)
+   }
+}</pre></div><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@<a href="../annotations/Beta.html" class="extype" name="org.feijoas.mango.common.annotations.Beta">Beta</a></span><span class="args">()</span>
+              
+        </dd><dt>Since</dt><dd><p>0.6 (copied from Guava-libraries)
+</p></dd></dl></div>
     </li></ol>
             </div>
 
@@ -92,7 +149,7 @@
 
         <div id="values" class="values members">
               <h3>Value Members</h3>
-              <ol><li name="org.feijoas.mango.common.hash.BloomFilter" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+              <ol><li name="org.feijoas.mango.common.hash.BloomFilter" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="BloomFilter"></a>
       <a id="BloomFilter:BloomFilter"></a>
       <h4 class="signature">
@@ -103,9 +160,16 @@
       <span class="symbol">
         <a href="BloomFilter$.html"><span class="name">BloomFilter</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
-      </h4>
-      <p class="comment cmt">Factory for BloomFilters</p>
-    </li><li name="org.feijoas.mango.common.hash.Funnel" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.hash.package@BloomFilter" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Factory for BloomFilters</p><div class="fullcomment"><div class="comment cmt"><p>Factory for BloomFilters</p><p> In order to be able to create a <code>BloomFilter[T]</code> an implementation of a
+ <a href="Funnel.html" class="extype" name="org.feijoas.mango.common.hash.Funnel">Funnel</a> for <code>T</code> (called type class) must be in implicit scope (recommended)
+ or passed explicitly as a parameter.
+</p></div></div>
+    </li><li name="org.feijoas.mango.common.hash.Funnel" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="Funnel"></a>
       <a id="Funnel:Funnel"></a>
       <h4 class="signature">
@@ -116,8 +180,20 @@
       <span class="symbol">
         <a href="Funnel$.html"><span class="name">Funnel</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
-      </h4>
-      <p class="comment cmt">Utility functions for the work with <a href="Funnel.html" class="extype" name="org.feijoas.mango.common.hash.Funnel">Funnel</a>.</p>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.hash.package@Funnel" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Utility functions for the work with <a href="Funnel.html" class="extype" name="org.feijoas.mango.common.hash.Funnel">Funnel</a>.</p><div class="fullcomment"><div class="comment cmt"><p>Utility functions for the work with <a href="Funnel.html" class="extype" name="org.feijoas.mango.common.hash.Funnel">Funnel</a>.</p><p> Usage example for conversion between Guava and Mango:</p><pre><span class="cmt">// convert a Guava Funnel[T] to a Mango Funnel[T]</span>
+<span class="kw">import</span> com.google.common.hash.{ Funnel <span class="kw">=&gt;</span> GuavaFunnel }
+<span class="kw">val</span> guavaFunnel: GuavaFunnel[T] = ...
+<span class="kw">val</span> mangoFunnel: Funnel[T] = guavaFunnel.asScala
+
+<span class="kw">import</span> com.google.common.hash.{ Funnel <span class="kw">=&gt;</span> GuavaFunnel }
+<span class="kw">val</span> guavaFunnel: GuavaFunnel[CharSequence] = GuavaFunnels.stringFunnel
+<span class="kw">val</span> mangoFunnel: Funnel[CharSequence] = guavaFunnel.asScala</pre></div><dl class="attributes block"> <dt>Since</dt><dd><p>0.6
+</p></dd></dl></div>
     </li></ol>
             </div>
 
@@ -143,6 +219,7 @@
       <div id="tooltip"></div>
 
       <div id="footer">  </div>
-      <script defer="defer" type="text/javascript" id="jquery-js" src="../../../../../lib/jquery.js"></script><script defer="defer" type="text/javascript" id="jquery-ui-js" src="../../../../../lib/jquery-ui.js"></script><script defer="defer" type="text/javascript" id="tools-tooltip-js" src="../../../../../lib/tools.tooltip.js"></script><script defer="defer" type="text/javascript" id="template-js" src="../../../../../lib/template.js"></script>
+
+
     </body>
       </html>

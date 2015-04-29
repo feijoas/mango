@@ -1,5 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<!DOCTYPE html >
 <html>
         <head>
           <title>base - Mango - org.feijoas.mango.common.base</title>
@@ -9,6 +8,11 @@
           
       <link href="../../../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
       <link href="../../../../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
+      <script type="text/javascript" src="../../../../../lib/jquery.js" id="jquery-js"></script>
+      <script type="text/javascript" src="../../../../../lib/jquery-ui.js"></script>
+      <script type="text/javascript" src="../../../../../lib/template.js"></script>
+      <script type="text/javascript" src="../../../../../lib/tools.tooltip.js"></script>
+      
       <script type="text/javascript">
          if(top === self) {
             var url = '../../../../../index.html';
@@ -26,7 +30,11 @@
       <div id="definition">
         <img src="../../../../../lib/package_big.png" />
         <p id="owner"><a href="../../../../package.html" class="extype" name="org">org</a>.<a href="../../../package.html" class="extype" name="org.feijoas">feijoas</a>.<a href="../../package.html" class="extype" name="org.feijoas.mango">mango</a>.<a href="../package.html" class="extype" name="org.feijoas.mango.common">common</a></p>
-        <h1>base</h1>
+        <h1>base</h1><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.base.package" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       </div>
 
       <h4 id="signature" class="signature">
@@ -83,7 +91,7 @@
 
         <div id="types" class="types members">
               <h3>Type Members</h3>
-              <ol><li name="org.feijoas.mango.common.base.Ticker" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+              <ol><li name="org.feijoas.mango.common.base.Ticker" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="TickerextendsAnyRef"></a>
       <a id="Ticker:Ticker"></a>
       <h4 class="signature">
@@ -94,9 +102,20 @@
       <span class="symbol">
         <a href="Ticker.html"><span class="name">Ticker</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
-      </h4>
-      <p class="comment cmt">A time source; returns a time value representing the number of nanoseconds elapsed since some
- fixed but arbitrary point in time.</p>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.base.package@TickerextendsAnyRef" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">A time source; returns a time value representing the number of nanoseconds elapsed since some
+ fixed but arbitrary point in time.</p><div class="fullcomment"><div class="comment cmt"><p>A time source; returns a time value representing the number of nanoseconds elapsed since some
+ fixed but arbitrary point in time. Note that most users should use <code>Stopwatch</code> instead of
+ interacting with this class directly.</p><p><b>Warning:</b> this interface can only be used to measure elapsed time, not wall time.
+</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@<a href="../annotations/Beta.html" class="extype" name="org.feijoas.mango.common.annotations.Beta">Beta</a></span><span class="args">()</span>
+              
+        </dd><dt>Since</dt><dd><p>0.7 (copied from guava-libraries)
+</p></dd></dl></div>
     </li></ol>
             </div>
 
@@ -104,7 +123,7 @@
 
         <div id="values" class="values members">
               <h3>Value Members</h3>
-              <ol><li name="org.feijoas.mango.common.base.Equivalence" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+              <ol><li name="org.feijoas.mango.common.base.Equivalence" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="Equivalence"></a>
       <a id="Equivalence:Equivalence"></a>
       <h4 class="signature">
@@ -115,9 +134,22 @@
       <span class="symbol">
         <a href="Equivalence$.html"><span class="name">Equivalence</span></a>
       </span>
-      </h4>
-      <p class="comment cmt">Utility functions to convert from Scala <code>Equiv[T]</code> to Guava <code>Equivalence[T]</code> and vice versa.</p>
-    </li><li name="org.feijoas.mango.common.base.Functions" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.base.package@Equivalence" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Utility functions to convert from Scala <code>Equiv[T]</code> to Guava <code>Equivalence[T]</code> and vice versa.</p><div class="fullcomment"><div class="comment cmt"><p>Utility functions to convert from Scala <code>Equiv[T]</code> to Guava <code>Equivalence[T]</code> and vice versa.</p><p> Usage example for conversion between Guava and Mango:</p><pre><span class="kw">import</span> org.feijoas.mango.common.base.Equivalence._
+
+<span class="cmt">// convert a Guava Equivalence[T] to a Scala Equiv[T]</span>
+<span class="kw">val</span> guava: gcm.Equivalence[T] = ...
+<span class="kw">val</span> mango: Equiv[T] = guava.asScala
+
+<span class="cmt">// convert a Scala Equiv[T] to a Guava Equivalence[T]</span>
+<span class="kw">val</span> mango: Equiv[T] = ...
+<span class="kw">val</span> guava: gcm.Equivalence[T] = mango.asJava</pre></div><dl class="attributes block"> <dt>Since</dt><dd><p>0.10
+</p></dd></dl></div>
+    </li><li name="org.feijoas.mango.common.base.Functions" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="Functions"></a>
       <a id="Functions:Functions"></a>
       <h4 class="signature">
@@ -128,9 +160,24 @@
       <span class="symbol">
         <a href="Functions$.html"><span class="name">Functions</span></a>
       </span>
-      </h4>
-      <p class="comment cmt">Utility functions for the work with Guava <code>Function[T, R]</code></p>
-    </li><li name="org.feijoas.mango.common.base.Optional" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.base.package@Functions" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Utility functions for the work with Guava <code>Function[T, R]</code></p><div class="fullcomment"><div class="comment cmt"><p>Utility functions for the work with Guava <code>Function[T, R]</code></p><p> Usage example for conversion between Guava and Mango:</p><pre><span class="cmt">// convert a Guava function to a Scala function</span>
+<span class="kw">val</span> fnc: <span class="std">Function</span>[T, R] = { (arg: T) <span class="kw">=&gt;</span> ... }.asJava
+
+<span class="cmt">// convert a Scala function to a Guava function</span>
+<span class="kw">val</span> fnc: (T <span class="kw">=&gt;</span> R) = SomeGuavaFunction.asScala
+
+<span class="cmt">// convert a Scala function to a Callable</span>
+<span class="kw">val</span> callable: Callable[R] = { () <span class="kw">=&gt;</span> n }.asJava
+
+<span class="cmt">// convert a Scala functio to a Runnable</span>
+<span class="kw">val</span> runnable: Runnable = { () <span class="kw">=&gt;</span> ... }.asJava</pre></div><dl class="attributes block"> <dt>Since</dt><dd><p>0.7
+</p></dd></dl></div>
+    </li><li name="org.feijoas.mango.common.base.Optional" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="Optional"></a>
       <a id="Optional:Optional"></a>
       <h4 class="signature">
@@ -141,9 +188,20 @@
       <span class="symbol">
         <a href="Optional$.html"><span class="name">Optional</span></a>
       </span>
-      </h4>
-      <p class="comment cmt">Utility functions for the work with <code>Option[T]</code> and <code>Optional[T]</code></p>
-    </li><li name="org.feijoas.mango.common.base.Preconditions" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.base.package@Optional" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Utility functions for the work with <code>Option[T]</code> and <code>Optional[T]</code></p><div class="fullcomment"><div class="comment cmt"><p>Utility functions for the work with <code>Option[T]</code> and <code>Optional[T]</code></p><p> Usage example for conversion between Guava and Mango:</p><pre><span class="cmt">// convert a Guava Optional[T] to a Scala Option[T]</span>
+Optional.of(<span class="lit">"some"</span>).asScala
+Optional.absent().asScala
+
+<span class="cmt">// convert a Scala Option[T] to a Guava Optional[T]</span>
+<span class="std">Some</span>(<span class="lit">"some"</span>).asJava
+<span class="std">None</span>.asJava</pre></div><dl class="attributes block"> <dt>Since</dt><dd><p>0.7
+</p></dd></dl></div>
+    </li><li name="org.feijoas.mango.common.base.Preconditions" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="Preconditions"></a>
       <a id="Preconditions:Preconditions"></a>
       <h4 class="signature">
@@ -154,10 +212,32 @@
       <span class="symbol">
         <a href="Preconditions$.html"><span class="name">Preconditions</span></a>
       </span>
-      </h4>
-      <p class="comment cmt">Simple static methods to be called at the start of your own methods to verify
- correct arguments and state.</p>
-    </li><li name="org.feijoas.mango.common.base.Predicates" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.base.package@Preconditions" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Simple static methods to be called at the start of your own methods to verify
+ correct arguments and state.</p><div class="fullcomment"><div class="comment cmt"><p>Simple static methods to be called at the start of your own methods to verify
+ correct arguments and state. This allows constructs such as</p><pre><span class="kw">if</span> (count &lt;= <span class="num">0</span>) {
+    <span class="kw">throw</span> <span class="kw">new</span> IllegalArgumentException(<span class="lit">"must be positive: "</span> + count)
+}</pre><p> to be replaced with the more compact</p><pre>checkArgument(count &gt; <span class="num">0</span>, <span class="lit">"must be positive: %s"</span>, count)</pre><p> Note that the sense of the expression is inverted with <a href="Preconditions$.html" class="extype" name="org.feijoas.mango.common.base.Preconditions">Preconditions</a>
+ you declare what you expect to be <i>true</i>, just as you do with an
+ <a href="http://java.sun.com/j2se/1.5.0/docs/guide/language/assert.html">
+ <code>assert</code></a> or a JUnit <code>assertTrue</code> call.</p><p><b>Warning:</b> only the <code>"%s"</code> specifier is recognized as a
+ placeholder in these messages.</p><p>Take care not to confuse precondition checking with other similar types
+ of checks! Precondition exceptions -- including those provided here, but also
+ <code><span class="extype" name="IndexOutOfBoundsException">IndexOutOfBoundsException</span></code>, <code><span class="extype" name="NoSuchElementException">NoSuchElementException</span></code>, <code><span class="extype" name="">UnsupportedOperationException</span></code> and others -- are used to signal that the
+ <i>calling method</i> has made an error. This tells the caller that it should
+ not have invoked the method when it did, with the arguments it did, or
+ perhaps ever. Postcondition or other invariant failures should not throw
+ these types of exceptions.</p><p> See also <a href=
+ "http://code.google.com/p/guava-libraries/wiki/PreconditionsExplained">
+ the Guava User Guide
+ </a> on using <a href="Preconditions$.html" class="extype" name="org.feijoas.mango.common.base.Preconditions">Preconditions</a>
+</p></div><dl class="attributes block"> <dt>Since</dt><dd><p>0.7 (copied from guava-libraries)
+</p></dd></dl></div>
+    </li><li name="org.feijoas.mango.common.base.Predicates" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="Predicates"></a>
       <a id="Predicates:Predicates"></a>
       <h4 class="signature">
@@ -168,9 +248,20 @@
       <span class="symbol">
         <a href="Predicates$.html"><span class="name">Predicates</span></a>
       </span>
-      </h4>
-      <p class="comment cmt">Utility functions for the work with Guava <code>Predicate[T]</code></p>
-    </li><li name="org.feijoas.mango.common.base.Suppliers" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.base.package@Predicates" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Utility functions for the work with Guava <code>Predicate[T]</code></p><div class="fullcomment"><div class="comment cmt"><p>Utility functions for the work with Guava <code>Predicate[T]</code></p><p> Usage example for conversion between Guava and Mango:</p><pre><span class="cmt">// convert a Guava Predicate[T] to a Scala function T => Boolean</span>
+<span class="kw">import</span> com.google.common.base.{ Predicate <span class="kw">=&gt;</span> GuavaPredicate }
+<span class="kw">val</span> pred: GuavaPredicate[<span class="std">Any</span>] = { (arg: <span class="std">Any</span>) <span class="kw">=&gt;</span> <span class="kw">true</span> }.asJava
+
+<span class="cmt">// convert a Scala function T => Boolean to a Guava Predicate[T]</span>
+<span class="kw">import</span> com.google.common.base.{ Predicates <span class="kw">=&gt;</span> GuavaPredicates }
+<span class="kw">val</span> pred: <span class="std">Any</span> <span class="kw">=&gt;</span> <span class="std">Boolean</span> = GuavaPredicates.alwaysTrue().asScala</pre></div><dl class="attributes block"> <dt>Since</dt><dd><p>0.7
+</p></dd></dl></div>
+    </li><li name="org.feijoas.mango.common.base.Suppliers" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="Suppliers"></a>
       <a id="Suppliers:Suppliers"></a>
       <h4 class="signature">
@@ -181,9 +272,22 @@
       <span class="symbol">
         <a href="Suppliers$.html"><span class="name">Suppliers</span></a>
       </span>
-      </h4>
-      <p class="comment cmt">Utility functions for the work with suppliers which are functions of
- the type <code>() =&gt; T</code></p>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.base.package@Suppliers" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Utility functions for the work with suppliers which are functions of
+ the type <code>() =&gt; T</code></p><div class="fullcomment"><div class="comment cmt"><p>Utility functions for the work with suppliers which are functions of
+ the type <code>() =&gt; T</code></p><p> Usage example for conversion between Guava and Mango:</p><pre><span class="cmt">// convert a Guava Supplier[T] to a Scala function () => T</span>
+<span class="kw">import</span> com.google.common.base.{ Supplier <span class="kw">=&gt;</span> GuavaSupplier }
+<span class="kw">val</span> fnc: () <span class="kw">=&gt;</span> T = ...
+<span class="kw">val</span> supplier: GuavaSupplier[T] = fnc.asJava
+
+<span class="cmt">// convert a Scala function () => T to a Guava Supplier[T]</span>
+<span class="kw">val</span> guavaSupplier: GuavaSupplier[T] = ...
+<span class="kw">val</span> supplier: () <span class="kw">=&gt;</span> T = guavaSupplier.asScala</pre></div><dl class="attributes block"> <dt>Since</dt><dd><p>0.7
+</p></dd></dl></div>
     </li><li name="org.feijoas.mango.common.base.Ticker" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="Ticker"></a>
       <a id="Ticker:Ticker"></a>
@@ -195,8 +299,12 @@
       <span class="symbol">
         <a href="Ticker$.html"><span class="name">Ticker</span></a>
       </span>
-      </h4>
-      <p class="comment cmt">Factory for <a href="Ticker.html" class="extype" name="org.feijoas.mango.common.base.Ticker">Ticker</a> instances.</p>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.base.package@Ticker" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Factory for <a href="Ticker.html" class="extype" name="org.feijoas.mango.common.base.Ticker">Ticker</a> instances.</p>
     </li></ol>
             </div>
 
@@ -226,6 +334,7 @@
       <div id="tooltip"></div>
 
       <div id="footer">  </div>
-      <script defer="defer" type="text/javascript" id="jquery-js" src="../../../../../lib/jquery.js"></script><script defer="defer" type="text/javascript" id="jquery-ui-js" src="../../../../../lib/jquery-ui.js"></script><script defer="defer" type="text/javascript" id="tools-tooltip-js" src="../../../../../lib/tools.tooltip.js"></script><script defer="defer" type="text/javascript" id="template-js" src="../../../../../lib/template.js"></script>
+
+
     </body>
       </html>

@@ -1,5 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<!DOCTYPE html >
 <html>
         <head>
           <title>root - Mango - _root_</title>
@@ -9,6 +8,11 @@
           
       <link href="lib/template.css" media="screen" type="text/css" rel="stylesheet" />
       <link href="lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
+      <script type="text/javascript" src="lib/jquery.js" id="jquery-js"></script>
+      <script type="text/javascript" src="lib/jquery-ui.js"></script>
+      <script type="text/javascript" src="lib/template.js"></script>
+      <script type="text/javascript" src="lib/tools.tooltip.js"></script>
+      
       <script type="text/javascript">
          if(top === self) {
             var url = 'index.html';
@@ -26,7 +30,11 @@
       <div id="definition">
         <img src="lib/package_big.png" />
         
-        <h1>root package</h1>
+        <h1>root package</h1><span class="permalink">
+      <a href="index.html#package" title="Permalink" target="_top">
+        <img src="lib/permalink.png" />
+      </a>
+    </span>
       </div>
 
       <h4 id="signature" class="signature">
@@ -40,12 +48,12 @@
       </h4>
       
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><h4> The Mango library </h4><p>This is the documentation for the Mango library.</p><p>The purpose of the Mango library is to provide <a href="https://code.google.com/p/guava-libraries/" target="_blank">Guava</a> (Google's core libraries) functionalities to Scala. This is primarily achieved through wrappers around Guava classes and converter between Java and Scala.
-Also the package structure is intended to mirror the one from Guava.</p><p>However there are differences from the Guava libraries:</p><ul><li>Whenever <code>null</code> is in Guava to indicate the absence of a value we use <code>Option</code></li><li>Mango is more restrictive when passing <code>null</code> as arguments to library functions. The recommendation is to never use <code>null</code> at all.</li><li>In rare cases the method names are changed to conform to the Scala standard library</li><li>The Mango library uses Type Classes when appropriate</li></ul><p>This is a beta version of the library. Many modules are not published yet because they are either not implemented, the test coverage is too low or the documentation is not complete. We publish these modules as soon as they are ready.</p><h4> Downloading </h4><p>Mango is programmed against <code>guava-14.0.1</code> using Scala 2.10. If you want to run the tests you will also need the <code>guava-testlib-14.0.1</code>.</p><p>To use the Mango library in <a href="http://www.scala-sbt.org/" target="_blank">sbt</a> add the following dependency to your project file:</p><pre>resolvers ++= <span class="std">Seq</span>(
+Also the package structure is intended to mirror the one from Guava.</p><p>However there are differences from the Guava libraries:</p><ul><li>Whenever <code>null</code> is in Guava to indicate the absence of a value we use <code>Option</code></li><li>Mango is more restrictive when passing <code>null</code> as arguments to library functions. The recommendation is to never use <code>null</code> at all.</li><li>In rare cases the method names are changed to conform to the Scala standard library</li><li>The Mango library uses Type Classes when appropriate</li></ul><p>This is a beta version of the library. Many modules are not published yet because they are either not implemented, the test coverage is too low or the documentation is not complete. We publish these modules as soon as they are ready.</p><h4> Downloading </h4><p>Mango is programmed against <code>guava-14.0.1</code> using Scala 2.11. If you want to run the tests you will also need the <code>guava-testlib-14.0.1</code>.</p><p>To use the Mango library in <a href="http://www.scala-sbt.org/" target="_blank">sbt</a> add the following dependency to your project file:</p><pre>resolvers ++= <span class="std">Seq</span>(
   <span class="lit">"Sonatype Snapshots"</span> at <span class="lit">"http://oss.sonatype.org/content/repositories/snapshots"</span>,
   <span class="lit">"Sonatype Releases"</span> at <span class="lit">"http://oss.sonatype.org/content/repositories/releases"</span>
 )
 
-libraryDependencies += <span class="lit">"org.feijoas"</span> %% <span class="lit">"mango"</span> % <span class="lit">"0.10"</span></pre><h4> Examples </h4><h6> Suppliers </h6><pre><span class="kw">import</span> org.feijoas.mango.common.base.Suppliers._
+libraryDependencies += <span class="lit">"org.feijoas"</span> %% <span class="lit">"mango"</span> % <span class="lit">"0.11"</span></pre><h4> Examples </h4><h6> Suppliers </h6><pre><span class="kw">import</span> org.feijoas.mango.common.base.Suppliers._
 
 <span class="cmt">// a supplier is just a function () => T</span>
 <span class="kw">val</span> supplier = () <span class="kw">=&gt;</span> <span class="num">3</span>                          <span class="cmt">//> supplier  : () => Int</span>
@@ -135,7 +143,7 @@ fnc.asJava                                      <span class="cmt">//> res0: com.
 sbt compile</pre><p>Don't forget to test
 {{
   sbt test
-}}</p><h4> Help </h4><p>Besides this Scaladoc there is an excelent user guide <a href="https://code.google.com/p/guava-libraries/wiki/GuavaExplained" target="_blank">Guava Explained</a> which should be sufficient for almost all questions.</p><ul><li>Mango-Guava conversions: <a href="org/feijoas/mango/common/base/Functions$.html" class="extype" name="org.feijoas.mango.common.base.Functions">Functions</a>, <a href="org/feijoas/mango/common/base/Optional$.html" class="extype" name="org.feijoas.mango.common.base.Optional">Optional</a>, <a href="org/feijoas/mango/common/base/Predicates$.html" class="extype" name="org.feijoas.mango.common.base.Predicates">Predicates</a>, <a href="org/feijoas/mango/common/base/Suppliers$.html" class="extype" name="org.feijoas.mango.common.base.Suppliers">Suppliers</a>, <a href="org/feijoas/mango/common/util/concurrent/Futures$.html" class="extype" name="org.feijoas.mango.common.util.concurrent.Futures">Futures</a></li><li><a href="org/feijoas/mango/common/base/Preconditions$.html" class="extype" name="org.feijoas.mango.common.base.Preconditions">Preconditions</a>: Test preconditions for your methods more easily.</li><li><a href="org/feijoas/mango/common/cache/CacheBuilder.html" class="extype" name="org.feijoas.mango.common.cache.CacheBuilder">Caches</a>: Local caching, done right, and supporting a wide variety of expiration behaviors.</li><li><a href="org/feijoas/mango/common/collect/Range.html" class="extype" name="org.feijoas.mango.common.collect.Range">Ranges</a>: RangeSets/RangeMaps query, merge and manipulate ranges</li></ul><h4> License </h4><p><a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License, Version 2.0</a></p></div></div>
+}}</p><h4> Help </h4><p>Besides this Scaladoc there is an excelent user guide <a href="https://code.google.com/p/guava-libraries/wiki/GuavaExplained" target="_blank">Guava Explained</a> which should be sufficient for almost all questions.</p><ul><li>Mango-Guava conversions: <a href="org/feijoas/mango/common/base/Functions$.html" class="extype" name="org.feijoas.mango.common.base.Functions">Functions</a>, <a href="org/feijoas/mango/common/base/Optional$.html" class="extype" name="org.feijoas.mango.common.base.Optional">Optional</a>, <a href="org/feijoas/mango/common/base/Predicates$.html" class="extype" name="org.feijoas.mango.common.base.Predicates">Predicates</a>, <a href="org/feijoas/mango/common/base/Suppliers$.html" class="extype" name="org.feijoas.mango.common.base.Suppliers">Suppliers</a>, <a href="org/feijoas/mango/common/util/concurrent/Futures$.html" class="extype" name="org.feijoas.mango.common.util.concurrent.Futures">Futures</a></li><li><a href="org/feijoas/mango/common/base/Preconditions$.html" class="extype" name="org.feijoas.mango.common.base.Preconditions">Preconditions</a>: Test preconditions for your methods more easily.</li><li><a href="org/feijoas/mango/common/cache/CacheBuilder.html" class="extype" name="org.feijoas.mango.common.cache.CacheBuilder">Caches</a>: Local caching, done right, and supporting a wide variety of expiration behaviors.</li><li><a href="org/feijoas/mango/common/collect/Range.html" class="extype" name="org.feijoas.mango.common.collect.Range">Ranges</a>: RangeSets/RangeMaps query, merge and manipulate ranges</li><li><a href="org/feijoas/mango/common/primitives/package.html" class="extype" name="org.feijoas.mango.common.primitives">Primitives</a>: Unsigned Int, Long and Byte</li></ul><h4> License </h4><p><a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License, Version 2.0</a></p></div></div>
         
 
       <div id="mbrsel">
@@ -169,7 +177,11 @@ sbt compile</pre><p>Don't forget to test
       <span class="symbol">
         <a href="org/package.html"><span class="name">org</span></a>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="index.html#package@org" title="Permalink" target="_top">
+        <img src="lib/permalink.png" />
+      </a>
+    </span>
       
     </li></ol>
             </div>
@@ -196,6 +208,7 @@ sbt compile</pre><p>Don't forget to test
       <div id="tooltip"></div>
 
       <div id="footer">  </div>
-      <script defer="defer" type="text/javascript" id="jquery-js" src="lib/jquery.js"></script><script defer="defer" type="text/javascript" id="jquery-ui-js" src="lib/jquery-ui.js"></script><script defer="defer" type="text/javascript" id="tools-tooltip-js" src="lib/tools.tooltip.js"></script><script defer="defer" type="text/javascript" id="template-js" src="lib/template.js"></script>
+
+
     </body>
       </html>

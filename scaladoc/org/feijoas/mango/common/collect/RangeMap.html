@@ -1,5 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<!DOCTYPE html >
 <html>
         <head>
           <title>RangeMap - Mango - org.feijoas.mango.common.collect.RangeMap</title>
@@ -9,6 +8,11 @@
           
       <link href="../../../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
       <link href="../../../../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
+      <script type="text/javascript" src="../../../../../lib/jquery.js" id="jquery-js"></script>
+      <script type="text/javascript" src="../../../../../lib/jquery-ui.js"></script>
+      <script type="text/javascript" src="../../../../../lib/template.js"></script>
+      <script type="text/javascript" src="../../../../../lib/tools.tooltip.js"></script>
+      
       <script type="text/javascript">
          if(top === self) {
             var url = '../../../../../index.html';
@@ -24,9 +28,17 @@
         </head>
         <body class="type">
       <div id="definition">
-        <a href="RangeMap$.html" title="Go to companion"><img src="../../../../../lib/trait_to_object_big.png" /></a>
+        <a href="RangeMap$.html" title="See companion object"><img src="../../../../../lib/trait_to_object_big.png" /></a>
         <p id="owner"><a href="../../../../package.html" class="extype" name="org">org</a>.<a href="../../../package.html" class="extype" name="org.feijoas">feijoas</a>.<a href="../../package.html" class="extype" name="org.feijoas.mango">mango</a>.<a href="../package.html" class="extype" name="org.feijoas.mango.common">common</a>.<a href="package.html" class="extype" name="org.feijoas.mango.common.collect">collect</a></p>
-        <h1><a href="RangeMap$.html" title="Go to companion">RangeMap</a></h1>
+        <h1><a href="RangeMap$.html" title="See companion object">RangeMap</a></h1><h3><span class="morelinks"><div>
+            Related Docs:
+            <a href="RangeMap$.html" title="See companion object">object RangeMap</a>
+            | <a href="package.html" class="extype" name="org.feijoas.mango.common.collect">package collect</a>
+          </div></span></h3><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.collect.RangeMap" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       </div>
 
       <h4 id="signature" class="signature">
@@ -61,9 +73,9 @@ sub.put(Range.closed(<span class="num">7</span>, <span class="num">9</span>), <s
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><a href="RangeMapLike.html" class="extype" name="org.feijoas.mango.common.collect.RangeMapLike">RangeMapLike</a>[<span class="extype" name="org.feijoas.mango.common.collect.RangeMap.K">K</span>, <span class="extype" name="org.feijoas.mango.common.collect.RangeMap.V">V</span>, <span class="extype" name="org.feijoas.mango.common.collect.RangeMap.O">O</span>, <a href="" class="extype" name="org.feijoas.mango.common.collect.RangeMap">RangeMap</a>[<span class="extype" name="org.feijoas.mango.common.collect.RangeMap.K">K</span>, <span class="extype" name="org.feijoas.mango.common.collect.RangeMap.V">V</span>, <span class="extype" name="org.feijoas.mango.common.collect.RangeMap.O">O</span>]], <span class="extype" name="scala.collection.generic.HasNewBuilder">HasNewBuilder</span>[(<a href="Range.html" class="extype" name="org.feijoas.mango.common.collect.Range">Range</a>[<span class="extype" name="org.feijoas.mango.common.collect.RangeMap.K">K</span>, <span class="extype" name="org.feijoas.mango.common.collect.RangeMap.O">O</span>], <span class="extype" name="org.feijoas.mango.common.collect.RangeMap.V">V</span>), <a href="" class="extype" name="org.feijoas.mango.common.collect.RangeMap">RangeMap</a>[<span class="extype" name="org.feijoas.mango.common.collect.RangeMap.K">K</span>, <span class="extype" name="org.feijoas.mango.common.collect.RangeMap.V">V</span>, <span class="extype" name="org.feijoas.mango.common.collect.RangeMap.O">O</span>]], <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div><div class="toggleContainer block">
-          <span class="toggle">Known Subclasses</span>
-          <div class="subClasses hiddenContent"><a href="mutable/RangeMap.html" class="extype" name="org.feijoas.mango.common.collect.mutable.RangeMap">RangeMap</a>, <a href="immutable/RangeMap.html" class="extype" name="org.feijoas.mango.common.collect.immutable.RangeMap">RangeMap</a></div>
-        </div></div>
+            <span class="toggle">Known Subclasses</span>
+            <div class="subClasses hiddenContent"><a href="mutable/RangeMap.html" class="extype" name="org.feijoas.mango.common.collect.mutable.RangeMap">RangeMap</a>, <a href="immutable/RangeMap.html" class="extype" name="org.feijoas.mango.common.collect.immutable.RangeMap">RangeMap</a></div>
+          </div></div>
         
 
       <div id="mbrsel">
@@ -115,7 +127,11 @@ sub.put(Range.closed(<span class="num">7</span>, <span class="num">9</span>), <s
       <span class="symbol">
         <span class="name">asMapOfRanges</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Predef.Map">Map</span>[<a href="Range.html" class="extype" name="org.feijoas.mango.common.collect.Range">Range</a>[<span class="extype" name="org.feijoas.mango.common.collect.RangeMap.K">K</span>, <span class="extype" name="org.feijoas.mango.common.collect.RangeMap.O">O</span>], <span class="extype" name="org.feijoas.mango.common.collect.RangeMap.V">V</span>]</span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.collect.RangeMap@asMapOfRanges():Map[org.feijoas.mango.common.collect.Range[K,O],V]" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Returns this RangeMap as a map of ranges.</p><div class="fullcomment"><div class="comment cmt"><p>Returns this RangeMap as a map of ranges.</p><p> <b>Warning:</b> This differs from Guava which returns an unmodifiable view
  of this RangeMap which modifications to its range map are guaranteed
  to read through to the returned map.</p><p>It is guaranteed that no empty ranges will be in the returned <code>Map</code>.
@@ -131,7 +147,11 @@ sub.put(Range.closed(<span class="num">7</span>, <span class="num">9</span>), <s
       <span class="symbol">
         <span class="name">get</span><span class="params">(<span name="key">key: <span class="extype" name="org.feijoas.mango.common.collect.RangeMap.K">K</span></span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="org.feijoas.mango.common.collect.RangeMap.V">V</span>]</span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.collect.RangeMap@get(key:K):Option[V]" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Returns the value associated with the specified key in a <code>Some</code>, or <code>None</code> if there is no
  such value.</p><div class="fullcomment"><div class="comment cmt"><p>Returns the value associated with the specified key in a <code>Some</code>, or <code>None</code> if there is no
  such value.</p><p>Specifically, if any range in this range map contains the specified key, the value
@@ -148,7 +168,11 @@ sub.put(Range.closed(<span class="num">7</span>, <span class="num">9</span>), <s
       <span class="symbol">
         <span class="name">getEntry</span><span class="params">(<span name="key">key: <span class="extype" name="org.feijoas.mango.common.collect.RangeMap.K">K</span></span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[(<a href="Range.html" class="extype" name="org.feijoas.mango.common.collect.Range">Range</a>[<span class="extype" name="org.feijoas.mango.common.collect.RangeMap.K">K</span>, <span class="extype" name="org.feijoas.mango.common.collect.RangeMap.O">O</span>], <span class="extype" name="org.feijoas.mango.common.collect.RangeMap.V">V</span>)]</span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.collect.RangeMap@getEntry(key:K):Option[(org.feijoas.mango.common.collect.Range[K,O],V)]" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Returns the range containing this key and its associated value in a <code>Some</code>, if such a range is present
  in the range map, or <code>None</code> otherwise.</p><div class="fullcomment"><div class="comment cmt"><p>Returns the range containing this key and its associated value in a <code>Some</code>, if such a range is present
  in the range map, or <code>None</code> otherwise.
@@ -164,7 +188,11 @@ sub.put(Range.closed(<span class="num">7</span>, <span class="num">9</span>), <s
       <span class="symbol">
         <span class="name">newBuilder</span><span class="result">: <span class="extype" name="scala.collection.mutable.Builder">Builder</span>[(<a href="Range.html" class="extype" name="org.feijoas.mango.common.collect.Range">Range</a>[<span class="extype" name="org.feijoas.mango.common.collect.RangeMap.K">K</span>, <span class="extype" name="org.feijoas.mango.common.collect.RangeMap.O">O</span>], <span class="extype" name="org.feijoas.mango.common.collect.RangeMap.V">V</span>), <a href="" class="extype" name="org.feijoas.mango.common.collect.RangeMap">RangeMap</a>[<span class="extype" name="org.feijoas.mango.common.collect.RangeMap.K">K</span>, <span class="extype" name="org.feijoas.mango.common.collect.RangeMap.V">V</span>, <span class="extype" name="org.feijoas.mango.common.collect.RangeMap.O">O</span>]]</span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.collect.RangeMap@newBuilder:scala.collection.mutable.Builder[A,Repr]" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[this] </dd><dt>Definition Classes</dt><dd>HasNewBuilder</dd></dl></div>
     </li><li name="org.feijoas.mango.common.collect.RangeMapLike#span" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="span():Option[org.feijoas.mango.common.collect.Range[K,O]]"></a>
@@ -177,7 +205,11 @@ sub.put(Range.closed(<span class="num">7</span>, <span class="num">9</span>), <s
       <span class="symbol">
         <span class="name">span</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<a href="Range.html" class="extype" name="org.feijoas.mango.common.collect.Range">Range</a>[<span class="extype" name="org.feijoas.mango.common.collect.RangeMap.K">K</span>, <span class="extype" name="org.feijoas.mango.common.collect.RangeMap.O">O</span>]]</span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.collect.RangeMap@span():Option[org.feijoas.mango.common.collect.Range[K,O]]" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Returns the minimal range enclosing the ranges in this <code>RangeMap</code> in a <code>Some</code>
  or <code>None</code> if this range map is empty
 </p><div class="fullcomment"><div class="comment cmt"><p>Returns the minimal range enclosing the ranges in this <code>RangeMap</code> in a <code>Some</code>
@@ -194,11 +226,15 @@ sub.put(Range.closed(<span class="num">7</span>, <span class="num">9</span>), <s
       <span class="symbol">
         <span class="name">subRangeMap</span><span class="params">(<span name="range">range: <a href="Range.html" class="extype" name="org.feijoas.mango.common.collect.Range">Range</a>[<span class="extype" name="org.feijoas.mango.common.collect.RangeMap.K">K</span>, <span class="extype" name="org.feijoas.mango.common.collect.RangeMap.O">O</span>]</span>)</span><span class="result">: <a href="" class="extype" name="org.feijoas.mango.common.collect.RangeMap">RangeMap</a>[<span class="extype" name="org.feijoas.mango.common.collect.RangeMap.K">K</span>, <span class="extype" name="org.feijoas.mango.common.collect.RangeMap.V">V</span>, <span class="extype" name="org.feijoas.mango.common.collect.RangeMap.O">O</span>]</span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.collect.RangeMap@subRangeMap(range:org.feijoas.mango.common.collect.Range[K,O]):Repr" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Returns a view of the part of this range map that intersects with <code>range</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Returns a view of the part of this range map that intersects with <code>range</code>.</p><p>For example, if <code>rangeMap</code> had the entries
- <code> [1, 5] =&gt; &quot;foo&quot;, (6, 8) =&gt; &quot;bar&quot;, (10, ‥) =&gt; &quot;baz&quot;</code>
+ <code>[1, 5] => "foo", (6, 8) => "bar", (10, ‥) => "baz"</code>
  then <code>rangeMap.subRangeMap(Range.open(3, 12))</code> would return a range map
- with the entries <code> (3, 5) =&gt; &quot;foo&quot;, (6, 8) =&gt; &quot;bar&quot;, (10, 12) =&gt; &quot;baz&quot;</code>.</p><p>The returned range map supports all optional operations that this range map supports.
+ with the entries <code>(3, 5) => "foo", (6, 8) => "bar", (10, 12) => "baz"</code>.</p><p>The returned range map supports all optional operations that this range map supports.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="RangeMapLike.html" class="extype" name="org.feijoas.mango.common.collect.RangeMapLike">RangeMapLike</a></dd></dl></div>
     </li></ol>
             </div>
@@ -206,19 +242,6 @@ sub.put(Range.closed(<span class="num">7</span>, <span class="num">9</span>), <s
         <div id="values" class="values members">
               <h3>Concrete Value Members</h3>
               <ol><li name="scala.AnyRef#!=" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="!=(x$1:AnyRef):Boolean"></a>
-      <a id="!=(AnyRef):Boolean"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier">final </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span title="gt4s: $bang$eq" class="name">!=</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="scala.Any#!=" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="!=(x$1:Any):Boolean"></a>
       <a id="!=(Any):Boolean"></a>
       <h4 class="signature">
@@ -229,8 +252,12 @@ sub.put(Range.closed(<span class="num">7</span>, <span class="num">9</span>), <s
       <span class="symbol">
         <span title="gt4s: $bang$eq" class="name">!=</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.collect.RangeMap@!=(x$1:Any):Boolean" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="scala.AnyRef###" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="##():Int"></a>
       <a id="##():Int"></a>
@@ -242,22 +269,13 @@ sub.put(Range.closed(<span class="num">7</span>, <span class="num">9</span>), <s
       <span class="symbol">
         <span title="gt4s: $hash$hash" class="name">##</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.collect.RangeMap@##():Int" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="scala.AnyRef#==" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="==(x$1:AnyRef):Boolean"></a>
-      <a id="==(AnyRef):Boolean"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier">final </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span title="gt4s: $eq$eq" class="name">==</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="scala.Any#==" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="==(x$1:Any):Boolean"></a>
       <a id="==(Any):Boolean"></a>
       <h4 class="signature">
@@ -268,8 +286,12 @@ sub.put(Range.closed(<span class="num">7</span>, <span class="num">9</span>), <s
       <span class="symbol">
         <span title="gt4s: $eq$eq" class="name">==</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.collect.RangeMap@==(x$1:Any):Boolean" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="scala.Any#asInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="asInstanceOf[T0]:T0"></a>
       <a id="asInstanceOf[T0]:T0"></a>
@@ -281,7 +303,11 @@ sub.put(Range.closed(<span class="num">7</span>, <span class="num">9</span>), <s
       <span class="symbol">
         <span class="name">asInstanceOf</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="result">: <span class="extype" name="scala.Any.asInstanceOf.T0">T0</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.collect.RangeMap@asInstanceOf[T0]:T0" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
     </li><li name="scala.AnyRef#clone" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="clone():Object"></a>
@@ -294,7 +320,11 @@ sub.put(Range.closed(<span class="num">7</span>, <span class="num">9</span>), <s
       <span class="symbol">
         <span class="name">clone</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.collect.RangeMap@clone():Object" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
                 <span class="name">@throws</span><span class="args">(<span>
       
@@ -313,7 +343,11 @@ sub.put(Range.closed(<span class="num">7</span>, <span class="num">9</span>), <s
       <span class="symbol">
         <span class="name">eq</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.collect.RangeMap@eq(x$1:AnyRef):Boolean" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
     </li><li name="org.feijoas.mango.common.collect.RangeMapLike#equals" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="equals(obj:Any):Boolean"></a>
@@ -326,7 +360,11 @@ sub.put(Range.closed(<span class="num">7</span>, <span class="num">9</span>), <s
       <span class="symbol">
         <span class="name">equals</span><span class="params">(<span name="obj">obj: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.collect.RangeMap@equals(obj:Any):Boolean" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Returns <code>true</code> if <code>obj</code> is another <a href="" class="extype" name="org.feijoas.mango.common.collect.RangeMap">RangeMap</a> that has an equivalent
  <code>#asMapOfRanges()</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Returns <code>true</code> if <code>obj</code> is another <a href="" class="extype" name="org.feijoas.mango.common.collect.RangeMap">RangeMap</a> that has an equivalent
  <code>#asMapOfRanges()</code>.
@@ -342,7 +380,11 @@ sub.put(Range.closed(<span class="num">7</span>, <span class="num">9</span>), <s
       <span class="symbol">
         <span class="name">finalize</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.collect.RangeMap@finalize():Unit" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
                 <span class="name">@throws</span><span class="args">(<span>
       
@@ -361,7 +403,11 @@ sub.put(Range.closed(<span class="num">7</span>, <span class="num">9</span>), <s
       <span class="symbol">
         <span class="name">getClass</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.Class">Class</span>[_]</span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.collect.RangeMap@getClass():Class[_]" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="org.feijoas.mango.common.collect.RangeMapLike#hashCode" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="hashCode():Int"></a>
@@ -374,7 +420,11 @@ sub.put(Range.closed(<span class="num">7</span>, <span class="num">9</span>), <s
       <span class="symbol">
         <span class="name">hashCode</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.collect.RangeMap@hashCode():Int" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Returns <code>asMapOfRanges().hashCode()</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Returns <code>asMapOfRanges().hashCode()</code>.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="RangeMapLike.html" class="extype" name="org.feijoas.mango.common.collect.RangeMapLike">RangeMapLike</a> → AnyRef → Any</dd></dl></div>
     </li><li name="org.feijoas.mango.common.collect.RangeMapLike#isEmpty" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -388,7 +438,11 @@ sub.put(Range.closed(<span class="num">7</span>, <span class="num">9</span>), <s
       <span class="symbol">
         <span class="name">isEmpty</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.collect.RangeMap@isEmpty:Boolean" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Returns <code>true</code> if this range map contains no ranges.</p><div class="fullcomment"><div class="comment cmt"><p>Returns <code>true</code> if this range map contains no ranges.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="RangeMapLike.html" class="extype" name="org.feijoas.mango.common.collect.RangeMapLike">RangeMapLike</a></dd></dl></div>
     </li><li name="scala.Any#isInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -402,7 +456,11 @@ sub.put(Range.closed(<span class="num">7</span>, <span class="num">9</span>), <s
       <span class="symbol">
         <span class="name">isInstanceOf</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.collect.RangeMap@isInstanceOf[T0]:Boolean" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
     </li><li name="scala.AnyRef#ne" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ne(x$1:AnyRef):Boolean"></a>
@@ -415,7 +473,11 @@ sub.put(Range.closed(<span class="num">7</span>, <span class="num">9</span>), <s
       <span class="symbol">
         <span class="name">ne</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.collect.RangeMap@ne(x$1:AnyRef):Boolean" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
     </li><li name="scala.AnyRef#notify" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="notify():Unit"></a>
@@ -428,7 +490,11 @@ sub.put(Range.closed(<span class="num">7</span>, <span class="num">9</span>), <s
       <span class="symbol">
         <span class="name">notify</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.collect.RangeMap@notify():Unit" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
     </li><li name="scala.AnyRef#notifyAll" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="notifyAll():Unit"></a>
@@ -441,7 +507,11 @@ sub.put(Range.closed(<span class="num">7</span>, <span class="num">9</span>), <s
       <span class="symbol">
         <span class="name">notifyAll</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.collect.RangeMap@notifyAll():Unit" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
@@ -454,7 +524,11 @@ sub.put(Range.closed(<span class="num">7</span>, <span class="num">9</span>), <s
       <span class="symbol">
         <span class="name">synchronized</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="params">(<span name="arg0">arg0: ⇒ <span class="extype" name="java.lang.AnyRef.synchronized.T0">T0</span></span>)</span><span class="result">: <span class="extype" name="java.lang.AnyRef.synchronized.T0">T0</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.collect.RangeMap@synchronized[T0](x$1:=&gt;T0):T0" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
     </li><li name="org.feijoas.mango.common.collect.RangeMapLike#toString" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="toString():String"></a>
@@ -467,7 +541,11 @@ sub.put(Range.closed(<span class="num">7</span>, <span class="num">9</span>), <s
       <span class="symbol">
         <span class="name">toString</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.collect.RangeMap@toString():String" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Returns a readable string representation of this range map.</p><div class="fullcomment"><div class="comment cmt"><p>Returns a readable string representation of this range map.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="RangeMapLike.html" class="extype" name="org.feijoas.mango.common.collect.RangeMapLike">RangeMapLike</a> → AnyRef → Any</dd></dl></div>
     </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -481,7 +559,11 @@ sub.put(Range.closed(<span class="num">7</span>, <span class="num">9</span>), <s
       <span class="symbol">
         <span class="name">wait</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.collect.RangeMap@wait():Unit" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
                 <span class="name">@throws</span><span class="args">(<span>
       
@@ -500,7 +582,11 @@ sub.put(Range.closed(<span class="num">7</span>, <span class="num">9</span>), <s
       <span class="symbol">
         <span class="name">wait</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Long">Long</span></span>, <span name="arg1">arg1: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.collect.RangeMap@wait(x$1:Long,x$2:Int):Unit" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
                 <span class="name">@throws</span><span class="args">(<span>
       
@@ -519,7 +605,11 @@ sub.put(Range.closed(<span class="num">7</span>, <span class="num">9</span>), <s
       <span class="symbol">
         <span class="name">wait</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Long">Long</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.collect.RangeMap@wait(x$1:Long):Unit" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
                 <span class="name">@throws</span><span class="args">(<span>
       
@@ -560,6 +650,7 @@ sub.put(Range.closed(<span class="num">7</span>, <span class="num">9</span>), <s
       <div id="tooltip"></div>
 
       <div id="footer">  </div>
-      <script defer="defer" type="text/javascript" id="jquery-js" src="../../../../../lib/jquery.js"></script><script defer="defer" type="text/javascript" id="jquery-ui-js" src="../../../../../lib/jquery-ui.js"></script><script defer="defer" type="text/javascript" id="tools-tooltip-js" src="../../../../../lib/tools.tooltip.js"></script><script defer="defer" type="text/javascript" id="template-js" src="../../../../../lib/template.js"></script>
+
+
     </body>
       </html>

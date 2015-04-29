@@ -1,5 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<!DOCTYPE html >
 <html>
         <head>
           <title>Preconditions - Mango - org.feijoas.mango.common.base.Preconditions</title>
@@ -9,6 +8,11 @@
           
       <link href="../../../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
       <link href="../../../../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
+      <script type="text/javascript" src="../../../../../lib/jquery.js" id="jquery-js"></script>
+      <script type="text/javascript" src="../../../../../lib/jquery-ui.js"></script>
+      <script type="text/javascript" src="../../../../../lib/template.js"></script>
+      <script type="text/javascript" src="../../../../../lib/tools.tooltip.js"></script>
+      
       <script type="text/javascript">
          if(top === self) {
             var url = '../../../../../index.html';
@@ -26,7 +30,13 @@
       <div id="definition">
         <img src="../../../../../lib/object_big.png" />
         <p id="owner"><a href="../../../../package.html" class="extype" name="org">org</a>.<a href="../../../package.html" class="extype" name="org.feijoas">feijoas</a>.<a href="../../package.html" class="extype" name="org.feijoas.mango">mango</a>.<a href="../package.html" class="extype" name="org.feijoas.mango.common">common</a>.<a href="package.html" class="extype" name="org.feijoas.mango.common.base">base</a></p>
-        <h1>Preconditions</h1>
+        <h1>Preconditions</h1><h3><span class="morelinks"><div>Related Doc:
+            <a href="package.html" class="extype" name="org.feijoas.mango.common.base">package base</a>
+          </div></span></h3><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.base.Preconditions$" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       </div>
 
       <h4 id="signature" class="signature">
@@ -41,15 +51,14 @@
       
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Simple static methods to be called at the start of your own methods to verify
  correct arguments and state. This allows constructs such as</p><pre><span class="kw">if</span> (count &lt;= <span class="num">0</span>) {
-<span class="kw">throw</span> <span class="kw">new</span> IllegalArgumentException(<span class="lit">"must be positive: "</span> + count)
+    <span class="kw">throw</span> <span class="kw">new</span> IllegalArgumentException(<span class="lit">"must be positive: "</span> + count)
 }</pre><p> to be replaced with the more compact</p><pre>checkArgument(count &gt; <span class="num">0</span>, <span class="lit">"must be positive: %s"</span>, count)</pre><p> Note that the sense of the expression is inverted with <a href="" class="extype" name="org.feijoas.mango.common.base.Preconditions">Preconditions</a>
  you declare what you expect to be <i>true</i>, just as you do with an
  <a href="http://java.sun.com/j2se/1.5.0/docs/guide/language/assert.html">
- ` assert`</a> or a JUnit <code> assertTrue</code> call.</p><p><b>Warning:</b> only the <code> &quot;%s&quot;</code> specifier is recognized as a
+ <code>assert</code></a> or a JUnit <code>assertTrue</code> call.</p><p><b>Warning:</b> only the <code>"%s"</code> specifier is recognized as a
  placeholder in these messages.</p><p>Take care not to confuse precondition checking with other similar types
  of checks! Precondition exceptions -- including those provided here, but also
- <code> IndexOutOfBoundsException</code>, <code> NoSuchElementException</code>, <code>
- UnsupportedOperationException</code> and others -- are used to signal that the
+ <code><span class="extype" name="IndexOutOfBoundsException">IndexOutOfBoundsException</span></code>, <code><span class="extype" name="NoSuchElementException">NoSuchElementException</span></code>, <code><span class="extype" name="">UnsupportedOperationException</span></code> and others -- are used to signal that the
  <i>calling method</i> has made an error. This tells the caller that it should
  not have invoked the method when it did, with the arguments it did, or
  perhaps ever. Postcondition or other invariant failures should not throw
@@ -105,19 +114,6 @@
         <div id="values" class="values members">
               <h3>Value Members</h3>
               <ol><li name="scala.AnyRef#!=" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="!=(x$1:AnyRef):Boolean"></a>
-      <a id="!=(AnyRef):Boolean"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier">final </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span title="gt4s: $bang$eq" class="name">!=</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="scala.Any#!=" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="!=(x$1:Any):Boolean"></a>
       <a id="!=(Any):Boolean"></a>
       <h4 class="signature">
@@ -128,8 +124,12 @@
       <span class="symbol">
         <span title="gt4s: $bang$eq" class="name">!=</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.base.Preconditions$@!=(x$1:Any):Boolean" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="scala.AnyRef###" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="##():Int"></a>
       <a id="##():Int"></a>
@@ -141,22 +141,13 @@
       <span class="symbol">
         <span title="gt4s: $hash$hash" class="name">##</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.base.Preconditions$@##():Int" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="scala.AnyRef#==" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="==(x$1:AnyRef):Boolean"></a>
-      <a id="==(AnyRef):Boolean"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier">final </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span title="gt4s: $eq$eq" class="name">==</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="scala.Any#==" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="==(x$1:Any):Boolean"></a>
       <a id="==(Any):Boolean"></a>
       <h4 class="signature">
@@ -167,8 +158,12 @@
       <span class="symbol">
         <span title="gt4s: $eq$eq" class="name">==</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.base.Preconditions$@==(x$1:Any):Boolean" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="scala.Any#asInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="asInstanceOf[T0]:T0"></a>
       <a id="asInstanceOf[T0]:T0"></a>
@@ -180,7 +175,11 @@
       <span class="symbol">
         <span class="name">asInstanceOf</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="result">: <span class="extype" name="scala.Any.asInstanceOf.T0">T0</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.base.Preconditions$@asInstanceOf[T0]:T0" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
     </li><li name="org.feijoas.mango.common.base.Preconditions#checkArgument" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="checkArgument(expression:Boolean,errorMessageTemplate:String,errorMessageArg:Any,moreArgs:Any*):Unit"></a>
@@ -193,20 +192,24 @@
       <span class="symbol">
         <span class="name">checkArgument</span><span class="params">(<span name="expression">expression: <span class="extype" name="scala.Boolean">Boolean</span></span>, <span name="errorMessageTemplate">errorMessageTemplate: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="errorMessageArg">errorMessageArg: <span class="extype" name="scala.Any">Any</span></span>, <span name="moreArgs">moreArgs: <span class="extype" name="scala.Any">Any</span>*</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.base.Preconditions$@checkArgument(expression:Boolean,errorMessageTemplate:String,errorMessageArg:Any,moreArgs:Any*):Unit" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Ensures the truth of an expression involving one or more parameters to the
  calling method.</p><div class="fullcomment"><div class="comment cmt"><p>Ensures the truth of an expression involving one or more parameters to the
  calling method.
 </p></div><dl class="paramcmts block"><dt class="param">expression</dt><dd class="cmt"><p>an expression: Boolean</p></dd><dt class="param">errorMessageTemplate</dt><dd class="cmt"><p>a template for the exception message should the
-    check fail. The message is formed by replacing each <code> %s</code>
+    check fail. The message is formed by replacing each <code>%s</code>
     placeholder in the template with an argument. These are matched by
-    position - the first <code> %s</code> gets <code> errorMessageArgs[0]</code>, etc.
+    position - the first <code>%s</code> gets <code>errorMessageArgs[0]</code>, etc.
     Unmatched arguments will be appended to the formatted message in square
     braces. Unmatched placeholders will be left as-is. Arguments are converted
     to strings using <code>String#valueOf(Any)</code>.</p></dd><dt class="param">errorMessageArg</dt><dd class="cmt"><p>the first argument to be substituted into the message
     template.</p></dd><dt class="param">moreArgs</dt><dd class="cmt"><p>the other arguments to be substituted into the message
-    template.</p></dd></dl><dl class="attributes block"> <dt>Exceptions thrown</dt><dd><span class="cmt">IllegalArgumentException<p>if <code> expression</code> is false</p></span><span class="cmt">NullPointerException<p>if the check fails and either <code>
-    errorMessageTemplate</code> or <code> errorMessageArgs</code> is null (don't let
+    template.</p></dd></dl><dl class="attributes block"> <dt>Exceptions thrown</dt><dd><span class="cmt"><p><span class="extype" name="IllegalArgumentException"><code>IllegalArgumentException</code></span> if <code>expression</code> is false</p></span><span class="cmt"><p><span class="extype" name="NullPointerException"><code>NullPointerException</code></span> if the check fails and either <code>
+    errorMessageTemplate</code> or <code>errorMessageArgs</code> is null (don't let
     this happen)
 </p></span></dd></dl></div>
     </li><li name="org.feijoas.mango.common.base.Preconditions#checkArgument" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -220,12 +223,16 @@
       <span class="symbol">
         <span class="name">checkArgument</span><span class="params">(<span name="expression">expression: <span class="extype" name="scala.Boolean">Boolean</span></span>, <span name="errorMessage">errorMessage: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.base.Preconditions$@checkArgument(expression:Boolean,errorMessage:Any):Unit" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Ensures the truth of an expression involving one or more parameters to the
  calling method.</p><div class="fullcomment"><div class="comment cmt"><p>Ensures the truth of an expression involving one or more parameters to the
  calling method.
 </p></div><dl class="paramcmts block"><dt class="param">expression</dt><dd class="cmt"><p>an expression: Boolean</p></dd><dt class="param">errorMessage</dt><dd class="cmt"><p>the exception message to use if the check fails will
-    be converted to a string using <code>String#valueOf(Any)</code></p></dd></dl><dl class="attributes block"> <dt>Exceptions thrown</dt><dd><span class="cmt">IllegalArgumentException<p>if <code> expression</code> is false
+    be converted to a string using <code>String#valueOf(Any)</code></p></dd></dl><dl class="attributes block"> <dt>Exceptions thrown</dt><dd><span class="cmt"><p><span class="extype" name="IllegalArgumentException"><code>IllegalArgumentException</code></span> if <code>expression</code> is false
 </p></span></dd></dl></div>
     </li><li name="org.feijoas.mango.common.base.Preconditions#checkArgument" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="checkArgument(expression:Boolean):Unit"></a>
@@ -238,11 +245,15 @@
       <span class="symbol">
         <span class="name">checkArgument</span><span class="params">(<span name="expression">expression: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.base.Preconditions$@checkArgument(expression:Boolean):Unit" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Ensures the truth of an expression involving one or more parameters to the
  calling method.</p><div class="fullcomment"><div class="comment cmt"><p>Ensures the truth of an expression involving one or more parameters to the
  calling method.
-</p></div><dl class="paramcmts block"><dt class="param">expression</dt><dd class="cmt"><p>an expression: Boolean</p></dd></dl><dl class="attributes block"> <dt>Exceptions thrown</dt><dd><span class="cmt">IllegalArgumentException<p>if <code> expression</code> is false
+</p></div><dl class="paramcmts block"><dt class="param">expression</dt><dd class="cmt"><p>an expression: Boolean</p></dd></dl><dl class="attributes block"> <dt>Exceptions thrown</dt><dd><span class="cmt"><p><span class="extype" name="IllegalArgumentException"><code>IllegalArgumentException</code></span> if <code>expression</code> is false
 </p></span></dd></dl></div>
     </li><li name="org.feijoas.mango.common.base.Preconditions#checkElementIndex" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="checkElementIndex(index:Int,size:Int,desc:String):Int"></a>
@@ -255,15 +266,19 @@
       <span class="symbol">
         <span class="name">checkElementIndex</span><span class="params">(<span name="index">index: <span class="extype" name="scala.Int">Int</span></span>, <span name="size">size: <span class="extype" name="scala.Int">Int</span></span>, <span name="desc">desc: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
       </span>
-      </h4>
-      <p class="shortcomment cmt">Ensures that <code> index</code> specifies a valid <i>element</i> in an array,
- list or string of size <code> size</code>.</i></p><div class="fullcomment"><div class="comment cmt"><p>Ensures that <code> index</code> specifies a valid <i>element</i> in an array,
- list or string of size <code> size</code>. An element index may range from zero,
- inclusive, to <code> size</code>, exclusive.
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.base.Preconditions$@checkElementIndex(index:Int,size:Int,desc:String):Int" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Ensures that <code>index</code> specifies a valid <i>element</i> in an array,
+ list or string of size <code>size</code>.</code></i></code></p><div class="fullcomment"><div class="comment cmt"><p>Ensures that <code>index</code> specifies a valid <i>element</i> in an array,
+ list or string of size <code>size</code>. An element index may range from zero,
+ inclusive, to <code>size</code>, exclusive.
 </p></div><dl class="paramcmts block"><dt class="param">index</dt><dd class="cmt"><p>a user-supplied index identifying an element of an array, list
-    or string</p></dd><dt class="param">size</dt><dd class="cmt"><p>the size of that array, list or string</p></dd><dt class="param">desc</dt><dd class="cmt"><p>the text to use to describe this index in an error message</p></dd><dt>returns</dt><dd class="cmt"><p>the value of <code> index</code></p></dd></dl><dl class="attributes block"> <dt>Exceptions thrown</dt><dd><span class="cmt">IllegalArgumentException<p>if <code> size</code> is negative
-</p></span><span class="cmt">IndexOutOfBoundsException<p>if <code> index</code> is negative or is not
-    less than <code> size</code></p></span></dd></dl></div>
+    or string</p></dd><dt class="param">size</dt><dd class="cmt"><p>the size of that array, list or string</p></dd><dt class="param">desc</dt><dd class="cmt"><p>the text to use to describe this index in an error message</p></dd><dt>returns</dt><dd class="cmt"><p>the value of <code>index</code></p></dd></dl><dl class="attributes block"> <dt>Exceptions thrown</dt><dd><span class="cmt"><p><span class="extype" name="IllegalArgumentException"><code>IllegalArgumentException</code></span> if <code>size</code> is negative
+</p></span><span class="cmt"><p><span class="extype" name="IndexOutOfBoundsException"><code>IndexOutOfBoundsException</code></span> if <code>index</code> is negative or is not
+    less than <code>size</code></p></span></dd></dl></div>
     </li><li name="org.feijoas.mango.common.base.Preconditions#checkElementIndex" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="checkElementIndex(index:Int,size:Int):Int"></a>
       <a id="checkElementIndex(Int,Int):Int"></a>
@@ -275,15 +290,19 @@
       <span class="symbol">
         <span class="name">checkElementIndex</span><span class="params">(<span name="index">index: <span class="extype" name="scala.Int">Int</span></span>, <span name="size">size: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
       </span>
-      </h4>
-      <p class="shortcomment cmt">Ensures that <code> index</code> specifies a valid <i>element</i> in an array,
- list or string of size <code> size</code>.</i></p><div class="fullcomment"><div class="comment cmt"><p>Ensures that <code> index</code> specifies a valid <i>element</i> in an array,
- list or string of size <code> size</code>. An element index may range from zero,
- inclusive, to <code> size</code>, exclusive.
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.base.Preconditions$@checkElementIndex(index:Int,size:Int):Int" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Ensures that <code>index</code> specifies a valid <i>element</i> in an array,
+ list or string of size <code>size</code>.</code></i></code></p><div class="fullcomment"><div class="comment cmt"><p>Ensures that <code>index</code> specifies a valid <i>element</i> in an array,
+ list or string of size <code>size</code>. An element index may range from zero,
+ inclusive, to <code>size</code>, exclusive.
 </p></div><dl class="paramcmts block"><dt class="param">index</dt><dd class="cmt"><p>a user-supplied index identifying an element of an array, list
-    or string</p></dd><dt class="param">size</dt><dd class="cmt"><p>the size of that array, list or string</p></dd><dt>returns</dt><dd class="cmt"><p>the value of <code> index</code></p></dd></dl><dl class="attributes block"> <dt>Exceptions thrown</dt><dd><span class="cmt">IllegalArgumentException<p>if <code> size</code> is negative
-</p></span><span class="cmt">IndexOutOfBoundsException<p>if <code> index</code> is negative or is not
-    less than <code> size</code></p></span></dd></dl></div>
+    or string</p></dd><dt class="param">size</dt><dd class="cmt"><p>the size of that array, list or string</p></dd><dt>returns</dt><dd class="cmt"><p>the value of <code>index</code></p></dd></dl><dl class="attributes block"> <dt>Exceptions thrown</dt><dd><span class="cmt"><p><span class="extype" name="IllegalArgumentException"><code>IllegalArgumentException</code></span> if <code>size</code> is negative
+</p></span><span class="cmt"><p><span class="extype" name="IndexOutOfBoundsException"><code>IndexOutOfBoundsException</code></span> if <code>index</code> is negative or is not
+    less than <code>size</code></p></span></dd></dl></div>
     </li><li name="org.feijoas.mango.common.base.Preconditions#checkNotNull" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="checkNotNull[T](reference:T,errorMessageTemplate:String,errorMessageArg:Any,moreArgs:Any*):T"></a>
       <a id="checkNotNull[T](T,String,Any,Any*):T"></a>
@@ -295,19 +314,23 @@
       <span class="symbol">
         <span class="name">checkNotNull</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="reference">reference: <span class="extype" name="org.feijoas.mango.common.base.Preconditions.checkNotNull.T">T</span></span>, <span name="errorMessageTemplate">errorMessageTemplate: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="errorMessageArg">errorMessageArg: <span class="extype" name="scala.Any">Any</span></span>, <span name="moreArgs">moreArgs: <span class="extype" name="scala.Any">Any</span>*</span>)</span><span class="result">: <span class="extype" name="org.feijoas.mango.common.base.Preconditions.checkNotNull.T">T</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.base.Preconditions$@checkNotNull[T](reference:T,errorMessageTemplate:String,errorMessageArg:Any,moreArgs:Any*):T" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Ensures that an objecreference: T passed as a parameter to the calling
  method is not null.</p><div class="fullcomment"><div class="comment cmt"><p>Ensures that an objecreference: T passed as a parameter to the calling
  method is not null.
 </p></div><dl class="paramcmts block"><dt class="param">reference</dt><dd class="cmt"><p>an objecreference: T</p></dd><dt class="param">errorMessageTemplate</dt><dd class="cmt"><p>a template for the exception message should the
-    check fail. The message is formed by replacing each <code> %s</code>
+    check fail. The message is formed by replacing each <code>%s</code>
     placeholder in the template with an argument. These are matched by
-    position - the first <code> %s</code> gets <code> errorMessageArgs[0]</code>, etc.
+    position - the first <code>%s</code> gets <code>errorMessageArgs[0]</code>, etc.
     Unmatched arguments will be appended to the formatted message in square
     braces. Unmatched placeholders will be left as-is. Arguments are converted
     to strings using <code>String#valueOf(Any)</code>.</p></dd><dt class="param">errorMessageArg</dt><dd class="cmt"><p>the first argument to be substituted into the message
     template.</p></dd><dt class="param">moreArgs</dt><dd class="cmt"><p>the other arguments to be substituted into the message
-    template.</p></dd><dt>returns</dt><dd class="cmt"><p>the non-null reference that was validated</p></dd></dl><dl class="attributes block"> <dt>Exceptions thrown</dt><dd><span class="cmt">NullPointerException<p>if <code> reference</code> is null
+    template.</p></dd><dt>returns</dt><dd class="cmt"><p>the non-null reference that was validated</p></dd></dl><dl class="attributes block"> <dt>Exceptions thrown</dt><dd><span class="cmt"><p><span class="extype" name="NullPointerException"><code>NullPointerException</code></span> if <code>reference</code> is null
 </p></span></dd></dl></div>
     </li><li name="org.feijoas.mango.common.base.Preconditions#checkNotNull" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="checkNotNull[T](reference:T,errorMessage:Any):T"></a>
@@ -320,12 +343,16 @@
       <span class="symbol">
         <span class="name">checkNotNull</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="reference">reference: <span class="extype" name="org.feijoas.mango.common.base.Preconditions.checkNotNull.T">T</span></span>, <span name="errorMessage">errorMessage: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="org.feijoas.mango.common.base.Preconditions.checkNotNull.T">T</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.base.Preconditions$@checkNotNull[T](reference:T,errorMessage:Any):T" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Ensures that an objecreference: T passed as a parameter to the calling
  method is not null.</p><div class="fullcomment"><div class="comment cmt"><p>Ensures that an objecreference: T passed as a parameter to the calling
  method is not null.
 </p></div><dl class="paramcmts block"><dt class="param">reference</dt><dd class="cmt"><p>an objecreference: T</p></dd><dt class="param">errorMessage</dt><dd class="cmt"><p>the exception message to use if the check fails will
-    be converted to a string using <code>String#valueOf(Any)</code></p></dd><dt>returns</dt><dd class="cmt"><p>the non-null reference that was validated</p></dd></dl><dl class="attributes block"> <dt>Exceptions thrown</dt><dd><span class="cmt">NullPointerException<p>if <code> reference</code> is null
+    be converted to a string using <code>String#valueOf(Any)</code></p></dd><dt>returns</dt><dd class="cmt"><p>the non-null reference that was validated</p></dd></dl><dl class="attributes block"> <dt>Exceptions thrown</dt><dd><span class="cmt"><p><span class="extype" name="NullPointerException"><code>NullPointerException</code></span> if <code>reference</code> is null
 </p></span></dd></dl></div>
     </li><li name="org.feijoas.mango.common.base.Preconditions#checkNotNull" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="checkNotNull[T](reference:T):T"></a>
@@ -338,11 +365,15 @@
       <span class="symbol">
         <span class="name">checkNotNull</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="reference">reference: <span class="extype" name="org.feijoas.mango.common.base.Preconditions.checkNotNull.T">T</span></span>)</span><span class="result">: <span class="extype" name="org.feijoas.mango.common.base.Preconditions.checkNotNull.T">T</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.base.Preconditions$@checkNotNull[T](reference:T):T" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Ensures that an objecreference: T passed as a parameter to the calling
  method is not null.</p><div class="fullcomment"><div class="comment cmt"><p>Ensures that an objecreference: T passed as a parameter to the calling
  method is not null.
-</p></div><dl class="paramcmts block"><dt class="param">reference</dt><dd class="cmt"><p>an objecreference: T</p></dd><dt>returns</dt><dd class="cmt"><p>the non-null reference that was validated</p></dd></dl><dl class="attributes block"> <dt>Exceptions thrown</dt><dd><span class="cmt">NullPointerException<p>if <code> reference</code> is null
+</p></div><dl class="paramcmts block"><dt class="param">reference</dt><dd class="cmt"><p>an objecreference: T</p></dd><dt>returns</dt><dd class="cmt"><p>the non-null reference that was validated</p></dd></dl><dl class="attributes block"> <dt>Exceptions thrown</dt><dd><span class="cmt"><p><span class="extype" name="NullPointerException"><code>NullPointerException</code></span> if <code>reference</code> is null
 </p></span></dd></dl></div>
     </li><li name="org.feijoas.mango.common.base.Preconditions#checkPositionIndex" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="checkPositionIndex(index:Int,size:Int,desc:String):Int"></a>
@@ -355,15 +386,19 @@
       <span class="symbol">
         <span class="name">checkPositionIndex</span><span class="params">(<span name="index">index: <span class="extype" name="scala.Int">Int</span></span>, <span name="size">size: <span class="extype" name="scala.Int">Int</span></span>, <span name="desc">desc: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
       </span>
-      </h4>
-      <p class="shortcomment cmt">Ensures that <code> index</code> specifies a valid <i>position</i> in an array,
- list or string of size <code> size</code>.</i></p><div class="fullcomment"><div class="comment cmt"><p>Ensures that <code> index</code> specifies a valid <i>position</i> in an array,
- list or string of size <code> size</code>. A position index may range from zero
- to <code> size</code>, inclusive.
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.base.Preconditions$@checkPositionIndex(index:Int,size:Int,desc:String):Int" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Ensures that <code>index</code> specifies a valid <i>position</i> in an array,
+ list or string of size <code>size</code>.</code></i></code></p><div class="fullcomment"><div class="comment cmt"><p>Ensures that <code>index</code> specifies a valid <i>position</i> in an array,
+ list or string of size <code>size</code>. A position index may range from zero
+ to <code>size</code>, inclusive.
 </p></div><dl class="paramcmts block"><dt class="param">index</dt><dd class="cmt"><p>a user-supplied index identifying a position in an array, list
-    or string</p></dd><dt class="param">size</dt><dd class="cmt"><p>the size of that array, list or string</p></dd><dt class="param">desc</dt><dd class="cmt"><p>the text to use to describe this index in an error message</p></dd><dt>returns</dt><dd class="cmt"><p>the value of <code> index</code></p></dd></dl><dl class="attributes block"> <dt>Exceptions thrown</dt><dd><span class="cmt">IllegalArgumentException<p>if <code> size</code> is negative
-</p></span><span class="cmt">IndexOutOfBoundsException<p>if <code> index</code> is negative or is
-    greater than <code> size</code></p></span></dd></dl></div>
+    or string</p></dd><dt class="param">size</dt><dd class="cmt"><p>the size of that array, list or string</p></dd><dt class="param">desc</dt><dd class="cmt"><p>the text to use to describe this index in an error message</p></dd><dt>returns</dt><dd class="cmt"><p>the value of <code>index</code></p></dd></dl><dl class="attributes block"> <dt>Exceptions thrown</dt><dd><span class="cmt"><p><span class="extype" name="IllegalArgumentException"><code>IllegalArgumentException</code></span> if <code>size</code> is negative
+</p></span><span class="cmt"><p><span class="extype" name="IndexOutOfBoundsException"><code>IndexOutOfBoundsException</code></span> if <code>index</code> is negative or is
+    greater than <code>size</code></p></span></dd></dl></div>
     </li><li name="org.feijoas.mango.common.base.Preconditions#checkPositionIndex" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="checkPositionIndex(index:Int,size:Int):Int"></a>
       <a id="checkPositionIndex(Int,Int):Int"></a>
@@ -375,15 +410,19 @@
       <span class="symbol">
         <span class="name">checkPositionIndex</span><span class="params">(<span name="index">index: <span class="extype" name="scala.Int">Int</span></span>, <span name="size">size: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
       </span>
-      </h4>
-      <p class="shortcomment cmt">Ensures that <code> index</code> specifies a valid <i>position</i> in an array,
- list or string of size <code> size</code>.</i></p><div class="fullcomment"><div class="comment cmt"><p>Ensures that <code> index</code> specifies a valid <i>position</i> in an array,
- list or string of size <code> size</code>. A position index may range from zero
- to <code> size</code>, inclusive.
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.base.Preconditions$@checkPositionIndex(index:Int,size:Int):Int" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Ensures that <code>index</code> specifies a valid <i>position</i> in an array,
+ list or string of size <code>size</code>.</code></i></code></p><div class="fullcomment"><div class="comment cmt"><p>Ensures that <code>index</code> specifies a valid <i>position</i> in an array,
+ list or string of size <code>size</code>. A position index may range from zero
+ to <code>size</code>, inclusive.
 </p></div><dl class="paramcmts block"><dt class="param">index</dt><dd class="cmt"><p>a user-supplied index identifying a position in an array, list
-    or string</p></dd><dt class="param">size</dt><dd class="cmt"><p>the size of that array, list or string</p></dd><dt>returns</dt><dd class="cmt"><p>the value of <code> index</code></p></dd></dl><dl class="attributes block"> <dt>Exceptions thrown</dt><dd><span class="cmt">IllegalArgumentException<p>if <code> size</code> is negative
-</p></span><span class="cmt">IndexOutOfBoundsException<p>if <code> index</code> is negative or is
-    greater than <code> size</code></p></span></dd></dl></div>
+    or string</p></dd><dt class="param">size</dt><dd class="cmt"><p>the size of that array, list or string</p></dd><dt>returns</dt><dd class="cmt"><p>the value of <code>index</code></p></dd></dl><dl class="attributes block"> <dt>Exceptions thrown</dt><dd><span class="cmt"><p><span class="extype" name="IllegalArgumentException"><code>IllegalArgumentException</code></span> if <code>size</code> is negative
+</p></span><span class="cmt"><p><span class="extype" name="IndexOutOfBoundsException"><code>IndexOutOfBoundsException</code></span> if <code>index</code> is negative or is
+    greater than <code>size</code></p></span></dd></dl></div>
     </li><li name="org.feijoas.mango.common.base.Preconditions#checkPositionIndexes" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="checkPositionIndexes(start:Int,end:Int,size:Int):Unit"></a>
       <a id="checkPositionIndexes(Int,Int,Int):Unit"></a>
@@ -395,16 +434,20 @@
       <span class="symbol">
         <span class="name">checkPositionIndexes</span><span class="params">(<span name="start">start: <span class="extype" name="scala.Int">Int</span></span>, <span name="end">end: <span class="extype" name="scala.Int">Int</span></span>, <span name="size">size: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
-      </h4>
-      <p class="shortcomment cmt">Ensures that <code> start</code> and <code> end</code> specify a valid <i>positions</i>
- in an array, list or string of size <code> size</code>, and are in order.</i></p><div class="fullcomment"><div class="comment cmt"><p>Ensures that <code> start</code> and <code> end</code> specify a valid <i>positions</i>
- in an array, list or string of size <code> size</code>, and are in order. A
- position index may range from zero to <code> size</code>, inclusive.
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.base.Preconditions$@checkPositionIndexes(start:Int,end:Int,size:Int):Unit" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Ensures that <code>start</code> and <code>end</code> specify a valid <i>positions</i>
+ in an array, list or string of size <code>size</code>, and are in order.</code></i></code></code></p><div class="fullcomment"><div class="comment cmt"><p>Ensures that <code>start</code> and <code>end</code> specify a valid <i>positions</i>
+ in an array, list or string of size <code>size</code>, and are in order. A
+ position index may range from zero to <code>size</code>, inclusive.
 </p></div><dl class="paramcmts block"><dt class="param">start</dt><dd class="cmt"><p>a user-supplied index identifying a starting position in an
     array, list or string</p></dd><dt class="param">end</dt><dd class="cmt"><p>a user-supplied index identifying a ending position in an array,
-    list or string</p></dd><dt class="param">size</dt><dd class="cmt"><p>the size of that array, list or string</p></dd></dl><dl class="attributes block"> <dt>Exceptions thrown</dt><dd><span class="cmt">IllegalArgumentException<p>if <code> size</code> is negative
-</p></span><span class="cmt">IndexOutOfBoundsException<p>if either index is negative or is
-    greater than <code> size</code>, or if <code> end</code> is less than <code> start</code></p></span></dd></dl></div>
+    list or string</p></dd><dt class="param">size</dt><dd class="cmt"><p>the size of that array, list or string</p></dd></dl><dl class="attributes block"> <dt>Exceptions thrown</dt><dd><span class="cmt"><p><span class="extype" name="IllegalArgumentException"><code>IllegalArgumentException</code></span> if <code>size</code> is negative
+</p></span><span class="cmt"><p><span class="extype" name="IndexOutOfBoundsException"><code>IndexOutOfBoundsException</code></span> if either index is negative or is
+    greater than <code>size</code>, or if <code>end</code> is less than <code>start</code></p></span></dd></dl></div>
     </li><li name="org.feijoas.mango.common.base.Preconditions#checkState" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="checkState(expression:Boolean,errorMessageTemplate:String,errorMessageArg:Any,moreArgs:Any*):Unit"></a>
       <a id="checkState(Boolean,String,Any,Any*):Unit"></a>
@@ -416,20 +459,24 @@
       <span class="symbol">
         <span class="name">checkState</span><span class="params">(<span name="expression">expression: <span class="extype" name="scala.Boolean">Boolean</span></span>, <span name="errorMessageTemplate">errorMessageTemplate: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="errorMessageArg">errorMessageArg: <span class="extype" name="scala.Any">Any</span></span>, <span name="moreArgs">moreArgs: <span class="extype" name="scala.Any">Any</span>*</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.base.Preconditions$@checkState(expression:Boolean,errorMessageTemplate:String,errorMessageArg:Any,moreArgs:Any*):Unit" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Ensures the truth of an expression involving the state of the calling
  instance, but not involving any parameters to the calling method.</p><div class="fullcomment"><div class="comment cmt"><p>Ensures the truth of an expression involving the state of the calling
  instance, but not involving any parameters to the calling method.
 </p></div><dl class="paramcmts block"><dt class="param">expression</dt><dd class="cmt"><p>a expression: Boolean</p></dd><dt class="param">errorMessageTemplate</dt><dd class="cmt"><p>a template for the exception message should the
-    check fail. The message is formed by replacing each <code> %s</code>
+    check fail. The message is formed by replacing each <code>%s</code>
     placeholder in the template with an argument. These are matched by
-    position - the first <code> %s</code> gets <code> errorMessageArgs[0]</code>, etc.
+    position - the first <code>%s</code> gets <code>errorMessageArgs[0]</code>, etc.
     Unmatched arguments will be appended to the formatted message in square
     braces. Unmatched placeholders will be left as-is. Arguments are converted
     to strings using <code>String#valueOf(Any)</code>.</p></dd><dt class="param">errorMessageArg</dt><dd class="cmt"><p>the first argument to be substituted into the message
     template.</p></dd><dt class="param">moreArgs</dt><dd class="cmt"><p>the other arguments to be substituted into the message
-    template.</p></dd></dl><dl class="attributes block"> <dt>Exceptions thrown</dt><dd><span class="cmt">IllegalStateException<p>if <code> expression</code> is false</p></span><span class="cmt">NullPointerException<p>if the check fails and either <code>
-    errorMessageTemplate</code> or <code> errorMessageArgs</code> is null (don't let
+    template.</p></dd></dl><dl class="attributes block"> <dt>Exceptions thrown</dt><dd><span class="cmt"><p><span class="extype" name="IllegalStateException"><code>IllegalStateException</code></span> if <code>expression</code> is false</p></span><span class="cmt"><p><span class="extype" name="NullPointerException"><code>NullPointerException</code></span> if the check fails and either <code>
+    errorMessageTemplate</code> or <code>errorMessageArgs</code> is null (don't let
     this happen)
 </p></span></dd></dl></div>
     </li><li name="org.feijoas.mango.common.base.Preconditions#checkState" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -443,12 +490,16 @@
       <span class="symbol">
         <span class="name">checkState</span><span class="params">(<span name="expression">expression: <span class="extype" name="scala.Boolean">Boolean</span></span>, <span name="errorMessage">errorMessage: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.base.Preconditions$@checkState(expression:Boolean,errorMessage:Any):Unit" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Ensures the truth of an expression involving the state of the calling
  instance, but not involving any parameters to the calling method.</p><div class="fullcomment"><div class="comment cmt"><p>Ensures the truth of an expression involving the state of the calling
  instance, but not involving any parameters to the calling method.
 </p></div><dl class="paramcmts block"><dt class="param">expression</dt><dd class="cmt"><p>an expression: Boolean</p></dd><dt class="param">errorMessage</dt><dd class="cmt"><p>the exception message to use if the check fails will
-    be converted to a string using <code>String#valueOf(Any)</code></p></dd></dl><dl class="attributes block"> <dt>Exceptions thrown</dt><dd><span class="cmt">IllegalStateException<p>if <code> expression</code> is false
+    be converted to a string using <code>String#valueOf(Any)</code></p></dd></dl><dl class="attributes block"> <dt>Exceptions thrown</dt><dd><span class="cmt"><p><span class="extype" name="IllegalStateException"><code>IllegalStateException</code></span> if <code>expression</code> is false
 </p></span></dd></dl></div>
     </li><li name="org.feijoas.mango.common.base.Preconditions#checkState" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="checkState(expression:Boolean):Unit"></a>
@@ -461,11 +512,15 @@
       <span class="symbol">
         <span class="name">checkState</span><span class="params">(<span name="expression">expression: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.base.Preconditions$@checkState(expression:Boolean):Unit" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Ensures the truth of an expression involving the state of the calling
  instance, but not involving any parameters to the calling method.</p><div class="fullcomment"><div class="comment cmt"><p>Ensures the truth of an expression involving the state of the calling
  instance, but not involving any parameters to the calling method.
-</p></div><dl class="paramcmts block"><dt class="param">expression</dt><dd class="cmt"><p>an expression: Boolean</p></dd></dl><dl class="attributes block"> <dt>Exceptions thrown</dt><dd><span class="cmt">IllegalStateException<p>if <code> expression</code> is false
+</p></div><dl class="paramcmts block"><dt class="param">expression</dt><dd class="cmt"><p>an expression: Boolean</p></dd></dl><dl class="attributes block"> <dt>Exceptions thrown</dt><dd><span class="cmt"><p><span class="extype" name="IllegalStateException"><code>IllegalStateException</code></span> if <code>expression</code> is false
 </p></span></dd></dl></div>
     </li><li name="scala.AnyRef#clone" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="clone():Object"></a>
@@ -478,7 +533,11 @@
       <span class="symbol">
         <span class="name">clone</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.base.Preconditions$@clone():Object" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
                 <span class="name">@throws</span><span class="args">(<span>
       
@@ -497,7 +556,11 @@
       <span class="symbol">
         <span class="name">eq</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.base.Preconditions$@eq(x$1:AnyRef):Boolean" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
     </li><li name="scala.AnyRef#equals" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="equals(x$1:Any):Boolean"></a>
@@ -510,7 +573,11 @@
       <span class="symbol">
         <span class="name">equals</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.base.Preconditions$@equals(x$1:Any):Boolean" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="scala.AnyRef#finalize" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="finalize():Unit"></a>
@@ -523,7 +590,11 @@
       <span class="symbol">
         <span class="name">finalize</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.base.Preconditions$@finalize():Unit" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
                 <span class="name">@throws</span><span class="args">(<span>
       
@@ -542,7 +613,11 @@
       <span class="symbol">
         <span class="name">getClass</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.Class">Class</span>[_]</span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.base.Preconditions$@getClass():Class[_]" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="scala.AnyRef#hashCode" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="hashCode():Int"></a>
@@ -555,7 +630,11 @@
       <span class="symbol">
         <span class="name">hashCode</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.base.Preconditions$@hashCode():Int" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="scala.Any#isInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="isInstanceOf[T0]:Boolean"></a>
@@ -568,7 +647,11 @@
       <span class="symbol">
         <span class="name">isInstanceOf</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.base.Preconditions$@isInstanceOf[T0]:Boolean" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
     </li><li name="scala.AnyRef#ne" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ne(x$1:AnyRef):Boolean"></a>
@@ -581,7 +664,11 @@
       <span class="symbol">
         <span class="name">ne</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.base.Preconditions$@ne(x$1:AnyRef):Boolean" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
     </li><li name="scala.AnyRef#notify" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="notify():Unit"></a>
@@ -594,7 +681,11 @@
       <span class="symbol">
         <span class="name">notify</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.base.Preconditions$@notify():Unit" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
     </li><li name="scala.AnyRef#notifyAll" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="notifyAll():Unit"></a>
@@ -607,7 +698,11 @@
       <span class="symbol">
         <span class="name">notifyAll</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.base.Preconditions$@notifyAll():Unit" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
@@ -620,7 +715,11 @@
       <span class="symbol">
         <span class="name">synchronized</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="params">(<span name="arg0">arg0: ⇒ <span class="extype" name="java.lang.AnyRef.synchronized.T0">T0</span></span>)</span><span class="result">: <span class="extype" name="java.lang.AnyRef.synchronized.T0">T0</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.base.Preconditions$@synchronized[T0](x$1:=&gt;T0):T0" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
     </li><li name="scala.AnyRef#toString" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="toString():String"></a>
@@ -633,7 +732,11 @@
       <span class="symbol">
         <span class="name">toString</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.base.Preconditions$@toString():String" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait():Unit"></a>
@@ -646,7 +749,11 @@
       <span class="symbol">
         <span class="name">wait</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.base.Preconditions$@wait():Unit" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
                 <span class="name">@throws</span><span class="args">(<span>
       
@@ -665,7 +772,11 @@
       <span class="symbol">
         <span class="name">wait</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Long">Long</span></span>, <span name="arg1">arg1: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.base.Preconditions$@wait(x$1:Long,x$2:Int):Unit" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
                 <span class="name">@throws</span><span class="args">(<span>
       
@@ -684,7 +795,11 @@
       <span class="symbol">
         <span class="name">wait</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Long">Long</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.base.Preconditions$@wait(x$1:Long):Unit" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
                 <span class="name">@throws</span><span class="args">(<span>
       
@@ -721,6 +836,7 @@
       <div id="tooltip"></div>
 
       <div id="footer">  </div>
-      <script defer="defer" type="text/javascript" id="jquery-js" src="../../../../../lib/jquery.js"></script><script defer="defer" type="text/javascript" id="jquery-ui-js" src="../../../../../lib/jquery-ui.js"></script><script defer="defer" type="text/javascript" id="tools-tooltip-js" src="../../../../../lib/tools.tooltip.js"></script><script defer="defer" type="text/javascript" id="template-js" src="../../../../../lib/template.js"></script>
+
+
     </body>
       </html>

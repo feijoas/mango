@@ -1,5 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<!DOCTYPE html >
 <html>
         <head>
           <title>Range - Mango - org.feijoas.mango.common.collect.Range</title>
@@ -9,6 +8,11 @@
           
       <link href="../../../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
       <link href="../../../../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
+      <script type="text/javascript" src="../../../../../lib/jquery.js" id="jquery-js"></script>
+      <script type="text/javascript" src="../../../../../lib/jquery-ui.js"></script>
+      <script type="text/javascript" src="../../../../../lib/template.js"></script>
+      <script type="text/javascript" src="../../../../../lib/tools.tooltip.js"></script>
+      
       <script type="text/javascript">
          if(top === self) {
             var url = '../../../../../index.html';
@@ -24,9 +28,17 @@
         </head>
         <body class="type">
       <div id="definition">
-        <a href="Range$.html" title="Go to companion"><img src="../../../../../lib/class_to_object_big.png" /></a>
+        <a href="Range$.html" title="See companion object"><img src="../../../../../lib/class_to_object_big.png" /></a>
         <p id="owner"><a href="../../../../package.html" class="extype" name="org">org</a>.<a href="../../../package.html" class="extype" name="org.feijoas">feijoas</a>.<a href="../../package.html" class="extype" name="org.feijoas.mango">mango</a>.<a href="../package.html" class="extype" name="org.feijoas.mango.common">common</a>.<a href="package.html" class="extype" name="org.feijoas.mango.common.collect">collect</a></p>
-        <h1><a href="Range$.html" title="Go to companion">Range</a></h1>
+        <h1><a href="Range$.html" title="See companion object">Range</a></h1><h3><span class="morelinks"><div>
+            Related Docs:
+            <a href="Range$.html" title="See companion object">object Range</a>
+            | <a href="package.html" class="extype" name="org.feijoas.mango.common.collect">package collect</a>
+          </div></span></h3><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.collect.Range" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       </div>
 
       <h4 id="signature" class="signature">
@@ -58,19 +70,19 @@
 (-inf..b)     {x | x &lt; b}        Range#lessThan
 (-inf..b]     {x | x &lt;= b}       Range#atMost
 (-inf..+inf)  {x}                Range#all</pre><p>When both endpoints exist, the upper endpoint may not be less than the lower. The endpoints
- may be equal only if at least one of the bounds is closed:</p><ul><li><code> [a..a]</code> : a singleton range</li><li><code> [a..a); (a..a]</code> : empty ranges; also valid</li><li><code> (a..a)</code> : <b>invalid</b>; an exception will be thrown</li></ul><h5> Warnings </h5><ul><li>Use immutable value types only, if at all possible. If you must use a mutable type, <b>do
+ may be equal only if at least one of the bounds is closed:</p><ul><li><code>[a..a]</code> : a singleton range</li><li><code>[a..a); (a..a]</code> : empty ranges; also valid</li><li><code>(a..a)</code> : <b>invalid</b>; an exception will be thrown</li></ul><h5> Warnings </h5><ul><li>Use immutable value types only, if at all possible. If you must use a mutable type, <b>do
     not</b> allow the endpoint instances to mutate after the range is created!</li><li>Your value type's comparison method should be consistent with equals
     if at all possible. Otherwise, be aware that concepts used throughout this documentation such
     as &quot;equal&quot;, &quot;same&quot;, &quot;unique&quot; and so on actually refer to whether <code>Ordering#compare</code>
-    returns zero, not whether equals returns <code> true</code>.</li></ul><h5> Other notes </h5><ul><li>Instances of this type are obtained using the static factory methods in this class.</li><li>Ranges are <i>convex</i>: whenever two values are contained, all values in between them must
-    also be contained. More formally, for any <code> c1 &lt;= c2 &lt;= c3</code> of type <code> C</code>, <code>
-    r.contains(c1) &amp;&amp; r.contains(c3)</code> implies <code> r.contains(c2)</code>). This means that a <code>
+    returns zero, not whether equals returns <code>true</code>.</li></ul><h5> Other notes </h5><ul><li>Instances of this type are obtained using the static factory methods in this class.</li><li>Ranges are <i>convex</i>: whenever two values are contained, all values in between them must
+    also be contained. More formally, for any <code>c1 <= c2 <= c3</code> of type <code>C</code>, <code>
+    r.contains(c1) && r.contains(c3)</code> implies <code>r.contains(c2)</code>). This means that a <code>
     Range[Int,Ordering[Int]</code> can never be used to represent, say, &quot;all <i>prime</i> numbers from 1 to
     100.&quot;</li><li>When evaluated as a predicate, a range yields the same result as invoking
-    <code>#contains</code>.</li><li>Terminology note: a range <code> a</code> is said to be the <i>maximal</i> range having property
-    <i>P</i> if, for all ranges <code> b</code> also having property <i>P</i>, <code> a.encloses(b)</code>.
-    Likewise, <code> a</code> is <i>minimal</i> when <code> b.encloses(a)</code> for all <code> b</code> having
-    property <i>P</i>. See, for example, the definition of <code> #intersection intersection</code>.</li></ul><h5> Pattern matching </h5><p> Extractors are defined for general ranges with finite and infinite bounds.</p><p> Usage example:</p><pre><span class="kw">val</span> range = Range.atLeast(<span class="num">6</span>) <span class="cmt">// Range[Int,math.Ordering.Int.type] = [6..inf)</span>
+    <code>#contains</code>.</li><li>Terminology note: a range <code>a</code> is said to be the <i>maximal</i> range having property
+    <i>P</i> if, for all ranges <code>b</code> also having property <i>P</i>, <code>a.encloses(b)</code>.
+    Likewise, <code>a</code> is <i>minimal</i> when <code>b.encloses(a)</code> for all <code>b</code> having
+    property <i>P</i>. See, for example, the definition of <code><a href="#intersection(connectedRange:org.feijoas.mango.common.collect.Range[T,O]):org.feijoas.mango.common.collect.Range[T,O]" class="extmbr" name="org.feijoas.mango.common.collect.Range#intersection">intersection</a></code>.</li></ul><h5> Pattern matching </h5><p> Extractors are defined for general ranges with finite and infinite bounds.</p><p> Usage example:</p><pre><span class="kw">val</span> range = Range.atLeast(<span class="num">6</span>) <span class="cmt">// Range[Int,math.Ordering.Int.type] = [6..inf)</span>
 range <span class="kw">match</span> {
    <span class="kw">case</span> Range(FiniteBound(lower, lowerType),InfiniteBound) <span class="kw">=&gt;</span>
    <span class="cmt">// matches lower = 6</span>
@@ -78,10 +90,7 @@ range <span class="kw">match</span> {
 }</pre><h5> Difference between Mango and Guava implementation </h5><p> Since most Scala classes don't implement <code>Ordered</code> a Range of type <code>T</code> needs a &quot;companion&quot; type
  class of <code>Ordering[T]</code>.</p><h5> Further reading </h5><p>See the Guava User Guide article on
  <a href="http://code.google.com/p/guava-libraries/wiki/RangesExplained">Range</a>.</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
-                <span class="name">@SerialVersionUID</span><span class="args">(<span>
-      
-      <span class="symbol">1L</span>
-    </span>)</span>
+                <span class="name">@SerialVersionUID</span><span class="args">()</span>
               
         </dd><dt>Since</dt><dd><p>0.8 (copied from Guava-libraries)</p></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
@@ -130,19 +139,6 @@ range <span class="kw">match</span> {
         <div id="values" class="values members">
               <h3>Value Members</h3>
               <ol><li name="scala.AnyRef#!=" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="!=(x$1:AnyRef):Boolean"></a>
-      <a id="!=(AnyRef):Boolean"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier">final </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span title="gt4s: $bang$eq" class="name">!=</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="scala.Any#!=" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="!=(x$1:Any):Boolean"></a>
       <a id="!=(Any):Boolean"></a>
       <h4 class="signature">
@@ -153,8 +149,12 @@ range <span class="kw">match</span> {
       <span class="symbol">
         <span title="gt4s: $bang$eq" class="name">!=</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.collect.Range@!=(x$1:Any):Boolean" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="scala.AnyRef###" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="##():Int"></a>
       <a id="##():Int"></a>
@@ -166,22 +166,13 @@ range <span class="kw">match</span> {
       <span class="symbol">
         <span title="gt4s: $hash$hash" class="name">##</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.collect.Range@##():Int" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="scala.AnyRef#==" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="==(x$1:AnyRef):Boolean"></a>
-      <a id="==(AnyRef):Boolean"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier">final </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span title="gt4s: $eq$eq" class="name">==</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="scala.Any#==" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="==(x$1:Any):Boolean"></a>
       <a id="==(Any):Boolean"></a>
       <h4 class="signature">
@@ -192,8 +183,12 @@ range <span class="kw">match</span> {
       <span class="symbol">
         <span title="gt4s: $eq$eq" class="name">==</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.collect.Range@==(x$1:Any):Boolean" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="scala.Function1#andThen" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="andThen[A](g:R=&gt;A):T1=&gt;A"></a>
       <a id="andThen[A]((Boolean)⇒A):(T)⇒A"></a>
@@ -205,7 +200,11 @@ range <span class="kw">match</span> {
       <span class="symbol">
         <span class="name">andThen</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="g">g: (<span class="extype" name="scala.Boolean">Boolean</span>) ⇒ <span class="extype" name="scala.Function1.andThen.A">A</span></span>)</span><span class="result">: (<span class="extype" name="org.feijoas.mango.common.collect.Range.T">T</span>) ⇒ <span class="extype" name="scala.Function1.andThen.A">A</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.collect.Range@andThen[A](g:R=&gt;A):T1=&gt;A" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Function1</dd><dt>Annotations</dt><dd>
                 <span class="name">@unspecialized</span><span class="args">()</span>
               
@@ -221,9 +220,13 @@ range <span class="kw">match</span> {
       <span class="symbol">
         <span class="name">apply</span><span class="params">(<span name="input">input: <span class="extype" name="org.feijoas.mango.common.collect.Range.T">T</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.collect.Range@apply(input:T):Boolean" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Equivalent to <code>#contains</code>; provided only to satisfy the Predicate (<code>T =&gt; Boolean</code>) interface.</p><div class="fullcomment"><div class="comment cmt"><p>Equivalent to <code>#contains</code>; provided only to satisfy the Predicate (<code>T =&gt; Boolean</code>) interface. When
- using a reference of type <code> Range</code>, always invoke <code>#contains</code> directly instead.
+ using a reference of type <code>Range</code>, always invoke <code>#contains</code> directly instead.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="org.feijoas.mango.common.collect.Range">Range</a> → Function1</dd></dl></div>
     </li><li name="scala.Any#asInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="asInstanceOf[T0]:T0"></a>
@@ -236,7 +239,11 @@ range <span class="kw">match</span> {
       <span class="symbol">
         <span class="name">asInstanceOf</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="result">: <span class="extype" name="scala.Any.asInstanceOf.T0">T0</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.collect.Range@asInstanceOf[T0]:T0" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
     </li><li name="org.feijoas.mango.common.collect.Range#canonical" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="canonical(domain:org.feijoas.mango.common.collect.DiscreteDomain[T]):org.feijoas.mango.common.collect.Range[T,O]"></a>
@@ -249,14 +256,18 @@ range <span class="kw">match</span> {
       <span class="symbol">
         <span class="name">canonical</span><span class="params">(<span name="domain">domain: <a href="DiscreteDomain.html" class="extype" name="org.feijoas.mango.common.collect.DiscreteDomain">DiscreteDomain</a>[<span class="extype" name="org.feijoas.mango.common.collect.Range.T">T</span>]</span>)</span><span class="result">: <a href="" class="extype" name="org.feijoas.mango.common.collect.Range">Range</a>[<span class="extype" name="org.feijoas.mango.common.collect.Range.T">T</span>, <span class="extype" name="org.feijoas.mango.common.collect.Range.O">O</span>]</span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.collect.Range@canonical(domain:org.feijoas.mango.common.collect.DiscreteDomain[T]):org.feijoas.mango.common.collect.Range[T,O]" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Returns the canonical form of this range in the given domain.</p><div class="fullcomment"><div class="comment cmt"><p>Returns the canonical form of this range in the given domain. The canonical form has the
- following properties:</p><ul><li>equivalence: <code> a.canonical().contains(v) == a.contains(v)</code> for all <code> v</code> (in other
-    words, <code> ContiguousSet.create(a.canonical(domain), domain).equals(
-    ContiguousSet.create(a, domain))</code></li><li>uniqueness: unless <code> a.isEmpty()</code>,
-    <code> ContiguousSet.create(a, domain).equals(ContiguousSet.create(b, domain))</code> implies
-    <code> a.canonical(domain).equals(b.canonical(domain))</code></li><li>idempotence: <code> a.canonical(domain).canonical(domain).equals(a.canonical(domain))</code></li></ul><p> Furthermore, this method guarantees that the range returned will be one of the following
- canonical forms:</p><ul><li>[start..end)</li><li>[start..+∞)</li><li>(-∞..end) (only if type <code> C</code> is unbounded below)</li><li>(-∞..+∞) (only if type <code> C</code> is unbounded below)</li></ul></div></div>
+ following properties:</p><ul><li>equivalence: <code>a.canonical().contains(v) == a.contains(v)</code> for all <code>v</code> (in other
+    words, <code>ContiguousSet.create(a.canonical(domain), domain).equals(
+    ContiguousSet.create(a, domain))</code></li><li>uniqueness: unless <code>a.isEmpty()</code>,
+    <code>ContiguousSet.create(a, domain).equals(ContiguousSet.create(b, domain))</code> implies
+    <code>a.canonical(domain).equals(b.canonical(domain))</code></li><li>idempotence: <code>a.canonical(domain).canonical(domain).equals(a.canonical(domain))</code></li></ul><p> Furthermore, this method guarantees that the range returned will be one of the following
+ canonical forms:</p><ul><li>[start..end)</li><li>[start..+∞)</li><li>(-∞..end) (only if type <code>C</code> is unbounded below)</li><li>(-∞..+∞) (only if type <code>C</code> is unbounded below)</li></ul></div></div>
     </li><li name="scala.AnyRef#clone" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="clone():Object"></a>
       <a id="clone():AnyRef"></a>
@@ -268,7 +279,11 @@ range <span class="kw">match</span> {
       <span class="symbol">
         <span class="name">clone</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.collect.Range@clone():Object" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
                 <span class="name">@throws</span><span class="args">(<span>
       
@@ -287,7 +302,11 @@ range <span class="kw">match</span> {
       <span class="symbol">
         <span class="name">compose</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="g">g: (<span class="extype" name="scala.Function1.compose.A">A</span>) ⇒ <span class="extype" name="org.feijoas.mango.common.collect.Range.T">T</span></span>)</span><span class="result">: (<span class="extype" name="scala.Function1.compose.A">A</span>) ⇒ <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.collect.Range@compose[A](g:A=&gt;T1):A=&gt;R" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Function1</dd><dt>Annotations</dt><dd>
                 <span class="name">@unspecialized</span><span class="args">()</span>
               
@@ -303,12 +322,16 @@ range <span class="kw">match</span> {
       <span class="symbol">
         <span class="name">contains</span><span class="params">(<span name="value">value: <span class="extype" name="org.feijoas.mango.common.collect.Range.T">T</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
-      </h4>
-      <p class="shortcomment cmt">Returns <code> true</code> if <code> value</code> is within the bounds of this range.</p><div class="fullcomment"><div class="comment cmt"><p>Returns <code> true</code> if <code> value</code> is within the bounds of this range. For example, on the
- range <code> [0..2)</code>, <code> contains(1)</code> returns <code> true</code>, while <code> contains(2)</code>
- returns <code> false</code>.
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.collect.Range@contains(value:T):Boolean" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Returns <code>true</code> if <code>value</code> is within the bounds of this range.</code></code></p><div class="fullcomment"><div class="comment cmt"><p>Returns <code>true</code> if <code>value</code> is within the bounds of this range. For example, on the
+ range <code>[0..2)</code>, <code>contains(1)</code> returns <code>true</code>, while <code>contains(2)</code>
+ returns <code>false</code>.
 </p></div></div>
-    </li><li name="org.feijoas.mango.common.collect.Range#containsAll" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="org.feijoas.mango.common.collect.Range#containsAll" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="containsAll(values:Iterable[T]):Boolean"></a>
       <a id="containsAll(Iterable[T]):Boolean"></a>
       <h4 class="signature">
@@ -319,9 +342,15 @@ range <span class="kw">match</span> {
       <span class="symbol">
         <span class="name">containsAll</span><span class="params">(<span name="values">values: <span class="extype" name="scala.Iterable">Iterable</span>[<span class="extype" name="org.feijoas.mango.common.collect.Range.T">T</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
-      </h4>
-      <p class="shortcomment cmt">Returns <code> true</code> if every element in <code> values</code> is contained in
- this range.</p>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.collect.Range@containsAll(values:Iterable[T]):Boolean" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Returns <code>true</code> if every element in <code>values</code> is contained in
+ this range.</code></code></p><div class="fullcomment"><div class="comment cmt"><p>Returns <code>true</code> if every element in <code>values</code> is contained in
+ this range.
+</p></div></div>
     </li><li name="org.feijoas.mango.common.collect.Range#encloses" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="encloses(other:org.feijoas.mango.common.collect.Range[T,O]):Boolean"></a>
       <a id="encloses(Range[T,O]):Boolean"></a>
@@ -333,13 +362,17 @@ range <span class="kw">match</span> {
       <span class="symbol">
         <span class="name">encloses</span><span class="params">(<span name="other">other: <a href="" class="extype" name="org.feijoas.mango.common.collect.Range">Range</a>[<span class="extype" name="org.feijoas.mango.common.collect.Range.T">T</span>, <span class="extype" name="org.feijoas.mango.common.collect.Range.O">O</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
-      </h4>
-      <p class="shortcomment cmt">Returns <code> true</code> if the bounds of <code> other</code> do not extend outside the bounds of this
- range.</p><div class="fullcomment"><div class="comment cmt"><p>Returns <code> true</code> if the bounds of <code> other</code> do not extend outside the bounds of this
- range. Examples:</p><ul><li><code> [3..6]</code> encloses <code> [4..5]</code></li><li><code> (3..6)</code> encloses <code> (3..6)</code></li><li><code> [3..6]</code> encloses <code> [4..4)</code> (even though the latter is empty)</li><li><code> (3..6]</code> does not enclose <code> [3..6]</code></li><li><code> [4..5]</code> does not enclose <code> (3..6)</code> (even though it contains every value
-    contained by the latter range)</li><li><code> [3..6]</code> does not enclose <code> (1..1]</code> (even though it contains every value
-    contained by the latter range)</li></ul><p> Note that if <code> a.encloses(b)</code>, then <code> b.contains(v)</code> implies <code> a.contains(v)</code>,
- but as the last two examples illustrate, the converse is not always true.</p><p>Being reflexive, antisymmetric and transitive, the <code> encloses</code> relation defines a
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.collect.Range@encloses(other:org.feijoas.mango.common.collect.Range[T,O]):Boolean" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Returns <code>true</code> if the bounds of <code>other</code> do not extend outside the bounds of this
+ range.</code></code></p><div class="fullcomment"><div class="comment cmt"><p>Returns <code>true</code> if the bounds of <code>other</code> do not extend outside the bounds of this
+ range. Examples:</p><ul><li><code>[3..6]</code> encloses <code>[4..5]</code></li><li><code>(3..6)</code> encloses <code>(3..6)</code></li><li><code>[3..6]</code> encloses <code>[4..4)</code> (even though the latter is empty)</li><li><code>(3..6]</code> does not enclose <code>[3..6]</code></li><li><code>[4..5]</code> does not enclose <code>(3..6)</code> (even though it contains every value
+    contained by the latter range)</li><li><code>[3..6]</code> does not enclose <code>(1..1]</code> (even though it contains every value
+    contained by the latter range)</li></ul><p> Note that if <code>a.encloses(b)</code>, then <code>b.contains(v)</code> implies <code>a.contains(v)</code>,
+ but as the last two examples illustrate, the converse is not always true.</p><p>Being reflexive, antisymmetric and transitive, the <code>encloses</code> relation defines a
  <i>partial order</i> over ranges. There exists a unique maximal range
  according to this relation, and also numerous minimal ranges. Enclosure
  also implies connectedness.
@@ -355,7 +388,11 @@ range <span class="kw">match</span> {
       <span class="symbol">
         <span class="name">eq</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.collect.Range@eq(x$1:AnyRef):Boolean" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
     </li><li name="org.feijoas.mango.common.collect.Range#equals" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="equals(that:Any):Boolean"></a>
@@ -368,7 +405,11 @@ range <span class="kw">match</span> {
       <span class="symbol">
         <span class="name">equals</span><span class="params">(<span name="that">that: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.collect.Range@equals(that:Any):Boolean" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="org.feijoas.mango.common.collect.Range">Range</a> → AnyRef → Any</dd></dl></div>
     </li><li name="scala.AnyRef#finalize" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="finalize():Unit"></a>
@@ -381,7 +422,11 @@ range <span class="kw">match</span> {
       <span class="symbol">
         <span class="name">finalize</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.collect.Range@finalize():Unit" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
                 <span class="name">@throws</span><span class="args">(<span>
       
@@ -400,9 +445,13 @@ range <span class="kw">match</span> {
       <span class="symbol">
         <span class="name">getClass</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.Class">Class</span>[_]</span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.collect.Range@getClass():Class[_]" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="org.feijoas.mango.common.collect.Range#hasLowerBound" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="org.feijoas.mango.common.collect.Range#hasLowerBound" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="hasLowerBound():Boolean"></a>
       <a id="hasLowerBound():Boolean"></a>
       <h4 class="signature">
@@ -413,9 +462,14 @@ range <span class="kw">match</span> {
       <span class="symbol">
         <span class="name">hasLowerBound</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
-      </h4>
-      <p class="shortcomment cmt">Returns <code> true</code> if this range has a lower endpoint.</p>
-    </li><li name="org.feijoas.mango.common.collect.Range#hasUpperBound" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.collect.Range@hasLowerBound():Boolean" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Returns <code>true</code> if this range has a lower endpoint.</code></p><div class="fullcomment"><div class="comment cmt"><p>Returns <code>true</code> if this range has a lower endpoint.
+</p></div></div>
+    </li><li name="org.feijoas.mango.common.collect.Range#hasUpperBound" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="hasUpperBound():Boolean"></a>
       <a id="hasUpperBound():Boolean"></a>
       <h4 class="signature">
@@ -426,8 +480,13 @@ range <span class="kw">match</span> {
       <span class="symbol">
         <span class="name">hasUpperBound</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
-      </h4>
-      <p class="shortcomment cmt">Returns <code> true</code> if this range has an upper endpoint.</p>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.collect.Range@hasUpperBound():Boolean" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Returns <code>true</code> if this range has an upper endpoint.</code></p><div class="fullcomment"><div class="comment cmt"><p>Returns <code>true</code> if this range has an upper endpoint.
+</p></div></div>
     </li><li name="org.feijoas.mango.common.collect.Range#hashCode" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="hashCode():Int"></a>
       <a id="hashCode():Int"></a>
@@ -439,7 +498,11 @@ range <span class="kw">match</span> {
       <span class="symbol">
         <span class="name">hashCode</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.collect.Range@hashCode():Int" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="org.feijoas.mango.common.collect.Range">Range</a> → AnyRef → Any</dd></dl></div>
     </li><li name="org.feijoas.mango.common.collect.Range#intersection" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="intersection(connectedRange:org.feijoas.mango.common.collect.Range[T,O]):org.feijoas.mango.common.collect.Range[T,O]"></a>
@@ -452,12 +515,16 @@ range <span class="kw">match</span> {
       <span class="symbol">
         <span class="name">intersection</span><span class="params">(<span name="connectedRange">connectedRange: <a href="" class="extype" name="org.feijoas.mango.common.collect.Range">Range</a>[<span class="extype" name="org.feijoas.mango.common.collect.Range.T">T</span>, <span class="extype" name="org.feijoas.mango.common.collect.Range.O">O</span>]</span>)</span><span class="result">: <a href="" class="extype" name="org.feijoas.mango.common.collect.Range">Range</a>[<span class="extype" name="org.feijoas.mango.common.collect.Range.T">T</span>, <span class="extype" name="org.feijoas.mango.common.collect.Range.O">O</span>]</span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.collect.Range@intersection(connectedRange:org.feijoas.mango.common.collect.Range[T,O]):org.feijoas.mango.common.collect.Range[T,O]" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Returns the maximal range enclosed by both this range and <code>
- connectedRange</code>, if such a range exists.</p><div class="fullcomment"><div class="comment cmt"><p>Returns the maximal range enclosed by both this range and <code>
- connectedRange</code>, if such a range exists.</p><p>For example, the intersection of <code> [1..5]</code> and <code> (3..7)</code> is <code> (3..5]</code>. The
- resulting range may be empty; for example, <code> [1..5)</code> intersected with <code> [5..7)</code>
- yields the empty range <code> [5..5)</code>.</p><p>The intersection exists if and only if the two ranges are connected.</p><p>The intersection operation is commutative, associative and idempotent, and its identity
+ connectedRange</code>, if such a range exists.</code></p><div class="fullcomment"><div class="comment cmt"><p>Returns the maximal range enclosed by both this range and <code>
+ connectedRange</code>, if such a range exists.</p><p>For example, the intersection of <code>[1..5]</code> and <code>(3..7)</code> is <code>(3..5]</code>. The
+ resulting range may be empty; for example, <code>[1..5)</code> intersected with <code>[5..7)</code>
+ yields the empty range <code>[5..5)</code>.</p><p>The intersection exists if and only if the two ranges are connected.</p><p>The intersection operation is commutative, associative and idempotent, and its identity
  element is <code>Range#all</code>.
 </p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@throws</span><span class="args">(<span>
@@ -465,7 +532,7 @@ range <span class="kw">match</span> {
       <span class="defval" name="scala.this.throws.&lt;init&gt;$default$1[IllegalAccessException]">...</span>
     </span>)</span>
               
-        </dd><dt>Exceptions thrown</dt><dd><span class="cmt">IllegalArgumentException<p>if <code> isConnected(connectedRange)</code> is <code> false</code>
+        </dd><dt>Exceptions thrown</dt><dd><span class="cmt"><p><span class="extype" name="IllegalArgumentException"><code>IllegalArgumentException</code></span> if <code>isConnected(connectedRange)</code> is <code>false</code>
 </p></span></dd></dl></div>
     </li><li name="org.feijoas.mango.common.collect.Range#isConnected" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="isConnected(other:org.feijoas.mango.common.collect.Range[T,O]):Boolean"></a>
@@ -478,15 +545,19 @@ range <span class="kw">match</span> {
       <span class="symbol">
         <span class="name">isConnected</span><span class="params">(<span name="other">other: <a href="" class="extype" name="org.feijoas.mango.common.collect.Range">Range</a>[<span class="extype" name="org.feijoas.mango.common.collect.Range.T">T</span>, <span class="extype" name="org.feijoas.mango.common.collect.Range.O">O</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
-      </h4>
-      <p class="shortcomment cmt">Returns <code> true</code> if there exists a (possibly empty) range which is
- enclosed by both this range and <code> other</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Returns <code> true</code> if there exists a (possibly empty) range which is
- enclosed by both this range and <code> other</code>.</p><p>For example,</p><ul><li><code> [2, 4)</code> and <code> [5, 7)</code> are not connected</li><li><code> [2, 4)</code> and <code> [3, 5)</code> are connected, because both enclose <code> [3, 4)</code></li><li><code> [2, 4)</code> and <code> [4, 6)</code> are connected, because both enclose the empty range
-    <code> [4, 4)</code></li></ul><p>Note that this range and <code> other</code> have a well-defined union and
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.collect.Range@isConnected(other:org.feijoas.mango.common.collect.Range[T,O]):Boolean" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Returns <code>true</code> if there exists a (possibly empty) range which is
+ enclosed by both this range and <code>other</code>.</code></code></p><div class="fullcomment"><div class="comment cmt"><p>Returns <code>true</code> if there exists a (possibly empty) range which is
+ enclosed by both this range and <code>other</code>.</p><p>For example,</p><ul><li><code>[2, 4)</code> and <code>[5, 7)</code> are not connected</li><li><code>[2, 4)</code> and <code>[3, 5)</code> are connected, because both enclose <code>[3, 4)</code></li><li><code>[2, 4)</code> and <code>[4, 6)</code> are connected, because both enclose the empty range
+    <code>[4, 4)</code></li></ul><p>Note that this range and <code>other</code> have a well-defined union and
  intersection (as a single, possibly-empty range) if and only if this
- method returns <code> true</code>.</p><p>The connectedness relation is both reflexive and symmetric, but does not form an
+ method returns <code>true</code>.</p><p>The connectedness relation is both reflexive and symmetric, but does not form an
  equivalence relation as it is not transitive.</p><p>Note that certain discrete ranges are not considered connected, even though there are no
- elements &quot;between them.&quot;  For example, <code> [3, 5]</code> is not considered connected to <code>
+ elements &quot;between them.&quot;  For example, <code>[3, 5]</code> is not considered connected to <code>
  [6, 10]</code>.  In these cases, it may be desirable for both input ranges to be preprocessed with
  <code>#canonical(DiscreteDomain)</code> before testing for connectedness.
 </p></div></div>
@@ -501,10 +572,14 @@ range <span class="kw">match</span> {
       <span class="symbol">
         <span class="name">isEmpty</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
-      </h4>
-      <p class="shortcomment cmt">Returns <code> true</code> if this range is of the form <code> [v..v)</code> or <code> (v..v]</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Returns <code> true</code> if this range is of the form <code> [v..v)</code> or <code> (v..v]</code>. (This does
- not encompass ranges of the form <code> (v..v)</code>, because such ranges are <i>invalid</i> and
- can't be constructed at all.)</p><p>Note that certain discrete ranges such as the integer range <code> (3..4)</code> are <b>not</b>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.collect.Range@isEmpty():Boolean" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Returns <code>true</code> if this range is of the form <code>[v..v)</code> or <code>(v..v]</code>.</code></code></code></p><div class="fullcomment"><div class="comment cmt"><p>Returns <code>true</code> if this range is of the form <code>[v..v)</code> or <code>(v..v]</code>. (This does
+ not encompass ranges of the form <code>(v..v)</code>, because such ranges are <i>invalid</i> and
+ can't be constructed at all.)</p><p>Note that certain discrete ranges such as the integer range <code>(3..4)</code> are <b>not</b>
  considered empty, even though they contain no actual values.  In these cases, it may be
  helpful to preprocess ranges with <code>#canonical(DiscreteDomain)</code>.
 </p></div></div>
@@ -519,7 +594,11 @@ range <span class="kw">match</span> {
       <span class="symbol">
         <span class="name">isInstanceOf</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.collect.Range@isInstanceOf[T0]:Boolean" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
     </li><li name="scala.AnyRef#ne" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ne(x$1:AnyRef):Boolean"></a>
@@ -532,7 +611,11 @@ range <span class="kw">match</span> {
       <span class="symbol">
         <span class="name">ne</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.collect.Range@ne(x$1:AnyRef):Boolean" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
     </li><li name="scala.AnyRef#notify" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="notify():Unit"></a>
@@ -545,7 +628,11 @@ range <span class="kw">match</span> {
       <span class="symbol">
         <span class="name">notify</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.collect.Range@notify():Unit" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
     </li><li name="scala.AnyRef#notifyAll" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="notifyAll():Unit"></a>
@@ -558,7 +645,11 @@ range <span class="kw">match</span> {
       <span class="symbol">
         <span class="name">notifyAll</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.collect.Range@notifyAll():Unit" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
     </li><li name="org.feijoas.mango.common.collect.Range#span" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="span(other:org.feijoas.mango.common.collect.Range[T,O]):org.feijoas.mango.common.collect.Range[T,O]"></a>
@@ -571,10 +662,14 @@ range <span class="kw">match</span> {
       <span class="symbol">
         <span class="name">span</span><span class="params">(<span name="other">other: <a href="" class="extype" name="org.feijoas.mango.common.collect.Range">Range</a>[<span class="extype" name="org.feijoas.mango.common.collect.Range.T">T</span>, <span class="extype" name="org.feijoas.mango.common.collect.Range.O">O</span>]</span>)</span><span class="result">: <a href="" class="extype" name="org.feijoas.mango.common.collect.Range">Range</a>[<span class="extype" name="org.feijoas.mango.common.collect.Range.T">T</span>, <span class="extype" name="org.feijoas.mango.common.collect.Range.O">O</span>]</span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.collect.Range@span(other:org.feijoas.mango.common.collect.Range[T,O]):org.feijoas.mango.common.collect.Range[T,O]" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Returns the minimal range that encloses both this range and <code>
- other</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Returns the minimal range that encloses both this range and <code>
- other</code>. For example, the span of <code> [1..3]</code> and <code> (5..7)</code> is <code> [1..7)</code>.</p><p><i>If</i> the input ranges are connected, the returned range can
+ other</code>.</code></p><div class="fullcomment"><div class="comment cmt"><p>Returns the minimal range that encloses both this range and <code>
+ other</code>. For example, the span of <code>[1..3]</code> and <code>(5..7)</code> is <code>[1..7)</code>.</p><p><i>If</i> the input ranges are connected, the returned range can
  also be called their <i>union</i>. If they are not, note that the span might contain values
  that are not contained in either input range.</p><p>Like intersection, this operation is commutative, associative
  and idempotent. Unlike it, it is always well-defined for any two input ranges.
@@ -590,7 +685,11 @@ range <span class="kw">match</span> {
       <span class="symbol">
         <span class="name">synchronized</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="params">(<span name="arg0">arg0: ⇒ <span class="extype" name="java.lang.AnyRef.synchronized.T0">T0</span></span>)</span><span class="result">: <span class="extype" name="java.lang.AnyRef.synchronized.T0">T0</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.collect.Range@synchronized[T0](x$1:=&gt;T0):T0" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
     </li><li name="org.feijoas.mango.common.collect.Range#toString" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="toString():String"></a>
@@ -603,9 +702,13 @@ range <span class="kw">match</span> {
       <span class="symbol">
         <span class="name">toString</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
       </span>
-      </h4>
-      <p class="shortcomment cmt">Returns a string representation of this range, such as <code> &quot;[3..5)&quot;</code> (other examples are
- listed in the class documentation).</p><div class="fullcomment"><div class="comment cmt"><p>Returns a string representation of this range, such as <code> &quot;[3..5)&quot;</code> (other examples are
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.collect.Range@toString():String" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Returns a string representation of this range, such as <code>"[3..5)"</code> (other examples are
+ listed in the class documentation).</code></p><div class="fullcomment"><div class="comment cmt"><p>Returns a string representation of this range, such as <code>"[3..5)"</code> (other examples are
  listed in the class documentation).
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="org.feijoas.mango.common.collect.Range">Range</a> → Function1 → AnyRef → Any</dd></dl></div>
     </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -619,7 +722,11 @@ range <span class="kw">match</span> {
       <span class="symbol">
         <span class="name">wait</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.collect.Range@wait():Unit" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
                 <span class="name">@throws</span><span class="args">(<span>
       
@@ -638,7 +745,11 @@ range <span class="kw">match</span> {
       <span class="symbol">
         <span class="name">wait</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Long">Long</span></span>, <span name="arg1">arg1: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.collect.Range@wait(x$1:Long,x$2:Int):Unit" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
                 <span class="name">@throws</span><span class="args">(<span>
       
@@ -657,7 +768,11 @@ range <span class="kw">match</span> {
       <span class="symbol">
         <span class="name">wait</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Long">Long</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.feijoas.mango.common.collect.Range@wait(x$1:Long):Unit" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
                 <span class="name">@throws</span><span class="args">(<span>
       
@@ -700,6 +815,7 @@ range <span class="kw">match</span> {
       <div id="tooltip"></div>
 
       <div id="footer">  </div>
-      <script defer="defer" type="text/javascript" id="jquery-js" src="../../../../../lib/jquery.js"></script><script defer="defer" type="text/javascript" id="jquery-ui-js" src="../../../../../lib/jquery-ui.js"></script><script defer="defer" type="text/javascript" id="tools-tooltip-js" src="../../../../../lib/tools.tooltip.js"></script><script defer="defer" type="text/javascript" id="template-js" src="../../../../../lib/template.js"></script>
+
+
     </body>
       </html>

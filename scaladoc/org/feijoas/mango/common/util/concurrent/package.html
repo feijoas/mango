@@ -1,5 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<!DOCTYPE html >
 <html>
         <head>
           <title>concurrent - Mango - org.feijoas.mango.common.util.concurrent</title>
@@ -9,6 +8,11 @@
           
       <link href="../../../../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
       <link href="../../../../../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
+      <script type="text/javascript" src="../../../../../../lib/jquery.js" id="jquery-js"></script>
+      <script type="text/javascript" src="../../../../../../lib/jquery-ui.js"></script>
+      <script type="text/javascript" src="../../../../../../lib/template.js"></script>
+      <script type="text/javascript" src="../../../../../../lib/tools.tooltip.js"></script>
+      
       <script type="text/javascript">
          if(top === self) {
             var url = '../../../../../../index.html';
@@ -26,7 +30,11 @@
       <div id="definition">
         <img src="../../../../../../lib/package_big.png" />
         <p id="owner"><a href="../../../../../package.html" class="extype" name="org">org</a>.<a href="../../../../package.html" class="extype" name="org.feijoas">feijoas</a>.<a href="../../../package.html" class="extype" name="org.feijoas.mango">mango</a>.<a href="../../package.html" class="extype" name="org.feijoas.mango.common">common</a>.<a href="../package.html" class="extype" name="org.feijoas.mango.common.util">util</a></p>
-        <h1>concurrent</h1>
+        <h1>concurrent</h1><span class="permalink">
+      <a href="../../../../../../index.html#org.feijoas.mango.common.util.concurrent.package" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" />
+      </a>
+    </span>
       </div>
 
       <h4 id="signature" class="signature">
@@ -62,7 +70,7 @@
 
         <div id="values" class="values members">
               <h3>Value Members</h3>
-              <ol><li name="org.feijoas.mango.common.util.concurrent.Futures" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+              <ol><li name="org.feijoas.mango.common.util.concurrent.Futures" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="Futures"></a>
       <a id="Futures:Futures"></a>
       <h4 class="signature">
@@ -73,9 +81,25 @@
       <span class="symbol">
         <a href="Futures$.html"><span class="name">Futures</span></a>
       </span>
-      </h4>
-      <p class="comment cmt">Utility functions for the work with <code>Future[T]</code> and Guava <code>FutureCallback[T]</code>,
- <code>ListenableFuture[T]</code></p>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#org.feijoas.mango.common.util.concurrent.package@Futures" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Utility functions for the work with <code>Future[T]</code> and Guava <code>FutureCallback[T]</code>,
+ <code>ListenableFuture[T]</code></p><div class="fullcomment"><div class="comment cmt"><p>Utility functions for the work with <code>Future[T]</code> and Guava <code>FutureCallback[T]</code>,
+ <code>ListenableFuture[T]</code></p><p> Usage example for conversion between Guava and Mango:</p><pre><span class="cmt">// convert a Scala Future[T] to a Guava ListenableFuture[Int]</span>
+<span class="kw">val</span> scalaFuture: Future[<span class="std">Int</span>] = future { ... }
+<span class="kw">val</span> guavaFuture: ListenableFuture[<span class="std">Int</span>] = scalaFuture.asJava
+
+<span class="cmt">// convert a Scala Try[T] => U to a Guava FutureCallback[T]</span>
+<span class="kw">val</span> callback: Try[T] <span class="kw">=&gt;</span> U = { ... }
+<span class="kw">val</span> guavaCallback: FutureCallback[T] = callback.asJava
+
+<span class="cmt">// convert a Guava ListenableFuture[Int] to a Scala Future[T]</span>
+<span class="kw">val</span> guavaFuture: ListenableFuture[T] = ...
+<span class="kw">val</span> scalaFuture: Future[<span class="std">Int</span>] = guavaFuture.asScala</pre></div><dl class="attributes block"> <dt>Since</dt><dd><p>0.7
+</p></dd></dl></div>
     </li></ol>
             </div>
 
@@ -101,6 +125,7 @@
       <div id="tooltip"></div>
 
       <div id="footer">  </div>
-      <script defer="defer" type="text/javascript" id="jquery-js" src="../../../../../../lib/jquery.js"></script><script defer="defer" type="text/javascript" id="jquery-ui-js" src="../../../../../../lib/jquery-ui.js"></script><script defer="defer" type="text/javascript" id="tools-tooltip-js" src="../../../../../../lib/tools.tooltip.js"></script><script defer="defer" type="text/javascript" id="template-js" src="../../../../../../lib/template.js"></script>
+
+
     </body>
       </html>
