@@ -25,7 +25,7 @@ package org.feijoas.mango.common.cache
 import java.util.concurrent.TimeUnit.NANOSECONDS
 import java.util.concurrent.TimeUnit.SECONDS
 
-import scala.actors.threadpool.AtomicInteger
+import java.util.concurrent.atomic.AtomicInteger
 import scala.annotation.meta.beanGetter
 import scala.annotation.meta.beanSetter
 import scala.annotation.meta.field

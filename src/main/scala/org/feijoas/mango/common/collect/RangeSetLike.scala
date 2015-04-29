@@ -23,6 +23,7 @@
 package org.feijoas.mango.common.collect
 
 import scala.collection.generic.HasNewBuilder
+import annotation.unchecked._
 
 import org.feijoas.mango.common.annotations.Beta
 import org.feijoas.mango.common.base.Preconditions.checkNotNull
@@ -72,7 +73,7 @@ trait RangeSetLike[C, O <: Ordering[C], +Repr <: RangeSetLike[C, O, Repr] with R
   self =>
 
   /** The type implementing this RangeSet */
-  protected type Self = Repr
+  protected type Self = (Repr @uncheckedVariance)
 
   /** Determines whether any of this range set's member ranges contains `value`.
    */
