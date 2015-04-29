@@ -27,7 +27,7 @@ resolvers ++= Seq(
     "Sonatype Releases" at "http://oss.sonatype.org/content/repositories/releases"
 )
 
-libraryDependencies += "org.feijoas" %% "mango" % "0.10"
+libraryDependencies += "org.feijoas" %% "mango" % "0.11"
 ```
 
 ## Examples 
