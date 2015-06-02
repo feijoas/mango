@@ -37,8 +37,8 @@ import scala.collection.generic.Shrinkable
 @Beta
 trait RangeMapLike[K, V, O <: Ordering[K], +Repr <: RangeMapLike[K, V, O, Repr] with RangeMap[K, V, O]]
   extends collect.RangeMapLike[K, V, O, Repr]
-  with Growable[(Range[K, O], V)]
-  with Shrinkable[Range[K, O]] {
+  with Growable[(Range[K], V)]
+  with Shrinkable[Range[K]] {
 
   /** Maps a range to a specified value.
    *
@@ -48,7 +48,7 @@ trait RangeMapLike[K, V, O <: Ordering[K], +Repr <: RangeMapLike[K, V, O, Repr] 
    *
    *  <p>If `range` is empty, then this is a no-op.
    */
-  def put(range: Range[K, O], value: V)
+  def put(range: Range[K], value: V)
 
   /** Puts all the associations from `rangeMap` into this range map.
    */
@@ -64,7 +64,7 @@ trait RangeMapLike[K, V, O <: Ordering[K], +Repr <: RangeMapLike[K, V, O, Repr] 
    *  before and after a call to {@code remove(range)}.  If {@code range.contains(k)}, then
    *  after a call to {@code remove(range)}, {@code get(k)} will return {@code None}.
    */
-  def remove(range: Range[K, O])
+  def remove(range: Range[K])
 
   /** Returns a view of the part of this range map that intersects with `range`.
    *
@@ -79,16 +79,16 @@ trait RangeMapLike[K, V, O <: Ordering[K], +Repr <: RangeMapLike[K, V, O, Repr] 
    *  insert a range not enclosed by {@code range}.
    */
   @throws(classOf[IllegalArgumentException])
-  override def subRangeMap(range: Range[K, O]): Repr
+  override def subRangeMap(range: Range[K]): Repr
 
   /** Alias for `#put(range, value)` */
-  final override def +=(kv: (Range[K, O], V)): this.type = {
+  final override def +=(kv: (Range[K], V)): this.type = {
     put(kv._1, kv._2)
     this
   }
 
   /** Alias for `#remove(range)` */
-  final override def -=(range: Range[K, O]): this.type = {
+  final override def -=(range: Range[K]): this.type = {
     remove(range)
     this
   }

@@ -41,5 +41,5 @@ trait RangeMap[K, V, O <: Ordering[K]] extends collect.RangeMap[K, V, O] with Ra
 /** Factory for immutable [[RangeMap]]
  */
 final object RangeMap extends RangeMapFactory[RangeMap] {
-  override def newBuilder[K, V, O <: Ordering[K]](implicit ord: O): Builder[(Range[K, O], V), RangeMap[K, V, O]] = ImmutableRangeMapWrapper.newBuilder
+  override def newBuilder[K, V, O <: Ordering[K]](implicit ord: O): Builder[(Range[K], V), RangeMap[K, V, O]] = ImmutableRangeMapWrapper.newBuilder
 }

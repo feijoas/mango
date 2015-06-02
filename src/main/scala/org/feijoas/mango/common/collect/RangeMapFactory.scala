@@ -41,7 +41,7 @@ trait RangeMapFactory[Repr[K, V, O <: Ordering[K]] <: RangeMap[K, V, O] with Ran
 
   /** Returns a [[RangeMap]] that contains the provided ranges
    */
-  def apply[K, V, O <: Ordering[K]](entries: (Range[K, O], V)*)(implicit ord: O): Repr[K, V, O] = {
+  def apply[K, V, O <: Ordering[K]](entries: (Range[K], V)*)(implicit ord: O): Repr[K, V, O] = {
     val builder = newBuilder[K, V, O](ord)
     entries.foreach { builder += checkNotNull(_) }
     builder.result
@@ -57,5 +57,5 @@ trait RangeMapFactory[Repr[K, V, O <: Ordering[K]] <: RangeMap[K, V, O] with Ran
 
   /** Returns a new builder for [[RangeMap]].
    */
-  def newBuilder[K, V, O <: Ordering[K]](implicit ord: O): Builder[(Range[K, O], V), Repr[K, V, O]]
+  def newBuilder[K, V, O <: Ordering[K]](implicit ord: O): Builder[(Range[K], V), Repr[K, V, O]]
 }

@@ -128,7 +128,7 @@ import com.google.common.collect.{ Range => GuavaRange }
  *  <a href="http://code.google.com/p/guava-libraries/wiki/RangesExplained">Range</a>.
  */
 @SerialVersionUID(1L)
-final class Range[T, O <: Ordering[T]] private (private val range: GuavaRange[AsOrdered[T]])(implicit private val ord: O)
+final class Range[T] private (private val range: GuavaRange[AsOrdered[T]])(implicit private val ord: Ordering[T])
   extends (T => Boolean) with Serializable {
 
   // import implicit conversion
@@ -185,7 +185,7 @@ final class Range[T, O <: Ordering[T]] private (private val range: GuavaRange[As
    *  according to this relation, and also numerous minimal ranges. Enclosure
    *  also implies connectedness.
    */
-  def encloses(other: Range[T, O]): Boolean = range.encloses(other.range)
+  def encloses(other: Range[T]): Boolean = range.encloses(other.range)
 
   /** Returns {@code true} if there exists a (possibly empty) range which is
    *  enclosed by both this range and {@code other}.
@@ -210,7 +210,7 @@ final class Range[T, O <: Ordering[T]] private (private val range: GuavaRange[As
    *  [6, 10]}.  In these cases, it may be desirable for both input ranges to be preprocessed with
    *  `#canonical(DiscreteDomain)` before testing for connectedness.
    */
-  def isConnected(other: Range[T, O]): Boolean = range.isConnected(other.range)
+  def isConnected(other: Range[T]): Boolean = range.isConnected(other.range)
 
   /** Returns the maximal range enclosed by both this range and {@code
    *  connectedRange}, if such a range exists.
@@ -227,7 +227,7 @@ final class Range[T, O <: Ordering[T]] private (private val range: GuavaRange[As
    *  @throws IllegalArgumentException if {@code isConnected(connectedRange)} is {@code false}
    */
   @throws[IllegalAccessException]
-  def intersection(connectedRange: Range[T, O]): Range[T, O] = {
+  def intersection(connectedRange: Range[T]): Range[T] = {
     Range(range.intersection(connectedRange.range))
   }
 
@@ -241,7 +241,7 @@ final class Range[T, O <: Ordering[T]] private (private val range: GuavaRange[As
    *  <p>Like intersection, this operation is commutative, associative
    *  and idempotent. Unlike it, it is always well-defined for any two input ranges.
    */
-  def span(other: Range[T, O]): Range[T, O] = Range(range.span(other.range))
+  def span(other: Range[T]): Range[T] = Range(range.span(other.range))
 
   /** Returns the canonical form of this range in the given domain. The canonical form has the
    *  following properties:
@@ -266,7 +266,7 @@ final class Range[T, O <: Ordering[T]] private (private val range: GuavaRange[As
    *  <li>(-∞..+∞) (only if type {@code C} is unbounded below)
    *  </ul>
    */
-  def canonical(domain: DiscreteDomain[T]): Range[T, O] =
+  def canonical(domain: DiscreteDomain[T]): Range[T] =
     Range(range.canonical(DiscreteDomain.asGuavaDiscreteDomain(domain)))
 
   /** Returns {@code true} if this range has a lower endpoint.
@@ -283,7 +283,7 @@ final class Range[T, O <: Ordering[T]] private (private val range: GuavaRange[As
   override def toString = range.toString
   override def hashCode = 31 * range.hashCode + ord.hashCode
   override def equals(that: Any) = that match {
-    case other: Range[T, O] => range.equals(other.range) && ord.equals(other.ord)
+    case other: Range[T] => range.equals(other.range) && ord.equals(other.ord)
     case _                  => false
   }
 }
@@ -382,7 +382,7 @@ final object Range {
 
   /** Factory method take the Guava delegate
    */
-  private[mango] def apply[T, O <: Ordering[T]](delegate: GuavaRange[AsOrdered[T]])(implicit ord: O): Range[T, O] = new Range(delegate)
+  private[mango] def apply[T](delegate: GuavaRange[AsOrdered[T]])(implicit ord: Ordering[T]): Range[T] = new Range(delegate)
 
   /** Returns a range that contains all values strictly greater than {@code
    *  lower} and strictly less than {@code upper}.
@@ -391,7 +391,7 @@ final object Range {
    *     equal to</i> {@code upper}
    */
   @throws[IllegalArgumentException]
-  def open[T, O <: Ordering[T]](lower: T, upper: T)(implicit ord: O): Range[T, O] = {
+  def open[T](lower: T, upper: T)(implicit ord: Ordering[T]): Range[T] = {
     Range(GuavaRange.open(lower, upper))
   }
 
@@ -401,7 +401,7 @@ final object Range {
    *  @throws IllegalArgumentException if {@code lower} is greater than {@code upper}
    */
   @throws[IllegalArgumentException]
-  def closed[T, O <: Ordering[T]](lower: T, upper: T)(implicit ord: O): Range[T, O] = {
+  def closed[T](lower: T, upper: T)(implicit ord: Ordering[T]): Range[T] = {
     Range(GuavaRange.closed(lower, upper))
   }
 
@@ -411,7 +411,7 @@ final object Range {
    *  @throws IllegalArgumentException if {@code lower} is greater than {@code upper}
    */
   @throws[IllegalArgumentException]
-  def closedOpen[T, O <: Ordering[T]](lower: T, upper: T)(implicit ord: O): Range[T, O] = {
+  def closedOpen[T](lower: T, upper: T)(implicit ord: Ordering[T]): Range[T] = {
     Range(GuavaRange.closedOpen(lower, upper))
   }
 
@@ -421,7 +421,7 @@ final object Range {
    *  @throws IllegalArgumentException if {@code lower} is greater than {@code upper}
    */
   @throws[IllegalArgumentException]
-  def openClosed[T, O <: Ordering[T]](lower: T, upper: T)(implicit ord: O): Range[T, O] = {
+  def openClosed[T](lower: T, upper: T)(implicit ord: Ordering[T]): Range[T] = {
     Range(GuavaRange.openClosed(lower, upper))
   }
 
@@ -432,60 +432,60 @@ final object Range {
    *  @throws IllegalArgumentException if {@code lower} is greater than {@code upper}
    */
   @throws[IllegalArgumentException]
-  def range[T, O <: Ordering[T]](lower: T, lowerType: BoundType, upper: T, upperType: BoundType)(implicit ord: O): Range[T, O] = {
+  def range[T](lower: T, lowerType: BoundType, upper: T, upperType: BoundType)(implicit ord: Ordering[T]): Range[T] = {
     Range(GuavaRange.range(lower, lowerType.asJava, upper, upperType.asJava))
   }
 
   /** Returns a range that contains all values strictly less than {@code
    *  endpoint}.
    */
-  def lessThan[T, O <: Ordering[T]](endpoint: T)(implicit ord: O): Range[T, O] = {
+  def lessThan[T](endpoint: T)(implicit ord: Ordering[T]): Range[T] = {
     Range(GuavaRange.lessThan(endpoint))
   }
 
   /** Returns a range that contains all values less than or equal to
    *  {@code endpoint}.
    */
-  def atMost[T, O <: Ordering[T]](endpoint: T)(implicit ord: O): Range[T, O] = {
+  def atMost[T](endpoint: T)(implicit ord: Ordering[T]): Range[T] = {
     Range(GuavaRange.atMost(endpoint))
   }
 
   /** Returns a range with no lower bound up to the given endpoint, which may be
    *  either inclusive (closed) or exclusive (open).
    */
-  def upTo[T, O <: Ordering[T]](endpoint: T, boundType: BoundType)(implicit ord: O): Range[T, O] = {
+  def upTo[T](endpoint: T, boundType: BoundType)(implicit ord: Ordering[T]): Range[T] = {
     Range(GuavaRange.upTo(endpoint, boundType.asJava))
   }
 
   /** Returns a range that contains all values strictly greater than {@code
    *  endpoint}.
    */
-  def greaterThan[T, O <: Ordering[T]](endpoint: T)(implicit ord: O): Range[T, O] = {
+  def greaterThan[T](endpoint: T)(implicit ord: Ordering[T]): Range[T] = {
     Range(GuavaRange.greaterThan(endpoint))
   }
 
   /** Returns a range that contains all values greater than or equal to
    *  {@code endpoint}.
    */
-  def atLeast[T, O <: Ordering[T]](endpoint: T)(implicit ord: O): Range[T, O] = {
+  def atLeast[T](endpoint: T)(implicit ord: Ordering[T]): Range[T] = {
     Range(GuavaRange.atLeast(endpoint))
   }
 
   /** Returns a range from the given endpoint, which may be either inclusive
    *  (closed) or exclusive (open), with no upper bound.
    */
-  def downTo[T, O <: Ordering[T]](endpoint: T, boundType: BoundType)(implicit ord: O): Range[T, O] = {
+  def downTo[T](endpoint: T, boundType: BoundType)(implicit ord: Ordering[T]): Range[T] = {
     Range(GuavaRange.downTo(endpoint, boundType.asJava))
   }
 
   /** Returns a range that contains every value of type {@code T}.
    */
-  def all[T, O <: Ordering[T]]()(implicit ord: O): Range[T, O] = new Range(GuavaRange.all[AsOrdered[T]]())
+  def all[T]()(implicit ord: Ordering[T]): Range[T] = new Range(GuavaRange.all[AsOrdered[T]]())
 
   /** Returns a range that contains only the given value. The returned range is closed
    *  on both ends.
    */
-  def singleton[T, O <: Ordering[T]](value: T)(implicit ord: O): Range[T, O] = new Range(GuavaRange.singleton(value))
+  def singleton[T](value: T)(implicit ord: Ordering[T]): Range[T] = new Range(GuavaRange.singleton(value))
 
   /** Returns the minimal range that contains all of the given values.
    *  The returned range is closed on both ends.
@@ -497,7 +497,7 @@ final object Range {
    */
   @throws[NoSuchElementException]
   @throws[NullPointerException]
-  def encloseAll[T, O <: Ordering[T]](values: Iterable[T])(implicit ord: O): Range[T, O] = {
+  def encloseAll[T](values: Iterable[T])(implicit ord: Ordering[T]): Range[T] = {
     val it = values.view.map { v: T => AsOrdered(v) }
     Range(GuavaRange.encloseAll(it.asJava))
   }
@@ -514,7 +514,7 @@ final object Range {
    *    }
    *  }}}
    */
-  def unapply[T, O <: Ordering[T]](range: Range[T, O]): Option[(Bound[T], Bound[T])] = {
+  def unapply[T](range: Range[T]): Option[(Bound[T], Bound[T])] = {
     val delegate = range.range
     val lower = delegate.hasLowerBound match {
       case true  => FiniteBound(delegate.lowerEndpoint.value, delegate.lowerBoundType.asScala)
@@ -537,7 +537,7 @@ final object Range {
    *  @return An object with an `asJava` method that returns a Guava `Range[AsOrdered[T]]`
    *   view of the argument
    */
-  implicit private[mango] def asGuavaRangeConverter[T, O <: Ordering[T]](range: Range[T, O]): AsJava[GuavaRange[AsOrdered[T]]] = {
+  implicit private[mango] def asGuavaRangeConverter[T](range: Range[T]): AsJava[GuavaRange[AsOrdered[T]]] = {
     new AsJava(range.range)
   }
 
@@ -551,8 +551,8 @@ final object Range {
    *  @return An object with an `asScala` method that returns a Scala `Range[T,O]`
    *   view of the argument
    */
-  implicit private[mango] def asMangoRangeConverter[T, O <: Ordering[T]](range: GuavaRange[AsOrdered[T]])(implicit ord: O): AsScala[Range[T, O]] = {
-    new AsScala(Range[T, O](range))
+  implicit private[mango] def asMangoRangeConverter[T](range: GuavaRange[AsOrdered[T]])(implicit ord: Ordering[T]): AsScala[Range[T]] = {
+    new AsScala(Range[T](range))
   }
 }
 

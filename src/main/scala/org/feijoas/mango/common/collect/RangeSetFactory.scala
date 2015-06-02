@@ -36,7 +36,7 @@ trait RangeSetFactory[Repr[C, O <: Ordering[C]] <: RangeSet[C, O] with RangeSetL
 
   /** Returns a [[RangeSet]] containing the single range `Range#all`
    */
-  def all[C, O <: Ordering[C]](implicit ord: O): Repr[C, O] = apply(Range.all[C, O])
+  def all[C, O <: Ordering[C]](implicit ord: O): Repr[C, O] = apply(Range.all[C])
 
   /** Returns an empty [[RangeSet]].
    */
@@ -44,7 +44,7 @@ trait RangeSetFactory[Repr[C, O <: Ordering[C]] <: RangeSet[C, O] with RangeSetL
 
   /** Returns a [[RangeSet]] that contains the provided ranges
    */
-  def apply[C, O <: Ordering[C]](ranges: Range[C, O]*)(implicit ord: O): Repr[C, O] = {
+  def apply[C, O <: Ordering[C]](ranges: Range[C]*)(implicit ord: O): Repr[C, O] = {
     val builder = newBuilder[C, O](ord)
     ranges.foreach { builder += checkNotNull(_) }
     builder.result
@@ -60,5 +60,5 @@ trait RangeSetFactory[Repr[C, O <: Ordering[C]] <: RangeSet[C, O] with RangeSetL
 
   /** Returns a new builder for a range set.
    */
-  def newBuilder[C, O <: Ordering[C]](implicit ord: O): Builder[Range[C, O], Repr[C, O]]
+  def newBuilder[C, O <: Ordering[C]](implicit ord: O): Builder[Range[C], Repr[C, O]]
 }

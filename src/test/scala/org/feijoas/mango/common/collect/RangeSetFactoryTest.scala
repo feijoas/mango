@@ -82,5 +82,5 @@ class RangeSetFactoryTest extends FreeSpec {
 }
 
 private[mango] object DummyRangeSetFactory extends RangeSetFactory[RangeSet] {
-  def newBuilder[C, O <: Ordering[C]](implicit ord: O): Builder[Range[C, O], RangeSet[C, O]] = ImmutableRangeSetWrapper.newBuilder[C, O]
+  def newBuilder[C, O <: Ordering[C]](implicit ord: O): Builder[Range[C], RangeSet[C, O]] = ImmutableRangeSetWrapper.newBuilder[C, O]
 }

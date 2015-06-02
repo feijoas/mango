@@ -54,9 +54,9 @@ private[mango] final object TreeRangeSetWrapper extends RangeSetFactory[TreeRang
 
   /** Returns a new builder for a range set.
    */
-  def newBuilder[C, O <: Ordering[C]](implicit ord: O) = new Builder[Range[C, O], TreeRangeSetWrapper[C, O]]() {
+  def newBuilder[C, O <: Ordering[C]](implicit ord: O) = new Builder[Range[C], TreeRangeSetWrapper[C, O]]() {
     var builder = TreeRangeSet.create[AsOrdered[C]]()
-    override def +=(range: Range[C, O]): this.type = {
+    override def +=(range: Range[C]): this.type = {
       builder.add(range.asJava)
       this
     }

@@ -64,9 +64,9 @@ private[mango] final object ImmutableRangeMapWrapper extends RangeMapFactory[Imm
 
   /** Returns a new builder for [[RangeMap]].
    */
-  def newBuilder[K, V, O <: Ordering[K]](implicit ord: O) = new Builder[(Range[K, O], V), ImmutableRangeMapWrapper[K, V, O]]() {
+  def newBuilder[K, V, O <: Ordering[K]](implicit ord: O) = new Builder[(Range[K], V), ImmutableRangeMapWrapper[K, V, O]]() {
     var builder = gcc.ImmutableRangeMap.builder[AsOrdered[K], V]()
-    override def +=(entry: (Range[K, O], V)): this.type = {
+    override def +=(entry: (Range[K], V)): this.type = {
       builder.put(entry._1.asJava, entry._2)
       this
     }

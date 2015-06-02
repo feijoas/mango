@@ -53,7 +53,7 @@ import com.google.common.{collect => gcc}
  *  @since 0.9
  */
 object RangeMapBehaviors {
-  type TIntRange = Range[Int, Int.type]
+  type TIntRange = Range[Int]
   type TIntRangeMap = RangeMap[Int, String, Int.type]
   type TIntMutableRangeMap = mutable.RangeMap[Int, String, Int.type]
   type TIntRangeMapLike = RangeMapLike[Int, String, Int.type, TIntRangeMap]
@@ -74,7 +74,7 @@ private[mango] trait RangeMapBehaviors extends FreeSpec with PropertyChecks  wit
     // ... and
     "it should implement #put" - {
       "for any single range" in {
-        forAll { range: Range[Int, Int.type] =>
+        forAll { range: Range[Int] =>
           val rangeMap = newBuilder.result
           rangeMap.put(range, "1")
           rangeMap.asMapOfRanges should be(Map(range -> "1"))
@@ -82,7 +82,7 @@ private[mango] trait RangeMapBehaviors extends FreeSpec with PropertyChecks  wit
 
       }
       "for any two ranges" in {
-        forAll { t: (Range[Int, Int.type], Range[Int, Int.type]) =>
+        forAll { t: (Range[Int], Range[Int]) =>
           val (range1, range2) = t
           val rangeMap = newBuilder.result
           rangeMap.put(range1, "1")
@@ -93,14 +93,14 @@ private[mango] trait RangeMapBehaviors extends FreeSpec with PropertyChecks  wit
     }
     "it should implement #+=" - {
       "for any single range" in {
-        forAll { range: Range[Int, Int.type] =>
+        forAll { range: Range[Int] =>
           val rangeMap = newBuilder.result
           rangeMap += range -> "1"
           rangeMap.asMapOfRanges should be(Map(range -> "1"))
         }
       }
       "for any two ranges" in {
-        forAll { t: (Range[Int, Int.type], Range[Int, Int.type]) =>
+        forAll { t: (Range[Int], Range[Int]) =>
           val (range1, range2) = t
           val rangeMap = newBuilder.result
           rangeMap += range1 -> "1" += range2 -> "2"
@@ -110,7 +110,7 @@ private[mango] trait RangeMapBehaviors extends FreeSpec with PropertyChecks  wit
     }
     "it should implement #putAll" - {
       "for any two ranges" in {
-        forAll { t: (Range[Int, Int.type], Range[Int, Int.type]) =>
+        forAll { t: (Range[Int], Range[Int]) =>
           val (range1, range2) = t
           val model = mock[TIntRangeMap]
           when(model.asMapOfRanges).thenReturn(Map(range1 -> "1", range2 -> "2"))
@@ -124,7 +124,7 @@ private[mango] trait RangeMapBehaviors extends FreeSpec with PropertyChecks  wit
     }
     "it should implement #clear" - {
       "for any single range" in {
-        forAll { range: Range[Int, Int.type] =>
+        forAll { range: Range[Int] =>
           val rangeMap = (newBuilder += range -> "1").result
           rangeMap.asMapOfRanges.isEmpty should be(false)
           rangeMap.isEmpty should be(false)
@@ -137,14 +137,14 @@ private[mango] trait RangeMapBehaviors extends FreeSpec with PropertyChecks  wit
     "it should implement #remove" - {
       "removing from an empty map should have no effect" in {
         val rangeMap = newBuilder.result
-        forAll { range: Range[Int, Int.type] =>
+        forAll { range: Range[Int] =>
           rangeMap.remove(range)
           rangeMap.asMapOfRanges should be(Map())
         }
       }
       "for any two not overlapping ranges" - {
         "removing the first should retain the other" in {
-          forAll { t: (Range[Int, Int.type], Range[Int, Int.type]) =>
+          forAll { t: (Range[Int], Range[Int]) =>
             val (range1, range2) = t
             val rangeMap = (newBuilder += range1 -> "1" += range2 -> "2").result
             rangeMap.asMapOfRanges should be(Map(range1 -> "1", range2 -> "2"))
@@ -157,7 +157,7 @@ private[mango] trait RangeMapBehaviors extends FreeSpec with PropertyChecks  wit
           }
         }
         "removing the second should retain the other" in {
-          forAll { t: (Range[Int, Int.type], Range[Int, Int.type]) =>
+          forAll { t: (Range[Int], Range[Int]) =>
             val (range1, range2) = t
             val rangeMap = (newBuilder += range1 -> "1" += range2 -> "2").result
             rangeMap.asMapOfRanges should be(Map(range1 -> "1", range2 -> "2"))
@@ -171,7 +171,7 @@ private[mango] trait RangeMapBehaviors extends FreeSpec with PropertyChecks  wit
         }
       }
       "removing an overlapping range should retain parts of the other" in {
-        forAll { (rangeToPut: Range[Int, Int.type], rangeToRemove: Range[Int, Int.type]) =>
+        forAll { (rangeToPut: Range[Int], rangeToRemove: Range[Int]) =>
           val model = gcc.TreeRangeMap.create[AsOrdered[Int], String]
           whenever(rangeToPut isConnected rangeToRemove) {
             // create the model
@@ -188,7 +188,7 @@ private[mango] trait RangeMapBehaviors extends FreeSpec with PropertyChecks  wit
         }
       }
       "put two and remove one should retain parts" in {
-        forAll { (rangeToPut1: Range[Int, Int.type], rangeToPut2: Range[Int, Int.type], rangeToRemove: Range[Int, Int.type]) =>
+        forAll { (rangeToPut1: Range[Int], rangeToPut2: Range[Int], rangeToRemove: Range[Int]) =>
           val model = gcc.TreeRangeMap.create[AsOrdered[Int], String]
           // create the model
           model.put(rangeToPut1.asJava, "1")
@@ -352,7 +352,7 @@ private[mango] trait RangeMapBehaviors extends FreeSpec with PropertyChecks  wit
     }
 
     "should implement #get" in {
-      forAll { t: (Range[Int, Int.type], Range[Int, Int.type]) =>
+      forAll { t: (Range[Int], Range[Int]) =>
         val (range1, range2) = t
         val rangeMap = (newBuilder += range1 -> "a" += range2 -> "b").result
         for (i <- minBound to maxBound) {
@@ -375,7 +375,7 @@ private[mango] trait RangeMapBehaviors extends FreeSpec with PropertyChecks  wit
       }
       "given the RangeMap contains any two ranges" - {
         "it should return a map with these ranges" in {
-          forAll { t: (Range[Int, Int.type], Range[Int, Int.type]) =>
+          forAll { t: (Range[Int], Range[Int]) =>
             val (range1, range2) = t
             val rangeMap = (newBuilder += range1 -> "a" += range2 -> "b").result
             rangeMap.asMapOfRanges should be(Map(range1 -> "a", range2 -> "b"))
@@ -393,7 +393,7 @@ private[mango] trait RangeMapBehaviors extends FreeSpec with PropertyChecks  wit
       }
       "given the RangeMap contains a single range" - {
         "it should return Some(thatRanage)" in {
-          forAll { range: Range[Int, Int.type] =>
+          forAll { range: Range[Int] =>
             val rangeMap = (newBuilder += range -> "dummy").result
             rangeMap.span should be(Some(range))
           }
@@ -401,7 +401,7 @@ private[mango] trait RangeMapBehaviors extends FreeSpec with PropertyChecks  wit
       }
       "given the RangeMap contains any two ranges" - {
         "it should return the span of both" in {
-          forAll { t: (Range[Int, Int.type], Range[Int, Int.type]) =>
+          forAll { t: (Range[Int], Range[Int]) =>
             val (range1, range2) = t
             val rangeMap = (newBuilder += range1 -> "a" += range2 -> "b").result
             rangeMap.span should be(Some(range1 span range2))
@@ -414,7 +414,7 @@ private[mango] trait RangeMapBehaviors extends FreeSpec with PropertyChecks  wit
       "given the RangeMap is empty" - {
         val rangeMap = newBuilder.result
         "it should return an empty RangeMap for all args" in {
-          forAll { range: Range[Int, Int.type] =>
+          forAll { range: Range[Int] =>
             rangeMap.subRangeMap(range).isEmpty should be(true)
             rangeMap.subRangeMap(range).asMapOfRanges should be(Map())
           }
@@ -422,7 +422,7 @@ private[mango] trait RangeMapBehaviors extends FreeSpec with PropertyChecks  wit
       }
       "given the RangeMap contains any two ranges" - {
         "it should return a subrange view" in {
-          forAll { (t: (Range[Int, Int.type], Range[Int, Int.type]), subRange: Range[Int, Int.type]) =>
+          forAll { (t: (Range[Int], Range[Int]), subRange: Range[Int]) =>
             val (range1, range2) = t
             val rangeMap = (newBuilder += range1 -> "a" += range2 -> "b").result
             val expected = {

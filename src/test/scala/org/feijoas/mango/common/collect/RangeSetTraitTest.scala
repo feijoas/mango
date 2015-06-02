@@ -48,9 +48,9 @@ class RangeSetTraitTest extends FreeSpec with RangeSetBehaviors {
 
   /** Returns a new builder for a range set.
    */
-  def newBuilder[C, O <: Ordering[C]](implicit ord: O) = new Builder[Range[C, O], DummyRangeSet[C, O]]() {
+  def newBuilder[C, O <: Ordering[C]](implicit ord: O) = new Builder[Range[C], DummyRangeSet[C, O]]() {
     var guavaBuilder = ImmutableRangeSet.builder[AsOrdered[C]]()
-    override def +=(range: Range[C, O]): this.type = {
+    override def +=(range: Range[C]): this.type = {
       guavaBuilder.add(range.asJava)
       this
     }
@@ -74,24 +74,24 @@ class RangeSetTraitTest extends FreeSpec with RangeSetBehaviors {
     }
     "should return a new builder if #newBuild is called" in {
       // just check if the compiler complains
-      val builder: Builder[Range[Int, Int.type], RangeSet[Int, Int.type]] = RangeSet.newBuilder[Int, Int.type]
+      val builder: Builder[Range[Int], RangeSet[Int, Int.type]] = RangeSet.newBuilder[Int, Int.type]
     }
   }
 }
 
 private[mango] class DummyRangeSet[C, O <: Ordering[C]] private[mango] (private val rset: ImmutableRangeSet[AsOrdered[C]])(implicit protected val ord: O) extends RangeSet[C, O] {
 
-  override def span(): Option[Range[C, O]] = rset.isEmpty match {
+  override def span(): Option[Range[C]] = rset.isEmpty match {
     case true  => None
     case false => Some(Range(rset.span))
   }
 
-  override def asRanges(): Set[Range[C, O]] = {
-    Set.empty ++ rset.asRanges().asScala.view.map(Range[C, O](_))
+  override def asRanges(): Set[Range[C]] = {
+    Set.empty ++ rset.asRanges().asScala.view.map(Range[C](_))
   }
 
   override def complement(): RangeSet[C, O] = new DummyRangeSet[C, O](rset.complement())
-  override def subRangeSet(view: Range[C, O]) = new DummyRangeSet[C, O](rset.subRangeSet(view.asJava))
+  override def subRangeSet(view: Range[C]) = new DummyRangeSet[C, O](rset.subRangeSet(view.asJava))
   override def newBuilder = throw new NotImplementedError
 }
 

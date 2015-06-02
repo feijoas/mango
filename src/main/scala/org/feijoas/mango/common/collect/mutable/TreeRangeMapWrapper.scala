@@ -56,9 +56,9 @@ private[mango] final object TreeRangeMapWrapper extends RangeMapFactory[TreeRang
 
   /** Returns a new builder for [[RangeMap]].
    */
-  def newBuilder[K, V, O <: Ordering[K]](implicit ord: O) = new Builder[(Range[K, O], V), TreeRangeMapWrapper[K, V, O]]() {
+  def newBuilder[K, V, O <: Ordering[K]](implicit ord: O) = new Builder[(Range[K], V), TreeRangeMapWrapper[K, V, O]]() {
     val builder = gcc.TreeRangeMap.create[AsOrdered[K], V]()
-    override def +=(entry: (Range[K, O], V)): this.type = {
+    override def +=(entry: (Range[K], V)): this.type = {
       builder.put(entry._1.asJava, entry._2)
       this
     }

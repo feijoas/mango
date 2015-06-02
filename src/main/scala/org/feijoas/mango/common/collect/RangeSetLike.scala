@@ -69,7 +69,7 @@ import org.feijoas.mango.common.base.Preconditions.checkNotNull
  */
 @Beta
 trait RangeSetLike[C, O <: Ordering[C], +Repr <: RangeSetLike[C, O, Repr] with RangeSet[C, O]]
-  extends HasNewBuilder[Range[C, O], Repr] {
+  extends HasNewBuilder[Range[C], Repr] {
   self =>
 
   /** The type implementing this RangeSet */
@@ -82,7 +82,7 @@ trait RangeSetLike[C, O <: Ordering[C], +Repr <: RangeSetLike[C, O, Repr] with R
   /** Returns the unique range from this range set that contains
    *  `value` as `Some(value)`, or `None` if this range set does not contain `value`.
    */
-  def rangeContaining(value: C): Option[Range[C, O]] = {
+  def rangeContaining(value: C): Option[Range[C]] = {
     checkNotNull(value)
     asRanges.find { _.contains(value) }
   }
@@ -90,7 +90,7 @@ trait RangeSetLike[C, O <: Ordering[C], +Repr <: RangeSetLike[C, O, Repr] with R
   /** Returns `true` if there exists a member range in this range set which
    *  encloses the specified range.
    */
-  def encloses(otherRange: Range[C, O]): Boolean = {
+  def encloses(otherRange: Range[C]): Boolean = {
     checkNotNull(otherRange)
     asRanges.find { _.encloses(otherRange) }.isDefined
   }
@@ -114,14 +114,14 @@ trait RangeSetLike[C, O <: Ordering[C], +Repr <: RangeSetLike[C, O, Repr] with R
   /** Returns a `Some` with the minimal range which encloses all ranges in this range set
    *  or `None` if this range set is empty
    */
-  def span(): Option[Range[C, O]]
+  def span(): Option[Range[C]]
 
   /** Returns a view of the disconnected ranges that make up this
    *  range set.  The returned set may be empty. The iterators returned by its
    *  `Iterable#iterator` method return the ranges in increasing order of lower bound
    *  (equivalently, of upper bound).
    */
-  def asRanges(): Set[Range[C, O]]
+  def asRanges(): Set[Range[C]]
 
   /** Returns a view of the complement of this `RangeSet`.
    */
@@ -129,7 +129,7 @@ trait RangeSetLike[C, O <: Ordering[C], +Repr <: RangeSetLike[C, O, Repr] with R
 
   /** Returns a view of the intersection of this `RangeSet` with the specified range.
    */
-  def subRangeSet(view: Range[C, O]): Repr
+  def subRangeSet(view: Range[C]): Repr
 
   /** Returns `true` if `obj` is another `RangeSet` that contains the same ranges
    *  according to `Range#equals(Any)`.

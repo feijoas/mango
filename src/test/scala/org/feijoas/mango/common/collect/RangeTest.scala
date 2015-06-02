@@ -189,7 +189,7 @@ class RangeTest extends FlatSpec with RangeBehaviors {
   }
 
   {
-    val builder = (_: Int, _: Int) => Range.all[Int, Int.type]()
+    val builder = (_: Int, _: Int) => Range.all[Int]()
     "A all range" should behave like allRanges(builder)
     it should behave like leftUnboundedRange(builder)
     it should behave like rightUnboundedRange(builder)
@@ -290,7 +290,7 @@ class RangeTest extends FlatSpec with RangeBehaviors {
 
     // enclosing, exterior
     range span Range.closed(2, 10) should be(Range.closed(2, 10))
-    range span Range.all() should be(Range.all[Int, Int.type]())
+    range span Range.all() should be(Range.all[Int]())
 
     // overlap above
     range span Range.closed(6, 10) should be(Range.closed(4, 10))
@@ -349,7 +349,7 @@ class RangeTest extends FlatSpec with RangeBehaviors {
     Range.encloseAll(List(1, 2, 2, 2, 5, -3, 0, -1)) should be(Range.closed(-3, 5))
 
     intercept[NoSuchElementException] {
-      Range.encloseAll[Int, Int.type](List())
+      Range.encloseAll[Int](List())
     }
 
     intercept[NullPointerException] {
@@ -377,14 +377,14 @@ class RangeTest extends FlatSpec with RangeBehaviors {
     Range.atLeast(0).canonical(UnboundedDomain) should be(Range.atLeast(0))
     Range.greaterThan(0).canonical(UnboundedDomain) should be(Range.atLeast(1))
 
-    Range.all[Int, Int.type]().canonical(UnboundedDomain) should be(Range.all[Int, Int.type]())
+    Range.all[Int]().canonical(UnboundedDomain) should be(Range.all[Int]())
   }
 }
 
 private[mango] trait RangeBehaviors extends PropertyChecks {
   this: FlatSpec =>
 
-  def allRanges(build: (Int, Int) => Range[Int, Int.type]) = {
+  def allRanges(build: (Int, Int) => Range[Int]) = {
     val start = -1
     val end = 5
     val range = build(start, end)
@@ -421,7 +421,7 @@ private[mango] trait RangeBehaviors extends PropertyChecks {
     }
   }
 
-  def boundedRange(build: (Int, Int) => Range[Int, Int.type]) = {
+  def boundedRange(build: (Int, Int) => Range[Int]) = {
     val start = -4
     val end = 7
     val range = build(start, end)
@@ -468,7 +468,7 @@ private[mango] trait RangeBehaviors extends PropertyChecks {
     }
   }
 
-  def leftOpenBoundedRange(build: (Int, Int) => Range[Int, Int.type]) = {
+  def leftOpenBoundedRange(build: (Int, Int) => Range[Int]) = {
     val start = 5
     val end = 12
     val range = build(start, end)
@@ -482,7 +482,7 @@ private[mango] trait RangeBehaviors extends PropertyChecks {
     }
   }
 
-  def rightOpenBoundedRange(build: (Int, Int) => Range[Int, Int.type]) = {
+  def rightOpenBoundedRange(build: (Int, Int) => Range[Int]) = {
     val start = 5
     val end = 12
     val range = build(start, end)
@@ -497,7 +497,7 @@ private[mango] trait RangeBehaviors extends PropertyChecks {
     }
   }
 
-  def leftClosedBoundedRange(build: (Int, Int) => Range[Int, Int.type]) = {
+  def leftClosedBoundedRange(build: (Int, Int) => Range[Int]) = {
     val start = 5
     val end = 12
     val range = build(start, end)
@@ -511,7 +511,7 @@ private[mango] trait RangeBehaviors extends PropertyChecks {
     }
   }
 
-  def rightClosedBoundedRange(build: (Int, Int) => Range[Int, Int.type]) = {
+  def rightClosedBoundedRange(build: (Int, Int) => Range[Int]) = {
     val start = 5
     val end = 12
     val range = build(start, end)
@@ -525,7 +525,7 @@ private[mango] trait RangeBehaviors extends PropertyChecks {
     }
   }
 
-  def leftUnboundedRange(build: (Int, Int) => Range[Int, Int.type]) = {
+  def leftUnboundedRange(build: (Int, Int) => Range[Int]) = {
     val end = 16
     val range = build(0, end)
 
@@ -550,7 +550,7 @@ private[mango] trait RangeBehaviors extends PropertyChecks {
     }
   }
 
-  def rightUnboundedRange(build: (Int, Int) => Range[Int, Int.type]) = {
+  def rightUnboundedRange(build: (Int, Int) => Range[Int]) = {
     val start = -7
     val range = build(start, 0)
 
