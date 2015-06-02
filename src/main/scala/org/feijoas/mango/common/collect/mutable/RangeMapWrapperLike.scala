@@ -37,16 +37,16 @@ import org.feijoas.mango.common.collect.Range
  *  @since 0.9
  */
 @Beta
-private[mango] trait RangeMapWrapperLike[K, V, O <: Ordering[K], +Repr <: RangeMapWrapperLike[K, V, O, Repr] with RangeMap[K, V, O]]
-  extends collect.RangeMapWrapperLike[K, V, O, Repr] with RangeMap[K, V, O] {
+private[mango] trait RangeMapWrapperLike[K, V, +Repr <: RangeMapWrapperLike[K, V, Repr] with RangeMap[K, V]]
+  extends collect.RangeMapWrapperLike[K, V, Repr] with RangeMap[K, V] {
   self =>
 
   override def clear() = delegate.clear()
   override def remove(range: Range[K]) = delegate.remove(range.asJava)
   override def put(range: Range[K], value: V) = delegate.put(range.asJava, value)
 
-  override def putAll(rangeMap: collect.RangeMap[K, V, O]) = rangeMap match {
-    case that: RangeMapWrapperLike[K, V, O, _] => delegate.putAll(that.delegate)
+  override def putAll(rangeMap: collect.RangeMap[K, V]) = rangeMap match {
+    case that: RangeMapWrapperLike[K, V, _] => delegate.putAll(that.delegate)
     case _                                     => super.putAll(rangeMap)
   }
 }

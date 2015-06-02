@@ -32,6 +32,6 @@ import org.feijoas.mango.common.collect
  *  @since 0.9
  */
 @Beta
-trait RangeMapLike[K, V, O <: Ordering[K], +Repr <: RangeMapLike[K, V, O, Repr] with RangeMap[K, V, O]]
-  extends collect.RangeMapLike[K, V, O, Repr] {
+trait RangeMapLike[K, V, +Repr <: RangeMapLike[K, V, Repr] with RangeMap[K, V]]
+  extends collect.RangeMapLike[K, V, Repr] {
 }

@@ -60,11 +60,10 @@ import org.feijoas.mango.common.annotations.Beta
  *
  *  @tparam K    the type of the keys of the map
  *  @tparam V    the type of the elements of the map
- *  @tparam O    the type of Ordering used to order the elements
  *  @tparam Repr the type of the map itself.
  */
 @Beta
-trait RangeMapLike[K, V, O <: Ordering[K], +Repr <: RangeMapLike[K, V, O, Repr] with RangeMap[K, V, O]]
+trait RangeMapLike[K, V, +Repr <: RangeMapLike[K, V, Repr] with RangeMap[K, V]]
   extends HasNewBuilder[(Range[K], V), Repr] {
   self =>
 
@@ -115,7 +114,7 @@ trait RangeMapLike[K, V, O <: Ordering[K], +Repr <: RangeMapLike[K, V, O, Repr] 
    *  `#asMapOfRanges()`.
    */
   override def equals(obj: Any): Boolean = obj match {
-    case other: RangeMap[_, _, _] => asMapOfRanges == other.asMapOfRanges
+    case other: RangeMap[_, _] => asMapOfRanges == other.asMapOfRanges
     case _                        => false
   }
 

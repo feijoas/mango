@@ -48,13 +48,13 @@ import com.google.common.{collect => gcc}
 class ImmutableRangeMapWrapperTest extends FreeSpec with RangeMapBehaviors with RangeMapWrapperBehaviours {
 
   "A ImmutableRangeMapWrapper" - {
-    behave like aRangeMapLike(ImmutableRangeMapWrapper.newBuilder[Int, String, Int.type])
+    behave like aRangeMapLike(ImmutableRangeMapWrapper.newBuilder[Int, String])
     "it should not create a copy if RangeMap(same type of immutable range map) is called" in {
       val fst = ImmutableRangeMapWrapper(Range.open(3, 4) -> "a")
       val snd = ImmutableRangeMapWrapper(fst)
       fst should be theSameInstanceAs (snd)
     }
-    behave like immutableWrapper((guava: gcc.RangeMap[AsOrdered[Int], String]) => ImmutableRangeMapWrapper[Int, String, Int.type](guava))
+    behave like immutableWrapper((guava: gcc.RangeMap[AsOrdered[Int], String]) => ImmutableRangeMapWrapper[Int, String](guava))
   }
 }
 

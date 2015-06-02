@@ -54,11 +54,11 @@ import com.google.common.{collect => gcc}
  */
 object RangeMapBehaviors {
   type TIntRange = Range[Int]
-  type TIntRangeMap = RangeMap[Int, String, Int.type]
-  type TIntMutableRangeMap = mutable.RangeMap[Int, String, Int.type]
-  type TIntRangeMapLike = RangeMapLike[Int, String, Int.type, TIntRangeMap]
-  type TIntMutableRangeMapLike = mutable.RangeMapLike[Int, String, Int.type, TIntMutableRangeMap]
-  type TIntRangeMapWrapperLike = RangeMapWrapperLike[Int, String, Int.type, _]
+  type TIntRangeMap = RangeMap[Int, String]
+  type TIntMutableRangeMap = mutable.RangeMap[Int, String]
+  type TIntRangeMapLike = RangeMapLike[Int, String, TIntRangeMap]
+  type TIntMutableRangeMapLike = mutable.RangeMapLike[Int, String, TIntMutableRangeMap]
+  type TIntRangeMapWrapperLike = RangeMapWrapperLike[Int, String, _]
   type TBuilder = Builder[(TIntRange, String), TIntRangeMap]
 }
 

@@ -40,8 +40,8 @@ import com.google.common.{ collect => gcc }
  *  @since 0.9
  */
 @Beta
-private[mango] class ImmutableRangeMapWrapper[K, V, O <: Ordering[K]] private (guava: gcc.RangeMap[AsOrdered[K], V])(override implicit val ordering: O)
-  extends RangeMap[K, V, O] with RangeMapWrapperLike[K, V, O, ImmutableRangeMapWrapper[K, V, O]] {
+private[mango] class ImmutableRangeMapWrapper[K, V] private (guava: gcc.RangeMap[AsOrdered[K], V])(override implicit val ordering: Ordering[K])
+  extends RangeMap[K, V] with RangeMapWrapperLike[K, V, ImmutableRangeMapWrapper[K, V]] {
 
   override def delegate = guava
   override def factory = ImmutableRangeMapWrapper(_)(ordering)
@@ -53,18 +53,18 @@ private[mango] class ImmutableRangeMapWrapper[K, V, O <: Ordering[K]] private (g
 private[mango] final object ImmutableRangeMapWrapper extends RangeMapFactory[ImmutableRangeMapWrapper] {
 
   /** Factory method */
-  private[mango] def apply[K, V, O <: Ordering[K]](guava: gcc.RangeMap[AsOrdered[K], V])(implicit ord: O) = new ImmutableRangeMapWrapper(guava)(ord)
+  private[mango] def apply[K, V](guava: gcc.RangeMap[AsOrdered[K], V])(implicit ord: Ordering[K]) = new ImmutableRangeMapWrapper(guava)(ord)
 
   /** Returns a [[RangeMap]] initialized with the ranges in the specified range set.
    */
-  override def apply[K, V, O <: Ordering[K]](rangeMap: collect.RangeMap[K, V, O])(implicit ord: O) = rangeMap match {
-    case same: ImmutableRangeMapWrapper[K, V, O] => same
+  override def apply[K, V](rangeMap: collect.RangeMap[K, V])(implicit ord: Ordering[K]) = rangeMap match {
+    case same: ImmutableRangeMapWrapper[K, V] => same
     case _                                       => super.apply(rangeMap)
   }
 
   /** Returns a new builder for [[RangeMap]].
    */
-  def newBuilder[K, V, O <: Ordering[K]](implicit ord: O) = new Builder[(Range[K], V), ImmutableRangeMapWrapper[K, V, O]]() {
+  def newBuilder[K, V](implicit ord: Ordering[K]) = new Builder[(Range[K], V), ImmutableRangeMapWrapper[K, V]]() {
     var builder = gcc.ImmutableRangeMap.builder[AsOrdered[K], V]()
     override def +=(entry: (Range[K], V)): this.type = {
       builder.put(entry._1.asJava, entry._2)

@@ -37,8 +37,8 @@ import scala.math.Ordering.Int
 class TreeRangeMapWrapperTest extends FreeSpec with RangeMapBehaviors with RangeMapWrapperBehaviours {
 
   "A ImmutableRangeMapWrapper" - {
-    behave like aMutableRangeMapLike(TreeRangeMapWrapper.newBuilder[Int, String, Int.type])
-    behave like mutableWrapper((guava: gcc.RangeMap[AsOrdered[Int], String]) => TreeRangeMapWrapper[Int, String, Int.type](guava))
+    behave like aMutableRangeMapLike(TreeRangeMapWrapper.newBuilder[Int, String])
+    behave like mutableWrapper((guava: gcc.RangeMap[AsOrdered[Int], String]) => TreeRangeMapWrapper[Int, String](guava))
     "it should create a copy if RangeMap(same type of immutable range map) is called" in {
       val fst = TreeRangeMapWrapper(Range.open(3, 4) -> "a")
       val snd = TreeRangeMapWrapper(fst)

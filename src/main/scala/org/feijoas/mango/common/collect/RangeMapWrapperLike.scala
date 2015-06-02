@@ -36,15 +36,15 @@ import com.google.common.{ collect => gcc }
  *  @since 0.8
  */
 @Beta
-private[mango] trait RangeMapWrapperLike[K, V, O <: Ordering[K], +Repr <: RangeMapWrapperLike[K, V, O, Repr] with RangeMap[K, V, O]]
-  extends RangeMapLike[K, V, O, Repr] {
+private[mango] trait RangeMapWrapperLike[K, V, +Repr <: RangeMapWrapperLike[K, V, Repr] with RangeMap[K, V]]
+  extends RangeMapLike[K, V, Repr] {
   self =>
 
   /** The Guava RangeMap to use internally */
   protected def delegate: gcc.RangeMap[AsOrdered[K], V]
 
   /** The `Ordering[K]` used for Ranges is needed */
-  protected[this] implicit def ordering: O
+  protected[this] implicit def ordering: Ordering[K]
 
   /** Creates a new Repr from a Guava RangeMap */
   protected[this] def factory: gcc.RangeMap[AsOrdered[K], V] => Repr
