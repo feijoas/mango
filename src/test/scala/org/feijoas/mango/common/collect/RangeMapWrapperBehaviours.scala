@@ -22,31 +22,23 @@
  */
 package org.feijoas.mango.common.collect
 
-import scala.annotation.meta.beanGetter
-import scala.annotation.meta.beanSetter
-import scala.annotation.meta.field
-import scala.annotation.meta.getter
-import scala.annotation.meta.setter
-import scala.math.Ordering.Int
-
-import org.feijoas.mango.common.annotations.Beta
+import com.google.common.{collect => gcc}
 import org.feijoas.mango.common.collect.AsOrdered.asOrdered
 import org.feijoas.mango.common.collect.Range.asGuavaRangeConverter
-import org.mockito.Mockito.times
-import org.mockito.Mockito.verify
-import org.mockito.Mockito.when
+import org.mockito.Mockito.{times, verify, when}
 import org.scalatest.FreeSpec
 import org.scalatest.mock.MockitoSugar
 import org.scalatest.prop.PropertyChecks
 
-import com.google.common.{ collect => gcc }
+import scala.math.Ordering.Int
 
-/** Behavior which all [[RangeMapWrappers]] have in common
+/** Behavior which all [[RangeMapWrapperLike]]s have in common
  */
 private[mango] trait RangeMapWrapperBehaviours extends FreeSpec with PropertyChecks with MockitoSugar {
   this: FreeSpec =>
 
-  def immutableWrapper[Repr <: RangeMapWrapperLike[Int, String, Int.type, Repr] with RangeMap[Int, String, Int.type]](constructor: (gcc.RangeMap[AsOrdered[Int], String]) => Repr) = {
+  def immutableWrapper[Repr <: RangeMapWrapperLike[Int, String, Repr] with RangeMap[Int, String]]
+  (constructor: (gcc.RangeMap[AsOrdered[Int], String]) => Repr) = {
     val mocked = mock[gcc.RangeMap[AsOrdered[Int], String]]
     val withMock = constructor(mocked)
     "it should forward all immutable methods to guava " - {
@@ -76,7 +68,8 @@ private[mango] trait RangeMapWrapperBehaviours extends FreeSpec with PropertyChe
     }
   }
 
-  def mutableWrapper[Repr <: mutable.RangeMapWrapperLike[Int, String, Int.type, Repr] with mutable.RangeMap[Int, String, Int.type]](constructor: (gcc.RangeMap[AsOrdered[Int], String]) => Repr) = {
+  def mutableWrapper[Repr <: mutable.RangeMapWrapperLike[Int, String, Repr] with mutable.RangeMap[Int, String]]
+  (constructor: (gcc.RangeMap[AsOrdered[Int], String]) => Repr) = {
     // forward all methods like immutable RangeMapWrapperLike
     immutableWrapper(constructor)
 

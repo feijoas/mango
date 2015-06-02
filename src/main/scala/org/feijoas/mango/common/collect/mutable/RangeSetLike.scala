@@ -36,10 +36,10 @@ import org.feijoas.mango.common.collect
  *  @since 0.8
  */
 @Beta
-trait RangeSetLike[C, O <: Ordering[C], +Repr <: RangeSetLike[C, O, Repr] with RangeSet[C, O]]
-  extends collect.RangeSetLike[C, O, Repr]
-  with Growable[Range[C, O]]
-  with Shrinkable[Range[C, O]] {
+trait RangeSetLike[C, +Repr <: RangeSetLike[C, Repr] with RangeSet[C]]
+  extends collect.RangeSetLike[C, Repr]
+  with Growable[Range[C]]
+  with Shrinkable[Range[C]] {
 
   /** Adds the specified range to this {@code RangeSet} (optional operation). That is, for equal
    *  range sets a and b, the result of {@code a.add(range)} is that {@code a} will be the minimal
@@ -49,10 +49,10 @@ trait RangeSetLike[C, O <: Ordering[C], +Repr <: RangeSetLike[C, O, Repr] with R
    *  the range set that are {@linkplain Range#isConnected(Range) connected} with it.  Moreover,
    *  if {@code range} is empty, this is a no-op.
    */
-  def add(range: Range[C, O])
+  def add(range: Range[C])
 
   /** Alias for `#add(range)` */
-  final override def +=(range: Range[C, O]): this.type = {
+  final override def +=(range: Range[C]): this.type = {
     add(range)
     this
   }
@@ -62,10 +62,10 @@ trait RangeSetLike[C, O <: Ordering[C], +Repr <: RangeSetLike[C, O, Repr] with R
    *
    *  <p>If {@code range} is empty, this is a no-op.
    */
-  def remove(range: Range[C, O])
+  def remove(range: Range[C])
 
   /** Alias for `#remove(range)` */
-  final override def -=(range: Range[C, O]): this.type = {
+  final override def -=(range: Range[C]): this.type = {
     remove(range)
     this
   }
@@ -86,7 +86,7 @@ trait RangeSetLike[C, O <: Ordering[C], +Repr <: RangeSetLike[C, O, Repr] with R
    *  @throws UnsupportedOperationException if this range set does not support the {@code addAll}
    *         operation
    */
-  def addAll(other: RangeSet[C, O]) = other.asRanges() foreach { range => add(range) }
+  def addAll(other: RangeSet[C]) = other.asRanges() foreach { range => add(range) }
 
   /** Removes all of the ranges from the specified range set from this range set (optional
    *  operation). After this operation, if {@code other.contains(c)}, {@code this.contains(c)} will
@@ -95,5 +95,5 @@ trait RangeSetLike[C, O <: Ordering[C], +Repr <: RangeSetLike[C, O, Repr] with R
    *  <p>This is equivalent to calling {@link #remove} on each of the ranges in {@code other} in
    *  turn.
    */
-  def removeAll(other: RangeSet[C, O]) = other.asRanges() foreach { range => remove(range) }
+  def removeAll(other: RangeSet[C]) = other.asRanges() foreach { range => remove(range) }
 }

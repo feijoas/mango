@@ -33,21 +33,21 @@ import org.feijoas.mango.common.collect.Range.asGuavaRangeConverter
  *  @since 0.8
  */
 @Beta
-private[mango] trait RangeSetWrapperLike[C, O <: Ordering[C], +Repr <: RangeSetWrapperLike[C, O, Repr] with RangeSet[C, O]]
-  extends collect.RangeSetWrapperLike[C, O, Repr] with RangeSet[C, O] {
+private[mango] trait RangeSetWrapperLike[C, +Repr <: RangeSetWrapperLike[C, Repr] with RangeSet[C]]
+  extends collect.RangeSetWrapperLike[C, Repr] with RangeSet[C] {
   self =>
 
-  override def add(range: Range[C, O]) = delegate.add(range.asJava)
-  override def remove(range: Range[C, O]) = delegate.remove(range.asJava)
+  override def add(range: Range[C]) = delegate.add(range.asJava)
+  override def remove(range: Range[C]) = delegate.remove(range.asJava)
   override def clear() = delegate.clear()
 
-  override def addAll(other: RangeSet[C, O]) = other match {
-    case that: RangeSetWrapperLike[C, O, _] => delegate.addAll(that.delegate)
+  override def addAll(other: RangeSet[C]) = other match {
+    case that: RangeSetWrapperLike[C, _] => delegate.addAll(that.delegate)
     case _                                  => super.addAll(other)
   }
 
-  override def removeAll(other: RangeSet[C, O]) = other match {
-    case that: RangeSetWrapperLike[C, O, _] => delegate.removeAll(that.delegate)
+  override def removeAll(other: RangeSet[C]) = other match {
+    case that: RangeSetWrapperLike[C, _] => delegate.removeAll(that.delegate)
     case _                                  => super.removeAll(other)
   }
 }

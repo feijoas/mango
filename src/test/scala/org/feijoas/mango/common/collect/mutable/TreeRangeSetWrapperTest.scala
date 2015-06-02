@@ -32,7 +32,7 @@ import org.scalatest.FreeSpec
 
 import com.google.common.collect.{RangeSet => GuavaRangeSet}
 
-/** Tests for [[ImmutableRangeSetWrapperTest]]
+/** Tests for [[TreeRangeSetWrapperTest()]]
  *
  *  @author Markus Schneider
  *  @since 0.8
@@ -40,10 +40,10 @@ import com.google.common.collect.{RangeSet => GuavaRangeSet}
 class TreeRangeSetWrapperTest extends FreeSpec with RangeSetBehaviors with RangeSetWrapperBehaviours {
 
   "A TreeRangeSetWrapper" - {
-    behave like rangeSet(TreeRangeSetWrapper.newBuilder[Int, Int.type])
-    behave like mutableRangeSet(TreeRangeSetWrapper.newBuilder[Int, Int.type])
-    behave like rangeSetWithBuilder(TreeRangeSetWrapper.newBuilder[Int, Int.type])
-    behave like mutableWrapper((guava: GuavaRangeSet[AsOrdered[Int]]) => TreeRangeSetWrapper[Int, Int.type](guava))
+    behave like rangeSet(TreeRangeSetWrapper.newBuilder[Int])
+    behave like mutableRangeSet(TreeRangeSetWrapper.newBuilder[Int])
+    behave like rangeSetWithBuilder(TreeRangeSetWrapper.newBuilder[Int])
+    behave like mutableWrapper((guava: GuavaRangeSet[AsOrdered[Int]]) => TreeRangeSetWrapper[Int](guava))
   }
 }
 

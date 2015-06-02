@@ -36,42 +36,42 @@ import com.google.common.collect.{ RangeSet => GuavaRangeSet }
  *  @since 0.8
  */
 @Beta
-private[mango] trait RangeSetWrapperLike[C, O <: Ordering[C], +Repr <: RangeSetWrapperLike[C, O, Repr] with RangeSet[C, O]]
-  extends RangeSetLike[C, O, Repr] {
+private[mango] trait RangeSetWrapperLike[C, +Repr <: RangeSetWrapperLike[C, Repr] with RangeSet[C]]
+  extends RangeSetLike[C, Repr] {
   self =>
 
   /** The Guava RangeSet to use internally */
   protected def delegate: GuavaRangeSet[AsOrdered[C]]
 
   /** The Ordering[C] used for Ranges is needed */
-  protected implicit def ordering: O
+  protected implicit def ordering: Ordering[C]
 
   /** Creates a new Repr from a Guava RangeSet */
   protected[this] def factory: (GuavaRangeSet[AsOrdered[C]]) => Repr
 
   override def contains(value: C): Boolean = delegate.contains(value)
-  override def encloses(otherRange: Range[C, O]): Boolean = delegate.encloses(otherRange.asJava)
+  override def encloses(otherRange: Range[C]): Boolean = delegate.encloses(otherRange.asJava)
   override def isEmpty: Boolean = delegate.isEmpty
   override def complement(): Repr = factory(delegate.complement)
-  override def subRangeSet(view: Range[C, O]): Repr = factory(delegate.subRangeSet(view.asJava))
+  override def subRangeSet(view: Range[C]): Repr = factory(delegate.subRangeSet(view.asJava))
 
-  override def rangeContaining(value: C): Option[Range[C, O]] = delegate.rangeContaining(value) match {
+  override def rangeContaining(value: C): Option[Range[C]] = delegate.rangeContaining(value) match {
     case null => None
     case some => Some(Range(some))
   }
 
-  override def enclosesAll(other: org.feijoas.mango.common.collect.RangeSet[C, O]): Boolean = other match {
-    case wrapper: RangeSetWrapperLike[C, O, _] => delegate.enclosesAll(wrapper.delegate)
+  override def enclosesAll(other: org.feijoas.mango.common.collect.RangeSet[C]): Boolean = other match {
+    case wrapper: RangeSetWrapperLike[C, _] => delegate.enclosesAll(wrapper.delegate)
     case _                                     => super.enclosesAll(other)
   }
 
-  override def span(): Option[Range[C, O]] = delegate.isEmpty match {
+  override def span(): Option[Range[C]] = delegate.isEmpty match {
     case true  => None
     case false => Some(Range(delegate.span()))
   }
 
-  override def asRanges(): Set[Range[C, O]] = {
-    val set = delegate.asRanges().asScala.view.map(Range[C, O](_))
+  override def asRanges(): Set[Range[C]] = {
+    val set = delegate.asRanges().asScala.view.map(Range[C])
     // TODO: Change this as soon as we have wrappers for Guavas ImmutableSet
     Set.empty ++ set
   }

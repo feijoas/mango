@@ -42,7 +42,7 @@ import org.feijoas.mango.common.base.Preconditions.checkNotNull
  *  <p>Note that the behavior of `Range#isEmpty()` and `Range#isConnected(Range)` may
  *  not be as expected on discrete ranges.  See the Scaladoc of those methods for details.
  *
- *  <p>For a `Set` whose contents are specified by a [[Range]], see [[ContiguousSet]].
+ *  <p>For a `Set` whose contents are specified by a [[Range]], see [[com.google.common.collect.ContiguousSet]].
  *
  *  Usage example:
  *
@@ -64,12 +64,11 @@ import org.feijoas.mango.common.base.Preconditions.checkNotNull
  *  }}}
  *
  *  @tparam C    the type of the elements of the set
- *  @tparam O    the type of Ordering used to order the elements
  *  @tparam Repr the type of the set itself.
  */
 @Beta
-trait RangeSetLike[C, O <: Ordering[C], +Repr <: RangeSetLike[C, O, Repr] with RangeSet[C, O]]
-  extends HasNewBuilder[Range[C, O], Repr] {
+trait RangeSetLike[C, +Repr <: RangeSetLike[C, Repr] with RangeSet[C]]
+  extends HasNewBuilder[Range[C], Repr] {
   self =>
 
   /** The type implementing this RangeSet */
@@ -82,7 +81,7 @@ trait RangeSetLike[C, O <: Ordering[C], +Repr <: RangeSetLike[C, O, Repr] with R
   /** Returns the unique range from this range set that contains
    *  `value` as `Some(value)`, or `None` if this range set does not contain `value`.
    */
-  def rangeContaining(value: C): Option[Range[C, O]] = {
+  def rangeContaining(value: C): Option[Range[C]] = {
     checkNotNull(value)
     asRanges.find { _.contains(value) }
   }
@@ -90,7 +89,7 @@ trait RangeSetLike[C, O <: Ordering[C], +Repr <: RangeSetLike[C, O, Repr] with R
   /** Returns `true` if there exists a member range in this range set which
    *  encloses the specified range.
    */
-  def encloses(otherRange: Range[C, O]): Boolean = {
+  def encloses(otherRange: Range[C]): Boolean = {
     checkNotNull(otherRange)
     asRanges.find { _.encloses(otherRange) }.isDefined
   }
@@ -102,7 +101,7 @@ trait RangeSetLike[C, O <: Ordering[C], +Repr <: RangeSetLike[C, O, Repr] with R
    *  <p>This is equivalent to checking if this range set `#encloses` each of the ranges in
    *  `other`.
    */
-  def enclosesAll(other: RangeSet[C, O]): Boolean = {
+  def enclosesAll(other: RangeSet[C]): Boolean = {
     checkNotNull(other)
     other.asRanges.find { !this.encloses(_) }.isEmpty
   }
@@ -114,14 +113,14 @@ trait RangeSetLike[C, O <: Ordering[C], +Repr <: RangeSetLike[C, O, Repr] with R
   /** Returns a `Some` with the minimal range which encloses all ranges in this range set
    *  or `None` if this range set is empty
    */
-  def span(): Option[Range[C, O]]
+  def span(): Option[Range[C]]
 
   /** Returns a view of the disconnected ranges that make up this
    *  range set.  The returned set may be empty. The iterators returned by its
    *  `Iterable#iterator` method return the ranges in increasing order of lower bound
    *  (equivalently, of upper bound).
    */
-  def asRanges(): Set[Range[C, O]]
+  def asRanges(): Set[Range[C]]
 
   /** Returns a view of the complement of this `RangeSet`.
    */
@@ -129,13 +128,13 @@ trait RangeSetLike[C, O <: Ordering[C], +Repr <: RangeSetLike[C, O, Repr] with R
 
   /** Returns a view of the intersection of this `RangeSet` with the specified range.
    */
-  def subRangeSet(view: Range[C, O]): Repr
+  def subRangeSet(view: Range[C]): Repr
 
   /** Returns `true` if `obj` is another `RangeSet` that contains the same ranges
    *  according to `Range#equals(Any)`.
    */
   override def equals(obj: Any): Boolean = obj match {
-    case other: RangeSet[_, _] => asRanges == other.asRanges
+    case other: RangeSet[_] => asRanges == other.asRanges
     case _                     => false
   }
 
