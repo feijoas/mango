@@ -44,7 +44,7 @@ import org.scalatest.Matchers.convertToAnyShouldWrapper
 class RangeSetFactoryTest extends FreeSpec {
   "RangeSetFactory" - {
     "should implement #empty" in {
-      val rangeSet = DummyRangeSetFactory.empty[Int, Int.type]
+      val rangeSet = DummyRangeSetFactory.empty[Int]
       rangeSet.isEmpty should be(true)
       rangeSet.asRanges should be(Set())
     }
@@ -69,7 +69,7 @@ class RangeSetFactoryTest extends FreeSpec {
         }
       }
       "given the range set is empty" - {
-        val rangeSet = DummyRangeSetFactory.empty[Int, Int.type]
+        val rangeSet = DummyRangeSetFactory.empty[Int]
         "#apply(otherRangeSet) should return an empty range set" in {
           val copy = DummyRangeSetFactory(rangeSet)
           copy should be(rangeSet)
@@ -82,5 +82,5 @@ class RangeSetFactoryTest extends FreeSpec {
 }
 
 private[mango] object DummyRangeSetFactory extends RangeSetFactory[RangeSet] {
-  def newBuilder[C, O <: Ordering[C]](implicit ord: O): Builder[Range[C], RangeSet[C, O]] = ImmutableRangeSetWrapper.newBuilder[C, O]
+  def newBuilder[C](implicit ord: Ordering[C]): Builder[Range[C], RangeSet[C]] = ImmutableRangeSetWrapper.newBuilder[C]
 }

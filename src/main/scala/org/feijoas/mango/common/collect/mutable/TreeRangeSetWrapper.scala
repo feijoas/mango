@@ -39,22 +39,22 @@ import com.google.common.collect.TreeRangeSet
  *  @since 0.8
  */
 @Beta
-private[mango] class TreeRangeSetWrapper[C, O <: Ordering[C]] private (guava: GuavaRangeSet[AsOrdered[C]])(override implicit val ordering: O)
-  extends RangeSet[C, O] with RangeSetWrapperLike[C, O, TreeRangeSetWrapper[C, O]] {
+private[mango] class TreeRangeSetWrapper[C] private (guava: GuavaRangeSet[AsOrdered[C]])(override implicit val ordering: Ordering[C])
+  extends RangeSet[C] with RangeSetWrapperLike[C, TreeRangeSetWrapper[C]] {
 
   override def delegate = guava
   override def factory = TreeRangeSetWrapper(_)(ordering)
-  override def newBuilder = TreeRangeSetWrapper.newBuilder[C, O](ordering)
+  override def newBuilder = TreeRangeSetWrapper.newBuilder[C](ordering)
 }
 
 private[mango] final object TreeRangeSetWrapper extends RangeSetFactory[TreeRangeSetWrapper] {
 
   /** Factory method */
-  private[mango] def apply[C, O <: Ordering[C]](guava: GuavaRangeSet[AsOrdered[C]])(implicit ord: O) = new TreeRangeSetWrapper(guava)(ord)
+  private[mango] def apply[C](guava: GuavaRangeSet[AsOrdered[C]])(implicit ord: Ordering[C]) = new TreeRangeSetWrapper(guava)(ord)
 
   /** Returns a new builder for a range set.
    */
-  def newBuilder[C, O <: Ordering[C]](implicit ord: O) = new Builder[Range[C], TreeRangeSetWrapper[C, O]]() {
+  def newBuilder[C](implicit ord: Ordering[C]) = new Builder[Range[C], TreeRangeSetWrapper[C]]() {
     var builder = TreeRangeSet.create[AsOrdered[C]]()
     override def +=(range: Range[C]): this.type = {
       builder.add(range.asJava)

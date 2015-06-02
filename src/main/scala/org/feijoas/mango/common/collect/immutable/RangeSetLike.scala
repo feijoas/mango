@@ -32,7 +32,7 @@ import org.feijoas.mango.common.collect
  *  @since 0.8
  */
 @Beta
-trait RangeSetLike[C, O <: Ordering[C], +Repr <: RangeSetLike[C, O, Repr] with RangeSet[C, O]]
-  extends collect.RangeSetLike[C, O, Repr] {
+trait RangeSetLike[C, +Repr <: RangeSetLike[C, Repr] with RangeSet[C]]
+  extends collect.RangeSetLike[C, Repr] {
 }
 

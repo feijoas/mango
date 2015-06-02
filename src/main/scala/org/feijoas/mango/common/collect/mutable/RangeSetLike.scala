@@ -36,8 +36,8 @@ import org.feijoas.mango.common.collect
  *  @since 0.8
  */
 @Beta
-trait RangeSetLike[C, O <: Ordering[C], +Repr <: RangeSetLike[C, O, Repr] with RangeSet[C, O]]
-  extends collect.RangeSetLike[C, O, Repr]
+trait RangeSetLike[C, +Repr <: RangeSetLike[C, Repr] with RangeSet[C]]
+  extends collect.RangeSetLike[C, Repr]
   with Growable[Range[C]]
   with Shrinkable[Range[C]] {
 
@@ -86,7 +86,7 @@ trait RangeSetLike[C, O <: Ordering[C], +Repr <: RangeSetLike[C, O, Repr] with R
    *  @throws UnsupportedOperationException if this range set does not support the {@code addAll}
    *         operation
    */
-  def addAll(other: RangeSet[C, O]) = other.asRanges() foreach { range => add(range) }
+  def addAll(other: RangeSet[C]) = other.asRanges() foreach { range => add(range) }
 
   /** Removes all of the ranges from the specified range set from this range set (optional
    *  operation). After this operation, if {@code other.contains(c)}, {@code this.contains(c)} will
@@ -95,5 +95,5 @@ trait RangeSetLike[C, O <: Ordering[C], +Repr <: RangeSetLike[C, O, Repr] with R
    *  <p>This is equivalent to calling {@link #remove} on each of the ranges in {@code other} in
    *  turn.
    */
-  def removeAll(other: RangeSet[C, O]) = other.asRanges() foreach { range => remove(range) }
+  def removeAll(other: RangeSet[C]) = other.asRanges() foreach { range => remove(range) }
 }

@@ -64,11 +64,10 @@ import org.feijoas.mango.common.base.Preconditions.checkNotNull
  *  }}}
  *
  *  @tparam C    the type of the elements of the set
- *  @tparam O    the type of Ordering used to order the elements
  *  @tparam Repr the type of the set itself.
  */
 @Beta
-trait RangeSetLike[C, O <: Ordering[C], +Repr <: RangeSetLike[C, O, Repr] with RangeSet[C, O]]
+trait RangeSetLike[C, +Repr <: RangeSetLike[C, Repr] with RangeSet[C]]
   extends HasNewBuilder[Range[C], Repr] {
   self =>
 
@@ -102,7 +101,7 @@ trait RangeSetLike[C, O <: Ordering[C], +Repr <: RangeSetLike[C, O, Repr] with R
    *  <p>This is equivalent to checking if this range set `#encloses` each of the ranges in
    *  `other`.
    */
-  def enclosesAll(other: RangeSet[C, O]): Boolean = {
+  def enclosesAll(other: RangeSet[C]): Boolean = {
     checkNotNull(other)
     other.asRanges.find { !this.encloses(_) }.isEmpty
   }
@@ -135,7 +134,7 @@ trait RangeSetLike[C, O <: Ordering[C], +Repr <: RangeSetLike[C, O, Repr] with R
    *  according to `Range#equals(Any)`.
    */
   override def equals(obj: Any): Boolean = obj match {
-    case other: RangeSet[_, _] => asRanges == other.asRanges
+    case other: RangeSet[_] => asRanges == other.asRanges
     case _                     => false
   }
 

@@ -49,11 +49,11 @@ import com.google.common.testing.SerializableTester.reserializeAndAssert
 class ImmutableRangeSetWrapperTest extends FreeSpec with RangeSetBehaviors with RangeSetWrapperBehaviours {
 
   "A ImmutableRangeSetWrapper" - {
-    behave like rangeSet(ImmutableRangeSetWrapper.newBuilder[Int, Int.type])
-    behave like rangeSetWithBuilder(ImmutableRangeSetWrapper.newBuilder[Int, Int.type])
+    behave like rangeSet(ImmutableRangeSetWrapper.newBuilder[Int])
+    behave like rangeSetWithBuilder(ImmutableRangeSetWrapper.newBuilder[Int])
     "it should be serializeable" - {
       "given the RangeSet contains the Ranges {[5,8],[1,3)}" in {
-        val rset = (ImmutableRangeSetWrapper.newBuilder[Int, Int.type] ++= Set(Range.closed(5, 8), Range.closedOpen(1, 3))).result
+        val rset = (ImmutableRangeSetWrapper.newBuilder[Int] ++= Set(Range.closed(5, 8), Range.closedOpen(1, 3))).result
         reserializeAndAssert(rset)
       }
     }
@@ -62,7 +62,7 @@ class ImmutableRangeSetWrapperTest extends FreeSpec with RangeSetBehaviors with 
       val snd = ImmutableRangeSetWrapper(fst)
       fst should be theSameInstanceAs (snd)
     }
-    behave like immutableWrapper((guava: GuavaRangeSet[AsOrdered[Int]]) => ImmutableRangeSetWrapper[Int, Int.type](guava))
+    behave like immutableWrapper((guava: GuavaRangeSet[AsOrdered[Int]]) => ImmutableRangeSetWrapper[Int](guava))
   }
 }
 

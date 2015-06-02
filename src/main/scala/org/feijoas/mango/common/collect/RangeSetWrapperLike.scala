@@ -36,15 +36,15 @@ import com.google.common.collect.{ RangeSet => GuavaRangeSet }
  *  @since 0.8
  */
 @Beta
-private[mango] trait RangeSetWrapperLike[C, O <: Ordering[C], +Repr <: RangeSetWrapperLike[C, O, Repr] with RangeSet[C, O]]
-  extends RangeSetLike[C, O, Repr] {
+private[mango] trait RangeSetWrapperLike[C, +Repr <: RangeSetWrapperLike[C, Repr] with RangeSet[C]]
+  extends RangeSetLike[C, Repr] {
   self =>
 
   /** The Guava RangeSet to use internally */
   protected def delegate: GuavaRangeSet[AsOrdered[C]]
 
   /** The Ordering[C] used for Ranges is needed */
-  protected implicit def ordering: O
+  protected implicit def ordering: Ordering[C]
 
   /** Creates a new Repr from a Guava RangeSet */
   protected[this] def factory: (GuavaRangeSet[AsOrdered[C]]) => Repr
@@ -60,8 +60,8 @@ private[mango] trait RangeSetWrapperLike[C, O <: Ordering[C], +Repr <: RangeSetW
     case some => Some(Range(some))
   }
 
-  override def enclosesAll(other: org.feijoas.mango.common.collect.RangeSet[C, O]): Boolean = other match {
-    case wrapper: RangeSetWrapperLike[C, O, _] => delegate.enclosesAll(wrapper.delegate)
+  override def enclosesAll(other: org.feijoas.mango.common.collect.RangeSet[C]): Boolean = other match {
+    case wrapper: RangeSetWrapperLike[C, _] => delegate.enclosesAll(wrapper.delegate)
     case _                                     => super.enclosesAll(other)
   }
 

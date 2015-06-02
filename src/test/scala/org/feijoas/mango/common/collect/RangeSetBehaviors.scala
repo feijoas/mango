@@ -47,7 +47,7 @@ import org.scalatest.prop.PropertyChecks
 private[mango] trait RangeSetBehaviors extends FreeSpec with PropertyChecks with MockitoSugar {
   this: FreeSpec =>
 
-  def mutableRangeSet(newBuilder: => Builder[Range[Int], mutable.RangeSet[Int, Int.type]]) = {
+  def mutableRangeSet(newBuilder: => Builder[Range[Int], mutable.RangeSet[Int]]) = {
 
     val MIN_BOUND = -1
     val MAX_BOUND = 1
@@ -442,15 +442,15 @@ private[mango] trait RangeSetBehaviors extends FreeSpec with PropertyChecks with
 
   }
 
-  private def testCoalesced[T, O <: Ordering[T]](rangeSet: RangeSet[T, O]): Unit = {
+  private def testCoalesced[T](rangeSet: RangeSet[T]): Unit = {
     val asRanges = rangeSet.asRanges
     (asRanges.drop(1) zip asRanges.dropRight(1)).foreach {
       case (a: Range[T], b: Range[T]) => { a.isConnected(b) should be(false) }
     }
   }
 
-  def rangeSet(newBuilder: => Builder[Range[Int], RangeSet[Int, Int.type]]) = {
-    val build: Iterable[Range[Int]] => RangeSet[Int, Int.type] = {
+  def rangeSet(newBuilder: => Builder[Range[Int], RangeSet[Int]]) = {
+    val build: Iterable[Range[Int]] => RangeSet[Int] = {
       ranges: Iterable[Range[Int]] => (newBuilder ++= ranges).result
     }
 
@@ -1019,12 +1019,12 @@ private[mango] trait RangeSetBehaviors extends FreeSpec with PropertyChecks with
       "given the RangeSet is empty" - {
         val rangeSet = build(Set())
         "if the other RangeSet is empty it should be equal" in {
-          val mocked = mock[RangeSet[Int, Int.type]]
+          val mocked = mock[RangeSet[Int]]
           when(mocked.asRanges).thenReturn(Set[Range[Int]]())
           rangeSet should be(mocked)
         }
         "if the other RangeSet contains the ranges {[1,8],[1,3]} it should not be equal" in {
-          val mocked = mock[RangeSet[Int, Int.type]]
+          val mocked = mock[RangeSet[Int]]
           when(mocked.asRanges).thenReturn(Set(Range.closed(1, 8), Range.closed(1, 3)))
           rangeSet should not be (mocked)
         }
@@ -1032,12 +1032,12 @@ private[mango] trait RangeSetBehaviors extends FreeSpec with PropertyChecks with
       "given the RangeSet contains the ranges {[5,8],[1,3)}" - {
         val rangeSet = build(Set(Range.closed(5, 8), Range.closedOpen(1, 3)))
         "if the other RangeSet contains the ranges {[5,8],[1,3)} it should be equal" in {
-          val mocked = mock[RangeSet[Int, Int.type]]
+          val mocked = mock[RangeSet[Int]]
           when(mocked.asRanges).thenReturn(Set(Range.closed(5, 8), Range.closedOpen(1, 3)))
           rangeSet should be(mocked)
         }
         "if the other RangeSet contains the ranges {[1,8],[1,3]} it should not be equal" in {
-          val mocked = mock[RangeSet[Int, Int.type]]
+          val mocked = mock[RangeSet[Int]]
           when(mocked.asRanges).thenReturn(Set(Range.closed(1, 8), Range.closed(1, 3)))
           rangeSet should not be (mocked)
         }
@@ -1060,7 +1060,7 @@ private[mango] trait RangeSetBehaviors extends FreeSpec with PropertyChecks with
     }
   }
 
-  def rangeSetWithBuilder(newBuilder: => Builder[Range[Int], RangeSet[Int, Int.type]]) = {
+  def rangeSetWithBuilder(newBuilder: => Builder[Range[Int], RangeSet[Int]]) = {
     "should implement newBuilder" - {
       "given the builder is empty" - {
         val builder = newBuilder
