@@ -22,24 +22,15 @@
  */
 package org.feijoas.mango.common.collect
 
-import scala.annotation.meta.beanGetter
-import scala.annotation.meta.beanSetter
-import scala.annotation.meta.field
-import scala.annotation.meta.getter
-import scala.annotation.meta.setter
-import scala.collection.mutable.Builder
-import scala.math.Ordering.Int
-
-import org.feijoas.mango.common.annotations.Beta
-import org.feijoas.mango.common.collect.BoundType.Closed
-import org.feijoas.mango.common.collect.BoundType.Open
+import org.feijoas.mango.common.collect.BoundType.{Closed, Open}
 import org.mockito.Mockito.when
 import org.scalatest.FreeSpec
-import org.scalatest.Matchers.be
-import org.scalatest.Matchers.convertToAnyShouldWrapper
-import org.scalatest.Matchers.not
+import org.scalatest.Matchers.{be, convertToAnyShouldWrapper, not}
 import org.scalatest.mock.MockitoSugar
 import org.scalatest.prop.PropertyChecks
+
+import scala.collection.mutable.Builder
+import scala.math.Ordering.Int
 
 
 /** Behavior which all [[RangeSet]] have in common

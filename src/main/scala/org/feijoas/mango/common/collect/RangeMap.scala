@@ -39,6 +39,6 @@ trait RangeMap[K, V] extends RangeMapLike[K, V, RangeMap[K, V]] {
 
 /** Factory for immutable [[RangeMap]]
  */
-final object RangeMap extends RangeMapFactory[RangeMap] {
+object RangeMap extends RangeMapFactory[RangeMap] {
   override def newBuilder[K, V](implicit ord: Ordering[K]) = immutable.RangeMap.newBuilder
 }

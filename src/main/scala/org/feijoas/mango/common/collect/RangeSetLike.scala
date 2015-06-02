@@ -42,7 +42,7 @@ import org.feijoas.mango.common.base.Preconditions.checkNotNull
  *  <p>Note that the behavior of `Range#isEmpty()` and `Range#isConnected(Range)` may
  *  not be as expected on discrete ranges.  See the Scaladoc of those methods for details.
  *
- *  <p>For a `Set` whose contents are specified by a [[Range]], see [[ContiguousSet]].
+ *  <p>For a `Set` whose contents are specified by a [[Range]], see [[com.google.common.collect.ContiguousSet]].
  *
  *  Usage example:
  *

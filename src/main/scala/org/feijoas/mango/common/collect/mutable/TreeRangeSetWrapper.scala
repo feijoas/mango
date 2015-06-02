@@ -47,7 +47,7 @@ private[mango] class TreeRangeSetWrapper[C] private (guava: GuavaRangeSet[AsOrde
   override def newBuilder = TreeRangeSetWrapper.newBuilder[C](ordering)
 }
 
-private[mango] final object TreeRangeSetWrapper extends RangeSetFactory[TreeRangeSetWrapper] {
+private[mango] object TreeRangeSetWrapper extends RangeSetFactory[TreeRangeSetWrapper] {
 
   /** Factory method */
   private[mango] def apply[C](guava: GuavaRangeSet[AsOrdered[C]])(implicit ord: Ordering[C]) = new TreeRangeSetWrapper(guava)(ord)

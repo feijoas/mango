@@ -40,7 +40,7 @@ trait RangeSet[C] extends RangeSetLike[C, RangeSet[C]] {
 
 /** Factory for immutable [[RangeSet]]
  */
-final object RangeSet extends RangeSetFactory[RangeSet] {
+object RangeSet extends RangeSetFactory[RangeSet] {
 
   override def all[C](implicit ord: Ordering[C]) = immutable.RangeSet.all[C]
   override def empty[C](implicit ord: Ordering[C]) = immutable.RangeSet.empty[C]

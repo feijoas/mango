@@ -22,19 +22,11 @@
  */
 package org.feijoas.mango.common.collect.immutable
 
-import scala.annotation.meta.beanGetter
-import scala.annotation.meta.beanSetter
-import scala.annotation.meta.field
-import scala.annotation.meta.getter
-import scala.annotation.meta.setter
-import scala.math.Ordering.Int
-
-import org.feijoas.mango.common.annotations.Beta
-import org.feijoas.mango.common.collect.Range
-import org.feijoas.mango.common.collect.RangeSetBehaviors
+import org.feijoas.mango.common.collect.{Range, RangeSetBehaviors}
 import org.scalatest.FreeSpec
-import org.scalatest.Matchers.be
-import org.scalatest.Matchers.convertToAnyShouldWrapper
+import org.scalatest.Matchers.{be, convertToAnyShouldWrapper}
+
+import scala.math.Ordering.Int
 
 /** Tests for [[RangeSetFactoryTest]]
  *

@@ -40,6 +40,6 @@ trait RangeMap[K, V] extends collect.RangeMap[K, V] with RangeMapLike[K, V, Rang
 
 /** Factory for immutable [[RangeMap]]
  */
-final object RangeMap extends RangeMapFactory[RangeMap] {
+object RangeMap extends RangeMapFactory[RangeMap] {
   override def newBuilder[K, V](implicit ord: Ordering[K]): Builder[(Range[K], V), RangeMap[K, V]] = TreeRangeMapWrapper.newBuilder
 }

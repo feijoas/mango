@@ -40,7 +40,7 @@ trait RangeSet[C] extends collect.RangeSet[C] with RangeSetLike[C, RangeSet[C]] 
 
 /** Factory for mutable [[RangeSet]]
  */
-final object RangeSet extends RangeSetFactory[RangeSet] {
+object RangeSet extends RangeSetFactory[RangeSet] {
 
   override def newBuilder[C](implicit ord: Ordering[C]): Builder[Range[C], RangeSet[C]] = TreeRangeSetWrapper.newBuilder
 }

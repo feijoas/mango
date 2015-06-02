@@ -22,30 +22,18 @@
  */
 package org.feijoas.mango.common.collect
 
-import scala.annotation.meta.beanGetter
-import scala.annotation.meta.beanSetter
-import scala.annotation.meta.field
-import scala.annotation.meta.getter
-import scala.annotation.meta.setter
-import scala.collection.convert.decorateAll.mapAsScalaMapConverter
-import scala.collection.mutable.Builder
-import scala.math.Ordering.Int
-
-import org.feijoas.mango.common.annotations.Beta
+import com.google.common.{collect => gcc}
 import org.feijoas.mango.common.collect.Range.asGuavaRangeConverter
-import org.feijoas.mango.test.collect.Ranges.arbNonOverlappingRangeParis
-import org.feijoas.mango.test.collect.Ranges.arbRange
-import org.feijoas.mango.test.collect.Ranges.maxBound
-import org.feijoas.mango.test.collect.Ranges.minBound
+import org.feijoas.mango.test.collect.Ranges.{arbNonOverlappingRangeParis, arbRange, maxBound, minBound}
 import org.mockito.Mockito.when
 import org.scalatest.FreeSpec
-import org.scalatest.Matchers.be
-import org.scalatest.Matchers.convertToAnyShouldWrapper
-import org.scalatest.Matchers.not
+import org.scalatest.Matchers.{be, convertToAnyShouldWrapper, not}
 import org.scalatest.mock.MockitoSugar
 import org.scalatest.prop.PropertyChecks
 
-import com.google.common.{collect => gcc}
+import scala.collection.convert.decorateAll.mapAsScalaMapConverter
+import scala.collection.mutable.Builder
+import scala.math.Ordering.Int
 
 /** Behavior which all [[RangeMap]] have in common
  *

@@ -32,7 +32,7 @@ import org.scalatest.FreeSpec
 
 import com.google.common.collect.{RangeSet => GuavaRangeSet}
 
-/** Tests for [[ImmutableRangeSetWrapperTest]]
+/** Tests for [[TreeRangeSetWrapperTest()]]
  *
  *  @author Markus Schneider
  *  @since 0.8

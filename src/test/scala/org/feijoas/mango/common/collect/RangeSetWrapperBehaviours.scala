@@ -39,7 +39,7 @@ import org.scalatest.prop.PropertyChecks
 
 import com.google.common.collect.{RangeSet => GuavaRangeSet}
 
-/** Behavior which all [[RangeSetWrappers]] have in common
+/** Behavior which all [[RangeSetWrapperLike]]s have in common
  */
 private[mango] trait RangeSetWrapperBehaviours extends FreeSpec with PropertyChecks with MockitoSugar {
   this: FreeSpec =>

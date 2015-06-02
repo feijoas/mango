@@ -22,14 +22,10 @@
  */
 package org.feijoas.mango.common.collect.mutable
 
-import scala.collection.convert.decorateAll.mapAsScalaMapConverter
 import org.feijoas.mango.common.annotations.Beta
-import org.feijoas.mango.common.collect.AsOrdered.asOrdered
-import org.feijoas.mango.common.collect.Range.asGuavaRangeConverter
-import com.google.common.{ collect => gcc }
-import org.feijoas.mango.common.collect.AsOrdered
 import org.feijoas.mango.common.collect
 import org.feijoas.mango.common.collect.Range
+import org.feijoas.mango.common.collect.Range.asGuavaRangeConverter
 
 /** Implementation trait for mutable [[RangeMap]] that delegates to Guava
  *

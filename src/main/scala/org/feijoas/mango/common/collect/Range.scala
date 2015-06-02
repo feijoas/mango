@@ -378,7 +378,7 @@ final class Range[T] private (private val range: GuavaRange[AsOrdered[T]])(impli
  *  @author Markus Schneider
  *  @since 0.8 (copied from Guava-libraries)
  */
-final object Range {
+object Range {
 
   /** Factory method take the Guava delegate
    */

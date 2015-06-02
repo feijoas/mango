@@ -22,16 +22,12 @@
  */
 package org.feijoas.mango.common.collect.mutable
 
-import scala.collection.mutable.Builder
-
+import com.google.common.{collect => gcc}
 import org.feijoas.mango.common.annotations.Beta
-import org.feijoas.mango.common.collect
-import org.feijoas.mango.common.collect.AsOrdered
-import org.feijoas.mango.common.collect.Range
 import org.feijoas.mango.common.collect.Range.asGuavaRangeConverter
-import org.feijoas.mango.common.collect.RangeMapFactory
+import org.feijoas.mango.common.collect.{AsOrdered, Range, RangeMapFactory}
 
-import com.google.common.{ collect => gcc }
+import scala.collection.mutable.Builder
 
 /** An mutable implementation of RangeMap that delegates to Guava TreeRangeMap
  *
@@ -49,7 +45,7 @@ private[mango] class TreeRangeMapWrapper[K, V] private (guava: gcc.RangeMap[AsOr
 
 /** Factory for TreeRangeMapWrapper
  */
-private[mango] final object TreeRangeMapWrapper extends RangeMapFactory[TreeRangeMapWrapper] {
+private[mango] object TreeRangeMapWrapper extends RangeMapFactory[TreeRangeMapWrapper] {
 
   /** Factory method */
   private[mango] def apply[K, V](guava: gcc.RangeMap[AsOrdered[K], V])(implicit ord: Ordering[K]) = new TreeRangeMapWrapper(guava)(ord)

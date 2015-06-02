@@ -52,7 +52,7 @@ private[mango] class ImmutableRangeSetWrapper[C] private (guava: GuavaRangeSet[A
 
 /** Factory for ImmutableRangeSetWrapper
  */
-private[mango] final object ImmutableRangeSetWrapper extends RangeSetFactory[ImmutableRangeSetWrapper] {
+private[mango] object ImmutableRangeSetWrapper extends RangeSetFactory[ImmutableRangeSetWrapper] {
 
   /** Factory method */
   private[mango] def apply[C](guava: GuavaRangeSet[AsOrdered[C]])(implicit ord: Ordering[C]) = new ImmutableRangeSetWrapper(guava)(ord)

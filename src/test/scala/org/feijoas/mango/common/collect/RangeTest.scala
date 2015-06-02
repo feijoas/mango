@@ -22,18 +22,14 @@
  */
 package org.feijoas.mango.common.collect
 
-import scala.math.Ordering.Int
-
-import org.feijoas.mango.common.annotations.Beta
-import org.feijoas.mango.common.collect.Bound.FiniteBound
-import org.feijoas.mango.common.collect.Bound.InfiniteBound
+import com.google.common.testing.SerializableTester.reserializeAndAssert
+import org.feijoas.mango.common.collect.Bound.{FiniteBound, InfiniteBound}
 import org.feijoas.mango.common.collect.DiscreteDomain.IntDomain
 import org.scalatest.FlatSpec
-import org.scalatest.Matchers.be
-import org.scalatest.Matchers.convertToAnyShouldWrapper
+import org.scalatest.Matchers.{be, convertToAnyShouldWrapper}
 import org.scalatest.prop.PropertyChecks
 
-import com.google.common.testing.SerializableTester.reserializeAndAssert
+import scala.math.Ordering.Int
 
 /** Tests for [[Range]]
  *
@@ -576,7 +572,7 @@ private[mango] trait RangeBehaviors extends PropertyChecks {
   }
 }
 
-private[mango] final object UnboundedDomain extends DiscreteDomain[Int] {
+private[mango] object UnboundedDomain extends DiscreteDomain[Int] {
   override def next(value: Int): Option[Int] = IntDomain.next(value)
   override def previous(value: Int): Option[Int] = IntDomain.previous(value)
   override def distance(start: Int, end: Int): Long = IntDomain.distance(start, end)
