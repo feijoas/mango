@@ -1,12 +1,10 @@
 language: scala
 scala:
-  - "2.10.0" 
-  - "2.10.1"
-  - "2.10.2"
-  - "2.10.3"
+  - "2.11.6" 
 jdk:
   - openjdk7
   - oraclejdk7
+  - oraclejdk8
 env:
   - GUAVA_VERSION=14.0
   - GUAVA_VERSION=14.0.1

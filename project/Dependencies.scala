@@ -14,7 +14,7 @@ object Dependencies {
 
   // compile dependencies
   val guava = "com.google.guava" % "guava" % guavaVersion
-  val findbugs = "com.google.code.findbugs" % "jsr305" % "1.3.+"
+  val findbugs = "com.google.code.findbugs" % "jsr305" % "[1.3,)"
 
   // test dependencies
   val guavaTestlib = "com.google.guava" % "guava-testlib" % guavaDefaulVersion % "test"
