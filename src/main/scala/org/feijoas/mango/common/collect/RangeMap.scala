@@ -33,12 +33,12 @@ import org.feijoas.mango.common.annotations.Beta
  *  @since 0.9
  */
 @Beta
-trait RangeMap[K, V, O <: Ordering[K]] extends RangeMapLike[K, V, O, RangeMap[K, V, O]] {
+trait RangeMap[K, V] extends RangeMapLike[K, V, RangeMap[K, V]] {
 
 }
 
 /** Factory for immutable [[RangeMap]]
  */
-final object RangeMap extends RangeMapFactory[RangeMap] {
-  override def newBuilder[K, V, O <: Ordering[K]](implicit ord: O) = immutable.RangeMap.newBuilder
+object RangeMap extends RangeMapFactory[RangeMap] {
+  override def newBuilder[K, V](implicit ord: Ordering[K]) = immutable.RangeMap.newBuilder
 }

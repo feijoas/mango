@@ -44,7 +44,7 @@ object Ranges {
   /** A list of various ranges
    */
   private lazy val ranges = {
-    val builder = List.newBuilder[Range[Int, Int.type]]
+    val builder = List.newBuilder[Range[Int]]
     // Add one-ended ranges
     for (
       i <- minBound to maxBound;
@@ -73,11 +73,11 @@ object Ranges {
     range2 <- ranges if (!range1.isConnected(range2) || range1.intersection(range2).isEmpty())
   ) yield (range1, range2)
 
-  implicit lazy val arbRange: Arbitrary[Range[Int, Int.type]] = Arbitrary {
+  implicit lazy val arbRange: Arbitrary[Range[Int]] = Arbitrary {
     oneOf(ranges)
   }
 
-  implicit lazy val arbNonOverlappingRangeParis: Arbitrary[(Range[Int, Int.type], Range[Int, Int.type])] = Arbitrary {
+  implicit lazy val arbNonOverlappingRangeParis: Arbitrary[(Range[Int], Range[Int])] = Arbitrary {
     oneOf(rangeTuples)
   }
 

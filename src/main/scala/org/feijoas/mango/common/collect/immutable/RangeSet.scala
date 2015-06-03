@@ -33,18 +33,18 @@ import org.feijoas.mango.common.collect.RangeSetFactory
  *  @since 0.8
  */
 @Beta
-trait RangeSet[C, O <: Ordering[C]] extends collect.RangeSet[C, O] with RangeSetLike[C, O, RangeSet[C, O]] {
+trait RangeSet[C] extends collect.RangeSet[C] with RangeSetLike[C, RangeSet[C]] {
 
 }
 
 /** Factory for immutable [[RangeSet]]
  */
-final object RangeSet extends RangeSetFactory[RangeSet] {
+object RangeSet extends RangeSetFactory[RangeSet] {
 
-  override def all[C, O <: Ordering[C]](implicit ord: O) = ImmutableRangeSetWrapper.all[C, O]
-  override def empty[C, O <: Ordering[C]](implicit ord: O) = ImmutableRangeSetWrapper.empty[C, O]
-  override def apply[C, O <: Ordering[C]](ranges: Range[C, O]*)(implicit ord: O) = ImmutableRangeSetWrapper.apply(ranges: _*)
-  override def apply[C, O <: Ordering[C]](rangeSet: collect.RangeSet[C, O])(implicit ord: O) = ImmutableRangeSetWrapper.apply(rangeSet)
-  override def newBuilder[C, O <: Ordering[C]](implicit ord: O): Builder[Range[C, O], RangeSet[C, O]] = ImmutableRangeSetWrapper.newBuilder
+  override def all[C](implicit ord: Ordering[C]) = ImmutableRangeSetWrapper.all[C]
+  override def empty[C](implicit ord: Ordering[C]) = ImmutableRangeSetWrapper.empty[C]
+  override def apply[C](ranges: Range[C]*)(implicit ord: Ordering[C]) = ImmutableRangeSetWrapper.apply(ranges: _*)
+  override def apply[C](rangeSet: collect.RangeSet[C])(implicit ord: Ordering[C]) = ImmutableRangeSetWrapper.apply(rangeSet)
+  override def newBuilder[C](implicit ord: Ordering[C]): Builder[Range[C], RangeSet[C]] = ImmutableRangeSetWrapper.newBuilder
 }
 

@@ -60,12 +60,11 @@ import org.feijoas.mango.common.annotations.Beta
  *
  *  @tparam K    the type of the keys of the map
  *  @tparam V    the type of the elements of the map
- *  @tparam O    the type of Ordering used to order the elements
  *  @tparam Repr the type of the map itself.
  */
 @Beta
-trait RangeMapLike[K, V, O <: Ordering[K], +Repr <: RangeMapLike[K, V, O, Repr] with RangeMap[K, V, O]]
-  extends HasNewBuilder[(Range[K, O], V), Repr] {
+trait RangeMapLike[K, V, +Repr <: RangeMapLike[K, V, Repr] with RangeMap[K, V]]
+  extends HasNewBuilder[(Range[K], V), Repr] {
   self =>
 
   /** Returns the value associated with the specified key in a `Some`, or `None` if there is no
@@ -79,12 +78,12 @@ trait RangeMapLike[K, V, O <: Ordering[K], +Repr <: RangeMapLike[K, V, O, Repr] 
   /** Returns the range containing this key and its associated value in a `Some`, if such a range is present
    *  in the range map, or `None` otherwise.
    */
-  def getEntry(key: K): Option[(Range[K, O], V)]
+  def getEntry(key: K): Option[(Range[K], V)]
 
   /** Returns the minimal range enclosing the ranges in this `RangeMap` in a `Some`
    *  or `None` if this range map is empty
    */
-  def span(): Option[Range[K, O]]
+  def span(): Option[Range[K]]
 
   /** Returns this RangeMap as a map of ranges.
    *
@@ -94,7 +93,7 @@ trait RangeMapLike[K, V, O <: Ordering[K], +Repr <: RangeMapLike[K, V, O, Repr] 
    *
    *  <p>It is guaranteed that no empty ranges will be in the returned `Map`.
    */
-  def asMapOfRanges(): Map[Range[K, O], V]
+  def asMapOfRanges(): Map[Range[K], V]
 
   /** Returns a view of the part of this range map that intersects with `range`.
    *
@@ -105,7 +104,7 @@ trait RangeMapLike[K, V, O <: Ordering[K], +Repr <: RangeMapLike[K, V, O, Repr] 
    *
    *  <p>The returned range map supports all optional operations that this range map supports.
    */
-  def subRangeMap(range: Range[K, O]): Repr
+  def subRangeMap(range: Range[K]): Repr
 
   /** Returns `true` if this range map contains no ranges.
    */
@@ -115,7 +114,7 @@ trait RangeMapLike[K, V, O <: Ordering[K], +Repr <: RangeMapLike[K, V, O, Repr] 
    *  `#asMapOfRanges()`.
    */
   override def equals(obj: Any): Boolean = obj match {
-    case other: RangeMap[_, _, _] => asMapOfRanges == other.asMapOfRanges
+    case other: RangeMap[_, _] => asMapOfRanges == other.asMapOfRanges
     case _                        => false
   }
 

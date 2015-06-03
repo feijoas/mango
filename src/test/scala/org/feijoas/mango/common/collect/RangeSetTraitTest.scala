@@ -22,22 +22,14 @@
  */
 package org.feijoas.mango.common.collect
 
-import scala.annotation.meta.beanGetter
-import scala.annotation.meta.beanSetter
-import scala.annotation.meta.field
-import scala.annotation.meta.getter
-import scala.annotation.meta.setter
+import com.google.common.collect.ImmutableRangeSet
+import org.feijoas.mango.common.collect.Range.asGuavaRangeConverter
+import org.scalatest.FreeSpec
+import org.scalatest.Matchers.{be, convertToAnyShouldWrapper}
+
 import scala.collection.convert.decorateAll.asScalaSetConverter
 import scala.collection.mutable.Builder
 import scala.math.Ordering.Int
-
-import org.feijoas.mango.common.annotations.Beta
-import org.feijoas.mango.common.collect.Range.asGuavaRangeConverter
-import org.scalatest.FreeSpec
-import org.scalatest.Matchers.be
-import org.scalatest.Matchers.convertToAnyShouldWrapper
-
-import com.google.common.collect.ImmutableRangeSet
 
 /** Tests for all default implementations in [[RangeSet]]
  *
@@ -48,9 +40,9 @@ class RangeSetTraitTest extends FreeSpec with RangeSetBehaviors {
 
   /** Returns a new builder for a range set.
    */
-  def newBuilder[C, O <: Ordering[C]](implicit ord: O) = new Builder[Range[C, O], DummyRangeSet[C, O]]() {
+  def newBuilder[C](implicit ord: Ordering[C]) = new Builder[Range[C], DummyRangeSet[C]]() {
     var guavaBuilder = ImmutableRangeSet.builder[AsOrdered[C]]()
-    override def +=(range: Range[C, O]): this.type = {
+    override def +=(range: Range[C]): this.type = {
       guavaBuilder.add(range.asJava)
       this
     }
@@ -59,12 +51,12 @@ class RangeSetTraitTest extends FreeSpec with RangeSetBehaviors {
   }
 
   "trait RangeSet" - {
-    behave like rangeSet(newBuilder[Int, Int.type])
+    behave like rangeSet(newBuilder[Int])
   }
 
   "object RangeSet" - {
     "should return an empty RangeSet if #empty is called" in {
-      val emptySet = RangeSet.empty[Int, Int.type]
+      val emptySet = RangeSet.empty[Int]
       emptySet.isEmpty should be(true)
     }
     "should return a new RangeSet with all ranges supplied with #apply(Iterable)" in {
@@ -74,24 +66,25 @@ class RangeSetTraitTest extends FreeSpec with RangeSetBehaviors {
     }
     "should return a new builder if #newBuild is called" in {
       // just check if the compiler complains
-      val builder: Builder[Range[Int, Int.type], RangeSet[Int, Int.type]] = RangeSet.newBuilder[Int, Int.type]
+      val builder: Builder[Range[Int], RangeSet[Int]] = RangeSet.newBuilder[Int]
     }
   }
 }
 
-private[mango] class DummyRangeSet[C, O <: Ordering[C]] private[mango] (private val rset: ImmutableRangeSet[AsOrdered[C]])(implicit protected val ord: O) extends RangeSet[C, O] {
+private[mango] class DummyRangeSet[C] private[mango] (private val rset: ImmutableRangeSet[AsOrdered[C]])
+                                                     (implicit protected val ord: Ordering[C]) extends RangeSet[C] {
 
-  override def span(): Option[Range[C, O]] = rset.isEmpty match {
+  override def span(): Option[Range[C]] = rset.isEmpty match {
     case true  => None
     case false => Some(Range(rset.span))
   }
 
-  override def asRanges(): Set[Range[C, O]] = {
-    Set.empty ++ rset.asRanges().asScala.view.map(Range[C, O](_))
+  override def asRanges(): Set[Range[C]] = {
+    Set.empty ++ rset.asRanges().asScala.view.map(Range[C])
   }
 
-  override def complement(): RangeSet[C, O] = new DummyRangeSet[C, O](rset.complement())
-  override def subRangeSet(view: Range[C, O]) = new DummyRangeSet[C, O](rset.subRangeSet(view.asJava))
+  override def complement(): RangeSet[C] = new DummyRangeSet[C](rset.complement())
+  override def subRangeSet(view: Range[C]) = new DummyRangeSet[C](rset.subRangeSet(view.asJava))
   override def newBuilder = throw new NotImplementedError
 }
 

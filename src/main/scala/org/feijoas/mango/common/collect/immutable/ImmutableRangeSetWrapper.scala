@@ -42,33 +42,33 @@ import com.google.common.collect.{ RangeSet => GuavaRangeSet }
  */
 @Beta
 @SerialVersionUID(1L)
-private[mango] class ImmutableRangeSetWrapper[C, O <: Ordering[C]] private (guava: GuavaRangeSet[AsOrdered[C]])(override implicit val ordering: O)
-  extends RangeSet[C, O] with RangeSetWrapperLike[C, O, ImmutableRangeSetWrapper[C, O]] with Serializable {
+private[mango] class ImmutableRangeSetWrapper[C] private (guava: GuavaRangeSet[AsOrdered[C]])(override implicit val ordering: Ordering[C])
+  extends RangeSet[C] with RangeSetWrapperLike[C, ImmutableRangeSetWrapper[C]] with Serializable {
 
   override def delegate = guava
-  override def factory: GuavaRangeSet[AsOrdered[C]] => ImmutableRangeSetWrapper[C, O] = new ImmutableRangeSetWrapper(_)(ordering)
-  override def newBuilder = ImmutableRangeSetWrapper.newBuilder[C, O](ordering)
+  override def factory: GuavaRangeSet[AsOrdered[C]] => ImmutableRangeSetWrapper[C] = new ImmutableRangeSetWrapper(_)(ordering)
+  override def newBuilder = ImmutableRangeSetWrapper.newBuilder[C](ordering)
 }
 
 /** Factory for ImmutableRangeSetWrapper
  */
-private[mango] final object ImmutableRangeSetWrapper extends RangeSetFactory[ImmutableRangeSetWrapper] {
+private[mango] object ImmutableRangeSetWrapper extends RangeSetFactory[ImmutableRangeSetWrapper] {
 
   /** Factory method */
-  private[mango] def apply[C, O <: Ordering[C]](guava: GuavaRangeSet[AsOrdered[C]])(implicit ord: O) = new ImmutableRangeSetWrapper(guava)(ord)
+  private[mango] def apply[C](guava: GuavaRangeSet[AsOrdered[C]])(implicit ord: Ordering[C]) = new ImmutableRangeSetWrapper(guava)(ord)
 
   /** Returns a [[RangeSet]] initialized with the ranges in the specified range set.
    */
-  override def apply[C, O <: Ordering[C]](rangeSet: collect.RangeSet[C, O])(implicit ord: O) = rangeSet match {
-    case same: ImmutableRangeSetWrapper[C, O] => same
+  override def apply[C](rangeSet: collect.RangeSet[C])(implicit ord: Ordering[C]) = rangeSet match {
+    case same: ImmutableRangeSetWrapper[C] => same
     case _                                    => super.apply(rangeSet)
   }
 
   /** Returns a new builder for a range set.
    */
-  def newBuilder[C, O <: Ordering[C]](implicit ord: O) = new Builder[Range[C, O], ImmutableRangeSetWrapper[C, O]]() {
+  def newBuilder[C](implicit ord: Ordering[C]) = new Builder[Range[C], ImmutableRangeSetWrapper[C]]() {
     var builder = ImmutableRangeSet.builder[AsOrdered[C]]()
-    override def +=(range: Range[C, O]): this.type = {
+    override def +=(range: Range[C]): this.type = {
       builder.add(range.asJava)
       this
     }

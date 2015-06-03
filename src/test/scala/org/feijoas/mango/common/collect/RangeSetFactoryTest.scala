@@ -22,19 +22,12 @@
  */
 package org.feijoas.mango.common.collect
 
-import scala.annotation.meta.beanGetter
-import scala.annotation.meta.beanSetter
-import scala.annotation.meta.field
-import scala.annotation.meta.getter
-import scala.annotation.meta.setter
-import scala.collection.mutable.Builder
-import scala.math.Ordering.Int
-
-import org.feijoas.mango.common.annotations.Beta
 import org.feijoas.mango.common.collect.immutable.ImmutableRangeSetWrapper
 import org.scalatest.FreeSpec
-import org.scalatest.Matchers.be
-import org.scalatest.Matchers.convertToAnyShouldWrapper
+import org.scalatest.Matchers.{be, convertToAnyShouldWrapper}
+
+import scala.collection.mutable.Builder
+import scala.math.Ordering.Int
 
 /** Tests for [[RangeSetFactory]]
  *
@@ -44,7 +37,7 @@ import org.scalatest.Matchers.convertToAnyShouldWrapper
 class RangeSetFactoryTest extends FreeSpec {
   "RangeSetFactory" - {
     "should implement #empty" in {
-      val rangeSet = DummyRangeSetFactory.empty[Int, Int.type]
+      val rangeSet = DummyRangeSetFactory.empty[Int]
       rangeSet.isEmpty should be(true)
       rangeSet.asRanges should be(Set())
     }
@@ -69,7 +62,7 @@ class RangeSetFactoryTest extends FreeSpec {
         }
       }
       "given the range set is empty" - {
-        val rangeSet = DummyRangeSetFactory.empty[Int, Int.type]
+        val rangeSet = DummyRangeSetFactory.empty[Int]
         "#apply(otherRangeSet) should return an empty range set" in {
           val copy = DummyRangeSetFactory(rangeSet)
           copy should be(rangeSet)
@@ -82,5 +75,5 @@ class RangeSetFactoryTest extends FreeSpec {
 }
 
 private[mango] object DummyRangeSetFactory extends RangeSetFactory[RangeSet] {
-  def newBuilder[C, O <: Ordering[C]](implicit ord: O): Builder[Range[C, O], RangeSet[C, O]] = ImmutableRangeSetWrapper.newBuilder[C, O]
+  def newBuilder[C](implicit ord: Ordering[C]): Builder[Range[C], RangeSet[C]] = ImmutableRangeSetWrapper.newBuilder[C]
 }

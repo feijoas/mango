@@ -22,24 +22,15 @@
  */
 package org.feijoas.mango.common.collect
 
-import scala.annotation.meta.beanGetter
-import scala.annotation.meta.beanSetter
-import scala.annotation.meta.field
-import scala.annotation.meta.getter
-import scala.annotation.meta.setter
-import scala.collection.mutable.Builder
-import scala.math.Ordering.Int
-
-import org.feijoas.mango.common.annotations.Beta
-import org.feijoas.mango.common.collect.BoundType.Closed
-import org.feijoas.mango.common.collect.BoundType.Open
+import org.feijoas.mango.common.collect.BoundType.{Closed, Open}
 import org.mockito.Mockito.when
 import org.scalatest.FreeSpec
-import org.scalatest.Matchers.be
-import org.scalatest.Matchers.convertToAnyShouldWrapper
-import org.scalatest.Matchers.not
+import org.scalatest.Matchers.{be, convertToAnyShouldWrapper, not}
 import org.scalatest.mock.MockitoSugar
 import org.scalatest.prop.PropertyChecks
+
+import scala.collection.mutable.Builder
+import scala.math.Ordering.Int
 
 
 /** Behavior which all [[RangeSet]] have in common
@@ -47,11 +38,11 @@ import org.scalatest.prop.PropertyChecks
 private[mango] trait RangeSetBehaviors extends FreeSpec with PropertyChecks with MockitoSugar {
   this: FreeSpec =>
 
-  def mutableRangeSet(newBuilder: => Builder[Range[Int, Int.type], mutable.RangeSet[Int, Int.type]]) = {
+  def mutableRangeSet(newBuilder: => Builder[Range[Int], mutable.RangeSet[Int]]) = {
 
     val MIN_BOUND = -1
     val MAX_BOUND = 1
-    val queryBuilder = List.newBuilder[Range[Int, Int.type]]
+    val queryBuilder = List.newBuilder[Range[Int]]
 
     queryBuilder += Range.all()
 
@@ -85,7 +76,7 @@ private[mango] trait RangeSetBehaviors extends FreeSpec with PropertyChecks with
             val rangeSet = newBuilder.result
             rangeSet.add(range)
             val complement = newBuilder.result
-            complement.add(Range.all[Int, Int.type])
+            complement.add(Range.all[Int])
             complement.remove(range)
             rangeSet.complement should be(complement)
           }
@@ -377,7 +368,7 @@ private[mango] trait RangeSetBehaviors extends FreeSpec with PropertyChecks with
           rangeSet.asRanges should be(Set())
         }
         "and the complement should be {(-inf,inf)" in {
-          rangeSet.complement.asRanges should be(Set(Range.all[Int, Int.type]))
+          rangeSet.complement.asRanges should be(Set(Range.all[Int]))
         }
       }
       "if the set contains [3,6] and [2,6] is removed" - {
@@ -389,7 +380,7 @@ private[mango] trait RangeSetBehaviors extends FreeSpec with PropertyChecks with
           rangeSet.asRanges should be(Set())
         }
         "and the complement should be {(-inf,inf)" in {
-          rangeSet.complement.asRanges should be(Set(Range.all[Int, Int.type]))
+          rangeSet.complement.asRanges should be(Set(Range.all[Int]))
         }
       }
       "if the set contains [3,6] and [3,7] is removed" - {
@@ -401,7 +392,7 @@ private[mango] trait RangeSetBehaviors extends FreeSpec with PropertyChecks with
           rangeSet.asRanges should be(Set())
         }
         "and the complement should be {(-inf,inf)" in {
-          rangeSet.complement.asRanges should be(Set(Range.all[Int, Int.type]))
+          rangeSet.complement.asRanges should be(Set(Range.all[Int]))
         }
       }
       "if the set contains [3,6] and [2,7] is removed" - {
@@ -413,7 +404,7 @@ private[mango] trait RangeSetBehaviors extends FreeSpec with PropertyChecks with
           rangeSet.asRanges should be(Set())
         }
         "and the complement should be {(-inf,inf)" in {
-          rangeSet.complement.asRanges should be(Set(Range.all[Int, Int.type]))
+          rangeSet.complement.asRanges should be(Set(Range.all[Int]))
         }
       }
     }
@@ -435,23 +426,23 @@ private[mango] trait RangeSetBehaviors extends FreeSpec with PropertyChecks with
           rangeSet.isEmpty should be(true)
         }
         "the complement must contain (-inf,inf)" in {
-          rangeSet.complement.asRanges should be(Set(Range.all[Int, Int.type]))
+          rangeSet.complement.asRanges should be(Set(Range.all[Int]))
         }
       }
     }
 
   }
 
-  private def testCoalesced[T, O <: Ordering[T]](rangeSet: RangeSet[T, O]): Unit = {
+  private def testCoalesced[T](rangeSet: RangeSet[T]): Unit = {
     val asRanges = rangeSet.asRanges
     (asRanges.drop(1) zip asRanges.dropRight(1)).foreach {
-      case (a: Range[T, O], b: Range[T, O]) => { a.isConnected(b) should be(false) }
+      case (a: Range[T], b: Range[T]) => { a.isConnected(b) should be(false) }
     }
   }
 
-  def rangeSet(newBuilder: => Builder[Range[Int, Int.type], RangeSet[Int, Int.type]]) = {
-    val build: Iterable[Range[Int, Int.type]] => RangeSet[Int, Int.type] = {
-      ranges: Iterable[Range[Int, Int.type]] => (newBuilder ++= ranges).result
+  def rangeSet(newBuilder: => Builder[Range[Int], RangeSet[Int]]) = {
+    val build: Iterable[Range[Int]] => RangeSet[Int] = {
+      ranges: Iterable[Range[Int]] => (newBuilder ++= ranges).result
     }
 
     /*
@@ -664,7 +655,7 @@ private[mango] trait RangeSetBehaviors extends FreeSpec with PropertyChecks with
       "given the RangeSet is empty" - {
         val rangeSet = build(Set())
         "when #complement is called it should return a RangeSet with (-inf, inf)" in {
-          val expected = build(Set(Range.all[Int, Int.type]))
+          val expected = build(Set(Range.all[Int]))
           val complement = rangeSet.complement
           complement should be(expected)
 
@@ -1019,12 +1010,12 @@ private[mango] trait RangeSetBehaviors extends FreeSpec with PropertyChecks with
       "given the RangeSet is empty" - {
         val rangeSet = build(Set())
         "if the other RangeSet is empty it should be equal" in {
-          val mocked = mock[RangeSet[Int, Int.type]]
-          when(mocked.asRanges).thenReturn(Set[Range[Int, Int.type]]())
+          val mocked = mock[RangeSet[Int]]
+          when(mocked.asRanges).thenReturn(Set[Range[Int]]())
           rangeSet should be(mocked)
         }
         "if the other RangeSet contains the ranges {[1,8],[1,3]} it should not be equal" in {
-          val mocked = mock[RangeSet[Int, Int.type]]
+          val mocked = mock[RangeSet[Int]]
           when(mocked.asRanges).thenReturn(Set(Range.closed(1, 8), Range.closed(1, 3)))
           rangeSet should not be (mocked)
         }
@@ -1032,12 +1023,12 @@ private[mango] trait RangeSetBehaviors extends FreeSpec with PropertyChecks with
       "given the RangeSet contains the ranges {[5,8],[1,3)}" - {
         val rangeSet = build(Set(Range.closed(5, 8), Range.closedOpen(1, 3)))
         "if the other RangeSet contains the ranges {[5,8],[1,3)} it should be equal" in {
-          val mocked = mock[RangeSet[Int, Int.type]]
+          val mocked = mock[RangeSet[Int]]
           when(mocked.asRanges).thenReturn(Set(Range.closed(5, 8), Range.closedOpen(1, 3)))
           rangeSet should be(mocked)
         }
         "if the other RangeSet contains the ranges {[1,8],[1,3]} it should not be equal" in {
-          val mocked = mock[RangeSet[Int, Int.type]]
+          val mocked = mock[RangeSet[Int]]
           when(mocked.asRanges).thenReturn(Set(Range.closed(1, 8), Range.closed(1, 3)))
           rangeSet should not be (mocked)
         }
@@ -1060,7 +1051,7 @@ private[mango] trait RangeSetBehaviors extends FreeSpec with PropertyChecks with
     }
   }
 
-  def rangeSetWithBuilder(newBuilder: => Builder[Range[Int, Int.type], RangeSet[Int, Int.type]]) = {
+  def rangeSetWithBuilder(newBuilder: => Builder[Range[Int], RangeSet[Int]]) = {
     "should implement newBuilder" - {
       "given the builder is empty" - {
         val builder = newBuilder
