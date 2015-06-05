@@ -26,7 +26,7 @@ import com.google.common.testing.SerializableTester.reserializeAndAssert
 import org.feijoas.mango.common.collect.Bound.{FiniteBound, InfiniteBound}
 import org.feijoas.mango.common.collect.DiscreteDomain.IntDomain
 import org.scalatest.FlatSpec
-import org.scalatest.Matchers.{be, convertToAnyShouldWrapper}
+import org.scalatest.Matchers.{be, convertToAnyShouldWrapper, noException}
 import org.scalatest.prop.PropertyChecks
 
 import scala.math.Ordering.Int
@@ -445,6 +445,14 @@ private[mango] trait RangeBehaviors extends PropertyChecks {
       range.hasUpperBound should be(true)
     }
 
+    it should "have the lower end point it was created with" in {
+      range.lowerEndPoint should be(start)
+    }
+
+    it should "have the upper end point it was created with" in {
+      range.upperEndPoint should be(end)
+    }
+
     it should "pattern match with 'Range(FiniteBound(start, _), FiniteBound(end, _))'" in {
       range match {
         case Range(FiniteBound(start, _), FiniteBound(end, _)) => // expected
@@ -452,12 +460,20 @@ private[mango] trait RangeBehaviors extends PropertyChecks {
       }
     }
 
+    it should "have a lower bound type" in {
+      noException should be thrownBy range.lowerBoundType
+    }
+
+    it should "have an upper bound type" in {
+      noException should be thrownBy range.upperBoundType
+    }
+
     it should "be displayed as ?start..end?" in {
       val str = range.toString
       str.substring(1, str.length - 1) should be(start + "\u2025" + end)
     }
 
-    it should "not acccept invalid inputs" in {
+    it should "not accept invalid inputs" in {
       intercept[IllegalArgumentException] {
         build(4, 3)
       }
@@ -476,6 +492,10 @@ private[mango] trait RangeBehaviors extends PropertyChecks {
     it should "be displayed as (start..end?" in {
       range.toString.startsWith("(" + start + "\u2025") should be(true)
     }
+
+    it should "be open to the left" in {
+      range.lowerBoundType should be(BoundType.Open)
+    }
   }
 
   def rightOpenBoundedRange(build: (Int, Int) => Range[Int]) = {
@@ -491,6 +511,10 @@ private[mango] trait RangeBehaviors extends PropertyChecks {
       val str = range.toString
       str.endsWith("\u2025" + end + ")") should be(true)
     }
+
+    it should "be open to the right" in {
+      range.upperBoundType should be(BoundType.Open)
+    }
   }
 
   def leftClosedBoundedRange(build: (Int, Int) => Range[Int]) = {
@@ -505,6 +529,10 @@ private[mango] trait RangeBehaviors extends PropertyChecks {
     it should "be displayed as [start..end?" in {
       range.toString.startsWith("[" + start + "\u2025") should be(true)
     }
+
+    it should "be closed to the left" in {
+      range.lowerBoundType should be(BoundType.Closed)
+    }
   }
 
   def rightClosedBoundedRange(build: (Int, Int) => Range[Int]) = {
@@ -518,6 +546,10 @@ private[mango] trait RangeBehaviors extends PropertyChecks {
 
     it should "be displayed as ?start..end]" in {
       range.toString.endsWith("\u2025" + end + "]") should be(true)
+    }
+
+    it should "be closed to the right" in {
+      range.upperBoundType should be(BoundType.Closed)
     }
   }
 
@@ -544,6 +576,18 @@ private[mango] trait RangeBehaviors extends PropertyChecks {
         case _                           => fail
       }
     }
+
+    it should "not have a lower end point" in {
+      intercept[IllegalStateException] {
+        range.lowerEndPoint
+      }
+    }
+
+    it should "not have a lower boundary type" in {
+      intercept[IllegalStateException] {
+        range.lowerBoundType
+      }
+    }
   }
 
   def rightUnboundedRange(build: (Int, Int) => Range[Int]) = {
@@ -567,6 +611,18 @@ private[mango] trait RangeBehaviors extends PropertyChecks {
       range match {
         case Range(lower, InfiniteBound) => // expected
         case _                           => fail
+      }
+    }
+
+    it should "not have an upper end point" in {
+      intercept[IllegalStateException] {
+        range.upperEndPoint
+      }
+    }
+
+    it should "not have an upper boundary type" in {
+      intercept[IllegalStateException] {
+        range.upperBoundType
       }
     }
   }
