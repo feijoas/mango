@@ -277,6 +277,20 @@ final class Range[T] private (private val range: GuavaRange[AsOrdered[T]])(impli
    */
   def hasUpperBound() = range.hasUpperBound
 
+  /** Returns the lower endpoint of this range.
+   *
+    * @throws IllegalStateException if this range is unbounded below (that is,
+    *                               { @link #hasLowerBound()} returns { @code false} )
+   */
+  def lowerEndPoint: T = range.lowerEndpoint().value
+
+  /** Returns the upper endpoint of this range.
+   *
+   * @throws IllegalStateException if this range is unbounded above (that is, { @link
+   *                               #hasUpperBound()} returns { @code false})
+   */
+  def upperEndPoint: T = range.upperEndpoint().value
+
   /** Returns a string representation of this range, such as {@code "[3..5)"} (other examples are
    *  listed in the class documentation).
    */
