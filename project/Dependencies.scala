@@ -1,5 +1,4 @@
 import sbt._
-import Keys._
 
 object Dependencies {
   // this version of guava is used if no cmd-arg is given
@@ -19,7 +18,7 @@ object Dependencies {
   // test dependencies
   val guavaTestlib = "com.google.guava" % "guava-testlib" % guavaDefaulVersion % "test"
   val junit = "junit" % "junit" % "4.11" % "test"
-  val scalatest = "org.scalatest" % "scalatest_2.11" % "2.2.4" % "test"
+  val scalatest = "org.scalatest" %% "scalatest" % "2.2.4" % "test"
   val scalacheck = "org.scalacheck" %% "scalacheck" % "1.12.2" % "test"
   val scalamock = "org.scalamock" %% "scalamock-scalatest-support" % "3.2" % "test"
   val mockito = "org.mockito" % "mockito-core" % "1.9.5" % "test"

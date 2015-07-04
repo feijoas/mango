@@ -1,16 +1,15 @@
+import sbt.Keys._
 import sbt._
-import Keys._
-import Dependencies._
 
 object BuildSettings {
 	
 	val buildOrganization = "org.feijoas"
-	val buildVersion      = "0.11" 
+	val buildVersion      = "0.12"
 	val buildScalaVersion = "2.11.6"
 	val gitHeadCommitSha  = Process("git rev-parse HEAD").lines.head
 	val release           = sys.props("release")=="true"
 
-	val buildSettings = Defaults.defaultSettings ++ 
+	val buildSettings = Defaults.coreDefaultSettings ++
 		org.scalastyle.sbt.ScalastylePlugin.Settings  ++
 		Seq (
 		organization := buildOrganization,
@@ -19,7 +18,8 @@ object BuildSettings {
 		version      := {  if(release) buildVersion 
 						   else buildVersion + "-" + gitHeadCommitSha
 		},
-
+		// Cross-building scala
+		crossScalaVersions := Seq("2.10.4", "2.11.6"),
 		// Scala compiler options
 		scalacOptions  ++= Seq("-encoding", "UTF-8", "-deprecation", "-unchecked", "-Xlint", "-feature","-language:implicitConversions,reflectiveCalls,postfixOps,higherKinds,existentials"),
 		// Scaladoc title
@@ -77,9 +77,9 @@ object Resolvers {
 
 object MangoBuild extends Build {
 
-	import Resolvers._
-	import Dependencies._
 	import BuildSettings._
+	import Dependencies._
+	import Resolvers._
 
 	lazy val mango = Project(
 		"mango", 
