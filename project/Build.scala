@@ -20,8 +20,6 @@ object BuildSettings {
 						   else buildVersion + "-" + gitHeadCommitSha
 		},
 
-		// cross versions
-		crossScalaVersions := Seq("2.11.6", "2.11.7"),
 		// Scala compiler options
 		scalacOptions  ++= Seq("-encoding", "UTF-8", "-deprecation", "-unchecked", "-Xlint", "-feature","-language:implicitConversions,reflectiveCalls,postfixOps,higherKinds,existentials"),
 		// Scaladoc title

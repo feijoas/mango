@@ -149,13 +149,13 @@ Conversions to and from the Guava libraries are done with the `.asJava` and `.as
 
 Just clone the git repository and build Mango in the following way:
 {{{
-  sbt +update
-  sbt +compile
+  sbt update
+  sbt compile
 }}}
 
 Don't forget to test
 {{
-  sbt +test
+  sbt test
 }}
 
 == Help ==
