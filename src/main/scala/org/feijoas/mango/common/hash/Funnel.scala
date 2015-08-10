@@ -28,6 +28,8 @@ import org.feijoas.mango.common.convert.{ AsJava, AsScala }
 
 import com.google.common.hash.{ Funnel => GuavaFunnel, Funnels => GuavaFunnels, PrimitiveSink }
 
+import java.nio.charset.Charset
+
 /** A `Funnel` is a type class for an object which can send data from an object
  *  of type `T` into a `PrimitiveSink`.
  *
@@ -85,14 +87,25 @@ trait Funnel[T] extends Serializable {
  */
 final object Funnel {
 
-  /** A funnel that extracts the characters from a `CharSequence`.
+  /**
+   * Returns a funnel that processes an `Iterable` by funneling its elements in iteration
+   * order with the specified funnel. No separators are added between the elements.
    */
-  implicit val charSeqFunnel: Funnel[CharSequence] = GuavaFunnels.stringFunnel.asScala
-
-  /** A funnel that extracts the characters from a `String`.
+  def sequentialFunnel[E](elementFunnel: Funnel[E]):  Funnel[Iterable[E]] = new SequentialFunnel(elementFunnel)
+   
+  
+ /**
+   * Returns a funnel that encodes the characters of a `CharSequence` with the specified
+   * `Charset`.
    */
-  implicit val stringFunnel: Funnel[String] = StringFunnel
-
+  def stringFunnel(charset: Charset): Funnel[CharSequence] = new StringCharsetFunnel(charset)  
+  
+  /** Returns a funnel that extracts the characters from a `CharSequence`, a character at a
+   * time, without performing any encoding. If you need to use a specific encoding, use
+   * `stringFunnel(Charset)` instead.
+   */
+  implicit val unencodedCharsFunnel: Funnel[CharSequence] = UnencodedCharsFunnel
+ 
   /** Afunnel that extracts the bytes from a `Byte` array.
    */
   implicit val byteArrayFunnel: Funnel[Array[Byte]] = GuavaFunnels.byteArrayFunnel().asScala
@@ -104,7 +117,7 @@ final object Funnel {
   /** A funnel for Longs.
    */
   implicit val longFunnel: Funnel[Long] = LongFunnel
-
+  
   /** Adds an `asJava` method that wraps a Mango `Funnel[T]` in
    *  a Guava `Funnel[T]`.
    *
@@ -166,9 +179,9 @@ private[mango] final object LongFunnel extends Funnel[Long] with Serializable {
 }
 
 @SerialVersionUID(1L)
-private[mango] final object StringFunnel extends Funnel[String] with Serializable {
-  val delegate = GuavaFunnels.stringFunnel()
-  override def funnel(from: String, into: PrimitiveSink) = delegate.funnel(from, into)
+private[mango] final object UnencodedCharsFunnel extends Funnel[CharSequence] with Serializable {
+  val delegate = GuavaFunnels.unencodedCharsFunnel()
+  override def funnel(from: CharSequence, into: PrimitiveSink) = delegate.funnel(from, into)
   override def toString = delegate.toString
 }
 
@@ -178,3 +191,21 @@ private[mango] final object IntFunnel extends Funnel[Int] with Serializable {
   override def funnel(from: Int, into: PrimitiveSink) = delegate.funnel(from, into)
   override def toString = delegate.toString
 }
+
+@SerialVersionUID(1L)
+private[mango] final class StringCharsetFunnel(charset: Charset) extends Funnel[CharSequence] with Serializable {
+  val delegate = GuavaFunnels.stringFunnel(charset)
+  override def funnel(from: CharSequence, into: PrimitiveSink) = delegate.funnel(from, into)
+  override def toString = delegate.toString
+}
+
+@SerialVersionUID(1L)
+private[mango] final class SequentialFunnel[E](elementFunnel:Funnel[E]) extends Funnel[Iterable[E]] with Serializable {
+  import scala.collection.JavaConversions._
+  val guavaElementFunnel:GuavaFunnel[E] = AsGuavaFunnel(elementFunnel)
+  val delegate = GuavaFunnels.sequentialFunnel(guavaElementFunnel)
+  override def funnel(from: Iterable[E], into: PrimitiveSink) = delegate.funnel(asJavaIterable(from), into)
+  override def toString = delegate.toString
+}
+
+
