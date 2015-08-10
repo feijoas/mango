@@ -6,5 +6,8 @@ jdk:
   - oraclejdk7
   - oraclejdk8
 env:
-  - GUAVA_VERSION=14.0
-  - GUAVA_VERSION=14.0.1
+  - GUAVA_VERSION=15.0
+  - GUAVA_VERSION=16.0
+  - GUAVA_VERSION=16.0.1
+  - GUAVA_VERSION=17.0
+  - GUAVA_VERSION=18.0

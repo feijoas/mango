@@ -46,6 +46,8 @@ import com.google.common.hash.PrimitiveSink
 import com.google.common.primitives.Ints
 import com.google.common.testing.SerializableTester
 
+import com.google.common.base.Charsets.UTF_8
+
 /** Tests for [[BloomFilter]]
  *
  *  @author Markus Schneider
@@ -55,19 +57,19 @@ class BloomFilterTest extends FlatSpec with MockitoSugar {
 
   it should "throw an exception if the arguments are out of range" in {
     intercept[IllegalArgumentException] {
-      BloomFilter.create[String](-1)
+      BloomFilter.create[CharSequence](-1)
     }
     intercept[IllegalArgumentException] {
-      BloomFilter.create[String](-1, 0.03)
+      BloomFilter.create[CharSequence](-1, 0.03)
     }
     intercept[IllegalArgumentException] {
-      BloomFilter.create[String](1, 0.0)
+      BloomFilter.create[CharSequence](1, 0.0)
     }
     intercept[IllegalArgumentException] {
-      BloomFilter.create[String](1, 1.0)
+      BloomFilter.create[CharSequence](1, 1.0)
     }
     intercept[NullPointerException] {
-      BloomFilter.create[String](1)(null)
+      BloomFilter.create[CharSequence](1)(null)
     }
   }
 
@@ -75,12 +77,12 @@ class BloomFilterTest extends FlatSpec with MockitoSugar {
     val n = 1000
     val p = 0.00000000000000000000000000000000000000000000000000000000000000000000000000000001
     intercept[IllegalArgumentException] {
-      BloomFilter.create[String](n, p)
+      BloomFilter.create[CharSequence](n, p)
     }
   }
 
   it should "be able to create a copy" in {
-    val original = BloomFilter.create[String](100)
+    val original = BloomFilter.create[CharSequence](100)
     val copy = original.copy
     assertNotSame(original, copy)
     assertEquals(original, copy)
@@ -88,11 +90,11 @@ class BloomFilterTest extends FlatSpec with MockitoSugar {
 
   it should "be equal to another instance with the same elements" in {
 
-    val bf1 = BloomFilter.create[String](100)
+    val bf1 = BloomFilter.create[CharSequence](100)
     bf1.put("1")
     bf1.put("2")
 
-    val bf2 = BloomFilter.create[String](100)
+    val bf2 = BloomFilter.create[CharSequence](100)
     bf2.put("1")
     bf2.put("2")
 
@@ -111,17 +113,18 @@ class BloomFilterTest extends FlatSpec with MockitoSugar {
   }
 
   it should "be serializeable" in {
-    SerializableTester.reserializeAndAssert(BloomFilter.create[String](100))
+    SerializableTester.reserializeAndAssert(BloomFilter.create[CharSequence](100))
     SerializableTester.reserializeAndAssert(BloomFilter.create[Int](100))
     SerializableTester.reserializeAndAssert(BloomFilter.create[Long](100))
     SerializableTester.reserializeAndAssert(BloomFilter.create[Array[Byte]](100))
     SerializableTester.reserializeAndAssert(BloomFilter.create[CharSequence](100))
   }
 
-  it should "handle known false positives" in {
+  it should "handle known false positives" in {   
     val numInsertions = 1000000
-    val bf: BloomFilter[CharSequence] = BloomFilter.create(numInsertions)
-
+    val bf: BloomFilter[CharSequence] = BloomFilter.create(numInsertions,0.03)(Funnel.stringFunnel(UTF_8))
+    
+    
     // Insert "numInsertions" even numbers into the BF.
     // Range(0, numInsertions * 2, 2).view foreach { i => bf.put(i.toString) }   
     // the range is just too slow
@@ -135,19 +138,19 @@ class BloomFilterTest extends FlatSpec with MockitoSugar {
     // Range(0, numInsertions * 2, 2).view foreach { i => bf.mightContain(i.toString) should be(true) }
     i = 0
     while (i < numInsertions * 2) {
-      bf.mightContain(i.toString)
+      bf.mightContain(i.toString) should be (true)
       i = i + 2
     }
 
     // Now we check for known false positives using a set of known false positives.
     // (These are all of the false positives under 900.)
-    val falsePositives = Set(49, 51, 59, 163, 199, 321, 325, 363, 367, 469, 545, 561, 727, 769, 773, 781)
+    val falsePositives = Set(129, 471, 723, 89, 751, 835, 871)
     Range(1, 899, 2) filter { case i => !falsePositives.contains(i) } foreach {
-      case i => bf.mightContain(i.toString) should be(false)
+      case i => assert(bf.mightContain(i.toString) == false, "BF should not contain " + i)
     }
 
-    // Check that there are exactly 29824 false positives for this BF.
-    val knownNumberOfFalsePositives = 29824
+    // Check that there are exactly 29763 false positives for this BF.
+    val knownNumberOfFalsePositives = 29763
     /*val numFpp = Range(1, numInsertions * 2, 2).foldLeft(0) {
       case (acc, i) => {
         bf.mightContain(i.toString) match {
@@ -170,7 +173,7 @@ class BloomFilterTest extends FlatSpec with MockitoSugar {
     val actualFpp = knownNumberOfFalsePositives.asInstanceOf[Double] / numInsertions
     val expectedFpp = bf.expectedFpp
     // The normal order of (expected, actual) is reversed here on purpose.
-    assertEquals(actualFpp, expectedFpp, 0.00015);
+    assertEquals(actualFpp, expectedFpp, 0.00033);
   }
 
   it should "perform basic operations" in {
@@ -194,7 +197,7 @@ class BloomFilterTest extends FlatSpec with MockitoSugar {
 
   it should "true if the bloom filter's bits changed" in {
     for (i <- 0 until 10) {
-      val bf = BloomFilter.create[String](100)
+      val bf = BloomFilter.create[CharSequence](100)
       for (j <- 0 until 10) {
         val value = new Object().toString()
         val mightContain = bf.mightContain(value)

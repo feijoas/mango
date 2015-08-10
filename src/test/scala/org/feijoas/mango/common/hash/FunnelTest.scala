@@ -25,6 +25,7 @@ package org.feijoas.mango.common.hash
 import org.feijoas.mango.common.annotations.Beta
 import org.feijoas.mango.common.hash.Funnel.{ asGuavaFunnel, asScalaFunnel, byteArrayFunnel, intFunnel, longFunnel, stringFunnel }
 import org.mockito.Mockito.verify
+import org.mockito.Mockito
 import org.scalatest.{ FlatSpec, PrivateMethodTester }
 import org.scalatest.matchers.ShouldMatchers
 import org.scalatest.mock.MockitoSugar
@@ -32,6 +33,8 @@ import org.scalatest.prop.GeneratorDrivenPropertyChecks
 import org.scalatest.Matchers._
 
 import com.google.common.hash.{ Funnel => GuavaFunnel, Funnels => GuavaFunnels, PrimitiveSink }
+
+import java.nio.charset.Charset
 
 /** Tests for [[Funnel]]
  *
@@ -71,11 +74,11 @@ class FunnelTest extends FlatSpec with PrivateMethodTester with MockitoSugar {
     verify(primitiveSink).putBytes(Array[Byte](4, 3, 2, 1))
   }
 
-  it should "implement Funnel[String]" in {
+  it should "implement Funnel[CharSequence]" in {
     val primitiveSink = mock[PrimitiveSink]
-    val funnel = implicitly[Funnel[String]]
+    val funnel = implicitly[Funnel[CharSequence]]
     funnel.funnel("test", primitiveSink)
-    verify(primitiveSink).putString("test")
+    verify(primitiveSink).putUnencodedChars("test")
   }
 
   it should "implement Funnel[Int]" in {
@@ -91,4 +94,33 @@ class FunnelTest extends FlatSpec with PrivateMethodTester with MockitoSugar {
     funnel.funnel(1234, primitiveSink)
     verify(primitiveSink).putLong(1234)
   }
+  
+  it should "implement Funnel[CharSequence] with Charset" in {
+    import scala.collection.JavaConversions._
+    val primitiveSink = mock[PrimitiveSink]
+    for(charset <- Charset.availableCharsets().values()){
+      val funnel = Funnel.stringFunnel(charset)
+      funnel.funnel("test", primitiveSink)
+      verify(primitiveSink).putString("test",charset)
+    }
+  }  
+  
+  it should "throw an expection if null is passed to stringFunnel(charset)" in {
+    intercept[NullPointerException]{
+      Funnel.stringFunnel(null)
+    }
+  } 
+  
+  it should "implement Funnel[Iterable]" in {
+    val elementFunnel: Funnel[Object] = mock[Funnel[Object]];
+    val primitiveSink = mock[PrimitiveSink]
+    val funnel = Funnel.sequentialFunnel(elementFunnel)
+    funnel.funnel(List("foo", "bar", "baz", "quux"), primitiveSink)
+    val inOrder = Mockito.inOrder(elementFunnel)
+    inOrder.verify(elementFunnel).funnel("foo", primitiveSink)
+    inOrder.verify(elementFunnel).funnel("bar", primitiveSink)
+    inOrder.verify(elementFunnel).funnel("baz", primitiveSink)
+    inOrder.verify(elementFunnel).funnel("quux", primitiveSink)
+  }   
+  
 }

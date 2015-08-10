@@ -8,3 +8,5 @@ project/boot/
 .settings
 .history
 .metadata
+.cache-main
+.cache-tests
