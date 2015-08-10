@@ -5,8 +5,8 @@ import Dependencies._
 object BuildSettings {
 	
 	val buildOrganization = "org.feijoas"
-	val buildVersion      = "0.11" 
-	val buildScalaVersion = "2.11.6"
+	val buildVersion      = "0.12" 
+	val buildScalaVersion = "2.11.7"
 	val gitHeadCommitSha  = Process("git rev-parse HEAD").lines.head
 	val release           = sys.props("release")=="true"
 
@@ -20,6 +20,8 @@ object BuildSettings {
 						   else buildVersion + "-" + gitHeadCommitSha
 		},
 
+		// cross versions
+		crossScalaVersions := Seq("2.11.6", "2.11.7"),
 		// Scala compiler options
 		scalacOptions  ++= Seq("-encoding", "UTF-8", "-deprecation", "-unchecked", "-Xlint", "-feature","-language:implicitConversions,reflectiveCalls,postfixOps,higherKinds,existentials"),
 		// Scaladoc title
