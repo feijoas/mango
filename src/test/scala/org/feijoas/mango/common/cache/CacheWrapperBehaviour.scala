@@ -137,7 +137,7 @@ trait CacheWrapperBehaviour extends Matchers { this: FlatSpec =>
    */
   def anyIterableWith[T](elements: Any*) = argThat(new ArgumentMatcher[java.lang.Iterable[T]] {
     val expected = List(elements.seq: _*)
-    override def matches(arg: Any) = arg match {
+    override def matches(arg: java.lang.Iterable[T]) = arg match {
       case it: java.lang.Iterable[_] => expected sameElements it.iterator().toList
       case _                         => false
     }
