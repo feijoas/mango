@@ -25,7 +25,7 @@ package org.feijoas.mango.common.cache
 import org.feijoas.mango.common.annotations.Beta
 import org.feijoas.mango.common.cache.Cache._
 import org.scalatest._
-import org.scalatest.mock.MockitoSugar
+import org.scalatest.mockito.MockitoSugar
 import org.junit.Assert._
 import com.google.common.cache.{ Cache => GuavaCache }
 

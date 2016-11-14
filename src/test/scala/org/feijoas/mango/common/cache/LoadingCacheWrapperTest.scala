@@ -38,7 +38,7 @@ import org.junit.Assert.{ assertSame, assertEquals, assertTrue }
 import org.mockito.ArgumentMatchers._
 import org.mockito.Mockito.{ times, verify, when }
 import org.scalatest._
-import org.scalatest.mock.MockitoSugar
+import org.scalatest.mockito.MockitoSugar
 import com.google.common.cache.CacheLoader.InvalidCacheLoadException
 import com.google.common.cache.{ LoadingCache => GuavaLoadingCache }
 import com.google.common.testing.FakeTicker
@@ -1273,9 +1273,9 @@ class LoadingCacheWrapperTest extends FlatSpec
     gettersStartedSignal.countDown()
     gettersComplete.await()
 
-    var resultList = mutable.LinkedList[AnyRef]()
+    var resultList = mutable.MutableList[AnyRef]()
     for (i <- (0 until nThreads)) {
-      resultList = resultList append mutable.LinkedList(result.get(i))
+      resultList = resultList ++ mutable.MutableList(result.get(i))
     }
     return List.empty ++ resultList
   }

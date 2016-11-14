@@ -30,7 +30,7 @@ import scala.util.{ Try, Success, Failure }
 import org.feijoas.mango.common.util.concurrent.Futures._
 import org.junit.Assert.assertEquals
 import org.scalatest._
-import org.scalatest.mock.MockitoSugar
+import org.scalatest.mockito.MockitoSugar
 import org.scalatest.prop.PropertyChecks
 import com.google.common.util.concurrent.{ ListenableFuture, ListenableFutureTask }
 import com.google.common.util.concurrent.{ Futures => GuavaFutures }

@@ -27,7 +27,7 @@ import org.feijoas.mango.common.hash.Funnel.{ asGuavaFunnel, asScalaFunnel, byte
 import org.mockito.Mockito.verify
 import org.scalatest.{ FlatSpec, PrivateMethodTester }
 import org.scalatest.matchers._
-import org.scalatest.mock.MockitoSugar
+import org.scalatest.mockito.MockitoSugar
 import org.scalatest.prop.GeneratorDrivenPropertyChecks
 import org.scalatest.Matchers._
 

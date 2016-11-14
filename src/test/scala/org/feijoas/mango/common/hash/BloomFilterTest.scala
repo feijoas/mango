@@ -40,13 +40,14 @@ import org.scalatest.FlatSpec
 import org.scalatest.Matchers.be
 import org.scalatest.Matchers.convertToAnyShouldWrapper
 import org.scalatest.Matchers.not
-import org.scalatest.mock.MockitoSugar
+import org.scalatest.mockito.MockitoSugar
 
 import com.google.common.hash.PrimitiveSink
 import com.google.common.primitives.Ints
 import com.google.common.testing.SerializableTester
 
-/** Tests for [[BloomFilter]]
+/**
+ * Tests for [[BloomFilter]]
  *
  *  @author Markus Schneider
  *  @since 0.6 (copied from guava-libraries)
@@ -123,7 +124,7 @@ class BloomFilterTest extends FlatSpec with MockitoSugar {
     val bf: BloomFilter[CharSequence] = BloomFilter.create(numInsertions)
 
     // Insert "numInsertions" even numbers into the BF.
-    // Range(0, numInsertions * 2, 2).view foreach { i => bf.put(i.toString) }   
+    // Range(0, numInsertions * 2, 2).view foreach { i => bf.put(i.toString) }
     // the range is just too slow
     var i = 0
     while (i < numInsertions * 2) {
