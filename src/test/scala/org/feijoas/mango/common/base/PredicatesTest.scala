@@ -23,17 +23,18 @@
 package org.feijoas.mango.common.base
 
 import org.feijoas.mango.common.base.Predicates._
-import org.scalatest.{ FlatSpec, ShouldMatchers }
+import org.scalatest._
 import org.scalatest.prop.PropertyChecks
 import com.google.common.base.{ Predicates => GuavaPredicates }
 import com.google.common.base.{ Predicate => GuavaPredicate }
 
-/** Tests for [[Predicates]]
+/**
+ * Tests for [[Predicates]]
  *
  *  @author Markus Schneider
  *  @since 0.7 (copied from guava-libraries)
  */
-class PredicatesTest extends FlatSpec with ShouldMatchers with PropertyChecks {
+class PredicatesTest extends FlatSpec with Matchers with PropertyChecks {
 
   val isEven = (n: Int) => n % 2 == 0
   val isOdd = (n: Int) => n % 2 != 0

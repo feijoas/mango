@@ -26,14 +26,15 @@ import org.feijoas.mango.common.annotations.Beta
 import org.feijoas.mango.common.hash.Funnel.{ asGuavaFunnel, asScalaFunnel, byteArrayFunnel, intFunnel, longFunnel, stringFunnel }
 import org.mockito.Mockito.verify
 import org.scalatest.{ FlatSpec, PrivateMethodTester }
-import org.scalatest.matchers.ShouldMatchers
+import org.scalatest.matchers._
 import org.scalatest.mock.MockitoSugar
 import org.scalatest.prop.GeneratorDrivenPropertyChecks
 import org.scalatest.Matchers._
 
 import com.google.common.hash.{ Funnel => GuavaFunnel, Funnels => GuavaFunnels, PrimitiveSink }
 
-/** Tests for [[Funnel]]
+/**
+ * Tests for [[Funnel]]
  *
  *  @author Markus Schneider
  *  @since 0.6 (copied from guava-libraries)
@@ -49,7 +50,7 @@ class FunnelTest extends FlatSpec with PrivateMethodTester with MockitoSugar {
   it should "convert from Mango to Guava" in {
     val mango: Funnel[Int] = implicitly[Funnel[Int]]
     val guava: GuavaFunnel[Int] = mango.asJava
-    // enough if the compiler does not complain    
+    // enough if the compiler does not complain
   }
 
   it should "not wrap a Guava Funnel twice" in {

@@ -26,16 +26,17 @@ import java.util.concurrent.TimeUnit
 import scala.collection.Traversable
 import scala.concurrent.future
 import org.feijoas.mango.common.cache.CacheLoader._
-import org.scalatest.{ FlatSpec, ShouldMatchers }
+import org.scalatest._
 import com.google.common.cache.{ CacheLoader => GuavaCacheLoader }
 import com.google.common.collect.{ ImmutableMap, Lists }
 
-/** Tests for [[CacheLoaderWrapper]]
+/**
+ * Tests for [[CacheLoaderWrapper]]
  *
  *  @author Markus Schneider
  *  @since 0.7
  */
-class CacheLoaderWrapperTest extends FlatSpec with ShouldMatchers {
+class CacheLoaderWrapperTest extends FlatSpec with Matchers {
 
   behavior of "CacheLoaderWrapper"
 
@@ -70,7 +71,8 @@ class CacheLoaderWrapperTest extends FlatSpec with ShouldMatchers {
 
 }
 
-/** We need this helper until there is mocking support for Scala
+/**
+ * We need this helper until there is mocking support for Scala
  */
 private[mango] case class CountingCacheLoader(var loadCnt: Int = 0, var reloadCnt: Int = 0, var loadAllCnt: Int = 0)
     extends CacheLoader[Int, Int] {

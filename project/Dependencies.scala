@@ -3,7 +3,7 @@ import Keys._
 
 object Dependencies {
   // this version of guava is used if no cmd-arg is given
-  val guavaDefaulVersion = "15.0"
+  val guavaDefaulVersion = "20.0"
 
   // set guava version by cmd-arg or default
   val guavaVersion = {
@@ -18,11 +18,11 @@ object Dependencies {
 
   // test dependencies
   val guavaTestlib = "com.google.guava" % "guava-testlib" % guavaDefaulVersion % "test"
-  val junit = "junit" % "junit" % "4.11" % "test"
-  val scalatest = "org.scalatest" % "scalatest_2.10" % "2.0.M8" % "test"
-  val scalacheck = "org.scalacheck" %% "scalacheck" % "1.10.1" % "test"
-  val scalamock = "org.scalamock" %% "scalamock-scalatest-support" % "3.0.1" % "test"
-  val mockito = "org.mockito" % "mockito-core" % "1.9.5" % "test"
+  val junit = "junit" % "junit" % "4.12" % "test"
+  val scalatest = "org.scalatest" %% "scalatest" % "3.0.0" % "test"
+  val scalacheck = "org.scalacheck" %% "scalacheck" % "1.13.4" % "test"
+  val scalamock = "org.scalamock" %% "scalamock-scalatest-support" % "3.2.2" % "test"
+  val mockito = "org.mockito" % "mockito-core" % "2.2.11" % "test"
 
   val deps = Seq(guava, findbugs, guavaTestlib, junit, scalatest, scalacheck, scalamock, mockito)
 }

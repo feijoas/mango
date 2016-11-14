@@ -30,20 +30,23 @@ import scala.collection.convert.WrapAsScala.asScalaIterator
 
 import org.feijoas.mango.common.annotations.Beta
 import org.junit.Assert.assertSame
-import org.mockito.{ ArgumentMatcher, Matchers }
-import org.mockito.Matchers.{ argThat, isA }
-import org.mockito.Mockito.{ verify, when }
-import org.scalatest.{ FlatSpec, ShouldMatchers }
+import org.mockito.Matchers._
+import org.mockito.ArgumentMatchers._
+import org.mockito.ArgumentMatchers
+import org.mockito.ArgumentMatcher
+import org.mockito.Mockito._
+import org.scalatest._
 
 import com.google.common.cache.{ Cache => GuavaCache, CacheStats => GuavaCacheStats }
 import com.google.common.collect.ImmutableMap
 
-/** Shared tests for all CacheWrapper
+/**
+ * Shared tests for all CacheWrapper
  *
  *  @author Markus Schneider
  *  @since 0.7
  */
-trait CacheWrapperBehaviour extends ShouldMatchers { this: FlatSpec =>
+trait CacheWrapperBehaviour extends Matchers { this: FlatSpec =>
 
   def forwardingWrapper(mockedFixture: => (GuavaCache[String, Int], Cache[String, Int])) = {
 
@@ -58,9 +61,9 @@ trait CacheWrapperBehaviour extends ShouldMatchers { this: FlatSpec =>
 
     it should "forward #getOrElseUpdate to the underlying LoadingCache" in {
       val (wrapped, cache) = mockedFixture
-      when(wrapped.get(Matchers.eq("foo"), isA(classOf[Callable[Int]]))).thenReturn(4)
+      when(wrapped.get(ArgumentMatchers.eq("foo"), isA(classOf[Callable[Int]]))).thenReturn(4)
       cache.getOrElseUpdate("foo", () => 4) should be(4)
-      verify(wrapped).get(Matchers.eq("foo"), isA(classOf[Callable[Int]]))
+      verify(wrapped).get(ArgumentMatchers.eq("foo"), isA(classOf[Callable[Int]]))
     }
 
     it should "forward #getAllPresent to the underlying LoadingCache" in {
@@ -128,7 +131,8 @@ trait CacheWrapperBehaviour extends ShouldMatchers { this: FlatSpec =>
     }
   }
 
-  /** creates a Mockito `ArgumentMatcher` which checks that the `Iterable` to match
+  /**
+   * creates a Mockito `ArgumentMatcher` which checks that the `Iterable` to match
    *  has the provided elements
    */
   def anyIterableWith[T](elements: Any*) = argThat(new ArgumentMatcher[java.lang.Iterable[T]] {

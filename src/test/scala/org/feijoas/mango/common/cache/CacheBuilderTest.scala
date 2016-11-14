@@ -24,8 +24,8 @@ package org.feijoas.mango.common.cache
 
 import java.util.concurrent.TimeUnit.NANOSECONDS
 import java.util.concurrent.TimeUnit.SECONDS
+import java.util.concurrent.atomic.AtomicInteger
 
-import scala.actors.threadpool.AtomicInteger
 import scala.annotation.meta.beanGetter
 import scala.annotation.meta.beanSetter
 import scala.annotation.meta.field
@@ -41,9 +41,10 @@ import org.scalatest.Matchers.convertToAnyShouldWrapper
 import org.scalatest.Matchers.not
 import org.scalatest.PrivateMethodTester
 
-import com.google.common.cache.{CacheBuilder => GuavaCacheBuilder}
+import com.google.common.cache.{ CacheBuilder => GuavaCacheBuilder }
 
-/** Tests for [[CacheBuilder]]
+/**
+ * Tests for [[CacheBuilder]]
  *
  *  @author Markus Schneider
  *  @since 0.7 (copied from guava-libraries)
@@ -63,7 +64,7 @@ class CacheBuilderTest extends FlatSpec with PrivateMethodTester {
   }
 
   it should "be contravariant in both types" in {
-    // compiler must not complain    
+    // compiler must not complain
     val superBuilder: CacheBuilder[Any, Any] = CacheBuilder.newBuilder
     val subBuilder: CacheBuilder[String, Int] = superBuilder
     val guavaBuilder: GuavaCacheBuilder[String, Int] = CacheBuilder.createGuavaBuilder(subBuilder)
@@ -420,11 +421,12 @@ class CacheBuilderTest extends FlatSpec with PrivateMethodTester {
   }
 }
 
-/** {@link RemovalListener} that counts each {@link RemovalNotification} it receives, and provides
+/**
+ * {@link RemovalListener} that counts each {@link RemovalNotification} it receives, and provides
  *  access to the most-recently received one.
  */
 private case class CountingRemovalListener[K, V](val count: AtomicInteger = new AtomicInteger)
-  extends (RemovalNotification[K, V] => Unit) {
+    extends (RemovalNotification[K, V] => Unit) {
   @volatile var lastNotification: RemovalNotification[K, V] = null
 
   override def apply(notification: RemovalNotification[K, V]): Unit = onRemoval(notification)
@@ -439,7 +441,8 @@ private case class CountingRemovalListener[K, V](val count: AtomicInteger = new 
   def getCount = count.get
 }
 
-/** Returns a {@code new Object()} for every request, and increments a counter for every request.
+/**
+ * Returns a {@code new Object()} for every request, and increments a counter for every request.
  *  The count is accessible via {@link #getCount}.
  */
 private case class CountingLoader() extends CacheLoader[Any, Any] {

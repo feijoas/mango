@@ -35,9 +35,9 @@ import org.feijoas.mango.common.base.Ticker.asMangoTickerConverter
 import org.feijoas.mango.common.cache.LoadingCache.asMangoLoadingCacheConverter
 import org.feijoas.mango.common.util.concurrent.Futures.asScalaFutureConverter
 import org.junit.Assert.{ assertSame, assertEquals, assertTrue }
-import org.mockito.Matchers.isA
+import org.mockito.ArgumentMatchers._
 import org.mockito.Mockito.{ times, verify, when }
-import org.scalatest.{ FlatSpec, ShouldMatchers }
+import org.scalatest._
 import org.scalatest.mock.MockitoSugar
 import com.google.common.cache.CacheLoader.InvalidCacheLoadException
 import com.google.common.cache.{ LoadingCache => GuavaLoadingCache }
@@ -54,14 +54,15 @@ import java.util.concurrent.CountDownLatch
 import java.io.IOException
 import java.util.concurrent.atomic.AtomicReferenceArray
 
-/** Tests for [[LoadingCacheWrapperTest]]
+/**
+ * Tests for [[LoadingCacheWrapperTest]]
  *
  *  @author Markus Schneider
  *  @since 0.7
  */
 class LoadingCacheWrapperTest extends FlatSpec
     with CacheWrapperBehaviour
-    with ShouldMatchers
+    with Matchers
     with MockitoSugar
     with CacheStatsMatcher
     with BeforeAndAfter {
@@ -1014,7 +1015,7 @@ class LoadingCacheWrapperTest extends FlatSpec
       if (oldValue == None) {
         expectedComputations = expectedComputations + 1
       }
-      ref = new WeakReference[AnyRef](cache.getUnchecked(1))
+      ref = new WeakReference[AnyRef](cache.getUnchecked(1).asInstanceOf[AnyRef])
       oldValue = None
       Thread.sleep(i)
       System.gc()
@@ -1028,7 +1029,7 @@ class LoadingCacheWrapperTest extends FlatSpec
         expectedComputations = expectedComputations + 1
       }
       cache.refresh(1)
-      ref = new WeakReference[AnyRef](map.get(1).get)
+      ref = new WeakReference[AnyRef](map.get(1).get.asInstanceOf[AnyRef])
       oldValue = None
       Thread.sleep(i)
       System.gc()
@@ -1051,7 +1052,8 @@ class LoadingCacheWrapperTest extends FlatSpec
     testConcurrentLoadingCheckedException(builder)
   }
 
-  /** On a successful concurrent computation, only one thread does the work,
+  /**
+   * On a successful concurrent computation, only one thread does the work,
    *  but all the threads get the same result.
    */
   private def testConcurrentLoadingDefault(builder: CacheBuilder[Any, Any]) = {
@@ -1076,7 +1078,8 @@ class LoadingCacheWrapperTest extends FlatSpec
     }
   }
 
-  /** On a concurrent computation that returns null, all threads should get an
+  /**
+   * On a concurrent computation that returns null, all threads should get an
    *  InvalidCacheLoadException, with the loader only called once. The result
    *  should not be cached (a later request should call the loader again).
    */
@@ -1112,7 +1115,8 @@ class LoadingCacheWrapperTest extends FlatSpec
     callCount.get() should be(2)
   }
 
-  /** On a concurrent computation that throws an unchecked exception, all
+  /**
+   * On a concurrent computation that throws an unchecked exception, all
    *  threads should get the (wrapped) exception, with the loader called only
    *  once. The result should not be cached (a later request should call the
    *  loader again).
@@ -1159,7 +1163,8 @@ class LoadingCacheWrapperTest extends FlatSpec
     callCount.get() should be(2)
   }
 
-  /** On a concurrent computation that throws a checked exception, all threads
+  /**
+   * On a concurrent computation that throws a checked exception, all threads
    *  should get the (wrapped) exception, with the loader called only once. The
    *  result should not be cached (a later request should call the loader
    *  again).
@@ -1217,7 +1222,8 @@ class LoadingCacheWrapperTest extends FlatSpec
     callCount.get() should be(2)
   }
 
-  /** Test-helper method that performs {@code nThreads} concurrent calls to
+  /**
+   * Test-helper method that performs {@code nThreads} concurrent calls to
    *  {@code cache.get(key)} or {@code cache.getUnchecked(key)}, and returns a
    *  List containing each of the results. The result for any given call to
    *  {@code cache.get} or {@code cache.getUnchecked} is the value returned, or

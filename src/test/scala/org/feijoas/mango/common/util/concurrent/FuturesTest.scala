@@ -29,19 +29,20 @@ import scala.concurrent.duration.MILLISECONDS
 import scala.util.{ Try, Success, Failure }
 import org.feijoas.mango.common.util.concurrent.Futures._
 import org.junit.Assert.assertEquals
-import org.scalatest.{ FlatSpec, ShouldMatchers }
+import org.scalatest._
 import org.scalatest.mock.MockitoSugar
 import org.scalatest.prop.PropertyChecks
 import com.google.common.util.concurrent.{ ListenableFuture, ListenableFutureTask }
 import com.google.common.util.concurrent.{ Futures => GuavaFutures }
 import scala.concurrent.duration.Duration
 
-/** Tests for [[Future]] helper
+/**
+ * Tests for [[Future]] helper
  *
  *  @author Markus Schneider
  *  @since 0.7
  */
-class FuturesTest extends FlatSpec with ShouldMatchers with PropertyChecks with MockitoSugar {
+class FuturesTest extends FlatSpec with Matchers with PropertyChecks with MockitoSugar {
 
   behavior of "ListenableFuture wrapper"
 
@@ -166,7 +167,7 @@ class FuturesTest extends FlatSpec with ShouldMatchers with PropertyChecks with 
     execute(delegate)
     Await.ready(future, Duration(100, MILLISECONDS))
 
-    // check number of invocations 
+    // check number of invocations
     successLatch.await(100, TimeUnit.MILLISECONDS)
     successLatch.getCount() should be(0)
   }
@@ -192,7 +193,7 @@ class FuturesTest extends FlatSpec with ShouldMatchers with PropertyChecks with 
     execute(delegate)
     Await.ready(future, Duration(100, MILLISECONDS))
 
-    // check number of invocations 
+    // check number of invocations
     failureLatch.await(100, TimeUnit.MILLISECONDS)
     failureLatch.getCount() should be(0)
   }

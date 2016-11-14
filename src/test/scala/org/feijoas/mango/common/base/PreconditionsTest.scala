@@ -22,24 +22,23 @@
  */
 package org.feijoas.mango.common.base
 
-import org.feijoas.mango.common.base.Preconditions.{checkArgument, checkElementIndex, checkNotNull, checkPositionIndex, checkPositionIndexes, checkState}
-import org.scalatest.{FlatSpec, ShouldMatchers}
+import org.feijoas.mango.common.base.Preconditions.{ checkArgument, checkElementIndex, checkNotNull, checkPositionIndex, checkPositionIndexes, checkState }
+import org.scalatest._
 
-/** Tests for [[Precondition]]
+/**
+ * Tests for [[Precondition]]
  *
  *  @author Markus Schneider
  *  @since 0.7 (copied from guava-libraries)
  */
-class PreconditionsTest extends FlatSpec with ShouldMatchers {
+class PreconditionsTest extends FlatSpec with Matchers {
 
   "checkArgument called with true" should "success" in {
     checkArgument(true)
   }
 
   "checkArgument called with false" should "fail" in {
-    evaluating {
-      checkArgument(false)
-    } should produce[IllegalArgumentException]
+    an[IllegalArgumentException] should be thrownBy checkArgument(false)
   }
 
   "checkArgument called with true" should "ignore the second arg" in {
@@ -47,19 +46,15 @@ class PreconditionsTest extends FlatSpec with ShouldMatchers {
   }
 
   "checkArgument" should "put the msg into exception" in {
-    val thrown = evaluating {
+    the[IllegalArgumentException] thrownBy {
       checkArgument(false, new Message())
-    } should produce[IllegalArgumentException]
-
-    thrown should have('message("A message"))
+    } should have message "A message"
   }
 
   "checkArgument" should "put 'null' into exception if called with null" in {
-    val thrown = evaluating {
+    the[IllegalArgumentException] thrownBy {
       checkArgument(false, null)
-    } should produce[IllegalArgumentException]
-
-    thrown should have('message("null"))
+    } should have message "null"
   }
 
   "checkArgument called with true" should "ignore the third arg" in {
@@ -68,12 +63,9 @@ class PreconditionsTest extends FlatSpec with ShouldMatchers {
 
   "checkArgument" should "format message" in {
     val format = "I ate %s pies."
-
-    val thrown = evaluating {
+    the[IllegalArgumentException] thrownBy {
       checkArgument(false, format, 5)
-    } should produce[IllegalArgumentException]
-
-    thrown should have('message("I ate 5 pies."))
+    } should have message "I ate 5 pies."
   }
 
   "checkState called with true" should "success" in {
@@ -81,9 +73,7 @@ class PreconditionsTest extends FlatSpec with ShouldMatchers {
   }
 
   "checkState called with false" should "fail" in {
-    evaluating {
-      checkState(false)
-    } should produce[IllegalStateException]
+    an[IllegalStateException] should be thrownBy checkState(false)
   }
 
   "checkState called with true" should "ignore the second arg" in {
@@ -91,19 +81,15 @@ class PreconditionsTest extends FlatSpec with ShouldMatchers {
   }
 
   "checkState" should "put the msg into exception" in {
-    val thrown = evaluating {
+    the[IllegalStateException] thrownBy {
       checkState(false, new Message())
-    } should produce[IllegalStateException]
-
-    thrown should have('message("A message"))
+    } should have message "A message"
   }
 
   "checkState" should "put 'null' into exception if called with null" in {
-    val thrown = evaluating {
+    the[IllegalStateException] thrownBy {
       checkState(false, null)
-    } should produce[IllegalStateException]
-
-    thrown should have('message("null"))
+    } should have message "null"
   }
 
   "checkState called with true" should "ignore the third arg" in {
@@ -112,12 +98,9 @@ class PreconditionsTest extends FlatSpec with ShouldMatchers {
 
   "checkState" should "format message" in {
     val format = "I ate %s pies."
-
-    val thrown = evaluating {
+    the[IllegalStateException] thrownBy {
       checkState(false, format, 5)
-    } should produce[IllegalStateException]
-
-    thrown should have('message("I ate 5 pies."))
+    } should have message "I ate 5 pies."
   }
 
   val NON_NULL_STRING = "foo";
@@ -127,9 +110,7 @@ class PreconditionsTest extends FlatSpec with ShouldMatchers {
   }
 
   "checkNotNull" should "should fail on null" in {
-    evaluating {
-      checkNotNull(null)
-    } should produce[NullPointerException]
+    an[NullPointerException] should be thrownBy checkNotNull(null)
   }
 
   "successfull checkNotNull" should "ignore the second arg" in {
@@ -137,11 +118,9 @@ class PreconditionsTest extends FlatSpec with ShouldMatchers {
   }
 
   "checkNotNull" should "put the msg into exception" in {
-    val thrown = evaluating {
+    the[NullPointerException] thrownBy {
       checkNotNull(null, new Message())
-    } should produce[NullPointerException]
-
-    thrown should have('message("A message"))
+    } should have message "A message"
   }
 
   "successfull checkNotNull" should "ignore the third arg" in {
@@ -150,12 +129,9 @@ class PreconditionsTest extends FlatSpec with ShouldMatchers {
 
   "checkNotNull" should "format message" in {
     val format = "I ate %s pies."
-
-    val thrown = evaluating {
+    the[NullPointerException] thrownBy {
       checkNotNull(null, format, 5)
-    } should produce[NullPointerException]
-
-    thrown should have('message("I ate 5 pies."))
+    } should have message "I ate 5 pies."
   }
 
   "checkElementIndex" should "return the index on success" in {
@@ -165,41 +141,29 @@ class PreconditionsTest extends FlatSpec with ShouldMatchers {
   }
 
   "checkElementIndex" should "fail if size is neg" in {
-    evaluating {
-      checkElementIndex(1, -1)
-    } should produce[IllegalArgumentException]
+    an[IllegalArgumentException] should be thrownBy checkElementIndex(1, -1)
   }
 
   "checkElementIndex" should "fail if index is neg" in {
-    val thrown = evaluating {
+    the[IndexOutOfBoundsException] thrownBy {
       checkElementIndex(-1, 1)
-    } should produce[IndexOutOfBoundsException]
-
-    thrown should have('message("index (-1) must not be negative"))
+    } should have message "index (-1) must not be negative"
   }
 
   "checkElementIndex" should "fail index is too high " in {
-    val thrown = evaluating {
-      checkElementIndex(1, 1)
-    } should produce[IndexOutOfBoundsException]
-
-    thrown should have('message("index (1) must be less than size (1)"))
+    an[IndexOutOfBoundsException] should be thrownBy checkElementIndex(1, 1)
   }
 
   "checkElementIndex with desc" should "fail if size is neg" in {
-    val thrown = evaluating {
+    the[IndexOutOfBoundsException] thrownBy {
       checkElementIndex(-1, 1, "desc")
-    } should produce[IndexOutOfBoundsException]
-
-    thrown should have('message("desc (-1) must not be negative"))
+    } should have message "desc (-1) must not be negative"
   }
 
   "checkElementIndex with desc" should "fail index is too high " in {
-    val thrown = evaluating {
+    the[IndexOutOfBoundsException] thrownBy {
       checkElementIndex(1, 1, "desc")
-    } should produce[IndexOutOfBoundsException]
-
-    thrown should have('message("desc (1) must be less than size (1)"))
+    } should have message "desc (1) must be less than size (1)"
   }
 
   "checkPositionIndex" should "return the index on success" in {
@@ -209,41 +173,31 @@ class PreconditionsTest extends FlatSpec with ShouldMatchers {
   }
 
   "checkPositionIndex" should "fail if size is neg" in {
-    evaluating {
-      checkPositionIndex(1, -1)
-    } should produce[IllegalArgumentException]
+    an[IllegalArgumentException] should be thrownBy checkPositionIndex(1, -1)
   }
 
   "checkPositionIndex" should "fail if index is neg" in {
-    val thrown = evaluating {
+    the[IndexOutOfBoundsException] thrownBy {
       checkPositionIndex(-1, 1)
-    } should produce[IndexOutOfBoundsException]
-
-    thrown should have('message("index (-1) must not be negative"))
+    } should have message "index (-1) must not be negative"
   }
 
   "checkPositionIndex" should "fail if index is too high" in {
-    val thrown = evaluating {
+    the[IndexOutOfBoundsException] thrownBy {
       checkPositionIndex(2, 1)
-    } should produce[IndexOutOfBoundsException]
-
-    thrown should have('message("index (2) must not be greater than size (1)"))
+    } should have message "index (2) must not be greater than size (1)"
   }
 
   "checkPositionIndex with desc" should "fail if index is neg" in {
-    val thrown = evaluating {
+    the[IndexOutOfBoundsException] thrownBy {
       checkPositionIndex(-1, 1, "desc")
-    } should produce[IndexOutOfBoundsException]
-
-    thrown should have('message("desc (-1) must not be negative"))
+    } should have message "desc (-1) must not be negative"
   }
 
   "checkPositionIndex with desc" should "fail if index is too high" in {
-    val thrown = evaluating {
+    the[IndexOutOfBoundsException] thrownBy {
       checkPositionIndex(2, 1, "desc")
-    } should produce[IndexOutOfBoundsException]
-
-    thrown should have('message("desc (2) must not be greater than size (1)"))
+    } should have message "desc (2) must not be greater than size (1)"
   }
 
   "checkPositionIndexes" should "pass with good values" in {
@@ -254,33 +208,25 @@ class PreconditionsTest extends FlatSpec with ShouldMatchers {
   }
 
   "checkPositionIndexes" should "fail if size is neg" in {
-    evaluating {
-      checkPositionIndexes(1, 1, -1)
-    } should produce[IllegalArgumentException]
+    an[IllegalArgumentException] should be thrownBy checkPositionIndexes(1, 1, -1)
   }
 
   "checkPositionIndexes" should "fail if start is neg" in {
-    val thrown = evaluating {
+    the[IndexOutOfBoundsException] thrownBy {
       checkPositionIndexes(-1, 1, 1)
-    } should produce[IndexOutOfBoundsException]
-
-    thrown should have('message("start index (-1) must not be negative"))
+    } should have message "start index (-1) must not be negative"
   }
 
   "checkPositionIndexes" should "fail if end is too high" in {
-    val thrown = evaluating {
+    the[IndexOutOfBoundsException] thrownBy {
       checkPositionIndexes(0, 2, 1)
-    } should produce[IndexOutOfBoundsException]
-
-    thrown should have('message("end index (2) must not be greater than size (1)"))
+    } should have message "end index (2) must not be greater than size (1)"
   }
 
   "checkPositionIndexes" should "fail if start > end" in {
-    val thrown = evaluating {
+    the[IndexOutOfBoundsException] thrownBy {
       checkPositionIndexes(1, 0, 1)
-    } should produce[IndexOutOfBoundsException]
-
-    thrown should have('message("end index (0) must not be less than start index (1)"))
+    } should have message "end index (0) must not be less than start index (1)"
   }
 
   "vararg functions" should "work with anyval and anyref" in {

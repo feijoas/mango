@@ -32,7 +32,7 @@ import org.scalatest.Matchers.be
 import org.scalatest.Matchers.convertToAnyShouldWrapper
 import org.scalatest.prop.PropertyChecks
 import com.google.common.testing.SerializableTester.reserializeAndAssert
-import org.scalatest.{ FlatSpec, ShouldMatchers }
+import org.scalatest._
 import org.scalatest.FunSpec
 
 /**
@@ -41,7 +41,7 @@ import org.scalatest.FunSpec
  *  @author Markus Schneider
  *  @since 0.11 (copied from guava-libraries)
  */
-class TreeTraverserTest extends FunSpec with ShouldMatchers {
+class TreeTraverserTest extends FunSpec with Matchers {
   case class Tree(value: Char, children: Tree*)
   case class BinaryTree(value: Char, left: BinaryTree, right: BinaryTree)
 
@@ -79,9 +79,9 @@ class TreeTraverserTest extends FunSpec with ShouldMatchers {
   val be_ = BinaryTree('e', null, bf_)
   val bd_ = BinaryTree('d', bb_, be_)
 
-  def treeAsString(tree:Iterable[Tree]): String = tree.foldLeft(""){case (str, tree) => str + tree.value}
-  def bTreeAsString(tree:Iterable[BinaryTree]): String = tree.foldLeft(""){case (str, tree) => str + tree.value}
-  
+  def treeAsString(tree: Iterable[Tree]): String = tree.foldLeft(""){ case (str, tree) => str + tree.value }
+  def bTreeAsString(tree: Iterable[BinaryTree]): String = tree.foldLeft(""){ case (str, tree) => str + tree.value }
+
   describe("A TreeTraverser") {
     it("should be able traverse the tree in preOrder") {
       treeAsString(traverser.preOrderTraversal(h_)) should be("hdabcegf")

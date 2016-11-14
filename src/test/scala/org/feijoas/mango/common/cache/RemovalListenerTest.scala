@@ -24,14 +24,15 @@ package org.feijoas.mango.common.cache
 
 import org.feijoas.mango.common.cache.RemovalListener._
 import org.scalatest.FlatSpec
-import org.scalatest.matchers.ShouldMatchers
+import org.scalatest.matchers._
 import com.google.common.cache.{ RemovalListener => GuavaRemovalListener }
 import com.google.common.cache.{ RemovalNotification => GuavaRemovalNotification }
 import com.google.common.cache.{ RemovalCause => GuavaRemovalCause }
 import org.feijoas.mango.common.cache.RemovalCause._
 import org.scalatest.Matchers._
 
-/** Tests for [[RemovalListener]]
+/**
+ * Tests for [[RemovalListener]]
  *
  *  @author Markus Schneider
  *  @since 0.7
@@ -74,7 +75,8 @@ class RemovalListenerTest extends FlatSpec {
     called should be(true)
   }
 
-  /** create a guava GuavaRemovalNotification via reflection
+  /**
+   * create a guava GuavaRemovalNotification via reflection
    */
   def guavaNotification[K, V](key: K, value: V, cause: GuavaRemovalCause) = {
     val ctors = classOf[GuavaRemovalNotification[K, V]].getDeclaredConstructors()

@@ -24,18 +24,18 @@ package org.feijoas.mango.common.cache
 
 import org.feijoas.mango.common.cache.CacheStats._
 import org.scalacheck.Gen
-import org.scalacheck.Gen.value
-import org.scalatest.{ FlatSpec, ShouldMatchers }
+import org.scalatest._
 import org.scalatest.prop.GeneratorDrivenPropertyChecks
 
 import com.google.common.cache.{ CacheStats => GuavaCacheStats }
 
-/** Tests for [[CacheStats]]
+/**
+ * Tests for [[CacheStats]]
  *
  *  @author Markus Schneider
  *  @since 0.7
  */
-class CacheStatsTest extends FlatSpec with GeneratorDrivenPropertyChecks with ShouldMatchers {
+class CacheStatsTest extends FlatSpec with GeneratorDrivenPropertyChecks with Matchers {
 
   behavior of "CacheStats"
 

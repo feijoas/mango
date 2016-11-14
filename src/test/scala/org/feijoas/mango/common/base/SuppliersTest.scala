@@ -29,18 +29,19 @@ import java.util.concurrent.atomic.{ AtomicInteger, AtomicReference }
 import scala.util.control.Breaks.{ break, breakable }
 
 import org.feijoas.mango.common.base.Suppliers._
-import org.scalatest.{ FlatSpec, ShouldMatchers }
+import org.scalatest._
 import org.scalatest.prop.PropertyChecks
 
 import com.google.common.base.{ Supplier => GuavaSupplier }
 import com.google.common.testing.SerializableTester
 
-/** Tests for [[Suppliers]]
+/**
+ * Tests for [[Suppliers]]
  *
  *  @author Markus Schneider
  *  @since 0.7 (copied from guava-libraries)
  */
-class SuppliersTest extends FlatSpec with ShouldMatchers with PropertyChecks {
+class SuppliersTest extends FlatSpec with Matchers with PropertyChecks {
   behavior of "memoize"
 
   it should "memoize" in {
