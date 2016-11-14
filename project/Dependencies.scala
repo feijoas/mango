@@ -24,5 +24,5 @@ object Dependencies {
   val scalamock = "org.scalamock" %% "scalamock-scalatest-support" % "3.2.2" % "test"
   val mockito = "org.mockito" % "mockito-core" % "2.2.11" % "test"
 
-  val deps = Seq(guava, findbugs, guavaTestlib, junit, scalatest, scalacheck, scalamock, mockito)
+  val deps = Seq(guava, guavaTestlib, junit, scalatest, scalacheck, scalamock, mockito)
 }
