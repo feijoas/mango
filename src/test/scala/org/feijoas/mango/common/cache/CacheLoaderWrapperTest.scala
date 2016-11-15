@@ -24,11 +24,12 @@ package org.feijoas.mango.common.cache
 
 import java.util.concurrent.TimeUnit
 import scala.collection.Traversable
-import scala.concurrent.future
+import scala.concurrent.Future
 import org.feijoas.mango.common.cache.CacheLoader._
 import org.scalatest._
 import com.google.common.cache.{ CacheLoader => GuavaCacheLoader }
 import com.google.common.collect.{ ImmutableMap, Lists }
+import scala.concurrent.impl.Future
 
 /**
  * Tests for [[CacheLoaderWrapper]]
@@ -84,7 +85,7 @@ private[mango] case class CountingCacheLoader(var loadCnt: Int = 0, var reloadCn
   }
   override def reload(key: Int, oldValue: Int) = {
     reloadCnt = reloadCnt + 1
-    future { oldValue }
+    Future { oldValue }
   }
   override def loadAll(keys: Traversable[Int]) = {
     loadAllCnt = loadAllCnt + 1

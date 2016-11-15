@@ -29,7 +29,8 @@ import org.feijoas.mango.common.hash.Funnel.asGuavaFunnel
 
 import com.google.common.hash.{ BloomFilter => GuavaBloomFilter }
 
-/** A Bloom filter for instances of `T`. A Bloom filter offers an approximate containment test
+/**
+ * A Bloom filter for instances of `T`. A Bloom filter offers an approximate containment test
  *  with one-sided error: if it claims that an element is contained in it, this might be in error,
  *  but if it claims that an element is <i>not</i> contained in it, then this is definitely true.
  *
@@ -61,17 +62,20 @@ import com.google.common.hash.{ BloomFilter => GuavaBloomFilter }
 @SerialVersionUID(1L)
 final case class BloomFilter[T] private (private val delegate: GuavaBloomFilter[T]) extends (T => Boolean) with Serializable {
 
-  /** Creates a new {@code BloomFilter} that's a copy of this instance. The new instance is equal to
+  /**
+   * Creates a new {@code BloomFilter} that's a copy of this instance. The new instance is equal to
    *  this instance but shares no mutable state.
    */
   def copy() = new BloomFilter(delegate.copy())
 
-  /** Returns {@code true} if the element <i>might</i> have been put in this Bloom filter,
+  /**
+   * Returns {@code true} if the element <i>might</i> have been put in this Bloom filter,
    *  {@code false} if this is <i>definitely</i> not the case.
    */
   def mightContain(obj: T): Boolean = delegate.mightContain(obj)
 
-  /** Puts an element into this {@code BloomFilter}. Ensures that subsequent invocations of
+  /**
+   * Puts an element into this {@code BloomFilter}. Ensures that subsequent invocations of
    *  `#mightContain(T)` with the same element will always return {@code true}.
    *
    *  @return true if the bloom filter's bits changed as a result of this operation. If the bits
@@ -83,7 +87,8 @@ final case class BloomFilter[T] private (private val delegate: GuavaBloomFilter[
    */
   def put(obj: T): Boolean = delegate.put(obj)
 
-  /** Returns the probability that `#mightContain(T)` will erroneously return
+  /**
+   * Returns the probability that `#mightContain(T)` will erroneously return
    *  {@code true} for an object that has not actually been put in the {@code BloomFilter}.
    *
    *  <p>Ideally, this number should be close to the {@code fpp} parameter
@@ -93,7 +98,8 @@ final case class BloomFilter[T] private (private val delegate: GuavaBloomFilter[
    */
   def expectedFpp(): Double = delegate.expectedFpp()
 
-  /** Equivalent to `#mightContain`; provided only to satisfy the {@link Predicate} interface.
+  /**
+   * Equivalent to `#mightContain`; provided only to satisfy the {@link Predicate} interface.
    *  When using a reference of type {@code BloomFilter}, always invoke {@link #mightContain}
    *  directly instead.
    */
@@ -102,14 +108,16 @@ final case class BloomFilter[T] private (private val delegate: GuavaBloomFilter[
   override def toString = "BloomFilter"
 }
 
-/** Factory for BloomFilters
+/**
+ * Factory for BloomFilters
  *
  *  In order to be able to create a `BloomFilter[T]` an implementation of a
  *  [[Funnel]] for `T` (called type class) must be in implicit scope (recommended)
  *  or passed explicitly as a parameter.
  */
 final object BloomFilter {
-  /** Creates a {@code Builder} of a `BloomFilter[T]`, with the expected number
+  /**
+   * Creates a {@code Builder} of a `BloomFilter[T]`, with the expected number
    *  of insertions and expected false positive probability.
    *
    *  <p>Note that overflowing a `BloomFilter` with significantly more elements
@@ -127,10 +135,11 @@ final object BloomFilter {
    */
   @implicitNotFound(msg = "No implementation of Funnel[${T}] in implicit scope")
   def create[T](expectedInsertions: Int, fpp: Double)(implicit funnel: Funnel[T]): BloomFilter[T] = {
-    new BloomFilter(GuavaBloomFilter.create(funnel.asJava, expectedInsertions, fpp))
+    new BloomFilter(GuavaBloomFilter.create[T](funnel.asJava, expectedInsertions, fpp))
   }
 
-  /** Creates a {@code Builder} of a {@link BloomFilter BloomFilter[T]}, with the expected number
+  /**
+   * Creates a {@code Builder} of a {@link BloomFilter BloomFilter[T]}, with the expected number
    *  of insertions, and a default expected false positive probability of 3%.
    *
    *  <p>Note that overflowing a {@code BloomFilter} with significantly more elements
@@ -147,6 +156,6 @@ final object BloomFilter {
    */
   @implicitNotFound(msg = "No implementation of Funnel[${T}] in implicit scope")
   def create[T](expectedInsertions: Int)(implicit funnel: Funnel[T]): BloomFilter[T] = {
-    new BloomFilter(GuavaBloomFilter.create(funnel.asJava, expectedInsertions))
+    new BloomFilter(GuavaBloomFilter.create[T](funnel.asJava, expectedInsertions))
   }
 }

@@ -47,7 +47,7 @@ class FuturesTest extends FlatSpec with Matchers with PropertyChecks with Mockit
   behavior of "ListenableFuture wrapper"
 
   it should "should throw a timeout exception if time expires on a call on get" in {
-    val scalaFuture: Future[Int] = future { Thread.sleep(1000); fail }
+    val scalaFuture: Future[Int] = Future { Thread.sleep(1000); fail }
     val listFut: ListenableFuture[Int] = scalaFuture.asJava
 
     try {
@@ -59,7 +59,7 @@ class FuturesTest extends FlatSpec with Matchers with PropertyChecks with Mockit
   }
 
   it should "return the correct value" in {
-    val scalaFuture = future { 5 }
+    val scalaFuture = Future { 5 }
     val listFut: ListenableFuture[Int] = scalaFuture.asJava
 
     listFut.get(100, TimeUnit.MILLISECONDS) should be(5)
@@ -68,7 +68,7 @@ class FuturesTest extends FlatSpec with Matchers with PropertyChecks with Mockit
   it should "call onSucces if it succeeds" in {
     val finished = new CountDownLatch(1)
     val start = new CountDownLatch(1)
-    val scalaFuture = future { start.await; 5 }
+    val scalaFuture = Future { start.await; 5 }
     val listFut: ListenableFuture[Int] = scalaFuture.asJava
 
     val callback: Try[Int] => Any = {
@@ -91,7 +91,7 @@ class FuturesTest extends FlatSpec with Matchers with PropertyChecks with Mockit
   it should "call onFailure if it fails" in {
     val finished = new CountDownLatch(1)
     val start = new CountDownLatch(1)
-    val scalaFuture: Future[Int] = future { start.await; fail }
+    val scalaFuture: Future[Int] = Future { start.await; fail }
     val listFut: ListenableFuture[Int] = scalaFuture.asJava
 
     val callback: Try[Int] => Any = {
