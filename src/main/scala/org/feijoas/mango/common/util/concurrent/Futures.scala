@@ -32,6 +32,7 @@ import org.feijoas.mango.common.base.Preconditions.checkNotNull
 import org.feijoas.mango.common.convert._
 import scala.concurrent.Promise
 import com.google.common.util.concurrent.MoreExecutors
+import java.util.concurrent.TimeoutException
 
 /**
  * Utility functions for the work with `Future[T]` and Guava `FutureCallback[T]`,
@@ -141,6 +142,7 @@ private[mango] case class AsGuavaFuture[T](delegate: Future[T]) extends Listenab
 
   private def tryGet(f: => T) = try (f) catch {
     case e: ExecutionException => throw (e)
+    case e: TimeoutException   => throw (e)
     case t: Throwable          => throw new ExecutionException(t)
   }
 }
