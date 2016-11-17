@@ -5,8 +5,8 @@ import Dependencies._
 object BuildSettings {
 	
 	val buildOrganization = "org.feijoas"
-	val buildVersion      = "0.12" 
-	val buildScalaVersion = "2.11.7"
+	val buildVersion      = "0.13" 
+	val buildScalaVersion = "2.11.8"
 	val gitHeadCommitSha  = Process("git rev-parse HEAD").lines.head
 	val release           = sys.props("release")=="true"
 
@@ -53,8 +53,8 @@ object BuildSettings {
 		    <connection>https://github.com/feijoas/mango.git</connection>
 		  </scm>
 		  <developers>
-		    <developer>
-		      <id>mschneiderwng</id>
+		    <developer
+>		      <id>mschneiderwng</id>
 		      <name>Markus Schneider</name>
 		    </developer>
 		  </developers>),

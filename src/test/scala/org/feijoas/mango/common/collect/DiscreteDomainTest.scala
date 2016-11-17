@@ -25,25 +25,26 @@ package org.feijoas.mango.common.collect
 import org.feijoas.mango.common.annotations.Beta
 import org.feijoas.mango.common.collect.DiscreteDomain.{ IntDomain, LongDomain }
 import org.scalacheck.{ Arbitrary, Shrink }
-import org.scalatest.{ FlatSpec, ShouldMatchers }
+import org.scalatest._
 import org.scalatest.prop.PropertyChecks
 
 import com.google.common.collect.{ DiscreteDomain => GuavaDiscreteDomain }
 import com.google.common.testing.SerializableTester.reserializeAndAssert
 
-/** Tests for [[Range]]
+/**
+ * Tests for [[Range]]
  *
  *  @author Markus Schneider
  *  @since 0.8
  */
-class DiscreteDomainTestextends extends FlatSpec with ShouldMatchers with PropertyChecks with DiscreteDomainBehaviors {
+class DiscreteDomainTestextends extends FlatSpec with Matchers with PropertyChecks with DiscreteDomainBehaviors {
 
   "IntDomain" should behave like guavaDomain(IntDomain, GuavaDiscreteDomain.integers())
   "LongDomain" should behave like guavaDomain(LongDomain, GuavaDiscreteDomain.longs())
 
 }
 
-private[mango] trait DiscreteDomainBehaviors extends PropertyChecks with ShouldMatchers {
+private[mango] trait DiscreteDomainBehaviors extends PropertyChecks with Matchers {
   this: FlatSpec =>
 
   def guavaDomain[C <: Comparable[_], T: Arbitrary: Shrink](domain: DiscreteDomain[T], guava: GuavaDiscreteDomain[C])(implicit view: T => C) = {

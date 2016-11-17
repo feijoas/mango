@@ -42,12 +42,13 @@ import org.scalatest.FreeSpec
 import org.scalatest.Matchers.be
 import org.scalatest.Matchers.convertToAnyShouldWrapper
 import org.scalatest.Matchers.not
-import org.scalatest.mock.MockitoSugar
+import org.scalatest.mockito.MockitoSugar
 import org.scalatest.prop.PropertyChecks
 
-import com.google.common.{collect => gcc}
+import com.google.common.{ collect => gcc }
 
-/** Behavior which all [[RangeMap]] have in common
+/**
+ * Behavior which all [[RangeMap]] have in common
  *
  *  @author Markus Schneider
  *  @since 0.9
@@ -62,7 +63,7 @@ object RangeMapBehaviors {
   type TBuilder = Builder[(TIntRange, String), TIntRangeMap]
 }
 
-private[mango] trait RangeMapBehaviors extends FreeSpec with PropertyChecks  with MockitoSugar {
+private[mango] trait RangeMapBehaviors extends FreeSpec with PropertyChecks with MockitoSugar {
   this: FreeSpec =>
 
   import RangeMapBehaviors._

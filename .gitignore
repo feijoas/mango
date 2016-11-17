@@ -10,3 +10,4 @@ project/boot/
 .metadata
 .cache-main
 .cache-tests
+/bin/

@@ -35,7 +35,8 @@ import org.scalatest.prop.PropertyChecks
 
 import com.google.common.testing.SerializableTester.reserializeAndAssert
 
-/** Tests for [[Range]]
+/**
+ * Tests for [[Range]]
  *
  *  @author Markus Schneider
  *  @since 0.8
@@ -401,7 +402,7 @@ private[mango] trait RangeBehaviors extends PropertyChecks {
     }
 
     it should "be displayed with '..' in the middle" in {
-      range.toString contains ("\u2025") should be(true)
+      range.toString contains ("..") should be(true)
     }
 
     it should "be serializeable" in {
@@ -458,7 +459,7 @@ private[mango] trait RangeBehaviors extends PropertyChecks {
 
     it should "be displayed as ?start..end?" in {
       val str = range.toString
-      str.substring(1, str.length - 1) should be(start + "\u2025" + end)
+      str.substring(1, str.length - 1) should be(start + ".." + end)
     }
 
     it should "not acccept invalid inputs" in {
@@ -478,7 +479,7 @@ private[mango] trait RangeBehaviors extends PropertyChecks {
     }
 
     it should "be displayed as (start..end?" in {
-      range.toString.startsWith("(" + start + "\u2025") should be(true)
+      range.toString.startsWith("(" + start + "..") should be(true)
     }
   }
 
@@ -493,7 +494,7 @@ private[mango] trait RangeBehaviors extends PropertyChecks {
 
     it should "be displayed as ?start..end)" in {
       val str = range.toString
-      str.endsWith("\u2025" + end + ")") should be(true)
+      str.endsWith(".." + end + ")") should be(true)
     }
   }
 
@@ -507,7 +508,7 @@ private[mango] trait RangeBehaviors extends PropertyChecks {
     }
 
     it should "be displayed as [start..end?" in {
-      range.toString.startsWith("[" + start + "\u2025") should be(true)
+      range.toString.startsWith("[" + start + "..") should be(true)
     }
   }
 
@@ -521,7 +522,7 @@ private[mango] trait RangeBehaviors extends PropertyChecks {
     }
 
     it should "be displayed as ?start..end]" in {
-      range.toString.endsWith("\u2025" + end + "]") should be(true)
+      range.toString.endsWith(".." + end + "]") should be(true)
     }
   }
 

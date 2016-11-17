@@ -36,12 +36,13 @@ import org.mockito.Mockito.times
 import org.mockito.Mockito.verify
 import org.mockito.Mockito.when
 import org.scalatest.FreeSpec
-import org.scalatest.mock.MockitoSugar
+import org.scalatest.mockito.MockitoSugar
 import org.scalatest.prop.PropertyChecks
 
 import com.google.common.{ collect => gcc }
 
-/** Behavior which all [[RangeMapWrappers]] have in common
+/**
+ * Behavior which all [[RangeMapWrappers]] have in common
  */
 private[mango] trait RangeMapWrapperBehaviours extends FreeSpec with PropertyChecks with MockitoSugar {
   this: FreeSpec =>

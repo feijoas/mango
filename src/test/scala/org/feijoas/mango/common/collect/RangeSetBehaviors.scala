@@ -38,11 +38,11 @@ import org.scalatest.FreeSpec
 import org.scalatest.Matchers.be
 import org.scalatest.Matchers.convertToAnyShouldWrapper
 import org.scalatest.Matchers.not
-import org.scalatest.mock.MockitoSugar
+import org.scalatest.mockito.MockitoSugar
 import org.scalatest.prop.PropertyChecks
 
-
-/** Behavior which all [[RangeSet]] have in common
+/**
+ * Behavior which all [[RangeSet]] have in common
  */
 private[mango] trait RangeSetBehaviors extends FreeSpec with PropertyChecks with MockitoSugar {
   this: FreeSpec =>
@@ -76,7 +76,7 @@ private[mango] trait RangeSetBehaviors extends FreeSpec with PropertyChecks with
     val QUERY_RANGES = queryBuilder.result
 
     /*
-     * #complement 
+     * #complement
      */
     "should implement mutable #complement" - {
       "given the RangeSet contains a single range" - {
@@ -658,7 +658,7 @@ private[mango] trait RangeSetBehaviors extends FreeSpec with PropertyChecks with
     }
 
     /*
-     * #complement 
+     * #complement
      */
     "should implement #complement" - {
       "given the RangeSet is empty" - {

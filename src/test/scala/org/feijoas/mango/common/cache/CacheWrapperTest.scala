@@ -24,17 +24,18 @@ package org.feijoas.mango.common.cache
 
 import org.feijoas.mango.common.annotations.Beta
 import org.feijoas.mango.common.cache.Cache._
-import org.scalatest.{ FlatSpec, ShouldMatchers }
-import org.scalatest.mock.MockitoSugar
+import org.scalatest._
+import org.scalatest.mockito.MockitoSugar
 import org.junit.Assert._
 import com.google.common.cache.{ Cache => GuavaCache }
 
-/** Tests for [[CacheWrapper]]
+/**
+ * Tests for [[CacheWrapper]]
  *
  *  @author Markus Schneider
  *  @since 0.7
  */
-class CacheWrapperTest extends FlatSpec with CacheWrapperBehaviour with ShouldMatchers with MockitoSugar with CacheStatsMatcher {
+class CacheWrapperTest extends FlatSpec with CacheWrapperBehaviour with Matchers with MockitoSugar with CacheStatsMatcher {
 
   def wrappedCacheFixture = {
     val wrapped = mock[GuavaCache[String, Int]]

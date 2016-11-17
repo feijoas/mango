@@ -40,15 +40,14 @@ import org.scalatest.FlatSpec
 import org.scalatest.Matchers.be
 import org.scalatest.Matchers.convertToAnyShouldWrapper
 import org.scalatest.Matchers.not
-import org.scalatest.mock.MockitoSugar
+import org.scalatest.mockito.MockitoSugar
 
 import com.google.common.hash.PrimitiveSink
 import com.google.common.primitives.Ints
 import com.google.common.testing.SerializableTester
 
-import com.google.common.base.Charsets.UTF_8
-
-/** Tests for [[BloomFilter]]
+/**
+ * Tests for [[BloomFilter]]
  *
  *  @author Markus Schneider
  *  @since 0.6 (copied from guava-libraries)
@@ -118,62 +117,6 @@ class BloomFilterTest extends FlatSpec with MockitoSugar {
     SerializableTester.reserializeAndAssert(BloomFilter.create[Long](100))
     SerializableTester.reserializeAndAssert(BloomFilter.create[Array[Byte]](100))
     SerializableTester.reserializeAndAssert(BloomFilter.create[CharSequence](100))
-  }
-
-  it should "handle known false positives" in {   
-    val numInsertions = 1000000
-    val bf: BloomFilter[CharSequence] = BloomFilter.create(numInsertions,0.03)(Funnel.stringFunnel(UTF_8))
-    
-    
-    // Insert "numInsertions" even numbers into the BF.
-    // Range(0, numInsertions * 2, 2).view foreach { i => bf.put(i.toString) }   
-    // the range is just too slow
-    var i = 0
-    while (i < numInsertions * 2) {
-      bf.put(i.toString)
-      i = i + 2
-    }
-
-    // Assert that the BF "might" have all of the even numbers.
-    // Range(0, numInsertions * 2, 2).view foreach { i => bf.mightContain(i.toString) should be(true) }
-    i = 0
-    while (i < numInsertions * 2) {
-      bf.mightContain(i.toString) should be (true)
-      i = i + 2
-    }
-
-    // Now we check for known false positives using a set of known false positives.
-    // (These are all of the false positives under 900.)
-    val falsePositives = Set(129, 471, 723, 89, 751, 835, 871)
-    Range(1, 899, 2) filter { case i => !falsePositives.contains(i) } foreach {
-      case i => assert(bf.mightContain(i.toString) == false, "BF should not contain " + i)
-    }
-
-    // Check that there are exactly 29763 false positives for this BF.
-    val knownNumberOfFalsePositives = 29763
-    /*val numFpp = Range(1, numInsertions * 2, 2).foldLeft(0) {
-      case (acc, i) => {
-        bf.mightContain(i.toString) match {
-          case true  => acc + 1
-          case false => acc
-        }
-      }
-    }*/
-
-    var numFpp = 0
-    i = 1
-    while (i < numInsertions * 2) {
-      if (bf.mightContain(i.toString)) {
-        numFpp = numFpp + 1
-      }
-      i = i + 2
-    }
-
-    numFpp should be(knownNumberOfFalsePositives)
-    val actualFpp = knownNumberOfFalsePositives.asInstanceOf[Double] / numInsertions
-    val expectedFpp = bf.expectedFpp
-    // The normal order of (expected, actual) is reversed here on purpose.
-    assertEquals(actualFpp, expectedFpp, 0.00033);
   }
 
   it should "perform basic operations" in {

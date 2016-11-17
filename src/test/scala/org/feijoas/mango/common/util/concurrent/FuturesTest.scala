@@ -29,24 +29,25 @@ import scala.concurrent.duration.MILLISECONDS
 import scala.util.{ Try, Success, Failure }
 import org.feijoas.mango.common.util.concurrent.Futures._
 import org.junit.Assert.assertEquals
-import org.scalatest.{ FlatSpec, ShouldMatchers }
-import org.scalatest.mock.MockitoSugar
+import org.scalatest._
+import org.scalatest.mockito.MockitoSugar
 import org.scalatest.prop.PropertyChecks
 import com.google.common.util.concurrent.{ ListenableFuture, ListenableFutureTask }
 import com.google.common.util.concurrent.{ Futures => GuavaFutures }
 import scala.concurrent.duration.Duration
 
-/** Tests for [[Future]] helper
+/**
+ * Tests for [[Future]] helper
  *
  *  @author Markus Schneider
  *  @since 0.7
  */
-class FuturesTest extends FlatSpec with ShouldMatchers with PropertyChecks with MockitoSugar {
+class FuturesTest extends FlatSpec with Matchers with PropertyChecks with MockitoSugar {
 
   behavior of "ListenableFuture wrapper"
 
   it should "should throw a timeout exception if time expires on a call on get" in {
-    val scalaFuture: Future[Int] = future { Thread.sleep(1000); fail }
+    val scalaFuture: Future[Int] = Future { Thread.sleep(1000); fail }
     val listFut: ListenableFuture[Int] = scalaFuture.asJava
 
     try {
@@ -58,7 +59,7 @@ class FuturesTest extends FlatSpec with ShouldMatchers with PropertyChecks with 
   }
 
   it should "return the correct value" in {
-    val scalaFuture = future { 5 }
+    val scalaFuture = Future { 5 }
     val listFut: ListenableFuture[Int] = scalaFuture.asJava
 
     listFut.get(100, TimeUnit.MILLISECONDS) should be(5)
@@ -67,7 +68,7 @@ class FuturesTest extends FlatSpec with ShouldMatchers with PropertyChecks with 
   it should "call onSucces if it succeeds" in {
     val finished = new CountDownLatch(1)
     val start = new CountDownLatch(1)
-    val scalaFuture = future { start.await; 5 }
+    val scalaFuture = Future { start.await; 5 }
     val listFut: ListenableFuture[Int] = scalaFuture.asJava
 
     val callback: Try[Int] => Any = {
@@ -90,7 +91,7 @@ class FuturesTest extends FlatSpec with ShouldMatchers with PropertyChecks with 
   it should "call onFailure if it fails" in {
     val finished = new CountDownLatch(1)
     val start = new CountDownLatch(1)
-    val scalaFuture: Future[Int] = future { start.await; fail }
+    val scalaFuture: Future[Int] = Future { start.await; fail }
     val listFut: ListenableFuture[Int] = scalaFuture.asJava
 
     val callback: Try[Int] => Any = {
@@ -166,7 +167,7 @@ class FuturesTest extends FlatSpec with ShouldMatchers with PropertyChecks with 
     execute(delegate)
     Await.ready(future, Duration(100, MILLISECONDS))
 
-    // check number of invocations 
+    // check number of invocations
     successLatch.await(100, TimeUnit.MILLISECONDS)
     successLatch.getCount() should be(0)
   }
@@ -192,7 +193,7 @@ class FuturesTest extends FlatSpec with ShouldMatchers with PropertyChecks with 
     execute(delegate)
     Await.ready(future, Duration(100, MILLISECONDS))
 
-    // check number of invocations 
+    // check number of invocations
     failureLatch.await(100, TimeUnit.MILLISECONDS)
     failureLatch.getCount() should be(0)
   }

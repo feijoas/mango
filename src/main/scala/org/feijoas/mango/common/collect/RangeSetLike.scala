@@ -23,12 +23,12 @@
 package org.feijoas.mango.common.collect
 
 import scala.collection.generic.HasNewBuilder
-import annotation.unchecked._
 
 import org.feijoas.mango.common.annotations.Beta
 import org.feijoas.mango.common.base.Preconditions.checkNotNull
 
-/** Implementation trait for [[RangeSet]]
+/**
+ * Implementation trait for [[RangeSet]]
  *
  *  $rangeSetNote
  *  @author Markus Schneider
@@ -69,17 +69,16 @@ import org.feijoas.mango.common.base.Preconditions.checkNotNull
  */
 @Beta
 trait RangeSetLike[C, O <: Ordering[C], +Repr <: RangeSetLike[C, O, Repr] with RangeSet[C, O]]
-  extends HasNewBuilder[Range[C, O], Repr] {
+    extends HasNewBuilder[Range[C, O], Repr] {
   self =>
 
-  /** The type implementing this RangeSet */
-  protected type Self = (Repr @uncheckedVariance)
-
-  /** Determines whether any of this range set's member ranges contains `value`.
+  /**
+   * Determines whether any of this range set's member ranges contains `value`.
    */
   def contains(value: C): Boolean = rangeContaining(value) != None
 
-  /** Returns the unique range from this range set that contains
+  /**
+   * Returns the unique range from this range set that contains
    *  `value` as `Some(value)`, or `None` if this range set does not contain `value`.
    */
   def rangeContaining(value: C): Option[Range[C, O]] = {
@@ -87,7 +86,8 @@ trait RangeSetLike[C, O <: Ordering[C], +Repr <: RangeSetLike[C, O, Repr] with R
     asRanges.find { _.contains(value) }
   }
 
-  /** Returns `true` if there exists a member range in this range set which
+  /**
+   * Returns `true` if there exists a member range in this range set which
    *  encloses the specified range.
    */
   def encloses(otherRange: Range[C, O]): Boolean = {
@@ -95,7 +95,8 @@ trait RangeSetLike[C, O <: Ordering[C], +Repr <: RangeSetLike[C, O, Repr] with R
     asRanges.find { _.encloses(otherRange) }.isDefined
   }
 
-  /** Returns `true` if for each member range in `other` there exists a member range in
+  /**
+   * Returns `true` if for each member range in `other` there exists a member range in
    *  this range set which encloses it. It follows that `this.contains(value)` whenever `other.contains(value)`.
    *  Returns `true` if `other` is empty.
    *
@@ -107,31 +108,37 @@ trait RangeSetLike[C, O <: Ordering[C], +Repr <: RangeSetLike[C, O, Repr] with R
     other.asRanges.find { !this.encloses(_) }.isEmpty
   }
 
-  /** Returns `true` if this range set contains no ranges.
+  /**
+   * Returns `true` if this range set contains no ranges.
    */
   def isEmpty: Boolean = asRanges().isEmpty
 
-  /** Returns a `Some` with the minimal range which encloses all ranges in this range set
+  /**
+   * Returns a `Some` with the minimal range which encloses all ranges in this range set
    *  or `None` if this range set is empty
    */
   def span(): Option[Range[C, O]]
 
-  /** Returns a view of the disconnected ranges that make up this
+  /**
+   * Returns a view of the disconnected ranges that make up this
    *  range set.  The returned set may be empty. The iterators returned by its
    *  `Iterable#iterator` method return the ranges in increasing order of lower bound
    *  (equivalently, of upper bound).
    */
   def asRanges(): Set[Range[C, O]]
 
-  /** Returns a view of the complement of this `RangeSet`.
+  /**
+   * Returns a view of the complement of this `RangeSet`.
    */
   def complement(): Repr
 
-  /** Returns a view of the intersection of this `RangeSet` with the specified range.
+  /**
+   * Returns a view of the intersection of this `RangeSet` with the specified range.
    */
   def subRangeSet(view: Range[C, O]): Repr
 
-  /** Returns `true` if `obj` is another `RangeSet` that contains the same ranges
+  /**
+   * Returns `true` if `obj` is another `RangeSet` that contains the same ranges
    *  according to `Range#equals(Any)`.
    */
   override def equals(obj: Any): Boolean = obj match {
@@ -139,11 +146,13 @@ trait RangeSetLike[C, O <: Ordering[C], +Repr <: RangeSetLike[C, O, Repr] with R
     case _                     => false
   }
 
-  /** Returns `asRanges().hashCode()`.
+  /**
+   * Returns `asRanges().hashCode()`.
    */
   override def hashCode(): Int = asRanges.hashCode
 
-  /** Returns a readable string representation of this range set. For example, if this
+  /**
+   * Returns a readable string representation of this range set. For example, if this
    *  `RangeSet` consisted of `Ranges.closed(1, 3)` and `Ranges.greaterThan(4)`,
    *  this might return `"{[1‥3](4‥+∞)}"`.
    */

@@ -33,7 +33,8 @@ import org.feijoas.mango.common.convert.AsScala
 
 import com.google.common.cache.{ Cache => GuavaCache }
 
-/** A semi-persistent mapping from keys to values. Cache entries are manually added using
+/**
+ * A semi-persistent mapping from keys to values. Cache entries are manually added using
  *  `getOrElseUpdate(key, loader)` or `put(key, value)`, and are stored in the cache until
  *  either evicted or manually invalidated.
  *
@@ -43,15 +44,16 @@ import com.google.common.cache.{ Cache => GuavaCache }
  *  @author Markus Schneider
  *  @since 0.7 (copied from Guava-libraries)
  */
-@Beta
 trait Cache[K, V] {
 
-  /** Returns an [[http://www.scala-lang.org/api/current/index.html#scala.Option Option]] which is `Some(value)` with the value associated with
+  /**
+   * Returns an [[http://www.scala-lang.org/api/current/index.html#scala.Option Option]] which is `Some(value)` with the value associated with
    *  `key` in this cache, or `None` if there is no cached value for `key`.
    */
   def getIfPresent(key: K): Option[V]
 
-  /** Returns the value associated with `key` in this cache, obtaining that value from
+  /**
+   * Returns the value associated with `key` in this cache, obtaining that value from
    *  `loader` if necessary. No observable state associated with this cache is modified
    *  until loading completes. This method provides a simple substitute for the conventional
    *  `if cached, return; otherwise create, cache and return` pattern.
@@ -72,19 +74,21 @@ trait Cache[K, V] {
   @throws[ExecutionException]
   def getOrElseUpdate(key: K, loader: () => V): V
 
-  /** Returns a map of the values associated with `keys` in this cache.
+  /**
+   * Returns a map of the values associated with `keys` in this cache.
    *  The returned map will only contain entries which are already present in the cache.
    */
   def getAllPresent(keys: Traversable[K]): immutable.Map[K, V] = {
-      def getOptional(key: K): Option[(K, V)] = getIfPresent(key) match {
-        case Some(value) => Some((key, value))
-        case _           => None
-      }
+    def getOptional(key: K): Option[(K, V)] = getIfPresent(key) match {
+      case Some(value) => Some((key, value))
+      case _           => None
+    }
 
     immutable.Map() ++ keys.flatMap(getOptional)
   }
 
-  /** Adds a new key/value pair to this cache. If the cache previously contained a
+  /**
+   * Adds a new key/value pair to this cache. If the cache previously contained a
    *  value associated with the `key`, the old value is replaced by the `value`.
    *
    *  Prefer `getOrElseUpdate(key, loader)` when using the conventional
@@ -93,7 +97,8 @@ trait Cache[K, V] {
    */
   def put(key: K, value: V): Unit
 
-  /** Puts all key/value pairs from the specified `Traversable` to the cache.
+  /**
+   * Puts all key/value pairs from the specified `Traversable` to the cache.
    *  The effect of this call is equivalent to that of calling `put(key, value)` for
    *  each `(key, value)` in the `Traversable`. The behavior of this operation is undefined
    *  if the specified map is modified while the operation is in progress.
@@ -102,44 +107,53 @@ trait Cache[K, V] {
     kvs.seq foreach { kv => put(kv._1, kv._2) }
   }
 
-  /** Discards any cached value for key `key`.
+  /**
+   * Discards any cached value for key `key`.
    */
   def invalidate(key: K): Unit
 
-  /** Discards any cached values for keys `keys`.
+  /**
+   * Discards any cached values for keys `keys`.
    */
   def invalidateAll(keys: Traversable[K]): Unit = { keys foreach invalidate }
 
-  /** Discards all entries in the cache.
+  /**
+   * Discards all entries in the cache.
    */
   def invalidateAll(): Unit
 
-  /** Returns the approximate number of entries in this cache.
+  /**
+   * Returns the approximate number of entries in this cache.
    */
   def size(): Long
 
-  /** Returns a current snapshot of this cache's cumulative statistics. All stats are initialized
+  /**
+   * Returns a current snapshot of this cache's cumulative statistics. All stats are initialized
    *  to zero, and are monotonically increasing over the lifetime of the cache.
    */
   def stats(): CacheStats
 
-  /** Performs any pending maintenance operations needed by the cache. Exactly which activities are
+  /**
+   * Performs any pending maintenance operations needed by the cache. Exactly which activities are
    *  performed -- if any -- is implementation-dependent.
    */
   def cleanUp(): Unit = {}
 
-  /** Returns a view of the entries stored in this cache as a thread-safe map. Modifications made to
+  /**
+   * Returns a view of the entries stored in this cache as a thread-safe map. Modifications made to
    *  the map directly affect the cache.
    */
   def asMap(): concurrent.Map[K, V]
 }
 
-/** Utility functions to convert between Guava `Cache[K, V]` and `Cache[K, V]`
+/**
+ * Utility functions to convert between Guava `Cache[K, V]` and `Cache[K, V]`
  *  and vice versa.
  */
 object Cache {
 
-  /** Adds an `asScala` method that wraps Guava `Cache[K, V]` in a Mango `Cache[K, V]`
+  /**
+   * Adds an `asScala` method that wraps Guava `Cache[K, V]` in a Mango `Cache[K, V]`
    *  using a `CacheWrapper[K, V]`.
    *
    *  The returned Mango `Cache[K, V]` forwards all method calls to the provided
