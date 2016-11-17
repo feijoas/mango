@@ -27,9 +27,13 @@ import scala.collection.Traversable
 import scala.concurrent.Future
 import org.feijoas.mango.common.cache.CacheLoader._
 import org.scalatest._
+import com.google.common.{ cache => cgcc }
 import com.google.common.cache.{ CacheLoader => GuavaCacheLoader }
 import com.google.common.collect.{ ImmutableMap, Lists }
 import scala.concurrent.impl.Future
+import org.junit.Assert._
+import com.google.common.util.concurrent.ListenableFuture
+import org.feijoas.mango.common.util.concurrent.Futures._
 
 /**
  * Tests for [[CacheLoaderWrapper]]
@@ -68,6 +72,87 @@ class CacheLoaderWrapperTest extends FlatSpec with Matchers {
 
     wrapper.loadAll(Lists.newArrayList(1, 2, 3)) should be(ImmutableMap.of(1, 1, 2, 4, 3, 9))
     cacheLoader should be(CountingCacheLoader(0, 0, 1))
+  }
+
+  it should "forward failed futures" in {
+    val one = new Object
+    val e = new Exception
+    val loader = new CacheLoader[AnyRef, AnyRef]() {
+      override def load(any: AnyRef) = one
+      override def reload(key: AnyRef, oldValue: AnyRef) = Future.failed[AnyRef](e)
+    }
+
+    val wrapper: GuavaCacheLoader[AnyRef, AnyRef] = asGuavaCacheLoaderConverter(loader).asJava
+    val cache: cgcc.LoadingCache[AnyRef, AnyRef] = cgcc.CacheBuilder.newBuilder().recordStats().build(wrapper);
+
+    var stats: cgcc.CacheStats = cache.stats()
+    assertEquals(0, stats.missCount());
+    assertEquals(0, stats.loadSuccessCount());
+    assertEquals(0, stats.loadExceptionCount());
+    assertEquals(0, stats.hitCount());
+
+    val key = new Object
+    assertSame(one, cache.getUnchecked(key))
+
+    stats = cache.stats();
+    assertEquals(1, stats.missCount());
+    assertEquals(1, stats.loadSuccessCount());
+    assertEquals(0, stats.loadExceptionCount());
+    assertEquals(0, stats.hitCount());
+
+    cache.refresh(key);
+    stats = cache.stats();
+    assertEquals(1, stats.missCount());
+    assertEquals(1, stats.loadSuccessCount());
+    assertEquals(1, stats.loadExceptionCount());
+    assertEquals(0, stats.hitCount());
+
+    assertSame(one, cache.getUnchecked(key));
+    stats = cache.stats();
+    assertEquals(1, stats.missCount());
+    assertEquals(1, stats.loadSuccessCount());
+    assertEquals(1, stats.loadExceptionCount());
+    assertEquals(1, stats.hitCount());
+  }
+
+  it should "wrap futures" in {
+    val one = new Object
+    val e = new Exception
+    val loader = new cgcc.CacheLoader[AnyRef, AnyRef]() {
+      override def load(any: AnyRef) = one
+      override def reload(key: AnyRef, oldValue: AnyRef) = Future.failed(e).asJava
+    }
+
+    val cache: cgcc.LoadingCache[AnyRef, AnyRef] = cgcc.CacheBuilder.newBuilder().recordStats().build(loader);
+
+    var stats: cgcc.CacheStats = cache.stats()
+    assertEquals(0, stats.missCount());
+    assertEquals(0, stats.loadSuccessCount());
+    assertEquals(0, stats.loadExceptionCount());
+    assertEquals(0, stats.hitCount());
+
+    val key = new Object
+    assertSame(one, cache.getUnchecked(key))
+
+    stats = cache.stats();
+    assertEquals(1, stats.missCount());
+    assertEquals(1, stats.loadSuccessCount());
+    assertEquals(0, stats.loadExceptionCount());
+    assertEquals(0, stats.hitCount());
+
+    cache.refresh(key);
+    stats = cache.stats();
+    assertEquals(1, stats.missCount());
+    assertEquals(1, stats.loadSuccessCount());
+    assertEquals(1, stats.loadExceptionCount());
+    assertEquals(0, stats.hitCount());
+
+    assertSame(one, cache.getUnchecked(key));
+    stats = cache.stats();
+    assertEquals(1, stats.missCount());
+    assertEquals(1, stats.loadSuccessCount());
+    assertEquals(1, stats.loadExceptionCount());
+    assertEquals(1, stats.hitCount());
   }
 
 }
