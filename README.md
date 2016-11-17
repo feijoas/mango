@@ -15,6 +15,7 @@ This is a beta version of the library. Many modules are not published yet becaus
 **We use Travis CI for continuous integration:**
  - See [https://travis-ci.org/feijoas/mango](https://travis-ci.org/feijoas/mango)
  - [![Build Status](https://travis-ci.org/feijoas/mango.png?branch=master)](https://travis-ci.org/feijoas/mango)
+ - [![Coverage Status](https://coveralls.io/repos/feijoas/mango/badge.svg?branch=master&service=github)](https://coveralls.io/github/feijoas/mango?branch=master)
 
 ## Downloading 
 
