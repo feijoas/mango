@@ -119,61 +119,6 @@ class BloomFilterTest extends FlatSpec with MockitoSugar {
     SerializableTester.reserializeAndAssert(BloomFilter.create[CharSequence](100))
   }
 
-  it should "handle known false positives" in {
-    val numInsertions = 1000000
-    val bf: BloomFilter[CharSequence] = BloomFilter.create(numInsertions)
-
-    // Insert "numInsertions" even numbers into the BF.
-    // Range(0, numInsertions * 2, 2).view foreach { i => bf.put(i.toString) }
-    // the range is just too slow
-    var i = 0
-    while (i < numInsertions * 2) {
-      bf.put(i.toString)
-      i = i + 2
-    }
-
-    // Assert that the BF "might" have all of the even numbers.
-    // Range(0, numInsertions * 2, 2).view foreach { i => bf.mightContain(i.toString) should be(true) }
-    i = 0
-    while (i < numInsertions * 2) {
-      bf.mightContain(i.toString)
-      i = i + 2
-    }
-
-    // Now we check for known false positives using a set of known false positives.
-    // (These are all of the false positives under 900.)
-    val falsePositives = Set(49, 51, 59, 163, 199, 321, 325, 363, 367, 469, 545, 561, 727, 769, 773, 781)
-    Range(1, 899, 2) filter { case i => !falsePositives.contains(i) } foreach {
-      case i => bf.mightContain(i.toString) should be(false)
-    }
-
-    // Check that there are exactly 29824 false positives for this BF.
-    val knownNumberOfFalsePositives = 29824
-    /*val numFpp = Range(1, numInsertions * 2, 2).foldLeft(0) {
-      case (acc, i) => {
-        bf.mightContain(i.toString) match {
-          case true  => acc + 1
-          case false => acc
-        }
-      }
-    }*/
-
-    var numFpp = 0
-    i = 1
-    while (i < numInsertions * 2) {
-      if (bf.mightContain(i.toString)) {
-        numFpp = numFpp + 1
-      }
-      i = i + 2
-    }
-
-    numFpp should be(knownNumberOfFalsePositives)
-    val actualFpp = knownNumberOfFalsePositives.asInstanceOf[Double] / numInsertions
-    val expectedFpp = bf.expectedFpp
-    // The normal order of (expected, actual) is reversed here on purpose.
-    assertEquals(actualFpp, expectedFpp, 0.00015);
-  }
-
   it should "perform basic operations" in {
     object BAD_FUNNEL extends Funnel[Any] {
       override def funnel(any: Any, bytePrimitiveSink: PrimitiveSink) {

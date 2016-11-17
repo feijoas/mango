@@ -103,7 +103,7 @@ final case class BloomFilter[T] private (private val delegate: GuavaBloomFilter[
    *  When using a reference of type {@code BloomFilter}, always invoke {@link #mightContain}
    *  directly instead.
    */
-  override def apply(input: T): Boolean = delegate.apply(input)
+  override def apply(input: T): Boolean = delegate.mightContain(input)
 
   override def toString = "BloomFilter"
 }
@@ -116,6 +116,7 @@ final case class BloomFilter[T] private (private val delegate: GuavaBloomFilter[
  *  or passed explicitly as a parameter.
  */
 final object BloomFilter {
+
   /**
    * Creates a {@code Builder} of a `BloomFilter[T]`, with the expected number
    *  of insertions and expected false positive probability.
@@ -156,6 +157,49 @@ final object BloomFilter {
    */
   @implicitNotFound(msg = "No implementation of Funnel[${T}] in implicit scope")
   def create[T](expectedInsertions: Int)(implicit funnel: Funnel[T]): BloomFilter[T] = {
+    new BloomFilter(GuavaBloomFilter.create[T](funnel.asJava, expectedInsertions))
+  }
+
+  /**
+   * Creates a {@code Builder} of a `BloomFilter[T]`, with the expected number
+   *  of insertions and expected false positive probability.
+   *
+   *  <p>Note that overflowing a `BloomFilter` with significantly more elements
+   *  than specified, will result in its saturation, and a sharp deterioration of its
+   *  false positive probability.
+   *
+   *  <p>The constructed `BloomFilter[T]` will be serializable if the provided
+   *  `Funnel[T]` is.
+   *
+   *  @param funnel the funnel of T's that the constructed {@code BloomFilter[T]} will use
+   *  @param expectedInsertions the number of expected insertions to the constructed
+   *     {@code BloomFilter[T]}; must be positive
+   *  @param fpp the desired false positive probability (must be positive and less than 1.0)
+   *  @return a {@code BloomFilter}
+   */
+  @implicitNotFound(msg = "No implementation of Funnel[${T}] in implicit scope")
+  def create[T](expectedInsertions: Long, fpp: Double)(implicit funnel: Funnel[T]): BloomFilter[T] = {
+    new BloomFilter(GuavaBloomFilter.create[T](funnel.asJava, expectedInsertions, fpp))
+  }
+
+  /**
+   * Creates a {@code Builder} of a {@link BloomFilter BloomFilter[T]}, with the expected number
+   *  of insertions, and a default expected false positive probability of 3%.
+   *
+   *  <p>Note that overflowing a {@code BloomFilter} with significantly more elements
+   *  than specified, will result in its saturation, and a sharp deterioration of its
+   *  false positive probability.
+   *
+   *  <p>The constructed {@code BloomFilter[T]} will be serializable if the provided
+   *  {@code Funnel[T]} is.
+   *
+   *  @param funnel the funnel of T's that the constructed {@code BloomFilter[T]} will use
+   *  @param expectedInsertions the number of expected insertions to the constructed
+   *     {@code BloomFilter<T>}; must be positive
+   *  @return a {@code BloomFilter}
+   */
+  @implicitNotFound(msg = "No implementation of Funnel[${T}] in implicit scope")
+  def create[T](expectedInsertions: Long)(implicit funnel: Funnel[T]): BloomFilter[T] = {
     new BloomFilter(GuavaBloomFilter.create[T](funnel.asJava, expectedInsertions))
   }
 }
