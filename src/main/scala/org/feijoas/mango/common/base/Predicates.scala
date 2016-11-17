@@ -32,7 +32,8 @@ import org.feijoas.mango.common.convert.{ AsJava, AsScala }
 
 import com.google.common.base.{ Predicate => GuavaPredicate }
 
-/** Utility functions for the work with Guava `Predicate[T]`
+/**
+ * Utility functions for the work with Guava `Predicate[T]`
  *
  *  Usage example for conversion between Guava and Mango:
  *  {{{
@@ -50,21 +51,24 @@ import com.google.common.base.{ Predicate => GuavaPredicate }
  */
 final object Predicates {
 
-  /** Returns a predicate that always evaluates to `false`.
+  /**
+   * Returns a predicate that always evaluates to `false`.
    */
   case object alwaysFalse extends (Any => Boolean) {
     override def apply(ref: Any) = false
     override def toString = "alwaysFalse"
   }
 
-  /** Returns a predicate that always evaluates to `true`.
+  /**
+   * Returns a predicate that always evaluates to `true`.
    */
   case object alwaysTrue extends (Any => Boolean) {
     override def apply(ref: Any) = true
     override def toString = "alwaysTrue"
   }
 
-  /** Returns a predicate that evaluates to `true` if the object reference
+  /**
+   * Returns a predicate that evaluates to `true` if the object reference
    *  being tested is not `null`.
    */
   case object notNull extends (Any => Boolean) {
@@ -72,7 +76,8 @@ final object Predicates {
     override def toString = "notNull"
   }
 
-  /** Returns a predicate that evaluates to `true` if the object reference
+  /**
+   * Returns a predicate that evaluates to `true` if the object reference
    *  being tested is `null`.
    */
   case object isNull extends (Any => Boolean) {
@@ -80,7 +85,8 @@ final object Predicates {
     override def toString = "isNull"
   }
 
-  /** Returns a predicate that evaluates to `true` if the object reference
+  /**
+   * Returns a predicate that evaluates to `true` if the object reference
    *  being tested is `null`.
    */
   private[mango] case class NotPredicate[T](val predicate: T => Boolean) extends (T => Boolean) {
@@ -89,7 +95,8 @@ final object Predicates {
     override def toString = "Not(" + predicate.toString + ")"
   }
 
-  /** Returns a predicate that evaluates to {@code true} if each of its
+  /**
+   * Returns a predicate that evaluates to {@code true} if each of its
    *  components evaluates to {@code true}. The components are evaluated in
    *  order, and evaluation will be "short-circuited" as soon as a false
    *  predicate is found. It defensively copies the array passed in, so future
@@ -104,7 +111,8 @@ final object Predicates {
     override def hashCode = px.hashCode() + 0x12472c2c
   }
 
-  /** Returns a predicate that evaluates to {@code true} if any one of its
+  /**
+   * Returns a predicate that evaluates to {@code true} if any one of its
    *  components evaluates to {@code true}. The components are evaluated in
    *  order, and evaluation will be "short-circuited" as soon as a
    *  true predicate is found. It defensively copies the iterable passed in, so
@@ -119,7 +127,8 @@ final object Predicates {
     override def hashCode = px.hashCode() + 0x053c91cf
   }
 
-  /** Returns a predicate that evaluates to (((x1 xor x2) xor x3) xor x4)...
+  /**
+   * Returns a predicate that evaluates to (((x1 xor x2) xor x3) xor x4)...
    *  for all elements `xi` in the sequence. It defensively copies the iterable
    *  passed in, so future changes to it won't alter the behavior of this predicate.
    *  If {@code components} is empty, the returned predicate will always evaluate
@@ -139,7 +148,8 @@ final object Predicates {
     override def toString = "InstanceOf(" + clazz + ")"
   }
 
-  /** Returns a predicate that evaluates to {@code true} if the object being
+  /**
+   * Returns a predicate that evaluates to {@code true} if the object being
    *  tested {@code equals()} the given target or both are null.
    */
   private[mango] case class EqualToPredicate[T](@Nullable target: T) extends (T => Boolean) {
@@ -147,7 +157,8 @@ final object Predicates {
     override def toString = "IsEqualTo(" + target + ")"
   }
 
-  /** Returns a predicate that evaluates to {@code true} if the
+  /**
+   * Returns a predicate that evaluates to {@code true} if the
    *  {@code CharSequence} being tested contains any match for the given
    *  regular expression pattern. The test used is equivalent to
    *  {@code pattern.matcher(arg).find()}
@@ -158,7 +169,8 @@ final object Predicates {
     override def toString = "ContainsPattern(" + pattern + ")"
   }
 
-  /** Returns a predicate that evaluates to {@code true} if the given predicate
+  /**
+   * Returns a predicate that evaluates to {@code true} if the given predicate
    *  evaluates to {@code false}.
    */
   def not[T](predicate: T => Boolean): T => Boolean = checkNotNull(predicate) match {
@@ -168,7 +180,8 @@ final object Predicates {
     case _                   => NotPredicate(predicate)
   }
 
-  /** Returns a predicate that evaluates to {@code true} if each of its
+  /**
+   * Returns a predicate that evaluates to {@code true} if each of its
    *  components evaluates to {@code true}. The components are evaluated in
    *  order, and evaluation will be "short-circuited" as soon as a false
    *  predicate is found. It defensively copies the array passed in, so future
@@ -187,7 +200,8 @@ final object Predicates {
     }
   }
 
-  /** Returns a predicate that evaluates to {@code true} if each of its
+  /**
+   * Returns a predicate that evaluates to {@code true} if each of its
    *  components evaluates to {@code true}. The components are evaluated in
    *  order, and evaluation will be "short-circuited" as soon as a false
    *  predicate is found. It defensively copies the array passed in, so future
@@ -202,7 +216,8 @@ final object Predicates {
     and(seq)
   }
 
-  /** Returns a predicate that evaluates to {@code true} if any one of its
+  /**
+   * Returns a predicate that evaluates to {@code true} if any one of its
    *  components evaluates to {@code true}. The components are evaluated in
    *  order, and evaluation will be "short-circuited" as soon as a
    *  true predicate is found. It defensively copies the iterable passed in, so
@@ -221,7 +236,8 @@ final object Predicates {
     }
   }
 
-  /** Returns a predicate that evaluates to {@code true} if any one of its
+  /**
+   * Returns a predicate that evaluates to {@code true} if any one of its
    *  components evaluates to {@code true}. The components are evaluated in
    *  order, and evaluation will be "short-circuited" as soon as a
    *  true predicate is found. It defensively copies the iterable passed in, so
@@ -236,7 +252,8 @@ final object Predicates {
     or(seq)
   }
 
-  /** Returns a predicate that evaluates to (((x1 xor x2) xor x3) xor x4)...
+  /**
+   * Returns a predicate that evaluates to (((x1 xor x2) xor x3) xor x4)...
    *  for all elements `xi` in the sequence. It defensively copies the iterable
    *  passed in, so future changes to it won't alter the behavior of this predicate.
    *  If {@code components} is empty, the returned predicate will always evaluate
@@ -253,7 +270,8 @@ final object Predicates {
     }
   }
 
-  /** Returns a predicate that evaluates to (((x1 xor x2) xor x3) xor x4)...
+  /**
+   * Returns a predicate that evaluates to (((x1 xor x2) xor x3) xor x4)...
    *  for all elements `xi` in the sequence. It defensively copies the iterable
    *  passed in, so future changes to it won't alter the behavior of this predicate.
    *  If {@code components} is empty, the returned predicate will always evaluate
@@ -266,21 +284,37 @@ final object Predicates {
     xor(seq)
   }
 
-  /** Returns a predicate that evaluates to {@code true} if the object being
+  /**
+   * Returns a predicate that evaluates to {@code true} if the object being
    *  tested {@code equals()} the given target or both are null.
    */
   def equalTo[T](target: T): (T => Boolean) = EqualToPredicate(target)
 
-  /** Returns a predicate that evaluates to {@code true} if the class being
+  /**
+   * Returns a predicate that evaluates to {@code true} if the class being
    *  tested is assignable from the given class.  The returned predicate
    *  does not allow null inputs.
+   *
+   * @deprecated Use the correctly-named method {@link #subtypeOf} instead.
+   * @since 10.0
    */
-  def assignableFrom(clazz: Class[_]): Class[_] => Boolean = {
+  @Deprecated
+  def assignableFrom(clazz: Class[_]): Class[_] => Boolean = subtypeOf(clazz)
+
+  /**
+   * Returns a predicate that evaluates to {@code true} if the class being
+   *  tested is assignable from the given class.  The returned predicate
+   *  does not allow null inputs.
+   *
+   * @since 20.0 (since 10.0 under the incorrect name {@code assignableFrom})
+   */
+  def subtypeOf(clazz: Class[_]): Class[_] => Boolean = {
     checkNotNull(clazz)
     (arg: Class[_]) => arg != null && clazz.isAssignableFrom(arg)
   }
 
-  /** Returns a predicate that evaluates to {@code true} if the object reference
+  /**
+   * Returns a predicate that evaluates to {@code true} if the object reference
    *  being tested is a member of the given collection. It does not defensively
    *  copy the collection passed in, so future changes to it will alter the
    *  behavior of the predicate.
@@ -294,7 +328,8 @@ final object Predicates {
     (arg: T) => coll.contains(arg)
   }
 
-  /** Returns a predicate that evaluates to {@code true} if the
+  /**
+   * Returns a predicate that evaluates to {@code true} if the
    *  {@code String} being tested contains any match for the given
    *  regular expression pattern. The test used is equivalent to
    *  {@code Pattern.compile(pattern).matcher(arg).find()}
@@ -306,14 +341,16 @@ final object Predicates {
     containsPattern(Pattern.compile(pattern))
   }
 
-  /** Returns a predicate that evaluates to {@code true} if the
+  /**
+   * Returns a predicate that evaluates to {@code true} if the
    *  {@code CharSequence} being tested contains any match for the given
    *  regular expression pattern. The test used is equivalent to
    *  {@code pattern.matcher(arg).find()}
    */
   def containsPattern(pattern: Pattern): (String => Boolean) = ContainsPatternPredicate(pattern)
 
-  /** Adds an `asJava` method that wraps a Scala function `T => Boolean` in
+  /**
+   * Adds an `asJava` method that wraps a Scala function `T => Boolean` in
    *  a Guava `Predicate[T]`.
    *
    *  The returned Guava `Predicate[T]` forwards all calls of the `apply` method
@@ -325,13 +362,14 @@ final object Predicates {
    */
   implicit def asGuavaPredicateConverter[T](pred: T => Boolean): AsJava[GuavaPredicate[T]] = {
     checkNotNull(pred)
-      def wrap(pred: T => Boolean): GuavaPredicate[T] = new GuavaPredicate[T] {
-        override def apply(arg: T): Boolean = pred(arg)
-      }
+    def wrap(pred: T => Boolean): GuavaPredicate[T] = new GuavaPredicate[T] {
+      override def apply(arg: T): Boolean = pred(arg)
+    }
     new AsJava(wrap(pred))
   }
 
-  /** Adds an `asScala` method that wraps a Guava `Predicate[T]` in
+  /**
+   * Adds an `asScala` method that wraps a Guava `Predicate[T]` in
    *  a Scala function `T => Boolean`.
    *
    *  The returned Scala function `T => Boolean` forwards all calls of the `apply` method
