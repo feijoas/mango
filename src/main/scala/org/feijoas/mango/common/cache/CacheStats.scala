@@ -27,10 +27,11 @@ import scala.math.max
 import org.feijoas.mango.common.base.Preconditions.checkArgument
 import org.feijoas.mango.common.convert.AsScala
 
-import com.google.common.base.Objects
+import com.google.common.base.MoreObjects
 import com.google.common.cache.{ CacheStats => GuavaCacheStats }
 
-/** Statistics about the performance of a [[Cache]]. Instances of this class are immutable.
+/**
+ * Statistics about the performance of a [[Cache]]. Instances of this class are immutable.
  *
  *  <p>Cache statistics are incremented according to the following rules:
  *
@@ -60,18 +61,21 @@ import com.google.common.cache.{ CacheStats => GuavaCacheStats }
  *  @since 0.7 (copied from Guava-libraries)
  */
 case class CacheStats(
-    /** Returns the number of times [[Cache]] lookup methods have returned a cached value.
+    /**
+     * Returns the number of times [[Cache]] lookup methods have returned a cached value.
      */
     hitCount: Long,
 
-    /** Returns the number of times [[Cache]] lookup methods have returned an uncached (newly
+    /**
+ * Returns the number of times [[Cache]] lookup methods have returned an uncached (newly
  *  loaded) value, or null. Multiple concurrent calls to [[Cache]] lookup methods on an absent
  *  value can result in multiple misses, all returning the results of a single cache load
  *  operation.
  */
     missCount: Long,
 
-    /** Returns the number of times [[Cache]] lookup methods have successfully loaded a new value.
+    /**
+ * Returns the number of times [[Cache]] lookup methods have successfully loaded a new value.
  *  This is always incremented in conjunction with {@link #missCount}, though `missCount`
  *  is also incremented when an exception is encountered during cache loading (see
  *  `#loadExceptionCount`). Multiple concurrent misses for the same key will result in a
@@ -79,7 +83,8 @@ case class CacheStats(
  */
     loadSuccessCount: Long,
 
-    /** Returns the number of times [[Cache]] lookup methods threw an exception while loading a
+    /**
+ * Returns the number of times [[Cache]] lookup methods threw an exception while loading a
  *  new value. This is always incremented in conjunction with {@code missCount}, though
  *  `missCount` is also incremented when cache loading completes successfully (see
  *  `#loadSuccessCount`). Multiple concurrent misses for the same key will result in a
@@ -87,13 +92,15 @@ case class CacheStats(
  */
     loadExceptionCount: Long,
 
-    /** Returns the total number of nanoseconds the cache has spent loading new values. This can be
+    /**
+ * Returns the total number of nanoseconds the cache has spent loading new values. This can be
  *  used to calculate the miss penalty. This value is increased every time
  *  `loadSuccessCount` or `loadExceptionCount` is incremented.
  */
     totalLoadTime: Long,
 
-    /** Returns the number of times an entry has been evicted. This count does not include manual
+    /**
+ * Returns the number of times an entry has been evicted. This count does not include manual
  *  `Cache#invalidate` invalidations.
  */
     evictionCount: Long) {
@@ -106,12 +113,14 @@ case class CacheStats(
   checkArgument(totalLoadTime >= 0)
   checkArgument(evictionCount >= 0)
 
-  /** Returns the number of times [[Cache]] lookup methods have returned either a cached or
+  /**
+   * Returns the number of times [[Cache]] lookup methods have returned either a cached or
    *  uncached value. This is defined as `hitCount + missCount`.
    */
   def requestCount = hitCount + missCount
 
-  /** Returns the ratio of cache requests which were hits. This is defined as
+  /**
+   * Returns the ratio of cache requests which were hits. This is defined as
    *  `hitCount / requestCount`, or `1.0` when `requestCount == 0`.
    *  Note that `hitRate + missRate =~ 1.0`.
    */
@@ -120,7 +129,8 @@ case class CacheStats(
     case _@ count => hitCount.toDouble / count
   }
 
-  /** Returns the ratio of cache requests which were misses. This is defined as
+  /**
+   * Returns the ratio of cache requests which were misses. This is defined as
    *  `missCount / requestCount`, or `0.0` when `requestCount == 0`.
    *  Note that `hitRate + missRate =~ 1.0`. Cache misses include all requests which
    *  weren't cache hits, including requests which resulted in either successful or failed loading
@@ -133,13 +143,15 @@ case class CacheStats(
     case _@ count => missCount.toDouble / requestCount
   }
 
-  /** Returns the total number of times that [[Cache]] lookup methods attempted to load new
+  /**
+   * Returns the total number of times that [[Cache]] lookup methods attempted to load new
    *  values. This includes both successful load operations, as well as those that threw
    *  exceptions. This is defined as `loadSuccessCount + loadExceptionCount`.
    */
   def loadCount = loadSuccessCount + loadExceptionCount
 
-  /** Returns the ratio of cache loading attempts which threw exceptions. This is defined as
+  /**
+   * Returns the ratio of cache loading attempts which threw exceptions. This is defined as
    *  `loadExceptionCount / (loadSuccessCount + loadExceptionCount)`, or
    *  `0.0` when `loadSuccessCount + loadExceptionCount == 0`.
    */
@@ -148,7 +160,8 @@ case class CacheStats(
     case _@ count => loadExceptionCount.toDouble / count
   }
 
-  /** Returns the average time spent loading new values. This is defined as
+  /**
+   * Returns the average time spent loading new values. This is defined as
    *  `totalLoadTime / (loadSuccessCount + loadExceptionCount)`.
    */
   def averageLoadPenalty(): Double = loadCount match {
@@ -156,7 +169,8 @@ case class CacheStats(
     case _@ count => totalLoadTime.toDouble / count
   }
 
-  /** Returns a new [[CacheStats]] representing the difference between this [[CacheStats]]
+  /**
+   * Returns a new [[CacheStats]] representing the difference between this [[CacheStats]]
    *  and `other`. Negative values, which aren't supported by [[CacheStats]] will be
    *  rounded up to zero.
    */
@@ -171,7 +185,8 @@ case class CacheStats(
       max(0, evictionCount - other.evictionCount))
   }
 
-  /** Returns a new [[CacheStats]] representing the sum of this [[CacheStats]]
+  /**
+   * Returns a new [[CacheStats]] representing the sum of this [[CacheStats]]
    *  and `other`.
    */
   def +(other: CacheStats): CacheStats = {
@@ -185,7 +200,7 @@ case class CacheStats(
   }
 
   override def toString = {
-    Objects.toStringHelper(this)
+    MoreObjects.toStringHelper(this)
       .add("hitCount", hitCount)
       .add("missCount", missCount)
       .add("loadSuccessCount", loadSuccessCount)
@@ -199,7 +214,8 @@ case class CacheStats(
 /** [[CacheStats]] helper functions */
 final object CacheStats {
 
-  /** Adds an `asScala` method that converts Guava `CacheStats` to
+  /**
+   * Adds an `asScala` method that converts Guava `CacheStats` to
    *  Mango `CacheStats`.
    *
    *  The returned Mango `CacheStats` contains a copy of all values in the

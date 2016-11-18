@@ -23,18 +23,19 @@
 package org.feijoas.mango.common.base
 
 import org.feijoas.mango.common.base.Optional._
-import org.scalatest.{ FlatSpec, ShouldMatchers }
+import org.scalatest._
 import org.scalatest.prop.PropertyChecks
 
 import com.google.common.base.{ Optional => GuavaOptional }
 import com.google.common.testing.SerializableTester
 
-/** Tests for [[Optionals]]
+/**
+ * Tests for [[Optionals]]
  *
  *  @author Markus Schneider
  *  @since 0.7
  */
-class OptionalTest extends FlatSpec with ShouldMatchers with PropertyChecks {
+class OptionalTest extends FlatSpec with Matchers with PropertyChecks {
 
   behavior of "implicits"
 

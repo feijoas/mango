@@ -34,12 +34,13 @@ import org.feijoas.mango.common.collect.AsOrdered.asOrdered
 import org.feijoas.mango.common.collect.Range.asGuavaRangeConverter
 import org.mockito.Mockito.verify
 import org.scalatest.FreeSpec
-import org.scalatest.mock.MockitoSugar
+import org.scalatest.mockito.MockitoSugar
 import org.scalatest.prop.PropertyChecks
 
-import com.google.common.collect.{RangeSet => GuavaRangeSet}
+import com.google.common.collect.{ RangeSet => GuavaRangeSet }
 
-/** Behavior which all [[RangeSetWrappers]] have in common
+/**
+ * Behavior which all [[RangeSetWrappers]] have in common
  */
 private[mango] trait RangeSetWrapperBehaviours extends FreeSpec with PropertyChecks with MockitoSugar {
   this: FreeSpec =>

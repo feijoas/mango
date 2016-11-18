@@ -28,9 +28,10 @@ import scala.util.{ Failure, Success, Try }
 import org.feijoas.mango.common.annotations.Beta
 import org.mockito.Mockito.{ spy, times, verify }
 import org.scalatest.{ FlatSpec, MustMatchers }
-import org.scalatest.mock.MockitoSugar
+import org.scalatest.mockito.MockitoSugar
 
-/** Tests for [[LoadingCache]]
+/**
+ * Tests for [[LoadingCache]]
  *
  *  @author Markus Schneider
  *  @since 0.7 (copied from guava-libraries)
@@ -70,7 +71,8 @@ class LoadingCacheTest extends FlatSpec with MustMatchers with MockitoSugar {
   }
 }
 
-/** A cache implemented with a map
+/**
+ * A cache implemented with a map
  */
 protected[mango] class MapLoadingCache[K, V](loader: K => V) extends MapCache[K, V]() with LoadingCache[K, V] {
   def get(key: K): Try[V] = Try(loader(key))

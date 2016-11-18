@@ -19,7 +19,7 @@ This is a beta version of the library. Many modules are not published yet becaus
 
 ## Downloading 
 
-Mango is programmed against `guava-18.0` (and is compatible to all guava versions >= 15.0) using Scala 2.11. If you want to run the tests you will also need the `guava-testlib-18.0`.
+Mango is programmed against `guava-20.0` using Scala 2.11. If you want to run the tests you will also need the `guava-testlib-20.0`.
 
 To use the Mango library in [sbt](http://www.scala-sbt.org/) add the following dependency to your project file:
 ```Scala
@@ -28,7 +28,7 @@ resolvers ++= Seq(
     "Sonatype Releases" at "http://oss.sonatype.org/content/repositories/releases"
 )
 
-libraryDependencies += "org.feijoas" %% "mango" % "0.12"
+libraryDependencies += "org.feijoas" %% "mango" % "0.13"
 ```
 
 ## Examples 

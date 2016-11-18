@@ -25,18 +25,19 @@ package org.feijoas.mango.common.base
 import java.util.concurrent.Callable
 
 import org.feijoas.mango.common.base.Functions._
-import org.scalatest.{ FlatSpec, ShouldMatchers }
+import org.scalatest._
 import org.scalatest.prop.PropertyChecks
 
 import com.google.common.base.{ Function => GuavaFunction }
 import com.google.common.testing.SerializableTester
 
-/** Tests for [[Functions]]
+/**
+ * Tests for [[Functions]]
  *
  *  @author Markus Schneider
  *  @since 0.7
  */
-class FunctionsTest extends FlatSpec with ShouldMatchers with PropertyChecks {
+class FunctionsTest extends FlatSpec with Matchers with PropertyChecks {
 
   behavior of "implicits"
 

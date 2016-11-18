@@ -24,18 +24,24 @@ package org.feijoas.mango.common.cache
 
 import java.util.concurrent.TimeUnit
 import scala.collection.Traversable
-import scala.concurrent.future
+import scala.concurrent.Future
 import org.feijoas.mango.common.cache.CacheLoader._
-import org.scalatest.{ FlatSpec, ShouldMatchers }
+import org.scalatest._
+import com.google.common.{ cache => cgcc }
 import com.google.common.cache.{ CacheLoader => GuavaCacheLoader }
 import com.google.common.collect.{ ImmutableMap, Lists }
+import scala.concurrent.impl.Future
+import org.junit.Assert._
+import com.google.common.util.concurrent.ListenableFuture
+import org.feijoas.mango.common.util.concurrent.Futures._
 
-/** Tests for [[CacheLoaderWrapper]]
+/**
+ * Tests for [[CacheLoaderWrapper]]
  *
  *  @author Markus Schneider
  *  @since 0.7
  */
-class CacheLoaderWrapperTest extends FlatSpec with ShouldMatchers {
+class CacheLoaderWrapperTest extends FlatSpec with Matchers {
 
   behavior of "CacheLoaderWrapper"
 
@@ -68,9 +74,91 @@ class CacheLoaderWrapperTest extends FlatSpec with ShouldMatchers {
     cacheLoader should be(CountingCacheLoader(0, 0, 1))
   }
 
+  it should "forward failed futures" in {
+    val one = new Object
+    val e = new Exception
+    val loader = new CacheLoader[AnyRef, AnyRef]() {
+      override def load(any: AnyRef) = one
+      override def reload(key: AnyRef, oldValue: AnyRef) = Future.failed[AnyRef](e)
+    }
+
+    val wrapper: GuavaCacheLoader[AnyRef, AnyRef] = asGuavaCacheLoaderConverter(loader).asJava
+    val cache: cgcc.LoadingCache[AnyRef, AnyRef] = cgcc.CacheBuilder.newBuilder().recordStats().build(wrapper);
+
+    var stats: cgcc.CacheStats = cache.stats()
+    assertEquals(0, stats.missCount());
+    assertEquals(0, stats.loadSuccessCount());
+    assertEquals(0, stats.loadExceptionCount());
+    assertEquals(0, stats.hitCount());
+
+    val key = new Object
+    assertSame(one, cache.getUnchecked(key))
+
+    stats = cache.stats();
+    assertEquals(1, stats.missCount());
+    assertEquals(1, stats.loadSuccessCount());
+    assertEquals(0, stats.loadExceptionCount());
+    assertEquals(0, stats.hitCount());
+
+    cache.refresh(key);
+    stats = cache.stats();
+    assertEquals(1, stats.missCount());
+    assertEquals(1, stats.loadSuccessCount());
+    assertEquals(1, stats.loadExceptionCount());
+    assertEquals(0, stats.hitCount());
+
+    assertSame(one, cache.getUnchecked(key));
+    stats = cache.stats();
+    assertEquals(1, stats.missCount());
+    assertEquals(1, stats.loadSuccessCount());
+    assertEquals(1, stats.loadExceptionCount());
+    assertEquals(1, stats.hitCount());
+  }
+
+  it should "wrap futures" in {
+    val one = new Object
+    val e = new Exception
+    val loader = new cgcc.CacheLoader[AnyRef, AnyRef]() {
+      override def load(any: AnyRef) = one
+      override def reload(key: AnyRef, oldValue: AnyRef) = Future.failed(e).asJava
+    }
+
+    val cache: cgcc.LoadingCache[AnyRef, AnyRef] = cgcc.CacheBuilder.newBuilder().recordStats().build(loader);
+
+    var stats: cgcc.CacheStats = cache.stats()
+    assertEquals(0, stats.missCount());
+    assertEquals(0, stats.loadSuccessCount());
+    assertEquals(0, stats.loadExceptionCount());
+    assertEquals(0, stats.hitCount());
+
+    val key = new Object
+    assertSame(one, cache.getUnchecked(key))
+
+    stats = cache.stats();
+    assertEquals(1, stats.missCount());
+    assertEquals(1, stats.loadSuccessCount());
+    assertEquals(0, stats.loadExceptionCount());
+    assertEquals(0, stats.hitCount());
+
+    cache.refresh(key);
+    stats = cache.stats();
+    assertEquals(1, stats.missCount());
+    assertEquals(1, stats.loadSuccessCount());
+    assertEquals(1, stats.loadExceptionCount());
+    assertEquals(0, stats.hitCount());
+
+    assertSame(one, cache.getUnchecked(key));
+    stats = cache.stats();
+    assertEquals(1, stats.missCount());
+    assertEquals(1, stats.loadSuccessCount());
+    assertEquals(1, stats.loadExceptionCount());
+    assertEquals(1, stats.hitCount());
+  }
+
 }
 
-/** We need this helper until there is mocking support for Scala
+/**
+ * We need this helper until there is mocking support for Scala
  */
 private[mango] case class CountingCacheLoader(var loadCnt: Int = 0, var reloadCnt: Int = 0, var loadAllCnt: Int = 0)
     extends CacheLoader[Int, Int] {
@@ -82,7 +170,7 @@ private[mango] case class CountingCacheLoader(var loadCnt: Int = 0, var reloadCn
   }
   override def reload(key: Int, oldValue: Int) = {
     reloadCnt = reloadCnt + 1
-    future { oldValue }
+    Future { oldValue }
   }
   override def loadAll(keys: Traversable[Int]) = {
     loadAllCnt = loadAllCnt + 1

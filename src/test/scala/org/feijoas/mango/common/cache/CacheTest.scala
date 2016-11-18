@@ -28,9 +28,10 @@ import scala.collection.concurrent.TrieMap
 
 import org.feijoas.mango.common.annotations.Beta
 import org.scalatest.{ FlatSpec, GivenWhenThen, MustMatchers }
-import org.scalatest.mock.MockitoSugar
+import org.scalatest.mockito.MockitoSugar
 
-/** Tests for [[Cache]]
+/**
+ * Tests for [[Cache]]
  *
  *  @author Markus Schneider
  *  @since 0.7
@@ -68,7 +69,8 @@ class CacheTest extends FlatSpec with MustMatchers with GivenWhenThen with Mocki
   }
 }
 
-/** A cache implemented with a map
+/**
+ * A cache implemented with a map
  */
 protected[mango] class MapCache[K, V]() extends Cache[K, V] {
   val map = TrieMap[K, V]()
