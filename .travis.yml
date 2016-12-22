@@ -2,8 +2,6 @@ language: scala
 scala:
   - "2.12.1" 
 jdk:
-  - openjdk7
-  - oraclejdk7
   - oraclejdk8
 
 script:
