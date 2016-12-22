@@ -13,8 +13,8 @@ licenses := Seq(("Apache License, Version 2.0", url("http://www.apache.org/licen
 /**
   * Scala:
   */
-scalaVersion       := "2.12.0"
-crossScalaVersions := Seq("2.12.0")
+scalaVersion       := "2.12.1"
+crossScalaVersions := Seq("2.12.1")
 
 /**
   * Library Dependencies:
