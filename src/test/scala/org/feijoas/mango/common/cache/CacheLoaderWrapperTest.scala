@@ -30,7 +30,6 @@ import org.scalatest._
 import com.google.common.{ cache => cgcc }
 import com.google.common.cache.{ CacheLoader => GuavaCacheLoader }
 import com.google.common.collect.{ ImmutableMap, Lists }
-import scala.concurrent.impl.Future
 import org.junit.Assert._
 import com.google.common.util.concurrent.ListenableFuture
 import org.feijoas.mango.common.util.concurrent.Futures._

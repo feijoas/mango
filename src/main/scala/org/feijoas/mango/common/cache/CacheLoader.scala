@@ -28,7 +28,8 @@ import org.feijoas.mango.common.base.Preconditions.checkNotNull
 import org.feijoas.mango.common.convert.AsJava
 import com.google.common.cache.{ CacheLoader => GuavaCacheLoader }
 
-/** Computes or retrieves values, based on a key, for use in populating a [[LoadingCache]].
+/**
+ * Computes or retrieves values, based on a key, for use in populating a [[LoadingCache]].
  *
  *  This class should be when bulk retrieval is significantly more efficient than
  *  many individual lookups. Otherwise the `CacheLoader` companion object can be used
@@ -44,14 +45,16 @@ import com.google.common.cache.{ CacheLoader => GuavaCacheLoader }
  *  @author Markus Schneider
  *  @since 0.7 (copied from Guava-libraries)
  */
-trait CacheLoader[K, V] extends (K => V) {
+trait CacheLoader[K, V] {
 
-  /** Computes or retrieves the value corresponding to `key`. Simply forwards
+  /**
+   * Computes or retrieves the value corresponding to `key`. Simply forwards
    *  to `load(K)`.
    */
   final def apply(key: K): V = load(key)
 
-  /** Computes or retrieves the value corresponding to `key`.
+  /**
+   * Computes or retrieves the value corresponding to `key`.
    *
    *  @param key the non-null key whose value should be loaded
    *  @return the value associated with `key`; <b>must not be null</b>
@@ -63,7 +66,8 @@ trait CacheLoader[K, V] extends (K => V) {
   @throws(classOf[Exception])
   def load(key: K): V
 
-  /** Computes or retrieves a replacement value corresponding to an already-cached `key`. This
+  /**
+   * Computes or retrieves a replacement value corresponding to an already-cached `key`. This
    *  method is called when an existing cache entry is refreshed by
    *  `CacheBuilder#refreshAfterWrite`, or through a call to `LoadingCache#refresh`.
    *
@@ -89,7 +93,8 @@ trait CacheLoader[K, V] extends (K => V) {
     Promise successful (load(key)) future
   }
 
-  /** Computes or retrieves the values corresponding to `keys`. This method is called by
+  /**
+   * Computes or retrieves the values corresponding to `keys`. This method is called by
    *  `LoadingCache#getAll`.
    *
    *  <p>If the returned map doesn't contain all requested `keys` then the entries it does
@@ -118,7 +123,8 @@ trait CacheLoader[K, V] extends (K => V) {
 /** Factory for [[CacheLoader]] instances. */
 object CacheLoader {
 
-  /** Returns a cache loader based on an <i>existing</i> function.
+  /**
+   * Returns a cache loader based on an <i>existing</i> function.
    *
    *  @param function the function to be used for loading values; must never return {@code null}
    *  @return a cache loader that loads values by passing each key to {@code function}
@@ -128,7 +134,8 @@ object CacheLoader {
     override def load(key: K) = f(checkNotNull(key))
   }
 
-  /** Returns a cache loader based on an <i>existing</i> supplier instance.
+  /**
+   * Returns a cache loader based on an <i>existing</i> supplier instance.
    *
    *  @param supplier the supplier to be used for loading values; must never return {@code null}
    *  @return a cache loader that loads values irrespective of the key
@@ -138,7 +145,8 @@ object CacheLoader {
     override def load(key: K) = { checkNotNull(key); f() }
   }
 
-  /** Adds an `asJava` method that wraps Mango `CacheLoader[K,V]` in a Guava `CacheLoader[K, V]`
+  /**
+   * Adds an `asJava` method that wraps Mango `CacheLoader[K,V]` in a Guava `CacheLoader[K, V]`
    *  using a `CacheLoaderWrapper[K, V]`.
    *
    *  The returned Guava `CacheLoader[K, V]` forwards all method calls to the provided
