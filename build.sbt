@@ -8,7 +8,6 @@ organization     := "org.feijoas"
   */
 name     := "mango"
 version  := "0.14"
-licenses := Seq(("Apache License, Version 2.0", url("http://www.apache.org/licenses/LICENSE-2.0")))
 
 /**
   * Scala:
