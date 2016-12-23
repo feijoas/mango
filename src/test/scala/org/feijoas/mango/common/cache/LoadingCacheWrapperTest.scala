@@ -165,8 +165,8 @@ class LoadingCacheWrapperTest extends FlatSpec
   }
 
   it should "be able to reload values" in {
-    val one = new Object()
-    val two = new Object()
+    val one = new Integer(1)
+    val two = new Integer(2)
 
     val loader = new CacheLoader[Any, Any] {
       override def load(key: Any) = one

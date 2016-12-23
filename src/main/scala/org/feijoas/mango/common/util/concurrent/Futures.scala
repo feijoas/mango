@@ -27,9 +27,11 @@ import scala.concurrent.{ Await, CanAwait, ExecutionContext, Future, TimeoutExce
 import scala.concurrent.duration.{ Duration, FiniteDuration }
 import scala.util.{ Failure, Success, Try }
 import com.google.common.util.concurrent.{ FutureCallback, Futures => GuavaFutures, ListenableFuture, AbstractFuture }
+import com.google.common.base.{ Function => GuavaFunction }
 import concurrent.{ ExecutionException, TimeoutException }
 import org.feijoas.mango.common.base.Preconditions.checkNotNull
 import org.feijoas.mango.common.convert._
+import org.feijoas.mango.common.base.Functions._
 import scala.concurrent.Promise
 import com.google.common.util.concurrent.MoreExecutors
 import java.util.concurrent.TimeoutException
@@ -191,4 +193,15 @@ private[mango] case class AsMangoFuture[T](delegate: ListenableFuture[T]) extend
       case Failure(e) => throw e
       case Success(r) => r
     }
+
+  def transformWith[S](f: Try[T] => Future[S])(implicit executor: ExecutionContext): Future[S] = {
+    val fnc: Try[T] => Try[S] = (t: Try[T]) => f(t).value.get
+    transform(fnc)(executor)
+  }
+
+  def transform[S](f: Try[T] => Try[S])(implicit executor: ExecutionContext): Future[S] = {
+    val fnc = (t: T) => f(Try(t)).get
+    val lf: ListenableFuture[S] = GuavaFutures.transform(delegate, fnc.asJava)
+    Futures.asScalaFutureConverter(lf).asScala
+  }
 }

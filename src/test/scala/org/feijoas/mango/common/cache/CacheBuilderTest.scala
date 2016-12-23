@@ -338,7 +338,7 @@ class CacheBuilderTest extends FlatSpec with PrivateMethodTester {
   def getMember[T](builder: GuavaCacheBuilder[_, _], name: String): T = {
     val m = ru.runtimeMirror(builder.getClass.getClassLoader)
     val im = m.reflect(builder)
-    val symb = ru.typeOf[GuavaCacheBuilder[_, _]].declaration(ru.newTermName(name)).asTerm
+    val symb = ru.typeOf[GuavaCacheBuilder[_, _]].decl(ru.TermName(name)).asTerm
     im.reflectField(symb).get.asInstanceOf[T]
   }
 
@@ -351,9 +351,9 @@ class CacheBuilderTest extends FlatSpec with PrivateMethodTester {
 
   def testNotNull[T](method: String, cacheBuilder: CacheBuilder[Any, Any]) {
     val initBuilder = CacheBuilder.createGuavaBuilder(CacheBuilder())
-    assert(getMember[T](initBuilder, method) == null)
+    getMember[T](initBuilder, method) should be (null.asInstanceOf[T])
     val builder = CacheBuilder.createGuavaBuilder(cacheBuilder)
-    assert(getMember[T](builder, method) != null)
+    getMember[T](builder, method) should not be (null.asInstanceOf[T])
   }
 
   it should "forward the call on maximumSize" in {
